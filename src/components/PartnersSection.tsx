@@ -78,7 +78,7 @@ export default function PartnersSection() {
         />
       </div>
 
-      <div ref={ref} className="max-w-6xl mx-auto px-6 relative z-10">
+      <div ref={ref} className="section-shell max-w-7xl relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
           <motion.p
@@ -94,7 +94,7 @@ export default function PartnersSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl text-white"
+            className="text-3xl sm:text-4xl md:text-5xl text-white text-balance max-w-3xl mx-auto"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             The Valley&apos;s{" "}
@@ -103,7 +103,7 @@ export default function PartnersSection() {
         </div>
 
         {/* Partner grid - 4 equal columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8 lg:gap-0 lg:divide-x lg:divide-white/10">
           {partners.map((group, groupIndex) => (
             <motion.div
               key={group.category}
@@ -114,6 +114,7 @@ export default function PartnersSection() {
                 delay: 0.2 + groupIndex * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
+              className="lg:px-8 xl:px-10 lg:first:pl-0 lg:last:pr-0"
             >
               {/* Category header */}
               <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
@@ -167,10 +168,10 @@ export default function PartnersSection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-20 text-center"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 border border-[#C5A55A]/20 rounded-full">
-            <div className="relative pulse-pin w-2 h-2 rounded-full bg-[#C5A55A]" />
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 px-5 sm:px-6 py-3 border border-[#C5A55A]/20 rounded-full max-w-[min(40rem,calc(100vw-2rem))] text-center sm:text-left">
+            <div className="relative pulse-pin w-2 h-2 rounded-full bg-[#C5A55A] shrink-0" />
             <span
-              className="text-white/40 text-[11px] tracking-[0.2em] uppercase"
+              className="text-white/40 text-[10px] sm:text-[11px] tracking-[0.18em] sm:tracking-[0.2em] uppercase leading-relaxed"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               From Carneros to Calistoga &mdash; 30 miles of extraordinary

@@ -53,12 +53,13 @@ function ArticleCard({
   article: (typeof articles)[0];
   index: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <motion.div
+    <motion.article
       ref={ref}
+      id={article.id}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{
@@ -66,12 +67,14 @@ function ArticleCard({
         delay: index * 0.12,
         ease: [0.22, 1, 0.36, 1],
       }}
+      className="scroll-mt-24 md:scroll-mt-28"
     >
       <a
-        href={`#${article.id}`}
-        id={article.id}
-        className="article-card block group relative overflow-hidden"
-        style={{ height: "480px" }}
+        href="https://www.visitnapavalley.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="article-card block group relative overflow-hidden rounded-sm shadow-md ring-1 ring-[#2C2C2C]/8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5A55A]"
+        style={{ minHeight: "420px", height: "min(32rem, 88vh)" }}
       >
         {/* Background image */}
         <img
@@ -82,7 +85,7 @@ function ArticleCard({
         />
 
         {/* Content overlay */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-end p-7 md:p-8">
+        <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 sm:p-7 md:p-8">
           {/* Category pill */}
           <span
             className="inline-block self-start text-[9px] tracking-[0.3em] uppercase text-white/90 bg-[#63242D]/80 backdrop-blur-sm px-3 py-1 mb-3"
@@ -107,10 +110,10 @@ function ArticleCard({
             {article.subtitle}
           </p>
 
-          {/* Description - shows on hover */}
+          {/* Description — always on small screens; hover expand on md+ */}
           <div className="overflow-hidden">
             <p
-              className="text-white/70 text-sm leading-relaxed max-h-0 group-hover:max-h-24 transition-all duration-500 ease-out"
+              className="text-white/75 text-sm leading-relaxed md:max-h-0 md:opacity-0 md:group-hover:max-h-28 md:group-hover:opacity-100 transition-[max-height,opacity] duration-500 ease-out line-clamp-4 md:line-clamp-none max-md:mt-1"
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}
             >
               {article.description}
@@ -118,7 +121,7 @@ function ArticleCard({
           </div>
 
           {/* Partners pills */}
-          <div className="flex flex-wrap gap-2 mt-3 max-h-0 group-hover:max-h-16 overflow-hidden transition-all duration-500 ease-out delay-75">
+          <div className="flex flex-wrap gap-2 mt-3 max-md:mt-3 md:max-h-0 md:opacity-0 md:overflow-hidden md:group-hover:max-h-24 md:group-hover:opacity-100 transition-all duration-500 ease-out md:delay-75">
             {article.partners.map((partner) => (
               <span
                 key={partner}
@@ -130,13 +133,13 @@ function ArticleCard({
             ))}
           </div>
 
-          {/* Read more */}
-          <div className="mt-4 flex items-center gap-2 text-[#C5A55A] opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+          {/* CTA */}
+          <div className="mt-4 flex items-center gap-2 text-[#C5A55A] translate-y-0 opacity-100 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300">
             <span
               className="text-[11px] tracking-[0.2em] uppercase"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              Read Article
+              Explore on Visit Napa Valley
             </span>
             <svg
               width="16"
@@ -154,7 +157,7 @@ function ArticleCard({
           </div>
         </div>
       </a>
-    </motion.div>
+    </motion.article>
   );
 }
 
@@ -165,7 +168,7 @@ export default function ArticleCards() {
   return (
     <section className="relative py-24 md:py-32 bg-[#F5F0E8]">
       {/* Section header */}
-      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-14 text-center">
+      <div ref={headerRef} className="section-shell max-w-7xl mb-14 text-center">
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -179,15 +182,14 @@ export default function ArticleCards() {
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C]"
+          className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C] text-balance max-w-3xl mx-auto"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           Your Guide to the Valley
         </motion.h2>
       </div>
 
-      {/* Cards grid */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="section-shell max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {articles.map((article, i) => (
           <ArticleCard key={article.id} article={article} index={i} />
         ))}

@@ -50,7 +50,7 @@ export default function Hero() {
       {/* Content */}
       <motion.div
         style={{ opacity }}
-        className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6"
+        className="relative z-20 h-full flex flex-col items-center justify-center text-center section-shell max-w-5xl"
       >
         {/* VNV Logo */}
         {mounted && (
@@ -84,7 +84,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-white max-w-4xl"
+            className="text-white max-w-4xl text-balance"
           >
             <span
               className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95]"
@@ -108,7 +108,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-white/80 text-lg sm:text-xl md:text-2xl max-w-2xl mt-8 leading-relaxed font-light"
+            className="text-white/80 text-lg sm:text-xl md:text-2xl max-w-2xl mt-8 leading-relaxed font-light text-balance"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             From vine to table, from sunrise to starlight &mdash; discover why

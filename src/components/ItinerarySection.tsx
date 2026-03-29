@@ -225,7 +225,7 @@ export default function ItinerarySection() {
   return (
     <section id="itinerary" className="relative py-24 md:py-32 bg-[#FEFCF8] overflow-hidden">
       {/* Header */}
-      <div ref={headerRef} className="max-w-3xl mx-auto px-6 text-center mb-16">
+      <div ref={headerRef} className="section-prose max-w-3xl text-center mb-16 md:mb-20">
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -239,7 +239,7 @@ export default function ItinerarySection() {
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C] mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C] mb-4 text-balance"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           Three Days in{" "}
@@ -258,7 +258,7 @@ export default function ItinerarySection() {
       </div>
 
       {/* Day cards - single column, clean layout */}
-      <div className="max-w-3xl mx-auto px-6 space-y-8">
+      <div className="section-prose max-w-3xl lg:max-w-4xl space-y-8 md:space-y-10">
         {days.map((day, i) => (
           <DayCard key={day.day} day={day} dayIndex={i} />
         ))}

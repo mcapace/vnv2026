@@ -41,50 +41,54 @@ export default function Navigation() {
             : "bg-transparent py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="section-shell max-w-7xl relative flex items-center justify-between min-h-[3.25rem]">
           {/* Logo */}
-          <a href="#" className="flex items-center group shrink-0">
+          <a href="#" className="flex items-center group shrink-0 z-10">
             <img
               src="/images/logos/vnv-primary-white.png"
               alt="Visit Napa Valley"
-              className="h-8 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+              className="h-9 sm:h-10 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
             />
           </a>
 
-          {/* Desktop links - centered */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop links — truly centered in the bar */}
+          <nav
+            className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-7 lg:gap-9"
+            aria-label="Primary"
+          >
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-white/80 hover:text-[#C5A55A] text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 relative group"
+                className="text-white/85 hover:text-[#C5A55A] text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 relative group whitespace-nowrap"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#C5A55A] group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C5A55A] group-hover:w-full transition-all duration-300" />
               </a>
             ))}
-          </div>
+          </nav>
 
-          {/* CTA button */}
-          <div className="hidden md:block shrink-0">
+          {/* CTA + mobile toggle */}
+          <div className="flex items-center justify-end gap-2 shrink-0 z-10">
             <a
               href="https://www.visitnapavalley.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[10px] tracking-[0.2em] uppercase text-[#C5A55A] border border-[#C5A55A]/40 px-5 py-2 hover:bg-[#C5A55A] hover:text-[#2C2C2C] transition-all duration-300"
+              className="hidden md:inline-flex text-[10px] tracking-[0.2em] uppercase text-[#C5A55A] border border-[#C5A55A]/40 px-5 py-2.5 hover:bg-[#C5A55A] hover:text-[#2C2C2C] transition-all duration-300"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Plan Your Visit
             </a>
-          </div>
 
-          {/* Mobile menu toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-white p-2"
-            aria-label="Toggle menu"
-          >
+            {/* Mobile menu toggle */}
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden text-white p-2 -mr-2"
+              aria-expanded={mobileOpen}
+              aria-label="Toggle menu"
+            >
             <div className="w-6 flex flex-col gap-1.5">
               <span
                 className={`block h-[1px] bg-white transition-all duration-300 ${
@@ -103,6 +107,7 @@ export default function Navigation() {
               />
             </div>
           </button>
+          </div>
         </div>
       </motion.nav>
 

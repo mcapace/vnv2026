@@ -1,14 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function Footer() {
   return (
     <footer className="relative bg-[#1A1A1A] overflow-hidden">
       {/* CTA Band */}
       <div className="relative py-20 md:py-24 text-center border-b border-white/5">
         <div className="grain-overlay absolute inset-0" />
-        <div className="relative z-10 max-w-3xl mx-auto px-6">
+        <div className="relative z-10 section-prose max-w-3xl">
           <p
             className="text-[#C5A55A] text-[11px] tracking-[0.4em] uppercase mb-5"
             style={{ fontFamily: "'Inter', sans-serif" }}
@@ -16,7 +14,7 @@ export default function Footer() {
             Your Valley Awaits
           </p>
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl text-white mb-6 text-balance"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             Ready to <em className="text-[#C5A55A]">Live a Little</em>?
@@ -57,10 +55,10 @@ export default function Footer() {
       </div>
 
       {/* Footer bottom */}
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="section-shell max-w-7xl py-10 md:py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8 md:gap-6 w-full">
           {/* Logo */}
-          <div className="shrink-0">
+          <div className="shrink-0 flex justify-center md:justify-start">
             <img
               src="/images/logos/vnv-primary-white.png"
               alt="Visit Napa Valley"
@@ -69,7 +67,10 @@ export default function Footer() {
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-8">
+          <nav
+            className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+            aria-label="Footer"
+          >
             {["Stay", "Dine", "Wine", "Explore"].map((link) => (
               <a
                 key={link}
@@ -80,10 +81,10 @@ export default function Footer() {
                 {link}
               </a>
             ))}
-          </div>
+          </nav>
 
           {/* Presented by */}
-          <div className="flex flex-col items-center md:items-end shrink-0">
+          <div className="flex flex-col items-center md:items-end shrink-0 text-center md:text-right">
             <span
               className="text-white/25 text-[9px] tracking-[0.2em] uppercase"
               style={{ fontFamily: "'Inter', sans-serif" }}

@@ -20,7 +20,7 @@ export default function IntroSection() {
       ref={ref}
       className="relative py-28 md:py-36 bg-[#FEFCF8] overflow-hidden"
     >
-      <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
+      <div className="section-prose max-w-3xl text-center relative z-10">
         {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 25 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C] leading-tight mb-8"
+          className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C] leading-tight mb-8 text-balance"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           Where Every Mile
@@ -81,18 +81,16 @@ export default function IntroSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-16 pt-12 border-t border-[#C5A55A]/15"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
-            {stats.map((stat, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-sm bg-[#C5A55A]/20 p-px overflow-hidden">
+            {stats.map((stat, index) => (
               <div
                 key={stat.label}
-                className={`text-center py-4 ${
-                  i < stats.length - 1 ? "md:border-r md:border-[#C5A55A]/10" : ""
-                }`}
+                className="text-center py-5 px-3 md:py-6 bg-[#FEFCF8]"
               >
                 <motion.span
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
                   className="block text-3xl md:text-4xl text-[#63242D] mb-2"
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
