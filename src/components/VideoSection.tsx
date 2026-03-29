@@ -3,7 +3,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
-/** Wine Country / Napa region feature — replace with your final campaign embed if needed */
 const VIDEO_EMBED_SRC =
   "https://www.youtube.com/embed/4fzHsX-jkPQ?rel=0&modestbranding=1";
 
@@ -12,7 +11,7 @@ export default function VideoSection() {
   const closeRef = useRef<HTMLButtonElement>(null);
 
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   const onClose = useCallback(() => setOpen(false), []);
 
   useEffect(() => {
@@ -33,50 +32,44 @@ export default function VideoSection() {
     <>
       <section
         ref={ref}
-        className="relative h-[70vh] min-h-[500px] max-h-[900px] overflow-hidden"
+        className="relative flex min-h-[min(72vh,820px)] items-center justify-center overflow-hidden"
       >
-        {/* Static full-bleed background (parallax removed — avoids banding/seams on faces) */}
         <div className="absolute inset-0">
           <img
             src="/images/photography/chandon-hilltop.jpg"
             alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{ objectPosition: "center 35%" }}
+            className="h-full w-full object-cover"
+            style={{ objectPosition: "center 32%" }}
             loading="lazy"
             decoding="async"
           />
         </div>
+        <div className="absolute inset-0 bg-[#1a1416]/72" aria-hidden />
+        <div className="grain-overlay pointer-events-none absolute inset-0 z-10" />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-[#2C2C2C]/55 z-10" />
-        <div className="grain-overlay absolute inset-0 z-10 pointer-events-none" />
-
-        {/* Content */}
-        <div className="relative z-20 h-full flex flex-col items-center justify-center text-center section-shell max-w-4xl">
+        <div className="relative z-20 mx-auto max-w-xl px-6 py-20 text-center md:max-w-2xl">
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-[#C5A55A] text-[11px] tracking-[0.4em] uppercase mb-6"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+            className="section-eyebrow text-[var(--hub-gold-bright)]"
           >
-            Experience the Valley
+            Film
           </motion.p>
-
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl text-white mb-10 text-balance"
+            transition={{ delay: 0.08 }}
+            className="mt-4 text-balance text-3xl font-normal leading-tight text-white sm:text-4xl md:text-[2.6rem]"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            See It to <em className="text-[#C5A55A]">Believe It</em>
+            See it to{" "}
+            <span className="text-[var(--hub-gold-bright)]">believe it</span>
           </motion.h2>
-
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.92 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ delay: 0.18 }}
+            className="mt-10"
           >
             <button
               type="button"
@@ -87,26 +80,25 @@ export default function VideoSection() {
               onClick={() => setOpen(true)}
             >
               <svg
-                width="24"
-                height="24"
+                width="22"
+                height="22"
                 viewBox="0 0 24 24"
                 fill="white"
-                className="ml-1"
+                className="ml-0.5"
               >
                 <polygon points="8,4 20,12 8,20" />
               </svg>
             </button>
           </motion.div>
-
           <motion.p
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-white/50 mt-8 max-w-md text-balance px-2"
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem" }}
+            transition={{ delay: 0.28 }}
+            className="mt-8 text-lg text-white/65"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            Take a cinematic journey through thirty miles of vineyards,
-            world-class dining, and unforgettable experiences.
+            Thirty miles of wine country in motion—use as placeholder until
+            final hero film is delivered.
           </motion.p>
         </div>
       </section>
@@ -115,11 +107,11 @@ export default function VideoSection() {
         {open && (
           <motion.div
             role="presentation"
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             onMouseDown={(e) => {
               if (e.target === e.currentTarget) onClose();
             }}
@@ -128,27 +120,34 @@ export default function VideoSection() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="video-dialog-title"
-              className="relative w-full max-w-4xl rounded-sm overflow-hidden shadow-2xl ring-1 ring-white/10 bg-black"
-              initial={{ opacity: 0, scale: 0.96, y: 16 }}
+              className="relative w-full max-w-4xl overflow-hidden rounded-lg bg-black shadow-2xl ring-1 ring-white/10"
+              initial={{ opacity: 0, scale: 0.97, y: 12 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 16 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, scale: 0.97, y: 12 }}
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             >
               <h2 id="video-dialog-title" className="sr-only">
-                Featured Napa Valley video
+                Napa Valley video
               </h2>
               <button
                 ref={closeRef}
                 type="button"
                 onClick={onClose}
-                className="absolute top-3 right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/75 transition-colors"
+                className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/55 text-white transition hover:bg-black/80"
                 aria-label="Close video"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </button>
-              <div className="relative w-full aspect-video">
+              <div className="relative aspect-video w-full">
                 <iframe
                   title="Napa Valley feature video"
                   src={VIDEO_EMBED_SRC}

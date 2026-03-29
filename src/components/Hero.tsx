@@ -10,163 +10,109 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.04]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   return (
-    <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden">
-      {/* Background image with parallax — convertible through vineyards */}
-      <motion.div style={{ y, scale }} className="absolute left-1/2 top-1/2 h-[122%] w-[122%] -translate-x-1/2 -translate-y-1/2">
+    <section ref={ref} className="relative min-h-[max(680px,100dvh)] overflow-hidden">
+      <motion.div
+        style={{ y }}
+        className="absolute left-1/2 top-1/2 h-[125%] w-[125%] -translate-x-1/2 -translate-y-1/2 will-change-transform"
+      >
         <img
           src="/images/photography/stanly-ranch-convertible.jpg"
           alt="Open road through Napa Valley vineyards at golden hour"
-          className="absolute inset-0 h-full w-full object-cover pointer-events-none"
-          style={{ objectPosition: "center 42%" }}
+          className="h-full w-full object-cover"
+          style={{ objectPosition: "center 40%" }}
           decoding="async"
           fetchPriority="high"
         />
       </motion.div>
 
-      {/* Gradient overlay */}
       <div
-        className="absolute inset-0 z-10"
-        style={{
-          background: `linear-gradient(
-            180deg,
-            rgba(30, 20, 22, 0.55) 0%,
-            rgba(30, 20, 22, 0.35) 35%,
-            rgba(30, 20, 22, 0.30) 50%,
-            rgba(99, 36, 45, 0.70) 80%,
-            rgba(99, 36, 45, 0.92) 100%
-          )`,
-        }}
+        className="absolute inset-0 z-10 bg-gradient-to-b from-[#0c0a0b]/75 via-[#1a1214]/45 to-[#4a1c22]/88"
+        aria-hidden
       />
+      <div className="grain-overlay pointer-events-none absolute inset-0 z-10" />
 
-      {/* Grain */}
-      <div className="grain-overlay absolute inset-0 z-10" />
-
-      {/* Content */}
       <motion.div
         style={{ opacity }}
-        className="relative z-20 h-full flex flex-col items-center justify-center text-center section-shell max-w-5xl"
+        className="relative z-20 flex min-h-[max(680px,100dvh)] flex-col items-center justify-center px-6 pt-20 pb-16 text-center md:px-10"
       >
-        {/* VNV Logo */}
         {mounted && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="mb-8"
-          >
-            <img
-              src="/images/logos/vnv-primary-white.png"
-              alt="Visit Napa Valley"
-              className="h-12 sm:h-14 w-auto mx-auto"
-            />
-          </motion.div>
-        )}
-
-        {/* Gold accent line */}
-        {mounted && (
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="w-16 h-[1px] bg-[#C5A55A] mb-8"
-          />
-        )}
-
-        {/* Main headline */}
-        {mounted && (
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-white max-w-4xl text-balance"
-          >
-            <span
-              className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95]"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              A World
-            </span>
-            <span
-              className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95] mt-2"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              in{" "}
-              <span className="gold-shimmer font-semibold italic">30 Miles</span>
-            </span>
-          </motion.h1>
-        )}
-
-        {/* Subtitle */}
-        {mounted && (
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-white/80 text-lg sm:text-xl md:text-2xl max-w-2xl mt-8 leading-relaxed font-light text-balance"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            An evergreen look at why Napa rewards multi-day stays—dense with
-            wine, food, stays, and experiences you can stitch into unforgettable
-            weekends.
-          </motion.p>
-        )}
-
-        {/* CTA */}
-        {mounted && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.3 }}
-            className="mt-12 flex flex-col sm:flex-row items-center gap-5"
-          >
-            <a
-              href="#discover"
-              className="group relative px-10 py-4 border border-[#C5A55A]/60 text-white text-[11px] tracking-[0.25em] uppercase overflow-hidden transition-all duration-500 hover:border-[#C5A55A]"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              <span className="relative z-10 group-hover:text-[#2C2C2C] transition-colors duration-500">
-                Begin Your Journey
-              </span>
-              <span className="absolute inset-0 bg-[#C5A55A] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-            </a>
-            <a
-              href="#itinerary"
-              className="text-white/50 text-[11px] tracking-[0.2em] uppercase hover:text-[#C5A55A] transition-colors duration-300"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              View Itinerary &rarr;
-            </a>
-          </motion.div>
-        )}
-
-        {/* Scroll indicator */}
-        {mounted && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          >
-            <span
-              className="text-white/30 text-[10px] tracking-[0.3em] uppercase"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Scroll
-            </span>
+          <>
             <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="w-[1px] h-8 bg-gradient-to-b from-[#C5A55A]/60 to-transparent"
-            />
-          </motion.div>
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-10"
+            >
+              <img
+                src="/images/logos/vnv-primary-white.png"
+                alt="Visit Napa Valley"
+                className="mx-auto h-11 w-auto sm:h-12"
+              />
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.1 }}
+              className="max-w-4xl text-balance text-white"
+            >
+              <span
+                className="block text-[clamp(2.75rem,8vw,5.75rem)] font-light leading-[0.98] tracking-tight"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                A World
+              </span>
+              <span
+                className="mt-1 block text-[clamp(2.75rem,8vw,5.75rem)] font-light leading-[0.98] tracking-tight"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                in{" "}
+                <em className="not-italic text-[var(--hub-gold-bright)]">
+                  30 Miles
+                </em>
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.25 }}
+              className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-white/82 sm:text-xl"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              Napa&apos;s density advantage—wine, dine, stay, and explore—in one
+              compact stretch of valley made for multi-day escapes.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="mt-11 flex flex-col items-center gap-4 sm:flex-row sm:gap-5"
+            >
+              <a
+                href="#discover"
+                className="inline-flex min-w-[200px] justify-center rounded-md bg-[var(--hub-gold)] px-8 py-3.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#141212] transition hover:bg-[#d4b87a]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Explore the hub
+              </a>
+              <a
+                href="#itinerary"
+                className="text-[11px] font-medium uppercase tracking-[0.2em] text-white/55 transition hover:text-white"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Sample weekend →
+              </a>
+            </motion.div>
+          </>
         )}
       </motion.div>
     </section>

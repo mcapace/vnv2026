@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="relative w-full min-h-0 flex-1 overflow-x-hidden">
+    <main className="hub-page relative w-full min-h-0 flex-1 overflow-x-hidden text-[var(--hub-ink)]">
       <Navigation />
       <Hero />
       <IntroSection />

@@ -2,117 +2,74 @@
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#1A1A1A] overflow-hidden">
-      {/* CTA Band */}
-      <div className="relative py-20 md:py-24 text-center border-b border-white/5">
-        <div className="grain-overlay absolute inset-0" />
-        <div className="relative z-10 section-shell max-w-3xl text-center mx-auto">
-          <p
-            className="text-[#C5A55A] text-[11px] tracking-[0.4em] uppercase mb-5"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            Your Valley Awaits
-          </p>
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl text-white mb-6 text-balance"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            Ready to <em className="text-[#C5A55A]">Live a Little</em>?
-          </h2>
-          <p
-            className="text-white/50 mb-10 max-w-xl mx-auto"
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: "1.2rem",
-            }}
-          >
-            Plan your multi-day Napa Valley escape and discover why thirty miles
-            is all you need to experience a world of extraordinary.
-          </p>
-          <a
-            href="https://www.visitnapavalley.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-2 px-10 py-4 bg-[#C5A55A] text-[#1A1A1A] text-xs tracking-[0.25em] uppercase overflow-hidden transition-all duration-500 hover:bg-[#D4BA7A]"
-            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
-          >
-            Plan Your Visit
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              className="group-hover:translate-x-1 transition-transform"
-            >
-              <path
-                d="M3 8H13M13 8L9 4M13 8L9 12"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </a>
-        </div>
+    <footer className="border-t border-[var(--hub-line)] bg-[#141212] text-white">
+      <div
+        className="section-shell mx-auto max-w-3xl py-16 text-center md:py-20"
+        style={{ paddingTop: "clamp(3.5rem,8vw,5rem)" }}
+      >
+        <p className="section-eyebrow text-[var(--hub-gold-bright)]">
+          Next step
+        </p>
+        <h2
+          className="mt-4 text-balance text-3xl font-normal leading-tight md:text-4xl"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          Ready to plan a long weekend?
+        </h2>
+        <p
+          className="mx-auto mt-4 max-w-md text-lg text-white/55"
+          style={{ fontFamily: "'Cormorant Garamond', serif" }}
+        >
+          Lock in stays, tables, and cellar appointments on the official
+          destination site.
+        </p>
+        <a
+          href="https://www.visitnapavalley.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex items-center justify-center rounded-md bg-[var(--hub-gold)] px-8 py-3.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#141212] transition hover:bg-[#d4b87a]"
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          Plan your visit
+        </a>
       </div>
 
-      {/* Footer bottom */}
-      <div className="section-shell max-w-7xl py-10 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8 md:gap-6 w-full">
-          {/* Logo */}
-          <div className="shrink-0 flex justify-center md:justify-start">
-            <img
-              src="/images/logos/vnv-primary-white.png"
-              alt="Visit Napa Valley"
-              className="h-8 w-auto opacity-50 hover:opacity-70 transition-opacity duration-300"
-            />
-          </div>
-
-          {/* Links */}
+      <div className="border-t border-white/8">
+        <div className="section-shell mx-auto flex max-w-6xl flex-col items-center gap-8 py-10 md:flex-row md:justify-between">
+          <img
+            src="/images/logos/vnv-primary-white.png"
+            alt="Visit Napa Valley"
+            className="h-7 w-auto opacity-40"
+          />
           <nav
-            className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+            className="flex flex-wrap justify-center gap-x-6 gap-y-2"
             aria-label="Footer"
           >
             {["Stay", "Dine", "Wine", "Explore"].map((link) => (
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className="text-white/35 hover:text-[#C5A55A] text-[11px] tracking-[0.18em] uppercase transition-colors"
+                className="text-[11px] font-medium uppercase tracking-[0.16em] text-white/40 transition hover:text-[var(--hub-gold)]"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {link}
               </a>
             ))}
           </nav>
-
-          {/* Presented by */}
-          <div className="flex flex-col items-center md:items-end shrink-0 text-center md:text-right">
-            <span
-              className="text-white/30 text-[10px] tracking-[0.2em] uppercase"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Presented by
-            </span>
-            <span
-              className="text-white/60 text-base tracking-[0.08em]"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              Wine Spectator
-            </span>
-          </div>
+          <p
+            className="text-center text-[10px] uppercase tracking-[0.18em] text-white/35"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            Presented by{" "}
+            <span className="text-white/55">Wine Spectator</span>
+          </p>
         </div>
-
-        {/* Divider */}
-        <div className="w-full h-[1px] bg-white/5 my-6" />
-
-        {/* Copyright */}
-        <div
-          className="flex flex-col md:flex-row items-center justify-between gap-3 text-white/20 text-[10px] tracking-wider"
-          style={{ fontFamily: "'Inter', sans-serif" }}
-        >
-          <p>&copy; {new Date().getFullYear()} Visit Napa Valley. All rights reserved.</p>
-          <p>
-            A{" "}
-            <span className="text-[#C5A55A]/40">Wine Spectator</span>{" "}
-            Custom Content Hub
+        <div className="section-shell mx-auto max-w-6xl pb-8">
+          <p
+            className="text-center text-[10px] text-white/25"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            © {new Date().getFullYear()} Visit Napa Valley · Custom content hub
           </p>
         </div>
       </div>
