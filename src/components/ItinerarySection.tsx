@@ -138,31 +138,31 @@ function DayCard({
         delay: dayIndex * 0.15,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="bg-white rounded-sm shadow-sm border border-[#C5A55A]/10 overflow-hidden"
+      className="bg-white rounded-sm shadow-md border border-[#C5A55A]/12 overflow-hidden"
     >
       {/* Day header */}
-      <div className="bg-[#63242D] px-6 py-5 sm:px-8 sm:py-6">
-        <div className="flex items-center gap-4">
-          <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white/15 text-white text-sm font-semibold shrink-0"
+      <div className="bg-[#63242D] px-6 py-6 sm:px-10 sm:py-8">
+        <div className="flex items-start sm:items-center gap-4 sm:gap-5">
+          <span className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/15 text-white text-base sm:text-lg font-semibold shrink-0"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             {dayIndex + 1}
           </span>
-          <div>
+          <div className="min-w-0 text-left">
             <span
-              className="text-[#C5A55A] text-[10px] tracking-[0.3em] uppercase block mb-0.5"
+              className="text-[#C5A55A] text-[10px] sm:text-[11px] tracking-[0.3em] uppercase block mb-1"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               {day.day}
             </span>
             <h3
-              className="text-white text-xl sm:text-2xl leading-tight"
+              className="text-white text-2xl sm:text-3xl leading-tight"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               {day.title}
             </h3>
             <p
-              className="text-white/50 text-sm mt-0.5"
+              className="text-white/55 text-base sm:text-lg mt-1"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               {day.subtitle}
@@ -174,11 +174,11 @@ function DayCard({
       {/* Events list */}
       <div className="divide-y divide-[#F5F0E8]">
         {day.events.map((event, i) => (
-          <div key={event.activity} className="px-6 py-5 sm:px-8 sm:py-6 flex gap-4 sm:gap-6">
+          <div key={event.activity} className="px-6 py-6 sm:px-10 sm:py-7 flex gap-5 sm:gap-8">
             {/* Time column */}
-            <div className="shrink-0 w-16 sm:w-20 pt-0.5">
+            <div className="shrink-0 w-[4.5rem] sm:w-24 pt-1">
               <span
-                className="text-[#C5A55A] text-xs tracking-wide whitespace-nowrap"
+                className="text-[#C5A55A] text-sm font-medium tracking-wide whitespace-nowrap"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {event.time}
@@ -187,9 +187,9 @@ function DayCard({
 
             {/* Content column */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+              <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <span
-                  className="text-[9px] tracking-[0.15em] uppercase px-2 py-0.5 text-white rounded-sm"
+                  className="text-[10px] tracking-[0.18em] uppercase px-2.5 py-1 text-white rounded-sm"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     backgroundColor: typeColors[event.type],
@@ -199,14 +199,14 @@ function DayCard({
                 </span>
               </div>
               <h4
-                className="text-[#2C2C2C] text-base sm:text-lg mb-1 leading-snug"
+                className="text-[#2C2C2C] text-lg sm:text-xl mb-1.5 leading-snug"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
                 {event.activity}
               </h4>
               <p
-                className="text-[#4A4A4A]/70 leading-relaxed"
-                style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1rem" }}
+                className="text-[#4A4A4A]/80 leading-relaxed text-base sm:text-[1.05rem]"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}
               >
                 {event.description}
               </p>
@@ -225,7 +225,7 @@ export default function ItinerarySection() {
   return (
     <section id="itinerary" className="relative py-24 md:py-32 bg-[#FEFCF8] overflow-hidden">
       {/* Header */}
-      <div ref={headerRef} className="section-prose max-w-3xl text-center mb-16 md:mb-20">
+      <div ref={headerRef} className="section-shell max-w-4xl text-center mb-14 md:mb-20">
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -257,8 +257,7 @@ export default function ItinerarySection() {
         </motion.p>
       </div>
 
-      {/* Day cards - single column, clean layout */}
-      <div className="section-prose max-w-3xl lg:max-w-4xl space-y-8 md:space-y-10">
+      <div className="section-shell max-w-5xl space-y-8 md:space-y-10">
         {days.map((day, i) => (
           <DayCard key={day.day} day={day} dayIndex={i} />
         ))}

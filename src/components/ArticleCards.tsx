@@ -84,8 +84,13 @@ function ArticleCard({
           loading="lazy"
         />
 
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 top-[45%] z-[5] bg-gradient-to-t from-[#1a0a0d]/95 via-[#2C2C2C]/45 to-transparent"
+          aria-hidden
+        />
+
         {/* Content overlay */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 sm:p-7 md:p-8">
+        <div className="absolute inset-0 z-10 flex flex-col justify-end p-7 sm:p-9 md:p-10 lg:p-12 pb-8 md:pb-10">
           {/* Category pill */}
           <span
             className="inline-block self-start text-[9px] tracking-[0.3em] uppercase text-white/90 bg-[#63242D]/80 backdrop-blur-sm px-3 py-1 mb-3"
@@ -96,7 +101,7 @@ function ArticleCard({
 
           {/* Title */}
           <h3
-            className="text-2xl md:text-[1.65rem] text-white mb-1 leading-snug"
+            className="text-2xl sm:text-3xl md:text-[1.85rem] text-white mb-1.5 leading-snug max-w-[22ch]"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             {article.title}

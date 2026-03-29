@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
-import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 
 /** Wine Country / Napa region feature — replace with your final campaign embed if needed */
 const VIDEO_EMBED_SRC =
@@ -13,12 +13,6 @@ export default function VideoSection() {
 
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-
   const onClose = useCallback(() => setOpen(false), []);
 
   useEffect(() => {
@@ -41,15 +35,16 @@ export default function VideoSection() {
         ref={ref}
         className="relative h-[70vh] min-h-[500px] max-h-[900px] overflow-hidden"
       >
-        {/* Parallax background — Chandon hilltop group */}
-        <motion.div style={{ y: bgY }} className="absolute inset-[-12%]">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url('/images/photography/chandon-hilltop.jpg')`,
-            }}
+        {/* Static full-bleed background (parallax removed — avoids banding/seams on faces) */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/photography/chandon-hilltop.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
+            loading="lazy"
+            decoding="async"
           />
-        </motion.div>
+        </div>
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-[#2C2C2C]/55 z-10" />

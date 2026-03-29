@@ -20,7 +20,7 @@ export default function IntroSection() {
       ref={ref}
       className="relative py-28 md:py-36 bg-[#FEFCF8] overflow-hidden"
     >
-      <div className="section-prose max-w-3xl text-center relative z-10">
+      <div className="section-shell max-w-6xl text-center relative z-10">
         {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ export default function IntroSection() {
           className="text-[#C5A55A] text-[11px] tracking-[0.4em] uppercase mb-6"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
-          Live a Little &mdash; or a Lot
+          Discover the Valley
         </motion.p>
 
         {/* Headline */}
@@ -57,12 +57,12 @@ export default function IntroSection() {
           <span className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#C5A55A]" />
         </motion.div>
 
-        {/* Body */}
+        {/* Body — comfortable measure, centered in wide shell */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-[#4A4A4A] text-lg md:text-xl leading-relaxed"
+          className="text-[#4A4A4A] text-lg md:text-xl lg:text-[1.35rem] leading-relaxed max-w-3xl mx-auto"
           style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 }}
         >
           Stretching from the wetlands of Carneros to the volcanic peaks of
@@ -79,25 +79,25 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 25 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 pt-12 border-t border-[#C5A55A]/15"
+          className="mt-16 pt-12 border-t border-[#C5A55A]/15 max-w-5xl mx-auto w-full"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-sm bg-[#C5A55A]/20 p-px overflow-hidden">
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
-                className="text-center py-5 px-3 md:py-6 bg-[#FEFCF8]"
+                className="text-center py-6 px-4 md:py-8 md:px-6 bg-[#FEFCF8] min-h-[7.5rem] md:min-h-[8.5rem] flex flex-col items-center justify-center"
               >
                 <motion.span
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                  className="block text-3xl md:text-4xl text-[#63242D] mb-2"
+                  className="block text-4xl md:text-5xl lg:text-[3.25rem] text-[#63242D] mb-2.5 tabular-nums"
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
                   {stat.number}
                 </motion.span>
                 <span
-                  className="text-[#4A4A4A]/60 text-[10px] tracking-[0.3em] uppercase"
+                  className="text-[#4A4A4A]/65 text-[10px] md:text-[11px] tracking-[0.28em] uppercase max-w-[12rem] leading-snug"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   {stat.label}

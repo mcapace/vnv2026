@@ -12,7 +12,7 @@ export default function Hero() {
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.04]);
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden">
       {/* Background image with parallax — convertible through vineyards */}
-      <motion.div style={{ y, scale }} className="absolute inset-[-5%]">
+      <motion.div style={{ y, scale }} className="absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{

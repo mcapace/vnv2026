@@ -6,7 +6,7 @@ export default function Footer() {
       {/* CTA Band */}
       <div className="relative py-20 md:py-24 text-center border-b border-white/5">
         <div className="grain-overlay absolute inset-0" />
-        <div className="relative z-10 section-prose max-w-3xl">
+        <div className="relative z-10 section-shell max-w-3xl text-center mx-auto">
           <p
             className="text-[#C5A55A] text-[11px] tracking-[0.4em] uppercase mb-5"
             style={{ fontFamily: "'Inter', sans-serif" }}
@@ -75,7 +75,7 @@ export default function Footer() {
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className="text-white/30 hover:text-[#C5A55A] text-[10px] tracking-[0.2em] uppercase transition-colors"
+                className="text-white/35 hover:text-[#C5A55A] text-[11px] tracking-[0.18em] uppercase transition-colors"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {link}
@@ -86,13 +86,13 @@ export default function Footer() {
           {/* Presented by */}
           <div className="flex flex-col items-center md:items-end shrink-0 text-center md:text-right">
             <span
-              className="text-white/25 text-[9px] tracking-[0.2em] uppercase"
+              className="text-white/30 text-[10px] tracking-[0.2em] uppercase"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Presented by
             </span>
             <span
-              className="text-white/50 text-sm tracking-[0.1em]"
+              className="text-white/60 text-base tracking-[0.08em]"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Wine Spectator
