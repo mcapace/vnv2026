@@ -8,103 +8,167 @@ export default function Hero() {
     <section
       id="hero"
       aria-label="Hero"
-      className="relative h-[100dvh] min-h-[560px] max-h-[100dvh] overflow-hidden bg-[#1a1512]"
+      className="relative h-[100dvh] min-h-[600px] overflow-hidden bg-[#1a1512]"
     >
+      {/* Background image */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <img
           src="/images/photography/stanly-ranch-convertible.jpg"
           alt="Open road through Napa Valley vineyards at golden hour"
           className="h-full w-full object-cover"
-          style={{ objectPosition: "center 30%" }}
+          style={{ objectPosition: "center 20%" }}
           width={1920}
           height={1080}
           decoding="async"
           fetchPriority="high"
           loading="eager"
         />
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/10"
-          aria-hidden
-        />
       </div>
 
+      {/* Gradient overlay — strong at bottom for text legibility */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.15) 65%, rgba(0,0,0,0.05) 100%)",
+        }}
+        aria-hidden
+      />
+
+      {/* Grain overlay */}
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[2]" />
 
+      {/* Hero content — anchored to bottom left */}
       <div
-        className="absolute bottom-0 left-0 right-0 z-10 pb-24 text-left"
+        className="absolute bottom-0 left-0 right-0 z-10 text-left"
         style={{
           paddingLeft: "clamp(2rem, 5vw, 4rem)",
           paddingRight: "clamp(2rem, 5vw, 4rem)",
-          maxWidth: "52rem",
+          paddingBottom: "clamp(5rem, 8vw, 7rem)",
+          maxWidth: "56rem",
         }}
       >
+        {/* Logo lockup */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-3 flex items-center gap-2.5"
-          aria-label="Visit Napa Valley and Wine Spectator"
+          style={{ display: "flex", alignItems: "center", gap: "0.625rem", marginBottom: "1rem" }}
         >
           <img
             src="/images/logos/vnv-primary-white.png"
             alt="Visit Napa Valley"
-            className="h-7 w-auto"
-            width={160}
-            height={40}
+            style={{ height: "1.75rem", width: "auto" }}
           />
-          <span className="text-base font-light text-white/50" aria-hidden>
-            ×
-          </span>
-          <span className="font-hub-display text-base italic tracking-wide text-white/80">
+          <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "1rem", fontWeight: 300 }}>×</span>
+          <span
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "1rem",
+              fontStyle: "italic",
+              color: "rgba(255,255,255,0.75)",
+              letterSpacing: "0.02em",
+            }}
+          >
             Wine Spectator
           </span>
         </motion.div>
 
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.05 }}
-          className="font-hub-display mt-4 max-w-3xl text-balance text-[clamp(2.25rem,5vw,4rem)] leading-[1.0] text-white text-on-photo"
+          style={{
+            fontFamily: "var(--font-cormorant), Georgia, serif",
+            fontSize: "clamp(3rem, 6.5vw, 5rem)",
+            fontWeight: 400,
+            lineHeight: 1.0,
+            color: "#ffffff",
+            letterSpacing: "-0.02em",
+            marginBottom: "1.25rem",
+            textShadow: "0 2px 24px rgba(0,0,0,0.4)",
+          }}
         >
           A World in{" "}
-          <span className="font-hub-display italic text-[var(--hub-champagne)]">30 Miles</span>
+          <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>30 Miles</span>
         </motion.h1>
 
+        {/* Body copy */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.14 }}
-          className="mt-3 max-w-lg text-base text-white/70"
-          style={{ fontSize: "1rem", lineHeight: "1.5" }}
+          style={{
+            fontSize: "1.0625rem",
+            lineHeight: 1.65,
+            color: "rgba(255,255,255,0.72)",
+            maxWidth: "32rem",
+            marginBottom: "2rem",
+          }}
         >
-          Wine, dine, stay, and explore—extraordinary density in one compact stretch of valley built
-          for long weekends.
+          Wine, dine, stay, and explore—extraordinary density in one compact stretch of valley built for
+          long weekends.
         </motion.p>
 
+        {/* CTA buttons */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.22 }}
-          className="mt-5 flex flex-wrap items-center gap-3"
+          style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.75rem" }}
         >
           <a
             href="#discover"
-            className="inline-flex items-center gap-2 rounded-full bg-[var(--hub-champagne)] px-6 py-3 text-sm font-semibold text-[var(--hub-navy)]"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              borderRadius: "9999px",
+              backgroundColor: "var(--hub-champagne)",
+              color: "var(--hub-navy)",
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              letterSpacing: "0.03em",
+              padding: "0.875rem 1.875rem",
+              textDecoration: "none",
+              transition: "background-color 0.3s ease, transform 0.3s ease",
+            }}
           >
             Explore the hub
           </a>
           <a
             href="#itinerary"
-            className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-medium text-white"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              borderRadius: "9999px",
+              border: "1px solid rgba(255,255,255,0.5)",
+              color: "#ffffff",
+              fontSize: "0.875rem",
+              fontWeight: 500,
+              padding: "0.875rem 1.875rem",
+              textDecoration: "none",
+              transition: "border-color 0.3s ease, background-color 0.3s ease",
+            }}
           >
             Sample weekend
           </a>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-7 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1">
+      {/* Scroll chevron */}
+      <div
+        className="absolute z-10"
+        style={{ bottom: "1.75rem", left: "50%", transform: "translateX(-50%)" }}
+      >
         <a href="#discover" aria-label="Scroll to main content">
-          <ChevronDownIcon className="size-5 text-white/60 animate-bounce" strokeWidth={1.5} />
+          <ChevronDownIcon
+            style={{ width: "1.25rem", height: "1.25rem", color: "rgba(255,255,255,0.55)" }}
+            className="animate-bounce"
+            strokeWidth={1.5}
+          />
         </a>
       </div>
     </section>
