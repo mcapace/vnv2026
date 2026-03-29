@@ -1,174 +1,104 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.04]);
-
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
   return (
-    <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden">
-      {/* Background image with parallax — convertible through vineyards */}
-      <motion.div style={{ y, scale }} className="absolute left-1/2 top-1/2 h-[122%] w-[122%] -translate-x-1/2 -translate-y-1/2">
+    <section
+      id="hero"
+      aria-label="Hero"
+      className="relative h-[100dvh] min-h-[560px] max-h-[100dvh] overflow-hidden bg-[#1a1512]"
+    >
+      <div className="pointer-events-none absolute inset-0 z-0">
         <img
           src="/images/photography/stanly-ranch-convertible.jpg"
           alt="Open road through Napa Valley vineyards at golden hour"
-          className="absolute inset-0 h-full w-full object-cover pointer-events-none"
-          style={{ objectPosition: "center 42%" }}
+          className="h-full w-full object-cover"
+          style={{ objectPosition: "center 44%" }}
+          width={1920}
+          height={1080}
           decoding="async"
           fetchPriority="high"
+          loading="eager"
         />
-      </motion.div>
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent"
+          aria-hidden
+        />
+      </div>
 
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0 z-10"
-        style={{
-          background: `linear-gradient(
-            180deg,
-            rgba(30, 20, 22, 0.55) 0%,
-            rgba(30, 20, 22, 0.35) 35%,
-            rgba(30, 20, 22, 0.30) 50%,
-            rgba(99, 36, 45, 0.70) 80%,
-            rgba(99, 36, 45, 0.92) 100%
-          )`,
-        }}
-      />
+      <div className="grain-overlay pointer-events-none absolute inset-0 z-[2]" />
 
-      {/* Grain */}
-      <div className="grain-overlay absolute inset-0 z-10" />
-
-      {/* Content */}
-      <motion.div
-        style={{ opacity }}
-        className="relative z-20 h-full flex flex-col items-center justify-center text-center section-shell max-w-5xl"
-      >
-        {/* VNV Logo */}
-        {mounted && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="mb-8"
-          >
-            <img
-              src="/images/logos/vnv-primary-white.png"
-              alt="Visit Napa Valley"
-              className="h-12 sm:h-14 w-auto mx-auto"
-            />
-          </motion.div>
-        )}
-
-        {/* Gold accent line */}
-        {mounted && (
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="w-16 h-[1px] bg-[#C5A55A] mb-8"
+      <div className="absolute bottom-0 left-0 right-0 z-10 max-w-4xl pb-16 px-8 text-left md:px-14 lg:px-16">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-5 flex items-center gap-2.5"
+          aria-label="Visit Napa Valley and Wine Spectator"
+        >
+          <img
+            src="/images/logos/vnv-primary-white.png"
+            alt="Visit Napa Valley"
+            className="h-7 w-auto"
+            width={160}
+            height={40}
           />
-        )}
+          <span className="text-base font-light text-white/50" aria-hidden>
+            ×
+          </span>
+          <span className="font-hub-display text-base italic tracking-wide text-white/80">
+            Wine Spectator
+          </span>
+        </motion.div>
 
-        {/* Main headline */}
-        {mounted && (
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-white max-w-4xl text-balance"
-          >
-            <span
-              className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95]"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              A World
-            </span>
-            <span
-              className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95] mt-2"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              in{" "}
-              <span className="gold-shimmer font-semibold italic">30 Miles</span>
-            </span>
-          </motion.h1>
-        )}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.05 }}
+          className="font-hub-display mt-4 max-w-3xl text-balance text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] text-white text-on-photo"
+        >
+          A World in{" "}
+          <span className="font-hub-display italic text-[var(--hub-champagne)]">30 Miles</span>
+        </motion.h1>
 
-        {/* Subtitle */}
-        {mounted && (
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-white/80 text-lg sm:text-xl md:text-2xl max-w-2xl mt-8 leading-relaxed font-light text-balance"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            An evergreen look at why Napa rewards multi-day stays—dense with
-            wine, food, stays, and experiences you can stitch into unforgettable
-            weekends.
-          </motion.p>
-        )}
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.14 }}
+          className="hub-prose mt-4 max-w-lg text-white/75"
+        >
+          Wine, dine, stay, and explore—extraordinary density in one compact stretch of valley built
+          for long weekends.
+        </motion.p>
 
-        {/* CTA */}
-        {mounted && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.3 }}
-            className="mt-12 flex flex-col sm:flex-row items-center gap-5"
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.22 }}
+          className="mt-7 flex flex-wrap items-center gap-3"
+        >
+          <a
+            href="#discover"
+            className="btn-champagne inline-flex items-center gap-2 rounded-full bg-[var(--hub-champagne)] px-7 py-3.5 text-sm font-semibold tracking-wide text-[var(--hub-navy)]"
           >
-            <a
-              href="#discover"
-              className="group relative px-10 py-4 border border-[#C5A55A]/60 text-white text-[11px] tracking-[0.25em] uppercase overflow-hidden transition-all duration-500 hover:border-[#C5A55A]"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              <span className="relative z-10 group-hover:text-[#2C2C2C] transition-colors duration-500">
-                Begin Your Journey
-              </span>
-              <span className="absolute inset-0 bg-[#C5A55A] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-            </a>
-            <a
-              href="#itinerary"
-              className="text-white/50 text-[11px] tracking-[0.2em] uppercase hover:text-[#C5A55A] transition-colors duration-300"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              View Itinerary &rarr;
-            </a>
-          </motion.div>
-        )}
+            Explore the hub
+          </a>
+          <a
+            href="#itinerary"
+            className="hero-outline-btn inline-flex items-center gap-2 rounded-full border border-white/50 px-7 py-3.5 text-sm font-medium text-white"
+          >
+            Sample weekend
+          </a>
+        </motion.div>
+      </div>
 
-        {/* Scroll indicator */}
-        {mounted && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          >
-            <span
-              className="text-white/30 text-[10px] tracking-[0.3em] uppercase"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Scroll
-            </span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="w-[1px] h-8 bg-gradient-to-b from-[#C5A55A]/60 to-transparent"
-            />
-          </motion.div>
-        )}
-      </motion.div>
+      <div className="absolute bottom-7 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1">
+        <a href="#discover" aria-label="Scroll to main content">
+          <ChevronDownIcon className="size-5 text-white/60 animate-bounce" strokeWidth={1.5} />
+        </a>
+      </div>
     </section>
   );
 }

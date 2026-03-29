@@ -1,118 +1,139 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { Fragment, useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const stats = [
-  { number: "400+", label: "Wineries" },
-  { number: "30", label: "Miles of Valley" },
-  { number: "9", label: "Michelin Stars" },
-  { number: "5", label: "Distinct Towns" },
-];
+  { key: "wineries", target: 400, suffixPlus: true, label: "Wineries" },
+  { key: "miles", target: 30, suffixPlus: false, label: "Miles" },
+  { key: "michelin", target: 9, suffixPlus: false, label: "Michelin stars" },
+  { key: "towns", target: 5, suffixPlus: false, label: "Distinct towns" },
+] as const;
+
+function StatCell({
+  stat,
+  index,
+  reducedMotion,
+  inView,
+}: {
+  stat: (typeof stats)[number];
+  index: number;
+  reducedMotion: boolean | null;
+  inView: boolean;
+}) {
+  const active = inView && !reducedMotion;
+  const { value, done } = useCountUp(stat.target, active, {
+    durationMs: 2000,
+    startDelayMs: index * 200,
+  });
+
+  const display = !active ? stat.target : value;
+  const showPlus = stat.suffixPlus && (!active || done);
+
+  return (
+    <div className="flex flex-col items-center justify-center px-3 py-8 text-center md:px-5 md:py-11">
+      <span className="font-hub-display font-normal tabular-nums text-[clamp(3rem,6vw,4.5rem)] leading-none tracking-normal text-[var(--hub-champagne)]">
+        {display}
+        {stat.suffixPlus ? (showPlus ? "+" : "") : ""}
+      </span>
+      <span className="mt-1 text-xs uppercase tracking-[0.2em] text-white/60">
+        {stat.label}
+      </span>
+    </div>
+  );
+}
 
 export default function IntroSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const statsRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const statsInView = useInView(statsRef, { once: true, margin: "-60px" });
+  const reducedMotion = useReducedMotion();
 
   return (
     <section
       id="discover"
       ref={ref}
-      className="relative py-28 md:py-36 bg-[#FEFCF8] overflow-hidden"
+      role="region"
+      aria-labelledby="discover-heading"
+      className="border-b border-[var(--hub-line)] bg-[var(--hub-paper)]"
+      style={{ paddingTop: "var(--section-pad-y)", paddingBottom: 0 }}
     >
-      <div className="section-shell max-w-6xl text-center relative z-10">
-        {/* Tagline */}
+      <div
+        className="section-shell section-stack mx-auto max-w-3xl pb-12 md:pb-14"
+        style={{ paddingBottom: "max(2.5rem, var(--section-pad-y))" }}
+      >
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="section-eyebrow mb-6"
+          initial={reducedMotion ? false : { opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
+          className="section-eyebrow"
         >
-          The hub
+          Why thirty miles
         </motion.p>
-
-        {/* Headline */}
         <motion.h2
-          initial={{ opacity: 0, y: 25 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C] leading-tight mb-4 text-balance"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          id="discover-heading"
+          initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: reducedMotion ? 0 : 0.06 }}
+          className="section-title"
         >
-          Where Every Mile
-          <br />
-          <em className="text-[#63242D]">Tells a Story</em>
+          Where every mile{" "}
+          <span className="text-[var(--hub-wine)]">tells a story</span>
         </motion.h2>
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.75, delay: 0.25 }}
-          className="text-[#63242D]/90 text-sm md:text-base font-medium tracking-wide uppercase mb-8"
-          style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.12em" }}
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: reducedMotion ? 0 : 0.08 }}
+          className="hub-prose-serif max-w-2xl text-center"
         >
-          A World in 30 Miles — evergreen showcase of Napa&apos;s density advantage
+          No other wine country packs this much into a short drive. Long
+          weekends here feel full—because they are—with room to slow down
+          between the highlights.
         </motion.p>
+      </div>
 
-        {/* Divider */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={inView ? { scaleX: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex items-center justify-center gap-4 mb-10 max-w-[200px] mx-auto"
-        >
-          <span className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#C5A55A]" />
-          <span className="w-2 h-2 bg-[#C5A55A] rotate-45 shrink-0" />
-          <span className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#C5A55A]" />
-        </motion.div>
-
-        {/* Body — comfortable measure, centered in wide shell */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-[#4A4A4A] text-lg md:text-xl lg:text-[1.35rem] leading-relaxed max-w-3xl mx-auto"
-          style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 }}
-        >
-          This valley rewards multi-day stays in a way no single-category
-          competitor can touch. From Carneros to Calistoga, thirty miles hold
-          Michelin-starred dining, legendary wineries, restorative stays, and
-          adventures you can string together into long weekends—connected by
-          roads that wind through one of California&apos;s most beautiful
-          landscapes.
-        </motion.p>
-
-        {/* Stats row */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 pt-12 border-t border-[#C5A55A]/15 max-w-5xl mx-auto w-full"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-sm bg-[#C5A55A]/20 p-px overflow-hidden">
-            {stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className="text-center py-6 px-4 md:py-8 md:px-6 bg-[#FEFCF8] min-h-[7.5rem] md:min-h-[8.5rem] flex flex-col items-center justify-center"
-              >
-                <motion.span
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                  className="block text-4xl md:text-5xl lg:text-[3.25rem] text-[#63242D] mb-2.5 tabular-nums"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                >
-                  {stat.number}
-                </motion.span>
-                <span
-                  className="text-[#4A4A4A]/65 text-[10px] md:text-[11px] tracking-[0.28em] uppercase max-w-[12rem] leading-snug"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
-                  {stat.label}
-                </span>
-              </div>
+      <div
+        ref={statsRef}
+        className="relative grain-overlay bg-[var(--hub-navy)] text-white"
+        style={{
+          paddingTop: "clamp(2.75rem, 7vw, 4.5rem)",
+          paddingBottom: "clamp(2.75rem, 7vw, 4.5rem)",
+        }}
+      >
+        <div className="section-shell relative z-[2]">
+          <div className="flex flex-wrap md:flex-nowrap md:items-stretch md:justify-center">
+            {stats.map((stat, i) => (
+              <Fragment key={stat.key}>
+                {i > 0 ? (
+                  <div
+                    className="hidden h-16 w-px shrink-0 self-center bg-white/10 md:block"
+                    aria-hidden
+                  />
+                ) : null}
+                <div className="flex w-1/2 basis-1/2 justify-center md:min-w-0 md:w-auto md:flex-1 md:basis-0">
+                  <StatCell
+                    stat={stat}
+                    index={i}
+                    reducedMotion={reducedMotion}
+                    inView={!!statsInView}
+                  />
+                </div>
+              </Fragment>
             ))}
           </div>
-        </motion.div>
+          <blockquote className="mx-auto mt-14 max-w-2xl border-t border-white/14 pt-10 text-center md:mt-16 md:pt-12">
+            <span className="font-hub-display block text-[5rem] leading-none text-[var(--hub-champagne)] opacity-40 -mb-4">
+              &ldquo;
+            </span>
+            <p className="font-hub-display text-[clamp(1.25rem,2.5vw,1.625rem)] italic leading-relaxed text-white/90">
+              The most concentrated wine region in the world.
+            </p>
+            <footer className="mt-4 text-xs uppercase tracking-[0.2em] text-white/50">
+              — Wine Spectator
+            </footer>
+          </blockquote>
+        </div>
       </div>
     </section>
   );
