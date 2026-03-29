@@ -15,17 +15,17 @@ export default function VideoSection() {
   return (
     <section ref={ref} className="relative h-[70vh] min-h-[500px] overflow-hidden">
       {/* Parallax background */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0">
+      <motion.div style={{ y: bgY }} className="absolute inset-[-10%]">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2940&auto=format&fit=crop')`,
+            backgroundImage: `url('https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_900,q_75,w_1600/v1/clients/napavalley/Trefethen_Family_Vineyards_from_above_credit_cropped_Karen_Wibbenmeyer_43eff4b6-6b1c-403b-98c3-4ae04776d261.jpg')`,
           }}
         />
       </motion.div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#2C2C2C]/60 z-10" />
+      <div className="absolute inset-0 bg-[#2C2C2C]/65 z-10" />
       <div className="grain-overlay absolute inset-0 z-10" />
 
       {/* Content */}
@@ -44,7 +44,7 @@ export default function VideoSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl text-white mb-8"
+          className="text-3xl sm:text-4xl md:text-5xl text-white mb-10"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           See It to <em className="text-[#C5A55A]">Believe It</em>
@@ -73,8 +73,8 @@ export default function VideoSection() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-white/50 text-sm mt-6 max-w-md"
-          style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.1rem" }}
+          className="text-white/50 mt-8 max-w-md"
+          style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem" }}
         >
           Take a cinematic journey through thirty miles of vineyards,
           world-class dining, and unforgettable experiences.

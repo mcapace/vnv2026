@@ -29,7 +29,7 @@ export default function IntroSection() {
           className="text-[#C5A55A] text-[11px] tracking-[0.4em] uppercase mb-6"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
-          Live a Little — or a Lot
+          Live a Little &mdash; or a Lot
         </motion.p>
 
         {/* Headline */}
@@ -69,7 +69,7 @@ export default function IntroSection() {
           Calistoga, Napa Valley packs an extraordinary density of world-class
           experiences into just thirty miles. No other wine region on earth
           offers this concentration of Michelin-starred restaurants, legendary
-          wineries, luxury resorts, and one-of-a-kind adventures — all connected
+          wineries, luxury resorts, and one-of-a-kind adventures &mdash; all connected
           by roads that wind through some of the most beautiful landscape in
           California.
         </motion.p>

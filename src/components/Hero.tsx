@@ -35,11 +35,11 @@ export default function Hero() {
         style={{
           background: `linear-gradient(
             180deg,
-            rgba(44, 44, 44, 0.5) 0%,
-            rgba(44, 44, 44, 0.35) 30%,
-            rgba(44, 44, 44, 0.3) 50%,
-            rgba(99, 36, 45, 0.7) 80%,
-            rgba(99, 36, 45, 0.9) 100%
+            rgba(44, 44, 44, 0.6) 0%,
+            rgba(44, 44, 44, 0.5) 30%,
+            rgba(44, 44, 44, 0.45) 50%,
+            rgba(99, 36, 45, 0.75) 80%,
+            rgba(99, 36, 45, 0.92) 100%
           )`,
         }}
       />
@@ -108,10 +108,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-white/75 text-lg sm:text-xl md:text-2xl max-w-2xl mt-8 leading-relaxed font-light"
+            className="text-white/80 text-lg sm:text-xl md:text-2xl max-w-2xl mt-8 leading-relaxed font-light"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            From vine to table, from sunrise to starlight — discover why
+            From vine to table, from sunrise to starlight &mdash; discover why
             Napa Valley rewards those who stay a little longer.
           </motion.p>
         )}
@@ -139,7 +139,7 @@ export default function Hero() {
               className="text-white/50 text-[11px] tracking-[0.2em] uppercase hover:text-[#C5A55A] transition-colors duration-300"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              View Itinerary →
+              View Itinerary &rarr;
             </a>
           </motion.div>
         )}

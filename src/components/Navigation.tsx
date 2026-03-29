@@ -21,6 +21,14 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   return (
     <>
       <motion.nav
@@ -29,13 +37,13 @@ export default function Navigation() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#2C2C2C]/95 backdrop-blur-md shadow-lg py-2"
-            : "bg-transparent py-4"
+            ? "bg-[#2C2C2C]/95 backdrop-blur-md shadow-lg py-3"
+            : "bg-transparent py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center group">
+          <a href="#" className="flex items-center group shrink-0">
             <img
               src="https://www.visitnapavalley.com/includes/public/assets/shared/napavalley-logo-white.svg"
               alt="Visit Napa Valley"
@@ -43,7 +51,7 @@ export default function Navigation() {
             />
           </a>
 
-          {/* Desktop links */}
+          {/* Desktop links - centered */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
@@ -59,7 +67,7 @@ export default function Navigation() {
           </div>
 
           {/* CTA button */}
-          <div className="hidden md:block">
+          <div className="hidden md:block shrink-0">
             <a
               href="https://www.visitnapavalley.com"
               target="_blank"
@@ -105,6 +113,7 @@ export default function Navigation() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 bg-[#2C2C2C]/98 backdrop-blur-lg flex flex-col items-center justify-center gap-8"
           >
             <img
@@ -126,6 +135,18 @@ export default function Navigation() {
                 {link.label}
               </motion.a>
             ))}
+            <motion.a
+              href="https://www.visitnapavalley.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: navLinks.length * 0.08 }}
+              className="mt-4 text-[11px] tracking-[0.2em] uppercase text-[#C5A55A] border border-[#C5A55A]/40 px-8 py-3 hover:bg-[#C5A55A] hover:text-[#2C2C2C] transition-all duration-300"
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
+              Plan Your Visit
+            </motion.a>
           </motion.div>
         )}
       </AnimatePresence>

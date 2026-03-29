@@ -70,12 +70,12 @@ function ArticleCard({
         delay: index * 0.12,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="h-full"
     >
       <a
         href={`#${article.id}`}
-        className="article-card block group h-full relative"
-        style={{ minHeight: "480px" }}
+        id={article.id}
+        className="article-card block group relative overflow-hidden"
+        style={{ height: "480px" }}
       >
         {/* Background image */}
         <img
@@ -89,7 +89,7 @@ function ArticleCard({
         <div className="absolute inset-0 z-10 flex flex-col justify-end p-7 md:p-8">
           {/* Category pill */}
           <span
-            className="inline-block self-start text-[9px] tracking-[0.3em] uppercase text-white/90 bg-[#63242D]/70 backdrop-blur-sm px-3 py-1 mb-3"
+            className="inline-block self-start text-[9px] tracking-[0.3em] uppercase text-white/90 bg-[#63242D]/80 backdrop-blur-sm px-3 py-1 mb-3"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {article.label}
@@ -114,7 +114,7 @@ function ArticleCard({
           {/* Description - shows on hover */}
           <div className="overflow-hidden">
             <p
-              className="text-white/70 text-sm leading-relaxed max-h-0 group-hover:max-h-20 transition-all duration-500 ease-out"
+              className="text-white/70 text-sm leading-relaxed max-h-0 group-hover:max-h-24 transition-all duration-500 ease-out"
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}
             >
               {article.description}
@@ -126,7 +126,7 @@ function ArticleCard({
             {article.partners.map((partner) => (
               <span
                 key={partner}
-                className="text-[9px] tracking-[0.12em] uppercase text-white/60 px-2.5 py-1 border border-white/20 rounded-full"
+                className="text-[9px] tracking-[0.12em] uppercase text-white/60 px-2.5 py-1 border border-white/20"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {partner}
@@ -190,7 +190,7 @@ export default function ArticleCards() {
         </motion.h2>
       </div>
 
-      {/* Cards grid - equal height via grid stretch */}
+      {/* Cards grid - equal height via fixed height on each card */}
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-5">
         {articles.map((article, i) => (
           <ArticleCard key={article.id} article={article} index={i} />

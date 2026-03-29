@@ -185,22 +185,7 @@ body {
   z-index: 1;
 }
 
-/* Itinerary timeline */
-.timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, var(--color-gold), var(--color-gold), transparent);
-  transform: translateX(-50%);
-}
-
-@media (max-width: 768px) {
-  .timeline-line {
-    left: 24px;
-  }
-}
+/* Itinerary timeline (legacy - kept for reference) */
 
 /* Smooth reveal animation */
 @keyframes fadeInUp {

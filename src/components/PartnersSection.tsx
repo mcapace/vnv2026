@@ -67,7 +67,7 @@ export default function PartnersSection() {
 
   return (
     <section className="relative py-24 md:py-32 bg-[#2C2C2C] overflow-hidden">
-      {/* Subtle pattern */}
+      {/* Subtle dot pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div
           className="w-full h-full"
@@ -102,8 +102,8 @@ export default function PartnersSection() {
           </motion.h2>
         </div>
 
-        {/* Partner grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Partner grid - 4 equal columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {partners.map((group, groupIndex) => (
             <motion.div
               key={group.category}
@@ -114,7 +114,6 @@ export default function PartnersSection() {
                 delay: 0.2 + groupIndex * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group"
             >
               {/* Category header */}
               <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
@@ -161,7 +160,7 @@ export default function PartnersSection() {
           ))}
         </div>
 
-        {/* Napa Valley map hint */}
+        {/* Bottom tagline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -174,7 +173,7 @@ export default function PartnersSection() {
               className="text-white/40 text-[11px] tracking-[0.2em] uppercase"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              From Carneros to Calistoga — 30 miles of extraordinary
+              From Carneros to Calistoga &mdash; 30 miles of extraordinary
             </span>
           </div>
         </motion.div>

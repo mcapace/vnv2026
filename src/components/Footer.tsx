@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-[#1A1A1A] overflow-hidden">
       {/* CTA Band */}
-      <div className="relative py-20 md:py-28 text-center border-b border-white/5">
+      <div className="relative py-20 md:py-24 text-center border-b border-white/5">
         <div className="grain-overlay absolute inset-0" />
         <div className="relative z-10 max-w-3xl mx-auto px-6">
           <p
@@ -22,7 +22,7 @@ export default function Footer() {
             Ready to <em className="text-[#C5A55A]">Live a Little</em>?
           </h2>
           <p
-            className="text-white/50 text-lg mb-10 max-w-xl mx-auto"
+            className="text-white/50 mb-10 max-w-xl mx-auto"
             style={{
               fontFamily: "'Cormorant Garamond', serif",
               fontSize: "1.2rem",
@@ -57,22 +57,15 @@ export default function Footer() {
       </div>
 
       {/* Footer bottom */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Brand */}
-          <div className="flex flex-col items-center md:items-start">
-            <span
-              className="text-white/40 text-[9px] tracking-[0.35em] uppercase"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Visit
-            </span>
-            <span
-              className="text-white/70 text-lg tracking-[0.1em] font-semibold -mt-0.5"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              NAPA VALLEY
-            </span>
+      <div className="max-w-7xl mx-auto px-6 py-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Logo */}
+          <div className="shrink-0">
+            <img
+              src="https://www.visitnapavalley.com/includes/public/assets/shared/napavalley-logo-white.svg"
+              alt="Visit Napa Valley"
+              className="h-8 w-auto opacity-50 hover:opacity-70 transition-opacity duration-300"
+            />
           </div>
 
           {/* Links */}
@@ -90,7 +83,7 @@ export default function Footer() {
           </div>
 
           {/* Presented by */}
-          <div className="flex flex-col items-center md:items-end">
+          <div className="flex flex-col items-center md:items-end shrink-0">
             <span
               className="text-white/25 text-[9px] tracking-[0.2em] uppercase"
               style={{ fontFamily: "'Inter', sans-serif" }}
@@ -98,7 +91,7 @@ export default function Footer() {
               Presented by
             </span>
             <span
-              className="text-white/50 text-sm tracking-[0.1em] -mt-0.5"
+              className="text-white/50 text-sm tracking-[0.1em]"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Wine Spectator
@@ -107,10 +100,11 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="w-full h-[1px] bg-white/5 my-8" />
+        <div className="w-full h-[1px] bg-white/5 my-6" />
 
         {/* Copyright */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-white/20 text-[10px] tracking-wider"
+        <div
+          className="flex flex-col md:flex-row items-center justify-between gap-3 text-white/20 text-[10px] tracking-wider"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           <p>&copy; {new Date().getFullYear()} Visit Napa Valley. All rights reserved.</p>
