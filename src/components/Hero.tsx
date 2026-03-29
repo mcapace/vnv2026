@@ -12,7 +12,7 @@ export default function Hero() {
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.04]);
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -20,12 +20,14 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden">
       {/* Background image with parallax — convertible through vineyards */}
-      <motion.div style={{ y, scale }} className="absolute inset-[-5%]">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/images/photography/stanly-ranch-convertible.jpg')`,
-          }}
+      <motion.div style={{ y, scale }} className="absolute left-1/2 top-1/2 h-[122%] w-[122%] -translate-x-1/2 -translate-y-1/2">
+        <img
+          src="/images/photography/stanly-ranch-convertible.jpg"
+          alt="Open road through Napa Valley vineyards at golden hour"
+          className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+          style={{ objectPosition: "center 42%" }}
+          decoding="async"
+          fetchPriority="high"
         />
       </motion.div>
 
@@ -50,7 +52,7 @@ export default function Hero() {
       {/* Content */}
       <motion.div
         style={{ opacity }}
-        className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6"
+        className="relative z-20 h-full flex flex-col items-center justify-center text-center section-shell max-w-5xl"
       >
         {/* VNV Logo */}
         {mounted && (
@@ -84,7 +86,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-white max-w-4xl"
+            className="text-white max-w-4xl text-balance"
           >
             <span
               className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95]"
@@ -108,11 +110,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-white/80 text-lg sm:text-xl md:text-2xl max-w-2xl mt-8 leading-relaxed font-light"
+            className="text-white/80 text-lg sm:text-xl md:text-2xl max-w-2xl mt-8 leading-relaxed font-light text-balance"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            From vine to table, from sunrise to starlight &mdash; discover why
-            Napa Valley rewards those who stay a little longer.
+            An evergreen look at why Napa rewards multi-day stays—dense with
+            wine, food, stays, and experiences you can stitch into unforgettable
+            weekends.
           </motion.p>
         )}
 
