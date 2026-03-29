@@ -14,18 +14,18 @@ export default function VideoSection() {
 
   return (
     <section ref={ref} className="relative h-[70vh] min-h-[500px] overflow-hidden">
-      {/* Parallax background */}
+      {/* Parallax background — Chandon hilltop group */}
       <motion.div style={{ y: bgY }} className="absolute inset-[-10%]">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_900,q_75,w_1600/v1/clients/napavalley/Trefethen_Family_Vineyards_from_above_credit_cropped_Karen_Wibbenmeyer_43eff4b6-6b1c-403b-98c3-4ae04776d261.jpg')`,
+            backgroundImage: `url('/images/photography/chandon-hilltop.jpg')`,
           }}
         />
       </motion.div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#2C2C2C]/65 z-10" />
+      <div className="absolute inset-0 bg-[#2C2C2C]/55 z-10" />
       <div className="grain-overlay absolute inset-0 z-10" />
 
       {/* Content */}

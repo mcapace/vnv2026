@@ -45,9 +45,9 @@ export default function Navigation() {
           {/* Logo */}
           <a href="#" className="flex items-center group shrink-0">
             <img
-              src="https://www.visitnapavalley.com/includes/public/assets/shared/napavalley-logo-white.svg"
+              src="/images/logos/vnv-primary-white.png"
               alt="Visit Napa Valley"
-              className="h-10 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+              className="h-8 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
             />
           </a>
 
@@ -117,9 +117,9 @@ export default function Navigation() {
             className="fixed inset-0 z-40 bg-[#2C2C2C]/98 backdrop-blur-lg flex flex-col items-center justify-center gap-8"
           >
             <img
-              src="https://www.visitnapavalley.com/includes/public/assets/shared/napavalley-logo-white.svg"
+              src="/images/logos/vnv-primary-white.png"
               alt="Visit Napa Valley"
-              className="h-12 w-auto mb-8 opacity-60"
+              className="h-10 w-auto mb-8 opacity-60"
             />
             {navLinks.map((link, i) => (
               <motion.a

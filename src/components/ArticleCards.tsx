@@ -11,8 +11,7 @@ const articles = [
     subtitle: "Where Luxury Meets the Land",
     description:
       "From the vineyard-edge bungalows of Carneros Resort to the storied charm of Mount View Hotel & Inn in Calistoga.",
-    image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/photography/solage-pool-night.jpg",
     partners: ["Carneros Resort", "Mount View Hotel & Inn"],
   },
   {
@@ -21,9 +20,8 @@ const articles = [
     title: "Dine in Napa Valley",
     subtitle: "Every Meal, a Masterpiece",
     description:
-      "From Thomas Keller's legendary Bouchon Bistro to the rustic charm of Calistoga Depot and The Grove at COPIA.",
-    image:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
+      "From legendary Bouchon Bistro to the rustic charm of Calistoga Depot and The Grove at COPIA.",
+    image: "/images/photography/press-plating.jpg",
     partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
   },
   {
@@ -33,8 +31,7 @@ const articles = [
     subtitle: "Taste the Terroir",
     description:
       "Over 400 wineries, from the grand Robert Mondavi to elegant Etude and storied Louis Martini.",
-    image:
-      "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/photography/wine-cellar-toast.jpg",
     partners: ["Etude", "Robert Mondavi Winery", "Louis Martini Winery"],
   },
   {
@@ -44,8 +41,7 @@ const articles = [
     subtitle: "Beyond the Vine",
     description:
       "Dance at JaM Cellars Ballroom, cruise with Pure Luxury Tours, or play at Marquee Pinball Lounge.",
-    image:
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop",
+    image: "/images/photography/cadet-nightlife.jpg",
     partners: ["JaM Cellars Ballroom", "Pure Luxury Tours", "Marquee Pinball Lounge"],
   },
 ];
@@ -190,7 +186,7 @@ export default function ArticleCards() {
         </motion.h2>
       </div>
 
-      {/* Cards grid - equal height via fixed height on each card */}
+      {/* Cards grid */}
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-5">
         {articles.map((article, i) => (
           <ArticleCard key={article.id} article={article} index={i} />

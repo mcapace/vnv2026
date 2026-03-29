@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import IntroSection from "@/components/IntroSection";
+import PhotoGallery from "@/components/PhotoGallery";
 import ArticleCards from "@/components/ArticleCards";
 import VideoSection from "@/components/VideoSection";
 import ItinerarySection from "@/components/ItinerarySection";
@@ -13,6 +14,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <IntroSection />
+      <PhotoGallery />
       <ArticleCards />
       <VideoSection />
       <ItinerarySection />

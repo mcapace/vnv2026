@@ -62,7 +62,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="shrink-0">
             <img
-              src="https://www.visitnapavalley.com/includes/public/assets/shared/napavalley-logo-white.svg"
+              src="/images/logos/vnv-primary-white.png"
               alt="Visit Napa Valley"
               className="h-8 w-auto opacity-50 hover:opacity-70 transition-opacity duration-300"
             />

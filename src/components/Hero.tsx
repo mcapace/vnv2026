@@ -19,32 +19,32 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden">
-      {/* Background image with parallax */}
-      <motion.div style={{ y, scale }} className="absolute inset-0">
+      {/* Background image with parallax — convertible through vineyards */}
+      <motion.div style={{ y, scale }} className="absolute inset-[-5%]">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=2940&auto=format&fit=crop')`,
+            backgroundImage: `url('/images/photography/stanly-ranch-convertible.jpg')`,
           }}
         />
       </motion.div>
 
-      {/* Strong dark overlay for text readability */}
+      {/* Gradient overlay */}
       <div
         className="absolute inset-0 z-10"
         style={{
           background: `linear-gradient(
             180deg,
-            rgba(44, 44, 44, 0.6) 0%,
-            rgba(44, 44, 44, 0.5) 30%,
-            rgba(44, 44, 44, 0.45) 50%,
-            rgba(99, 36, 45, 0.75) 80%,
+            rgba(30, 20, 22, 0.55) 0%,
+            rgba(30, 20, 22, 0.35) 35%,
+            rgba(30, 20, 22, 0.30) 50%,
+            rgba(99, 36, 45, 0.70) 80%,
             rgba(99, 36, 45, 0.92) 100%
           )`,
         }}
       />
 
-      {/* Grain texture */}
+      {/* Grain */}
       <div className="grain-overlay absolute inset-0 z-10" />
 
       {/* Content */}
@@ -58,12 +58,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="mb-10"
+            className="mb-8"
           >
             <img
-              src="https://www.visitnapavalley.com/includes/public/assets/shared/napavalley-logo-white.svg"
+              src="/images/logos/vnv-primary-white.png"
               alt="Visit Napa Valley"
-              className="h-14 sm:h-16 w-auto mx-auto opacity-80"
+              className="h-12 sm:h-14 w-auto mx-auto"
             />
           </motion.div>
         )}
