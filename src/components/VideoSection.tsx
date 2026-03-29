@@ -32,49 +32,62 @@ export default function VideoSection() {
     <>
       <section
         ref={ref}
-        className="relative flex min-h-[min(72vh,820px)] items-center justify-center overflow-hidden"
+        role="region"
+        aria-label="Film — see Napa Valley in motion"
+        className="relative flex min-h-[min(56vh,640px)] items-center justify-center overflow-hidden"
       >
         <div className="absolute inset-0">
           <img
             src="/images/photography/chandon-hilltop.jpg"
-            alt=""
+            alt="Vine-covered hills above Napa Valley at dusk"
             className="h-full w-full object-cover"
             style={{ objectPosition: "center 32%" }}
             loading="lazy"
+            width={1920}
+            height={1080}
             decoding="async"
           />
         </div>
-        <div className="absolute inset-0 bg-[#1a1416]/72" aria-hidden />
+        <div className="absolute inset-0 bg-black/40" aria-hidden />
         <div className="grain-overlay pointer-events-none absolute inset-0 z-10" />
 
-        <div className="relative z-20 mx-auto max-w-xl px-6 py-20 text-center md:max-w-2xl">
+        <div className="relative z-20 mx-auto max-w-xl px-6 py-16 text-center md:max-w-2xl md:py-20">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="section-eyebrow text-[var(--hub-gold-bright)]"
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            className="section-eyebrow text-[var(--hub-gold-bright)] text-on-photo"
           >
             Film
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 14 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ delay: 0.08 }}
-            className="mt-4 text-balance text-3xl font-normal leading-tight text-white sm:text-4xl md:text-[2.6rem]"
+            className="mt-4 text-balance text-3xl font-normal leading-tight text-white sm:text-4xl md:text-[2.6rem] text-on-photo"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             See it to{" "}
             <span className="text-[var(--hub-gold-bright)]">believe it</span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            transition={{ delay: 0.12 }}
+            className="mx-auto mt-5 max-w-lg text-lg text-white/85 text-on-photo"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            Thirty miles of wine country in motion.
+          </motion.p>
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }}
             transition={{ delay: 0.18 }}
             className="mt-10"
           >
             <button
               type="button"
               className="play-button"
-              aria-label="Play video"
+              aria-label="Play Napa Valley promotional video"
               aria-haspopup="dialog"
               aria-expanded={open}
               onClick={() => setOpen(true)}
@@ -90,16 +103,6 @@ export default function VideoSection() {
               </svg>
             </button>
           </motion.div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.28 }}
-            className="mt-8 text-lg text-white/65"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            Thirty miles of wine country in motion—use as placeholder until
-            final hero film is delivered.
-          </motion.p>
         </div>
       </section>
 
@@ -133,7 +136,7 @@ export default function VideoSection() {
                 ref={closeRef}
                 type="button"
                 onClick={onClose}
-                className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/55 text-white transition hover:bg-black/80"
+                className="absolute right-3 top-3 z-10 flex h-11 w-11 min-w-11 items-center justify-center rounded-full bg-black/55 text-white transition hover:bg-black/80"
                 aria-label="Close video"
               >
                 <svg

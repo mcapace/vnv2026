@@ -1,13 +1,14 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 
 const days = [
   {
     day: "Day one",
     title: "Arrive & unwind",
     subtitle: "Carneros to Yountville",
+    mapHint: "South · Carneros → Yountville",
     events: [
       {
         time: "2:00 PM",
@@ -15,6 +16,8 @@ const days = [
         description:
           "Private cottages among the vines—your base for what comes next.",
         type: "stay",
+        thumb: "/images/photography/stanly-ranch-spa.jpg",
+        url: "https://www.carnerosresort.com/",
       },
       {
         time: "4:00 PM",
@@ -22,6 +25,8 @@ const days = [
         description:
           "Carneros Pinot on the terrace, where the breeze matches the pour.",
         type: "wine",
+        thumb: "/images/photography/wine-cellar-toast.jpg",
+        url: "https://www.etudewines.com/",
       },
       {
         time: "7:30 PM",
@@ -29,6 +34,8 @@ const days = [
         description:
           "Yountville’s benchmark bistro—save room for the classics.",
         type: "dine",
+        thumb: "/images/photography/press-plating.jpg",
+        url: "https://www.bouchonbistro.com/",
       },
     ],
   },
@@ -36,6 +43,7 @@ const days = [
     day: "Day two",
     title: "The heart of the valley",
     subtitle: "Oakville to St. Helena",
+    mapHint: "Mid-valley · Oakville & St. Helena",
     events: [
       {
         time: "10:00 AM",
@@ -43,13 +51,18 @@ const days = [
         description:
           "Tour the reopened icon—where much of modern Napa began.",
         type: "wine",
+        thumb: "/images/photography/wine-cellar-toast.jpg",
+        url: "https://www.robertmondavi.com/",
+        wsTip:
+          "Wine Spectator tip: ask about the reserve Cabernet tasting in the estate room.",
       },
       {
         time: "12:30 PM",
         activity: "Lunch at The Grove @ COPIA",
-        description:
-          "Campus dining with serious wine adjacency.",
+        description: "Campus dining with serious wine adjacency.",
         type: "dine",
+        thumb: "/images/photography/chandon-brunch.jpg",
+        url: "https://www.cia.edu/copia/",
       },
       {
         time: "3:00 PM",
@@ -57,6 +70,8 @@ const days = [
         description:
           "Chauffeured miles tailored to what you like in the glass.",
         type: "explore",
+        thumb: "/images/photography/stanly-ranch-convertible.jpg",
+        url: "https://www.pureluxury.com/napa-valley-wine-tours/",
       },
       {
         time: "8:00 PM",
@@ -64,6 +79,8 @@ const days = [
         description:
           "Live music and downtown energy without leaving the valley vibe.",
         type: "explore",
+        thumb: "/images/photography/cadet-nightlife.jpg",
+        url: "https://www.jamcellars.com/",
       },
     ],
   },
@@ -71,6 +88,7 @@ const days = [
     day: "Day three",
     title: "The top of the valley",
     subtitle: "Calistoga & beyond",
+    mapHint: "North · Calistoga",
     events: [
       {
         time: "9:00 AM",
@@ -78,6 +96,8 @@ const days = [
         description:
           "Mud baths, mineral water, and a slow start at the northern rim.",
         type: "stay",
+        thumb: "/images/photography/solage-poolside.jpg",
+        url: "https://www.mountviewhotel.com/",
       },
       {
         time: "11:30 AM",
@@ -85,6 +105,8 @@ const days = [
         description:
           "Heritage Cabernet in a cellar that has seen generations.",
         type: "wine",
+        thumb: "/images/photography/wine-cellar-toast.jpg",
+        url: "https://www.louismartini.com/",
       },
       {
         time: "1:00 PM",
@@ -92,6 +114,8 @@ const days = [
         description:
           "A depot turned dining room—high-ceiling charm at the top of the map.",
         type: "dine",
+        thumb: "/images/photography/press-plating.jpg",
+        url: "https://www.visitnapavalley.com/restaurants/",
       },
       {
         time: "4:00 PM",
@@ -99,52 +123,71 @@ const days = [
         description:
           "Pinball and cocktails—a playful last stop before the road home.",
         type: "explore",
+        thumb: "/images/photography/cadet-nightlife.jpg",
+        url: "https://www.visitnapavalley.com/things-to-do/",
       },
     ],
   },
 ];
 
-const typeStyle: Record<
-  string,
-  { bg: string; label: string }
-> = {
+const typeStyle: Record<string, { bg: string; label: string }> = {
   stay: { bg: "var(--hub-wine)", label: "Stay" },
   dine: { bg: "var(--hub-terra)", label: "Dine" },
   wine: { bg: "var(--hub-wine-deep)", label: "Wine" },
   explore: { bg: "var(--hub-sage)", label: "Explore" },
 };
 
+function DayRouteMini({ label }: { label: string }) {
+  return (
+    <div className="mt-4 flex items-center gap-3 rounded-md border border-[var(--hub-line)] bg-[var(--hub-card)] px-3 py-2.5">
+      <svg viewBox="0 0 120 24" className="h-6 w-[4.5rem] shrink-0 text-[var(--hub-wine)]" aria-hidden>
+        <line x1="4" y1="14" x2="108" y2="14" stroke="currentColor" strokeWidth="2" opacity="0.35" />
+        <circle cx="20" cy="14" r="4" fill="currentColor" />
+        <circle cx="60" cy="14" r="4" fill="currentColor" opacity="0.85" />
+        <circle cx="100" cy="14" r="4" fill="currentColor" opacity="0.55" />
+      </svg>
+      <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-[var(--hub-muted)]">
+        {label}
+      </p>
+    </div>
+  );
+}
+
 export default function ItinerarySection() {
   const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
+  const headerInView = useInView(headerRef, { once: true, margin: "-50px" });
+  const reducedMotion = useReducedMotion();
+  const [openDay, setOpenDay] = useState<number>(0);
 
   return (
     <section
       id="itinerary"
+      role="region"
+      aria-label="Weekend itineraries"
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper-2)]"
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
-      <div ref={headerRef} className="section-shell mx-auto mb-14 max-w-2xl md:mb-20 lg:mb-24">
+      <div ref={headerRef} className="section-shell mx-auto mb-10 max-w-2xl md:mb-12">
         <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
+          initial={reducedMotion ? false : { opacity: 0, y: 8 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           className="section-eyebrow text-center"
         >
           Weekend itineraries
         </motion.p>
         <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.06 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: reducedMotion ? 0 : 0.06 }}
           className="section-title mt-4 text-center"
         >
           Three days in{" "}
           <span className="text-[var(--hub-wine)]">paradise</span>
         </motion.h2>
         <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.12 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 8 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose mt-5 text-center"
         >
           One possible long weekend—swap cellar doors, linger over lunch, or
@@ -154,95 +197,184 @@ export default function ItinerarySection() {
       </div>
 
       <div className="section-shell mx-auto max-w-3xl">
-        <ol className="space-y-16 md:space-y-20">
+        <ol className="space-y-4">
           {days.map((day, dayIndex) => (
-            <DayBlock key={day.title} day={day} index={dayIndex} />
+            <li key={day.title} className="list-none">
+              <DayAccordion
+                day={day}
+                index={dayIndex}
+                isOpen={openDay === dayIndex}
+                onToggle={() => setOpenDay((d) => (d === dayIndex ? -1 : dayIndex))}
+              />
+            </li>
           ))}
         </ol>
+
+        <div className="mt-12 border-t border-[var(--hub-line)] pt-10 text-center">
+          <p
+            className="text-sm text-[var(--hub-muted)]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            Want this route tailored?
+          </p>
+          <a
+            href="https://www.visitnapavalley.com/plan-your-trip/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex min-h-12 items-center justify-center rounded-md border-2 border-[var(--hub-wine)] bg-transparent px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hub-wine)] transition hover:bg-[var(--hub-wine)] hover:text-white"
+            style={{ fontFamily: "'Inter', sans-serif" }}
+          >
+            Customize this itinerary
+          </a>
+        </div>
       </div>
     </section>
   );
 }
 
-function DayBlock({
+function DayAccordion({
   day,
   index,
+  isOpen,
+  onToggle,
 }: {
   day: (typeof days)[0];
   index: number;
+  isOpen: boolean;
+  onToggle: () => void;
 }) {
-  const ref = useRef<HTMLLIElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const panelId = `itinerary-day-${index}`;
+  const headerId = `${panelId}-label`;
 
   return (
-    <motion.li
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.45, delay: index * 0.04 }}
-      className="relative"
-    >
-      <div className="mb-10 border-l-2 border-[var(--hub-wine)] pl-6 md:mb-12 md:pl-8">
-        <p
-          className="text-[10px] font-bold uppercase tracking-[0.28em] text-[var(--hub-gold)]"
-          style={{ fontFamily: "'Inter', sans-serif" }}
-        >
-          {day.day}
-        </p>
-        <h3
-          className="mt-2 text-2xl font-normal capitalize text-[var(--hub-ink)] md:text-3xl"
-          style={{ fontFamily: "'Playfair Display', serif" }}
-        >
-          {day.title}
-        </h3>
-        <p
-          className="mt-1 text-lg text-[var(--hub-muted)]"
-          style={{ fontFamily: "'Cormorant Garamond', serif" }}
-        >
-          {day.subtitle}
-        </p>
-      </div>
-
-      <ul className="space-y-0">
-        {day.events.map((event, ei) => (
-          <li
-            key={event.activity}
-            className={`flex flex-col gap-5 border-[var(--hub-line)] py-10 md:flex-row md:gap-12 md:py-12 ${
-              ei === 0 ? "" : "border-t"
-            }`}
+    <div className="overflow-hidden rounded-lg border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-sm">
+      <button
+        type="button"
+        id={headerId}
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        onClick={onToggle}
+        className="flex w-full min-h-14 items-start gap-4 px-4 py-4 text-left transition hover:bg-[var(--hub-paper)] sm:px-6"
+      >
+        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--hub-wine)]/25 text-xs font-bold text-[var(--hub-wine)]">
+          {index + 1}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span
+            className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--hub-gold-bright)]"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            <time
-              className="shrink-0 text-lg font-semibold tabular-nums text-[var(--hub-ink)] md:w-32 md:text-xl"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              {event.time}
-            </time>
-            <div className="min-w-0 flex-1 md:border-l md:border-[var(--hub-line)] md:pl-12">
-              <span
-                className="inline-block rounded px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white"
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  backgroundColor: typeStyle[event.type].bg,
-                }}
+            {day.day}
+          </span>
+          <span
+            className="mt-1 block text-xl font-normal text-[var(--hub-ink)] capitalize sm:text-2xl"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            {day.title}
+          </span>
+          <span
+            className="mt-0.5 block text-base text-[var(--hub-muted)]"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            {day.subtitle}
+          </span>
+        </span>
+        <span
+          className="mt-1 shrink-0 text-[var(--hub-muted)] transition-transform duration-300"
+          style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}
+          aria-hidden
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </span>
+      </button>
+
+      {isOpen && (
+        <div
+          id={panelId}
+          role="region"
+          aria-labelledby={headerId}
+          className="border-t border-[var(--hub-line)] px-4 pb-5 pt-2 sm:px-6"
+        >
+          <DayRouteMini label={day.mapHint} />
+          <ul className="relative mt-8 space-y-0 pl-2 sm:pl-3">
+            <span
+              className="absolute left-[25px] top-2 bottom-2 w-px bg-[var(--hub-wine)]/35 sm:left-[29px]"
+              aria-hidden
+            />
+            {day.events.map((event, ei) => (
+              <li
+                key={event.activity}
+                className={`relative flex gap-4 pb-10 pl-10 sm:gap-5 sm:pl-12 sm:pb-12 ${
+                  ei === day.events.length - 1 ? "pb-2 sm:pb-2" : ""
+                } ${ei > 0 ? "border-t border-[var(--hub-line)] pt-10 sm:pt-12" : ""}`}
               >
-                {typeStyle[event.type].label}
-              </span>
-              <h4
-                className="mt-4 text-xl font-normal leading-snug text-[var(--hub-ink)] md:text-2xl"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                {event.activity}
-              </h4>
-              <p
-                className="mt-4 max-w-xl text-[1.0625rem] leading-[1.75] text-[var(--hub-muted)]"
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              >
-                {event.description}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </motion.li>
+                <span
+                  className="absolute left-[19px] top-7 z-[1] h-3 w-3 rounded-full border-2 border-[var(--hub-card)] bg-[var(--hub-wine)] sm:left-[23px] sm:top-8"
+                  aria-hidden
+                />
+                <img
+                  src={event.thumb}
+                  alt=""
+                  className="relative z-[1] mt-5 h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-[var(--hub-line)] sm:h-16 sm:w-16"
+                  width={64}
+                  height={64}
+                  loading="lazy"
+                />
+                <div className="min-w-0 flex-1 pt-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <time
+                      className="text-sm font-semibold tabular-nums text-[var(--hub-ink)] sm:text-base"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
+                    >
+                      {event.time}
+                    </time>
+                    <span
+                      className="rounded px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white"
+                      style={{
+                        fontFamily: "'Inter', sans-serif",
+                        backgroundColor: typeStyle[event.type].bg,
+                      }}
+                    >
+                      {typeStyle[event.type].label}
+                    </span>
+                  </div>
+                  <h4
+                    className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-lg font-normal leading-snug text-[var(--hub-ink)] sm:text-xl"
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                  >
+                    {event.activity}
+                    <a
+                      href={event.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-wine)] underline-offset-4 hover:underline"
+                      style={{ fontFamily: "'Inter', sans-serif" }}
+                    >
+                      Learn more →
+                    </a>
+                  </h4>
+                  {"wsTip" in event && event.wsTip && (
+                    <p
+                      className="mt-3 border-l-2 border-[var(--hub-gold-bright)] pl-3 text-sm italic text-[var(--hub-muted)]"
+                      style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                    >
+                      {event.wsTip}
+                    </p>
+                  )}
+                  <p
+                    className="mt-3 max-w-xl text-[1.0625rem] leading-[1.75] text-[var(--hub-muted)]"
+                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  >
+                    {event.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 }

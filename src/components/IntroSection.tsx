@@ -1,48 +1,97 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const stats = [
-  { number: "400+", label: "Wineries" },
-  { number: "30", label: "Miles" },
-  { number: "9", label: "Michelin stars" },
-  { number: "5", label: "Distinct towns" },
-];
+  { key: "wineries", target: 400, suffixPlus: true, label: "Wineries" },
+  { key: "miles", target: 30, suffixPlus: false, label: "Miles" },
+  { key: "michelin", target: 9, suffixPlus: false, label: "Michelin stars" },
+  { key: "towns", target: 5, suffixPlus: false, label: "Distinct towns" },
+] as const;
+
+function StatCell({
+  stat,
+  index,
+  reducedMotion,
+  inView,
+}: {
+  stat: (typeof stats)[number];
+  index: number;
+  reducedMotion: boolean | null;
+  inView: boolean;
+}) {
+  const active = inView && !reducedMotion;
+  const { value, done } = useCountUp(stat.target, active, {
+    durationMs: 2000,
+    startDelayMs: index * 200,
+  });
+
+  const display = !active ? stat.target : value;
+  const showPlus = stat.suffixPlus && (!active || done);
+
+  return (
+    <div className="flex flex-col items-center justify-center px-3 py-7 text-center md:px-4 md:py-9">
+      <span
+        className="font-light tabular-nums text-[var(--hub-card)] text-[clamp(3rem,7vw,4.5rem)] leading-none"
+        style={{ fontFamily: "'Playfair Display', serif" }}
+      >
+        {display}
+        {stat.suffixPlus ? (showPlus ? "+" : "") : ""}
+      </span>
+      <span
+        className="mt-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--hub-gold-bright)]"
+        style={{ fontFamily: "'Inter', sans-serif" }}
+      >
+        {stat.label}
+      </span>
+    </div>
+  );
+}
 
 export default function IntroSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const statsRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const statsInView = useInView(statsRef, { once: true, margin: "-60px" });
+  const reducedMotion = useReducedMotion();
 
   return (
     <section
       id="discover"
       ref={ref}
+      role="region"
+      aria-labelledby="discover-heading"
       className="border-b border-[var(--hub-line)] bg-[var(--hub-paper)]"
-      style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
+      style={{ paddingTop: "var(--section-pad-y)", paddingBottom: 0 }}
     >
-      <div className="section-shell mx-auto max-w-3xl text-center">
+      <div
+        className="section-shell mx-auto max-w-3xl pb-12 text-center md:pb-14"
+        style={{ paddingBottom: "max(2.5rem, var(--section-pad-y))" }}
+      >
         <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={reducedMotion ? false : { opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           className="section-eyebrow"
         >
           Why thirty miles
         </motion.p>
         <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.06 }}
+          id="discover-heading"
+          initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: reducedMotion ? 0 : 0.06 }}
           className="section-title mt-4"
         >
           Where every mile{" "}
           <span className="text-[var(--hub-wine)]">tells a story</span>
         </motion.h2>
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.12 }}
-          className="hub-prose mx-auto mt-6 max-w-2xl"
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: reducedMotion ? 0 : 0.08 }}
+          className="hub-prose mx-auto mt-8 max-w-2xl"
         >
           No other wine country packs this much into a short drive. Long
           weekends here feel full—because they are—with room to slow down
@@ -50,34 +99,36 @@ export default function IntroSection() {
         </motion.p>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ delay: 0.2 }}
-        className="section-shell mt-14 max-w-4xl md:mt-16"
+      <div
+        ref={statsRef}
+        className="bg-[var(--hub-navy)] text-white"
+        style={{ paddingTop: "min(3.75rem, 60px)", paddingBottom: "min(3.75rem, 60px)" }}
       >
-        <div className="flex flex-wrap items-stretch justify-center gap-0 divide-y divide-[var(--hub-line)] border border-[var(--hub-line)] bg-white md:divide-x md:divide-y-0">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="flex min-w-[140px] flex-1 flex-col items-center justify-center px-6 py-8 text-center md:min-w-0 md:py-9"
+        <div className="section-shell max-w-5xl">
+          <div className="grid grid-cols-2 divide-x divide-y divide-white/18 md:grid-cols-4 md:divide-y-0">
+            {stats.map((stat, i) => (
+              <StatCell
+                key={stat.key}
+                stat={stat}
+                index={i}
+                reducedMotion={reducedMotion}
+                inView={!!statsInView}
+              />
+            ))}
+          </div>
+          <div className="mx-auto mt-10 max-w-2xl border-t border-white/20 pt-8">
+            <p
+              className="text-center text-lg italic text-[var(--hub-card)]/90 md:text-xl"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
-              <span
-                className="text-[clamp(2rem,5vw,2.75rem)] font-light tabular-nums text-[var(--hub-wine)]"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                {stat.number}
-              </span>
-              <span
-                className="mt-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-muted)]"
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
-                {stat.label}
-              </span>
-            </div>
-          ))}
+              “The most concentrated wine region in the world.”
+            </p>
+            <p className="mt-2 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hub-gold-bright)]">
+              — Wine Spectator
+            </p>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
