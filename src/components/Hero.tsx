@@ -14,7 +14,7 @@ export default function Hero() {
           src="/images/photography/stanly-ranch-convertible.jpg"
           alt="Open road through Napa Valley vineyards at golden hour"
           className="h-full w-full object-cover"
-          style={{ objectPosition: "center 40%" }}
+          style={{ objectPosition: "center 44%" }}
           width={1920}
           height={1080}
           decoding="async"
@@ -40,8 +40,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-7 text-[11px] font-medium uppercase tracking-[0.32em] text-white/80"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              className="font-hub-sans mb-7 text-[11px] font-medium uppercase tracking-[0.32em] text-white/80"
             >
               Visit Napa Valley · Wine Spectator
             </motion.p>
@@ -52,10 +51,7 @@ export default function Hero() {
               transition={{ duration: 0.75, delay: 0.05 }}
               className="text-balance text-white"
             >
-              <span
-                className="block font-normal leading-[1.02] tracking-[-0.02em] text-[clamp(2.25rem,7vw,4rem)]"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
+              <span className="font-hub-serif block font-normal leading-[1.02] tracking-[-0.02em] text-[clamp(2.25rem,7vw,4rem)]">
                 A World in{" "}
                 <em className="not-italic text-[var(--hub-champagne-light)]" style={{ fontStyle: "normal" }}>
                   30 Miles
@@ -67,8 +63,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.14 }}
-              className="mx-auto mt-8 max-w-lg text-base leading-[1.7] text-white/88 md:mt-9 md:text-lg md:leading-[1.65]"
-              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+              className="font-hub-sans mx-auto mt-8 max-w-lg text-base font-normal leading-[1.7] text-white/88 md:mt-9 md:text-lg md:leading-[1.65]"
             >
               Wine, dine, stay, and explore—extraordinary density in one
               compact stretch of valley built for long weekends.
@@ -82,15 +77,13 @@ export default function Hero() {
             >
               <a
                 href="#discover"
-                className="btn-champagne inline-flex min-h-[52px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-10 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)]"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="font-hub-sans btn-champagne inline-flex min-h-[52px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-10 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)]"
               >
                 Explore the hub
               </a>
               <a
                 href="#itinerary"
-                className="hero-outline-btn inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/45 bg-white/10 px-10 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm transition"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="font-hub-sans hero-outline-btn inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/45 bg-white/10 px-10 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm transition"
               >
                 Sample weekend
               </a>
@@ -103,7 +96,7 @@ export default function Hero() {
           className="hero-scroll-cta absolute bottom-4 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 text-white/55 transition"
           aria-label="Scroll to main content"
         >
-          <span className="text-[10px] font-medium uppercase tracking-[0.22em]">Scroll</span>
+          <span className="font-hub-sans text-[10px] font-medium uppercase tracking-[0.22em]">Scroll</span>
           <motion.span
             aria-hidden
             animate={{ y: [0, 4, 0] }}

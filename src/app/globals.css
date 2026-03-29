@@ -1,9 +1,7 @@
 /*
  * Color & cadence approximation — Napa Standard / “Taste of the Good Life”
- * (Deck slides 22–27 had no extractable specs; replace hex values when official tokens arrive.)
- * Intent: approachable luxury, California wine country, bucolic warmth — not cold corporate navy or Versailles gold.
+ * Fonts: next/font in layout.tsx (Inter, Playfair Display, Cormorant Garamond).
  */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -43,9 +41,9 @@
 @theme inline {
   --color-background: var(--hub-paper);
   --color-foreground: var(--hub-ink);
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
 }
 
 * {
@@ -68,10 +66,26 @@ html {
 body {
   background: var(--hub-paper);
   color: var(--hub-ink);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   line-height: 1.65;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* Use with next/font CSS variables from layout */
+.font-hub-sans {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.font-hub-serif {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.font-hub-display {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
 }
 
 .skip-to-content {
@@ -114,7 +128,7 @@ body {
 }
 
 .section-eyebrow {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -123,7 +137,7 @@ body {
 }
 
 .section-title {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-playfair), Georgia, serif;
   font-size: clamp(2.125rem, 4.8vw, 3.5rem);
   font-weight: 400;
   line-height: 1.08;
@@ -197,12 +211,12 @@ body {
 }
 
 .hub-prose {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
   font-size: 1.0625rem;
   font-weight: 400;
   line-height: 1.75;
   color: var(--hub-muted);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.012em;
 }
 
 @media (min-width: 768px) {
@@ -213,10 +227,10 @@ body {
 }
 
 .hub-prose-serif {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
   font-size: 1.25rem;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.68;
   color: var(--hub-muted);
 }
 

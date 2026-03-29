@@ -41,7 +41,7 @@ export default function VideoSection() {
             src="/images/photography/chandon-hilltop.jpg"
             alt="Vine-covered hills above Napa Valley at dusk"
             className="h-full w-full object-cover"
-            style={{ objectPosition: "center 32%" }}
+            style={{ objectPosition: "center 38%" }}
             loading="lazy"
             width={1920}
             height={1080}
@@ -63,8 +63,7 @@ export default function VideoSection() {
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ delay: 0.08 }}
-            className="mt-4 text-balance text-3xl font-normal leading-tight text-white sm:text-4xl md:text-[2.6rem] text-on-photo"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="font-hub-serif mt-4 text-balance text-3xl font-normal leading-tight tracking-[-0.02em] text-white sm:text-4xl md:text-[2.6rem] text-on-photo"
           >
             See it to{" "}
             <span className="text-[var(--hub-champagne-light)]">believe it</span>
@@ -73,8 +72,7 @@ export default function VideoSection() {
             initial={{ opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ delay: 0.12 }}
-            className="mx-auto mt-5 max-w-lg text-lg text-white/85 text-on-photo"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="font-hub-display mx-auto mt-5 max-w-lg text-lg leading-snug text-white/88 text-on-photo"
           >
             Thirty miles of wine country in motion.
           </motion.p>

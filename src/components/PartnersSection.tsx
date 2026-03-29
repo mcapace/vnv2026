@@ -142,12 +142,11 @@ export default function PartnersSection() {
               key={f}
               type="button"
               onClick={() => setFilter(f)}
-              className={`partner-filter-btn min-h-10 rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition sm:min-h-11 sm:px-5 sm:py-2.5 ${
+              className={`font-hub-sans partner-filter-btn min-h-10 rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition sm:min-h-11 sm:px-5 sm:py-2.5 ${
                 filter === f
                   ? "bg-[var(--hub-ink)] text-white"
                   : "partner-filter-btn--idle border border-[var(--hub-line)] bg-white text-[var(--hub-muted)]"
               }`}
-              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               {f}
             </button>
@@ -165,38 +164,29 @@ export default function PartnersSection() {
               className="partner-card hub-card-elevated group flex flex-col overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)]"
             >
               <a href={p.href} target="_blank" rel="noopener noreferrer" className="flex flex-1 flex-col">
-                <div className="relative aspect-[3/2] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[var(--hub-paper-2)]">
                   <img
                     src={p.image}
                     alt=""
-                    className="h-full w-full object-cover transition duration-[400ms] ease-out"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
                     loading="lazy"
                     width={600}
                     height={400}
                   />
                 </div>
-                <div className="flex flex-1 flex-col p-4">
+                <div className="flex flex-1 flex-col p-5 md:p-6">
                   <span
-                    className={`w-fit rounded px-2 py-0.5 text-[8px] font-bold uppercase tracking-[0.12em] text-white ${catStyle[p.category]}`}
+                    className={`font-hub-sans w-fit rounded px-2.5 py-1 text-[8px] font-bold uppercase tracking-[0.12em] text-white ${catStyle[p.category]}`}
                   >
                     {p.category}
                   </span>
-                  <h3
-                    className="mt-3 text-lg font-normal leading-snug text-[var(--hub-ink)]"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
+                  <h3 className="font-hub-serif mt-3.5 text-[1.125rem] font-normal leading-snug tracking-[-0.015em] text-[var(--hub-ink)] md:text-xl">
                     {p.name}
                   </h3>
-                  <p
-                    className="mt-2 flex-1 text-sm leading-snug text-[var(--hub-muted)]"
-                    style={{ fontFamily: "'Inter', sans-serif" }}
-                  >
+                  <p className="font-hub-sans mt-3 flex-1 text-sm leading-relaxed text-[var(--hub-muted)]">
                     {p.description}
                   </p>
-                  <span
-                    className="mt-4 inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--hub-wine)]"
-                    style={{ fontFamily: "'Inter', sans-serif" }}
-                  >
+                  <span className="font-hub-sans mt-5 inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[var(--hub-wine)]">
                     Visit
                     <span className="text-[var(--hub-wine)]">→</span>
                   </span>

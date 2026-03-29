@@ -171,10 +171,7 @@ function MapTooltip({
         >
           {marker.cat}
         </span>
-        <h3
-          className="mt-1.5 text-sm font-normal leading-tight text-[var(--hub-ink)]"
-          style={{ fontFamily: "'Playfair Display', serif" }}
-        >
+        <h3 className="font-hub-serif mt-1.5 text-sm font-normal leading-tight tracking-[-0.01em] text-[var(--hub-ink)]">
           {marker.title}
         </h3>
         <p className="mt-0.5 text-xs leading-snug text-[var(--hub-muted)]">{marker.blurb}</p>

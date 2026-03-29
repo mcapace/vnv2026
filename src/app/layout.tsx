@@ -1,6 +1,27 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Cormorant_Garamond, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-cormorant",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
 
 const siteUrl = "https://vnv2026.vercel.app";
 const ogImage = `${siteUrl}/images/photography/stanly-ranch-convertible.jpg`;
@@ -53,7 +74,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html
+      lang="en"
+      className={`h-full ${inter.variable} ${playfair.variable} ${cormorant.variable}`}
+    >
       <head>
         <link
           rel="preload"
@@ -62,7 +86,9 @@ export default function RootLayout({
           imageSizes="100vw"
         />
       </head>
-      <body className="hub-page min-h-full flex flex-col antialiased">
+      <body
+        className={`${inter.className} hub-page min-h-full flex flex-col antialiased`}
+      >
         <a
           href="#main-content"
           className="skip-to-content"

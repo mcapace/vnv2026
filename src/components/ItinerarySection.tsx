@@ -211,18 +211,14 @@ export default function ItinerarySection() {
         </ol>
 
         <div className="mt-12 border-t border-[var(--hub-line)] pt-10 text-center">
-          <p
-            className="text-sm text-[var(--hub-muted)]"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
+          <p className="font-hub-sans text-sm text-[var(--hub-muted)]">
             Want this route tailored?
           </p>
           <a
             href="https://www.visitnapavalley.com/plan-your-trip/"
             target="_blank"
             rel="noopener noreferrer"
-            className="itinerary-outline-cta mt-4 inline-flex min-h-12 items-center justify-center rounded-full border-2 border-[var(--hub-wine)] bg-transparent px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hub-wine)] transition"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+            className="font-hub-sans itinerary-outline-cta mt-4 inline-flex min-h-12 items-center justify-center rounded-full border-2 border-[var(--hub-wine)] bg-transparent px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hub-wine)] transition"
           >
             Customize this itinerary
           </a>
@@ -260,22 +256,13 @@ function DayAccordion({
           {index + 1}
         </span>
         <span className="min-w-0 flex-1">
-          <span
-            className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--hub-champagne)]"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
+          <span className="font-hub-sans text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--hub-champagne)]">
             {day.day}
           </span>
-          <span
-            className="mt-1 block text-xl font-normal text-[var(--hub-ink)] capitalize sm:text-2xl"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
+          <span className="font-hub-serif mt-1 block text-xl font-normal capitalize tracking-[-0.02em] text-[var(--hub-ink)] sm:text-2xl">
             {day.title}
           </span>
-          <span
-            className="mt-0.5 block text-base text-[var(--hub-muted)]"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
+          <span className="font-hub-display mt-0.5 block text-base leading-snug text-[var(--hub-muted)]">
             {day.subtitle}
           </span>
         </span>
@@ -317,56 +304,42 @@ function DayAccordion({
                 <img
                   src={event.thumb}
                   alt=""
-                  className="relative z-[1] mt-5 h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-[var(--hub-line)] sm:h-16 sm:w-16"
+                  className="relative z-[1] mt-5 h-14 w-14 shrink-0 rounded-full object-cover object-center ring-2 ring-[var(--hub-line)] sm:h-16 sm:w-16"
                   width={64}
                   height={64}
                   loading="lazy"
                 />
                 <div className="min-w-0 flex-1 pt-4">
                   <div className="flex flex-wrap items-center gap-2">
-                    <time
-                      className="text-sm font-semibold tabular-nums text-[var(--hub-ink)] sm:text-base"
-                      style={{ fontFamily: "'Inter', sans-serif" }}
-                    >
+                    <time className="font-hub-sans text-sm font-semibold tabular-nums text-[var(--hub-ink)] sm:text-base">
                       {event.time}
                     </time>
                     <span
-                      className="rounded px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white"
+                      className="font-hub-sans rounded px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white"
                       style={{
-                        fontFamily: "'Inter', sans-serif",
                         backgroundColor: typeStyle[event.type].bg,
                       }}
                     >
                       {typeStyle[event.type].label}
                     </span>
                   </div>
-                  <h4
-                    className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-lg font-normal leading-snug text-[var(--hub-ink)] sm:text-xl"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                  >
+                  <h4 className="font-hub-serif mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-lg font-normal leading-snug tracking-[-0.015em] text-[var(--hub-ink)] sm:text-xl">
                     {event.activity}
                     <a
                       href={event.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="itinerary-learn text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-wine)] underline-offset-4"
-                      style={{ fontFamily: "'Inter', sans-serif" }}
+                      className="font-hub-sans itinerary-learn text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-wine)] underline-offset-4"
                     >
                       Learn more →
                     </a>
                   </h4>
                   {"wsTip" in event && event.wsTip && (
-                    <p
-                      className="mt-3 border-l-2 border-[var(--hub-champagne)] pl-3 text-sm italic text-[var(--hub-muted)]"
-                      style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                    >
+                    <p className="font-hub-display mt-3 border-l-2 border-[var(--hub-champagne)] pl-3 text-sm italic text-[var(--hub-muted)]">
                       {event.wsTip}
                     </p>
                   )}
-                  <p
-                    className="mt-3 max-w-xl text-[1.0625rem] leading-[1.75] text-[var(--hub-muted)]"
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                  >
+                  <p className="font-hub-display mt-3 max-w-xl text-[1.0625rem] leading-[1.75] text-[var(--hub-muted)]">
                     {event.description}
                   </p>
                 </div>

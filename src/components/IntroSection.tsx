@@ -33,17 +33,11 @@ function StatCell({
 
   return (
     <div className="flex flex-col items-center justify-center px-3 py-8 text-center md:px-5 md:py-11">
-      <span
-        className="font-light tabular-nums text-[var(--hub-card)] text-[clamp(3rem,7vw,4.5rem)] leading-none"
-        style={{ fontFamily: "'Playfair Display', serif" }}
-      >
+      <span className="font-hub-serif font-light tabular-nums text-[var(--hub-card)] text-[clamp(3rem,7vw,4.5rem)] leading-none tracking-[-0.02em]">
         {display}
         {stat.suffixPlus ? (showPlus ? "+" : "") : ""}
       </span>
-      <span
-        className="mt-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--hub-champagne-light)]"
-        style={{ fontFamily: "'Inter', sans-serif" }}
-      >
+      <span className="font-hub-sans mt-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--hub-champagne-light)]">
         {stat.label}
       </span>
     </div>
@@ -122,13 +116,10 @@ export default function IntroSection() {
             ))}
           </div>
           <div className="mx-auto mt-14 max-w-2xl border-t border-white/14 pt-10 md:mt-16 md:pt-12">
-            <p
-              className="text-center text-lg italic text-white/88 md:text-xl"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}
-            >
+            <p className="font-hub-display text-center text-lg italic leading-relaxed text-white/88 md:text-xl">
               “The most concentrated wine region in the world.”
             </p>
-            <p className="mt-3 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-champagne-light)]">
+            <p className="font-hub-sans mt-4 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-champagne-light)]">
               Wine Spectator
             </p>
           </div>

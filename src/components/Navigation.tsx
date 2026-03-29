@@ -102,18 +102,16 @@ export default function Navigation() {
                   }`}
                 >
                   <span
-                    className={`block text-[9px] font-semibold uppercase leading-tight tracking-[0.22em] ${
+                    className={`font-hub-sans block text-[9px] font-semibold uppercase leading-tight tracking-[0.22em] ${
                       onHero ? "text-white/55" : "text-[var(--hub-muted)]"
                     }`}
-                    style={{ fontFamily: "'Inter', sans-serif" }}
                   >
                     Wine Spectator
                   </span>
                   <span
-                    className={`mt-0.5 block truncate text-[9px] font-normal tracking-[0.12em] ${
+                    className={`font-hub-sans mt-0.5 block truncate text-[9px] font-normal tracking-[0.12em] ${
                       onHero ? "text-white/40" : "text-stone-500"
                     }`}
-                    style={{ fontFamily: "'Inter', sans-serif" }}
                   >
                     Content Hub
                   </span>
@@ -130,7 +128,7 @@ export default function Navigation() {
                       key={link.label}
                       href={link.href}
                       onClick={(e) => onNavClick(e, link.href)}
-                      className={`rounded-full px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
+                      className={`font-hub-sans rounded-full px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
                         onHero
                           ? active
                             ? "bg-white/18 text-white"
@@ -139,7 +137,6 @@ export default function Navigation() {
                             ? "bg-[var(--hub-accent-soft)] text-[var(--hub-wine)]"
                             : "nav-pill-solid text-stone-600"
                       }`}
-                      style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       {link.label}
                     </a>
@@ -153,12 +150,11 @@ export default function Navigation() {
                 href="https://www.visitnapavalley.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`hidden shrink-0 whitespace-nowrap rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.16em] transition sm:inline-flex ${
+                className={`font-hub-sans hidden shrink-0 whitespace-nowrap rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.16em] transition sm:inline-flex ${
                   onHero
                     ? "nav-plan-hero bg-white text-[var(--hub-ink)]"
                     : "btn-champagne bg-[var(--hub-champagne)] text-[var(--hub-ink)]"
                 }`}
-                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 Plan visit
               </a>
@@ -207,8 +203,7 @@ export default function Navigation() {
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.04 }}
-                  className="min-h-[52px] border-b border-white/10 py-4 text-2xl font-normal text-white"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="font-hub-serif min-h-[52px] border-b border-white/10 py-4 text-2xl font-normal text-white"
                 >
                   {link.label}
                 </motion.a>
@@ -218,8 +213,7 @@ export default function Navigation() {
               href="https://www.visitnapavalley.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-auto flex min-h-[52px] items-center justify-center rounded-full bg-[var(--hub-champagne)] py-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)]"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              className="font-hub-sans mt-auto flex min-h-[52px] items-center justify-center rounded-full bg-[var(--hub-champagne)] py-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)]"
             >
               Plan your visit
             </a>

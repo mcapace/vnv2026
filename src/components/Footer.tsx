@@ -18,7 +18,7 @@ export default function Footer() {
           src="/images/photography/chandon-hilltop.jpg"
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-35"
-          style={{ objectPosition: "center 35%" }}
+          style={{ objectPosition: "center 40%" }}
           loading="lazy"
           width={1920}
           height={1080}
@@ -27,21 +27,15 @@ export default function Footer() {
 
         <div className="section-shell section-stack relative z-[1] mx-auto w-full max-w-3xl">
           <p className="section-eyebrow text-[var(--hub-champagne-light)]">Next step</p>
-          <h2
-            className="mt-4 text-balance text-3xl font-normal leading-tight text-on-photo md:text-4xl"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
+          <h2 className="font-hub-serif mt-[clamp(1.25rem,3vw,1.75rem)] text-balance text-3xl font-normal leading-tight tracking-[-0.02em] text-on-photo md:text-[2.35rem]">
             Ready to plan a long weekend?
           </h2>
-          <p className="mt-3 max-w-lg text-lg text-white/80 text-on-photo md:mx-auto" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <p className="font-hub-display mt-4 max-w-lg text-lg leading-snug text-white/85 text-on-photo md:mx-auto">
             Lock in stays, tables, and cellar appointments on the official
             destination site.
           </p>
 
-          <p
-            className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-white/65"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
+          <p className="font-hub-sans mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-white/65">
             Join 50,000+ travelers exploring the valley each month
           </p>
 
@@ -49,8 +43,7 @@ export default function Footer() {
             href="https://www.visitnapavalley.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-champagne mt-6 inline-flex min-h-12 min-w-[200px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)] transition"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+            className="font-hub-sans btn-champagne mt-6 inline-flex min-h-12 min-w-[200px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)] transition"
           >
             Plan your visit
           </a>
@@ -65,10 +58,7 @@ export default function Footer() {
             <label htmlFor="footer-email" className="sr-only">
               Email for weekend planning guide
             </label>
-            <p
-              className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
+            <p className="font-hub-sans mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
               Get the weekend planning guide
             </p>
             <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-stretch">
@@ -82,8 +72,7 @@ export default function Footer() {
               />
               <button
                 type="submit"
-                className="footer-submit min-h-12 w-full shrink-0 rounded-full bg-[var(--hub-champagne)] px-8 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)] transition sm:w-auto sm:min-w-[7.5rem]"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="font-hub-sans footer-submit min-h-12 w-full shrink-0 rounded-full bg-[var(--hub-champagne)] px-8 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)] transition sm:w-auto sm:min-w-[7.5rem]"
               >
                 {signedUp ? "Thanks!" : "Submit"}
               </button>
@@ -111,8 +100,7 @@ export default function Footer() {
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className="footer-anchor min-h-10 text-[11px] font-medium uppercase tracking-[0.16em] text-white/50 transition"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="font-hub-sans footer-anchor min-h-10 text-[11px] font-medium uppercase tracking-[0.16em] text-white/50 transition"
               >
                 {link}
               </a>
@@ -121,12 +109,9 @@ export default function Footer() {
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-end">
             <span className="flex items-center gap-3" aria-label="Wine Spectator co-brand">
               <span className="h-px w-8 bg-white/25" aria-hidden />
-              <span
-                className="text-[9px] font-semibold uppercase leading-tight tracking-[0.18em] text-white/55"
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
+              <span className="font-hub-sans text-[9px] font-semibold uppercase leading-tight tracking-[0.18em] text-white/55">
                 Wine Spectator
-                <span className="mt-0.5 block text-[8px] font-normal tracking-[0.12em] text-white/35">
+                <span className="font-hub-sans mt-0.5 block text-[8px] font-normal tracking-[0.12em] text-white/35">
                   Content Hub
                 </span>
               </span>
@@ -169,10 +154,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="section-shell section-shell--wide mx-auto pb-10 pt-2">
-          <p
-            className="text-center text-[10px] leading-relaxed text-white/35"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
+          <p className="font-hub-sans text-center text-[10px] leading-relaxed text-white/35">
             © {new Date().getFullYear()} Visit Napa Valley · Presented with{" "}
             <span className="text-white/45">Wine Spectator</span>
           </p>

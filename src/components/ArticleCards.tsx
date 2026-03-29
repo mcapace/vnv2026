@@ -19,7 +19,7 @@ const articles = [
     description:
       "From vineyard-edge bungalows at Carneros Resort to the charm of Mount View Hotel & Inn in Calistoga.",
     image: "/images/photography/solage-pool-night.jpg",
-    objectPosition: "50% 45%",
+    objectPosition: "50% 48%",
     partners: ["Carneros Resort", "Mount View Hotel & Inn"],
   },
   {
@@ -30,7 +30,7 @@ const articles = [
     description:
       "Bouchon Bistro, Calistoga Depot, The Grove at COPIA—extraordinary kitchens, minutes apart.",
     image: "/images/photography/press-plating.jpg",
-    objectPosition: "50% 40%",
+    objectPosition: "50% 48%",
     partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
   },
   {
@@ -41,7 +41,7 @@ const articles = [
     description:
       "Icons like Robert Mondavi, elegance at Etude, history at Louis Martini—without endless mileage.",
     image: "/images/photography/wine-cellar-toast.jpg",
-    objectPosition: "50% 35%",
+    objectPosition: "50% 45%",
     partners: ["Etude", "Robert Mondavi", "Louis Martini"],
     wineSpectatorPick: true,
   },
@@ -53,7 +53,7 @@ const articles = [
     description:
       "JaM Cellars Ballroom, Pure Luxury Tours, Marquee Pinball—the valley after dark and between vines.",
     image: "/images/photography/cadet-nightlife.jpg",
-    objectPosition: "50% 40%",
+    objectPosition: "50% 48%",
     partners: ["JaM Cellars", "Pure Luxury Tours", "Marquee Pinball"],
   },
 ];
@@ -126,16 +126,16 @@ function ArticleRow({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${article.label} in Napa Valley — open on Visit Napa Valley`}
-        className={`group flex min-h-0 w-full min-w-0 flex-col lg:min-h-[340px] lg:flex-row ${
+        className={`group flex min-h-0 w-full min-w-0 flex-col items-stretch lg:min-h-[min(520px,85vh)] lg:max-h-[640px] lg:flex-row ${
           imageLeft ? "" : "lg:flex-row-reverse"
         }`}
       >
-        <div className="relative aspect-[16/11] w-full min-w-0 shrink-0 overflow-hidden sm:aspect-[16/10] lg:aspect-auto lg:h-auto lg:w-1/2 lg:min-h-[320px]">
+        <div className="relative min-h-[240px] w-full min-w-0 shrink-0 overflow-hidden bg-[var(--hub-paper-2)] sm:min-h-[300px] lg:w-1/2 lg:min-h-0 lg:max-w-[50%]">
           <img
             src={article.image}
             alt=""
             role="presentation"
-            className="h-full w-full object-cover transition duration-500 ease-out"
+            className="absolute inset-0 h-full w-full object-cover motion-safe:transition motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-[1.02]"
             style={{ objectPosition: article.objectPosition }}
             loading="lazy"
             width={1200}
@@ -144,51 +144,35 @@ function ArticleRow({
           />
         </div>
 
-        <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center px-6 py-11 md:px-12 md:py-14 lg:px-14 lg:py-14">
-          <span
-            className="mb-4 w-fit text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--hub-champagne)]"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center px-7 py-12 md:px-12 md:py-14 lg:max-w-[50%] lg:px-14 lg:py-16">
+          <span className="font-hub-sans mb-5 w-fit text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--hub-champagne)]">
             {article.label}
           </span>
-          <h3
-            className="text-[clamp(1.75rem,3.5vw,2.35rem)] font-normal leading-[1.08] text-[var(--hub-ink)]"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
+          <h3 className="font-hub-serif text-[clamp(1.875rem,3.2vw,2.45rem)] font-normal leading-[1.06] tracking-[-0.02em] text-[var(--hub-ink)]">
             {article.title}
           </h3>
-          <p
-            className="mt-3 text-xl font-normal italic text-[var(--hub-wine)] md:text-[1.35rem]"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
+          <p className="font-hub-display mt-4 text-xl font-normal italic leading-snug text-[var(--hub-wine)] md:text-[1.375rem]">
             {article.subtitle}
           </p>
           {"wineSpectatorPick" in article && article.wineSpectatorPick && (
-            <p
-              className="mt-4 inline-flex w-fit items-center rounded-full border border-rose-900/15 bg-[var(--hub-accent-soft)] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-wine)]"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
+            <p className="font-hub-sans mt-5 inline-flex w-fit items-center rounded-full border border-rose-900/15 bg-[var(--hub-accent-soft)] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-wine)]">
               Wine Spectator editor&apos;s pick
             </p>
           )}
-          <p className="mt-6 max-w-md text-[0.9375rem] leading-[1.75] text-[var(--hub-muted)]">
+          <p className="font-hub-sans mt-7 max-w-lg text-[0.96875rem] leading-[1.78] text-[var(--hub-muted)]">
             {article.description}
           </p>
-          <div className="mt-6 flex flex-wrap gap-2">
+          <div className="mt-7 flex flex-wrap gap-2.5">
             {article.partners.map((p) => (
               <span
                 key={p}
-                className="rounded-full border border-[var(--hub-line)] bg-[var(--hub-paper)] px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.08em] text-[var(--hub-muted)]"
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className="font-hub-sans rounded-full border border-[var(--hub-line)] bg-[var(--hub-paper)] px-3.5 py-1.5 text-[9px] font-medium uppercase tracking-[0.08em] text-[var(--hub-muted)]"
               >
                 {p}
               </span>
             ))}
           </div>
-          <span
-            className="mt-8 inline-flex w-fit items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-wine)]"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
+          <span className="font-hub-sans mt-9 inline-flex w-fit items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-wine)]">
             Visit Napa Valley
             <span aria-hidden className="text-[var(--hub-champagne)]">
               →
