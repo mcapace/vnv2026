@@ -15,7 +15,7 @@ export default function Hero() {
           src="/images/photography/stanly-ranch-convertible.jpg"
           alt="Open road through Napa Valley vineyards at golden hour"
           className="h-full w-full object-cover"
-          style={{ objectPosition: "center 44%" }}
+          style={{ objectPosition: "center 30%" }}
           width={1920}
           height={1080}
           decoding="async"
@@ -23,7 +23,7 @@ export default function Hero() {
           loading="eager"
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/10"
           aria-hidden
         />
       </div>
@@ -31,7 +31,7 @@ export default function Hero() {
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[2]" />
 
       <div
-        className="absolute bottom-0 left-0 right-0 z-10 pb-20 text-left"
+        className="absolute bottom-0 left-0 right-0 z-10 pb-24 text-left"
         style={{
           paddingLeft: "clamp(2rem, 5vw, 4rem)",
           paddingRight: "clamp(2rem, 5vw, 4rem)",
@@ -74,8 +74,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.14 }}
-          className="hub-prose mt-3 max-w-lg text-white/75"
-          style={{ fontSize: "1rem", lineHeight: "1.65" }}
+          className="mt-3 max-w-lg text-base text-white/70"
+          style={{ fontSize: "1rem", lineHeight: "1.5" }}
         >
           Wine, dine, stay, and explore—extraordinary density in one compact stretch of valley built
           for long weekends.
@@ -89,13 +89,13 @@ export default function Hero() {
         >
           <a
             href="#discover"
-            className="btn-champagne inline-flex items-center gap-2 rounded-full bg-[var(--hub-champagne)] px-7 py-3.5 text-sm font-semibold tracking-wide text-[var(--hub-navy)]"
+            className="inline-flex items-center gap-2 rounded-full bg-[var(--hub-champagne)] px-6 py-3 text-sm font-semibold text-[var(--hub-navy)]"
           >
             Explore the hub
           </a>
           <a
             href="#itinerary"
-            className="hero-outline-btn inline-flex items-center gap-2 rounded-full border border-white/50 px-7 py-3.5 text-sm font-medium text-white"
+            className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-medium text-white"
           >
             Sample weekend
           </a>
