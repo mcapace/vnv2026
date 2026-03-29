@@ -30,7 +30,10 @@ export default function Hero() {
 
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[2]" />
 
-      <div className="absolute bottom-0 left-0 right-0 z-10 pb-16 pl-8 pr-8 text-left md:pl-14 md:pr-14 lg:pl-16 lg:pr-16">
+      <div
+        className="absolute bottom-0 left-0 right-0 z-10 pb-16 text-left"
+        style={{ paddingLeft: "clamp(2rem, 5vw, 4rem)", paddingRight: "clamp(2rem, 5vw, 4rem)" }}
+      >
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}

@@ -76,7 +76,8 @@ export default function Navigation() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           aria-label="Site"
-          className={`fixed top-0 left-0 right-0 z-50 flex h-16 items-center justify-between px-8 transition-all duration-300 md:px-14 lg:px-16 ${
+          style={{ paddingLeft: "clamp(2rem, 5vw, 4rem)", paddingRight: "clamp(2rem, 5vw, 4rem)" }}
+          className={`fixed top-0 left-0 right-0 z-50 flex h-16 items-center justify-between transition-all duration-300 ${
             onHero
               ? "border-b border-transparent bg-transparent shadow-none"
               : "border-b border-[var(--hub-line)] bg-[var(--hub-card)]/95 shadow-sm backdrop-blur-md"
