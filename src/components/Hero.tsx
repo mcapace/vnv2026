@@ -33,8 +33,9 @@ export default function Hero() {
       />
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[2]" />
 
-      <div className="relative z-20 flex h-full flex-col justify-end px-6 pb-8 pt-20 text-center md:px-12 md:pb-12">
-        <div className="mx-auto w-full max-w-3xl pb-8 md:pb-10">
+      <div className="relative z-20 flex h-full flex-col justify-end pb-8 pt-20 text-center md:pb-12">
+        <div className="section-shell section-shell--wide mx-auto w-full pb-8 md:pb-10">
+          <div className="mx-auto w-full max-w-3xl">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -94,6 +95,7 @@ export default function Hero() {
               Sample weekend
             </a>
           </motion.div>
+          </div>
         </div>
 
         <a

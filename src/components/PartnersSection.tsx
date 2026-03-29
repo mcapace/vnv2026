@@ -116,8 +116,8 @@ export default function PartnersSection() {
       className="border-t border-[var(--hub-line)] bg-[var(--hub-card)]"
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
-      <div ref={ref} className="section-shell mx-auto max-w-7xl">
-        <div className="mb-8 text-center md:mb-10">
+      <div ref={ref} className="section-shell mx-auto">
+        <div className="section-stack mb-8 md:mb-10">
           <motion.p
             initial={reducedMotion ? false : { opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -129,7 +129,7 @@ export default function PartnersSection() {
             initial={reducedMotion ? false : { opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: reducedMotion ? 0 : 0.06 }}
-            className="section-title mx-auto mt-4 max-w-xl"
+            className="section-title mt-4 max-w-xl"
           >
             Spots that anchor this story
           </motion.h2>

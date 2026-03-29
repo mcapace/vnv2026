@@ -70,7 +70,7 @@ export default function ArticleCards() {
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper-2)]"
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
-      <div ref={headerRef} className="section-shell mx-auto mb-12 max-w-2xl text-center md:mb-16">
+      <div ref={headerRef} className="section-shell section-stack mx-auto mb-12 max-w-2xl md:mb-16">
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -97,7 +97,7 @@ export default function ArticleCards() {
         </motion.p>
       </div>
 
-      <div className="section-shell mx-auto flex max-w-5xl flex-col gap-10 md:gap-14">
+      <div className="section-shell mx-auto flex flex-col gap-10 md:gap-14">
         {articles.map((article, index) => (
           <ArticleRow key={article.id} article={article} index={index} />
         ))}

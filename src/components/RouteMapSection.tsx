@@ -52,11 +52,11 @@ export default function RouteMapSection() {
         <motion.div
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
-          className="mx-auto max-w-2xl text-center"
+          className="section-stack mx-auto max-w-2xl"
         >
           <p className="section-eyebrow">The route</p>
           <h2 className="section-title mt-4">Thirty miles, one unforgettable road</h2>
-          <p className="hub-prose mx-auto mt-5 max-w-lg">
+          <p className="hub-prose mt-5 max-w-lg">
             From Carneros to Calistoga—most featured stops sit within a short drive of each other along the valley floor.
           </p>
         </motion.div>

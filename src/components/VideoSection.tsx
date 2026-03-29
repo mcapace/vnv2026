@@ -51,7 +51,7 @@ export default function VideoSection() {
         <div className="absolute inset-0 bg-black/40" aria-hidden />
         <div className="grain-overlay pointer-events-none absolute inset-0 z-10" />
 
-        <div className="relative z-20 mx-auto max-w-xl px-6 py-16 text-center md:max-w-2xl md:py-20">
+        <div className="section-shell section-stack relative z-20 mx-auto max-w-2xl py-16 md:py-20">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}

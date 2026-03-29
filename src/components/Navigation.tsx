@@ -84,11 +84,12 @@ export default function Navigation() {
               : "border-[var(--hub-line)] bg-white/94 shadow-[0_1px_0_rgba(22,20,26,0.04)] backdrop-blur-xl"
           }`}
         >
-          <div className="section-shell section-shell--wide flex max-w-[88rem] items-center justify-between gap-3 py-3.5">
+          <div className="section-shell section-shell--wide flex items-center gap-3 py-3.5">
+            <div className="flex min-w-0 flex-1 items-center justify-start">
             <a
               href="#hero"
               onClick={(e) => onNavClick(e, "#hero")}
-              className="group flex min-w-0 shrink-0 items-center gap-3"
+              className="group flex min-w-0 items-center gap-3"
             >
               <img
                 src={onHero ? "/images/logos/vnv-primary-white.png" : "/images/logos/vnv-primary-black.png"}
@@ -118,11 +119,9 @@ export default function Navigation() {
                 </span>
               </span>
             </a>
+            </div>
 
-            <nav
-              className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:flex"
-              aria-label="Primary"
-            >
+            <nav className="hidden shrink-0 md:flex" aria-label="Primary">
               <div className="flex items-center gap-0.5 rounded-full border border-transparent px-1 py-0.5">
                 {navLinks.map((link) => {
                   const active = activeId === link.id;
@@ -149,7 +148,7 @@ export default function Navigation() {
               </div>
             </nav>
 
-            <div className="flex shrink-0 items-center gap-2">
+            <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
               <a
                 href="https://www.visitnapavalley.com"
                 target="_blank"

@@ -67,7 +67,7 @@ export default function IntroSection() {
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: 0 }}
     >
       <div
-        className="section-shell mx-auto max-w-3xl pb-12 text-center md:pb-14"
+        className="section-shell section-stack mx-auto max-w-3xl pb-12 md:pb-14"
         style={{ paddingBottom: "max(2.5rem, var(--section-pad-y))" }}
       >
         <motion.p
@@ -91,7 +91,7 @@ export default function IntroSection() {
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.08 }}
-          className="hub-prose-serif mx-auto mt-8 max-w-2xl"
+          className="hub-prose-serif mt-8 max-w-2xl text-center"
         >
           No other wine country packs this much into a short drive. Long
           weekends here feel full—because they are—with room to slow down
@@ -109,7 +109,7 @@ export default function IntroSection() {
             "linear-gradient(165deg, var(--hub-navy) 0%, var(--hub-navy-mid) 55%, var(--hub-navy-deep) 100%)",
         }}
       >
-        <div className="section-shell max-w-5xl">
+        <div className="section-shell">
           <div className="grid grid-cols-2 divide-x divide-y divide-white/18 md:grid-cols-4 md:divide-y-0">
             {stats.map((stat, i) => (
               <StatCell

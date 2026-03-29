@@ -28,10 +28,11 @@ export default function PhotoGallery() {
       aria-label="Editorial photography from the valley"
       className="border-t border-[var(--hub-line)] bg-[var(--hub-navy)] py-14 md:py-20"
     >
-      <p className="section-shell section-eyebrow mb-10 text-center text-[var(--hub-champagne-light)] md:mb-12">
-        In the valley
-      </p>
-      <div className="section-shell grid max-w-6xl gap-1 sm:grid-cols-2 sm:gap-2 md:gap-3">
+      <div className="section-shell">
+        <div className="section-stack mb-10 md:mb-12">
+          <p className="section-eyebrow text-[var(--hub-champagne-light)]">In the valley</p>
+        </div>
+        <div className="grid gap-1 sm:grid-cols-2 sm:gap-2 md:gap-3">
         {photos.map((img, i) => (
           <motion.figure
             key={img.src}
@@ -56,6 +57,7 @@ export default function PhotoGallery() {
             </figcaption>
           </motion.figure>
         ))}
+        </div>
       </div>
     </section>
   );

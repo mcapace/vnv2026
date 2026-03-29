@@ -126,6 +126,35 @@ body {
   color: var(--hub-ink);
 }
 
+/* Centered section headline stack + subtle rule under eyebrow */
+.section-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section-stack .section-eyebrow {
+  position: relative;
+  padding-bottom: 0.875rem;
+}
+
+.section-stack .section-eyebrow::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 2.25rem;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--hub-champagne) 65%, transparent),
+    transparent
+  );
+}
+
 .hub-prose {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 1.0625rem;

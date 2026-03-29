@@ -167,11 +167,11 @@ export default function ItinerarySection() {
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper-2)]"
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
-      <div ref={headerRef} className="section-shell mx-auto mb-10 max-w-2xl md:mb-12">
+      <div ref={headerRef} className="section-shell section-stack mx-auto mb-10 max-w-2xl md:mb-12">
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
-          className="section-eyebrow text-center"
+          className="section-eyebrow"
         >
           Weekend itineraries
         </motion.p>
@@ -179,7 +179,7 @@ export default function ItinerarySection() {
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.06 }}
-          className="section-title mt-4 text-center"
+          className="section-title mt-4"
         >
           Three days in{" "}
           <span className="text-[var(--hub-wine)]">paradise</span>
@@ -188,7 +188,7 @@ export default function ItinerarySection() {
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
-          className="hub-prose mt-5 text-center"
+          className="hub-prose mt-5"
         >
           One possible long weekend—swap cellar doors, linger over lunch, or
           add a fourth day. The mileage still clocks in at twenty-five to
