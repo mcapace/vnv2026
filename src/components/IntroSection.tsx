@@ -3,6 +3,13 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
+const stats = [
+  { number: "400+", label: "Wineries" },
+  { number: "30", label: "Miles of Valley" },
+  { number: "9", label: "Michelin Stars" },
+  { number: "5", label: "Distinct Towns" },
+];
+
 export default function IntroSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
@@ -13,35 +20,7 @@ export default function IntroSection() {
       ref={ref}
       className="relative py-28 md:py-36 bg-[#FEFCF8] overflow-hidden"
     >
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, #2C2C2C 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
-      </div>
-
-      <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-        {/* Decorative top element */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center mb-10"
-        >
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <path
-              d="M20 2L23.5 15H37L26 23.5L29.5 37L20 28.5L10.5 37L14 23.5L3 15H16.5L20 2Z"
-              stroke="#C5A55A"
-              strokeWidth="0.5"
-              fill="none"
-            />
-          </svg>
-        </motion.div>
-
+      <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
         {/* Tagline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -63,7 +42,7 @@ export default function IntroSection() {
         >
           Where Every Mile
           <br />
-          <em className="text-[#722F37]">Tells a Story</em>
+          <em className="text-[#63242D]">Tells a Story</em>
         </motion.h2>
 
         {/* Divider */}
@@ -71,9 +50,11 @@ export default function IntroSection() {
           initial={{ scaleX: 0 }}
           animate={inView ? { scaleX: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="divider-diamond mb-10"
+          className="flex items-center justify-center gap-4 mb-10 max-w-[200px] mx-auto"
         >
-          <span className="diamond" />
+          <span className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#C5A55A]" />
+          <span className="w-2 h-2 bg-[#C5A55A] rotate-45 shrink-0" />
+          <span className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#C5A55A]" />
         </motion.div>
 
         {/* Body */}
@@ -81,7 +62,7 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-[#4A4A4A] text-lg md:text-xl leading-relaxed max-w-3xl mx-auto"
+          className="text-[#4A4A4A] text-lg md:text-xl leading-relaxed"
           style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 }}
         >
           Stretching from the wetlands of Carneros to the volcanic peaks of
@@ -98,32 +79,34 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 25 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-12 border-t border-[#C5A55A]/15"
+          className="mt-16 pt-12 border-t border-[#C5A55A]/15"
         >
-          {[
-            { number: "400+", label: "Wineries" },
-            { number: "30", label: "Miles of Valley" },
-            { number: "9", label: "Michelin Stars" },
-            { number: "∞", label: "Memories" },
-          ].map((stat, i) => (
-            <div key={stat.label} className="text-center">
-              <motion.span
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
-                className="block text-3xl md:text-4xl text-[#722F37] mb-1"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
+            {stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`text-center py-4 ${
+                  i < stats.length - 1 ? "md:border-r md:border-[#C5A55A]/10" : ""
+                }`}
               >
-                {stat.number}
-              </motion.span>
-              <span
-                className="text-[#4A4A4A]/60 text-[10px] tracking-[0.3em] uppercase"
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
-                {stat.label}
-              </span>
-            </div>
-          ))}
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
+                  className="block text-3xl md:text-4xl text-[#63242D] mb-2"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  {stat.number}
+                </motion.span>
+                <span
+                  className="text-[#4A4A4A]/60 text-[10px] tracking-[0.3em] uppercase"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

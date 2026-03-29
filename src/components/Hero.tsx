@@ -20,20 +20,29 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden">
       {/* Background image with parallax */}
-      <motion.div
-        style={{ y, scale }}
-        className="absolute inset-0"
-      >
+      <motion.div style={{ y, scale }} className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=2940&auto=format&fit=crop')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=2940&auto=format&fit=crop')`,
           }}
         />
       </motion.div>
 
-      {/* Gradient overlay */}
-      <div className="hero-gradient absolute inset-0 z-10" />
+      {/* Strong dark overlay for text readability */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          background: `linear-gradient(
+            180deg,
+            rgba(44, 44, 44, 0.5) 0%,
+            rgba(44, 44, 44, 0.35) 30%,
+            rgba(44, 44, 44, 0.3) 50%,
+            rgba(99, 36, 45, 0.7) 80%,
+            rgba(99, 36, 45, 0.9) 100%
+          )`,
+        }}
+      />
 
       {/* Grain texture */}
       <div className="grain-overlay absolute inset-0 z-10" />
@@ -43,27 +52,30 @@ export default function Hero() {
         style={{ opacity }}
         className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6"
       >
-        {/* Top accent */}
+        {/* VNV Logo */}
+        {mounted && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="mb-10"
+          >
+            <img
+              src="https://www.visitnapavalley.com/includes/public/assets/shared/napavalley-logo-white.svg"
+              alt="Visit Napa Valley"
+              className="h-14 sm:h-16 w-auto mx-auto opacity-80"
+            />
+          </motion.div>
+        )}
+
+        {/* Gold accent line */}
         {mounted && (
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="w-16 h-[1px] bg-[#C5A55A] mb-8"
           />
-        )}
-
-        {/* Presented by line */}
-        {mounted && (
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-white/60 text-[11px] tracking-[0.4em] uppercase mb-6"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            Visit Napa Valley × Wine Spectator
-          </motion.p>
         )}
 
         {/* Main headline */}
@@ -81,7 +93,7 @@ export default function Hero() {
               A World
             </span>
             <span
-              className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95] mt-1"
+              className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight leading-[0.95] mt-2"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               in{" "}
@@ -96,11 +108,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="text-white/70 text-base sm:text-lg md:text-xl max-w-2xl mt-8 leading-relaxed font-light"
+            className="text-white/75 text-lg sm:text-xl md:text-2xl max-w-2xl mt-8 leading-relaxed font-light"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             From vine to table, from sunrise to starlight — discover why
-            Napa Valley rewards multi-day stays in a way no other destination can.
+            Napa Valley rewards those who stay a little longer.
           </motion.p>
         )}
 
@@ -110,11 +122,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.3 }}
-            className="mt-10 flex flex-col sm:flex-row items-center gap-4"
+            className="mt-12 flex flex-col sm:flex-row items-center gap-5"
           >
             <a
               href="#discover"
-              className="group relative px-8 py-3.5 border border-[#C5A55A]/60 text-white text-xs tracking-[0.25em] uppercase overflow-hidden transition-all duration-500 hover:border-[#C5A55A]"
+              className="group relative px-10 py-4 border border-[#C5A55A]/60 text-white text-[11px] tracking-[0.25em] uppercase overflow-hidden transition-all duration-500 hover:border-[#C5A55A]"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               <span className="relative z-10 group-hover:text-[#2C2C2C] transition-colors duration-500">
@@ -124,7 +136,7 @@ export default function Hero() {
             </a>
             <a
               href="#itinerary"
-              className="text-white/50 text-xs tracking-[0.2em] uppercase hover:text-[#C5A55A] transition-colors duration-300"
+              className="text-white/50 text-[11px] tracking-[0.2em] uppercase hover:text-[#C5A55A] transition-colors duration-300"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               View Itinerary →
@@ -138,9 +150,10 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           >
-            <span className="text-white/30 text-[10px] tracking-[0.3em] uppercase"
+            <span
+              className="text-white/30 text-[10px] tracking-[0.3em] uppercase"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Scroll

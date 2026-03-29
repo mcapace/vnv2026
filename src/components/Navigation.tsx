@@ -29,25 +29,18 @@ export default function Navigation() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#2C2C2C]/95 backdrop-blur-md shadow-lg py-3"
-            : "bg-transparent py-5"
+            ? "bg-[#2C2C2C]/95 backdrop-blur-md shadow-lg py-2"
+            : "bg-transparent py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo / Brand */}
-          <a href="#" className="flex flex-col items-start group">
-            <span
-              className="text-white/90 text-[10px] tracking-[0.35em] uppercase font-light"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              Visit
-            </span>
-            <span
-              className="text-white text-xl tracking-[0.1em] font-semibold -mt-1"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              NAPA VALLEY
-            </span>
+          {/* Logo */}
+          <a href="#" className="flex items-center group">
+            <img
+              src="https://www.visitnapavalley.com/includes/public/assets/shared/napavalley-logo-white.svg"
+              alt="Visit Napa Valley"
+              className="h-10 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+            />
           </a>
 
           {/* Desktop links */}
@@ -56,7 +49,7 @@ export default function Navigation() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-white/80 hover:text-[#C5A55A] text-xs tracking-[0.2em] uppercase transition-colors duration-300 relative group"
+                className="text-white/80 hover:text-[#C5A55A] text-[11px] tracking-[0.2em] uppercase transition-colors duration-300 relative group"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {link.label}
@@ -65,23 +58,17 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Wine Spectator badge */}
-          <div className="hidden md:flex items-center gap-3">
-            <div className="w-[1px] h-8 bg-white/20" />
-            <div className="flex flex-col items-end">
-              <span
-                className="text-white/50 text-[9px] tracking-[0.2em] uppercase"
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
-                Presented by
-              </span>
-              <span
-                className="text-white/80 text-sm tracking-[0.15em] font-medium"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                Wine Spectator
-              </span>
-            </div>
+          {/* CTA button */}
+          <div className="hidden md:block">
+            <a
+              href="https://www.visitnapavalley.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[10px] tracking-[0.2em] uppercase text-[#C5A55A] border border-[#C5A55A]/40 px-5 py-2 hover:bg-[#C5A55A] hover:text-[#2C2C2C] transition-all duration-300"
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
+              Plan Your Visit
+            </a>
           </div>
 
           {/* Mobile menu toggle */}
@@ -120,6 +107,11 @@ export default function Navigation() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 bg-[#2C2C2C]/98 backdrop-blur-lg flex flex-col items-center justify-center gap-8"
           >
+            <img
+              src="https://www.visitnapavalley.com/includes/public/assets/shared/napavalley-logo-white.svg"
+              alt="Visit Napa Valley"
+              className="h-12 w-auto mb-8 opacity-60"
+            />
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.label}

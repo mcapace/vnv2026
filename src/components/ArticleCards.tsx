@@ -10,11 +10,10 @@ const articles = [
     title: "Stay in Napa Valley",
     subtitle: "Where Luxury Meets the Land",
     description:
-      "From the vineyard-edge bungalows of Carneros Resort to the storied charm of Mount View Hotel & Inn in Calistoga, Napa Valley's accommodations are destinations unto themselves.",
+      "From the vineyard-edge bungalows of Carneros Resort to the storied charm of Mount View Hotel & Inn in Calistoga.",
     image:
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop",
     partners: ["Carneros Resort", "Mount View Hotel & Inn"],
-    accent: "#722F37",
   },
   {
     id: "dine",
@@ -22,11 +21,10 @@ const articles = [
     title: "Dine in Napa Valley",
     subtitle: "Every Meal, a Masterpiece",
     description:
-      "From Thomas Keller's legendary Bouchon Bistro to the rustic charm of Calistoga Depot and the vibrant Grove at COPIA, the valley's culinary scene rivals any on earth.",
+      "From Thomas Keller's legendary Bouchon Bistro to the rustic charm of Calistoga Depot and The Grove at COPIA.",
     image:
       "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1200&auto=format&fit=crop",
     partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
-    accent: "#C17744",
   },
   {
     id: "wine",
@@ -34,11 +32,10 @@ const articles = [
     title: "Wine in Napa Valley",
     subtitle: "Taste the Terroir",
     description:
-      "With over 400 wineries, from the grand reopening of Robert Mondavi to the elegant Etude and storied Louis Martini, every sip reveals a new chapter of the valley's story.",
+      "Over 400 wineries, from the grand Robert Mondavi to elegant Etude and storied Louis Martini.",
     image:
       "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=1200&auto=format&fit=crop",
     partners: ["Etude", "Robert Mondavi Winery", "Louis Martini Winery"],
-    accent: "#4A1C23",
   },
   {
     id: "explore",
@@ -46,15 +43,10 @@ const articles = [
     title: "Explore Napa Valley",
     subtitle: "Beyond the Vine",
     description:
-      "Dance the night away at JaM Cellars Ballroom, cruise the valley with Pure Luxury Tours, or challenge friends at Marquee Pinball Lounge — adventure awaits at every turn.",
+      "Dance at JaM Cellars Ballroom, cruise with Pure Luxury Tours, or play at Marquee Pinball Lounge.",
     image:
-      "https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?q=80&w=1200&auto=format&fit=crop",
-    partners: [
-      "JaM Cellars Ballroom",
-      "Pure Luxury Tours",
-      "Marquee Pinball Lounge",
-    ],
-    accent: "#7A8B6F",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop",
+    partners: ["JaM Cellars Ballroom", "Pure Luxury Tours", "Marquee Pinball Lounge"],
   },
 ];
 
@@ -75,13 +67,15 @@ function ArticleCard({
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{
         duration: 0.8,
-        delay: index * 0.15,
+        delay: index * 0.12,
         ease: [0.22, 1, 0.36, 1],
       }}
+      className="h-full"
     >
       <a
         href={`#${article.id}`}
-        className="article-card block group cursor-wine h-[500px] md:h-[600px] relative"
+        className="article-card block group h-full relative"
+        style={{ minHeight: "480px" }}
       >
         {/* Background image */}
         <img
@@ -92,18 +86,18 @@ function ArticleCard({
         />
 
         {/* Content overlay */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 md:p-8">
-          {/* Category label */}
-          <motion.span
-            className="text-[10px] tracking-[0.4em] uppercase text-white/60 mb-2 block"
+        <div className="absolute inset-0 z-10 flex flex-col justify-end p-7 md:p-8">
+          {/* Category pill */}
+          <span
+            className="inline-block self-start text-[9px] tracking-[0.3em] uppercase text-white/90 bg-[#63242D]/70 backdrop-blur-sm px-3 py-1 mb-3"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            Article {index + 1}
-          </motion.span>
+            {article.label}
+          </span>
 
           {/* Title */}
           <h3
-            className="text-2xl md:text-3xl text-white mb-2 leading-snug"
+            className="text-2xl md:text-[1.65rem] text-white mb-1 leading-snug"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             {article.title}
@@ -111,7 +105,7 @@ function ArticleCard({
 
           {/* Subtitle */}
           <p
-            className="text-white/80 text-lg italic mb-4"
+            className="text-white/80 text-lg italic mb-3"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             {article.subtitle}
@@ -120,19 +114,19 @@ function ArticleCard({
           {/* Description - shows on hover */}
           <div className="overflow-hidden">
             <p
-              className="text-white/70 text-sm leading-relaxed max-h-0 group-hover:max-h-24 transition-all duration-500 ease-out"
+              className="text-white/70 text-sm leading-relaxed max-h-0 group-hover:max-h-20 transition-all duration-500 ease-out"
               style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300 }}
             >
               {article.description}
             </p>
           </div>
 
-          {/* Partners */}
-          <div className="flex flex-wrap gap-2 mt-4 max-h-0 group-hover:max-h-16 overflow-hidden transition-all duration-500 ease-out delay-100">
+          {/* Partners pills */}
+          <div className="flex flex-wrap gap-2 mt-3 max-h-0 group-hover:max-h-16 overflow-hidden transition-all duration-500 ease-out delay-75">
             {article.partners.map((partner) => (
               <span
                 key={partner}
-                className="text-[9px] tracking-[0.15em] uppercase text-white/50 px-3 py-1 border border-white/15 rounded-full"
+                className="text-[9px] tracking-[0.12em] uppercase text-white/60 px-2.5 py-1 border border-white/20 rounded-full"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {partner}
@@ -163,12 +157,6 @@ function ArticleCard({
             </svg>
           </div>
         </div>
-
-        {/* Side accent bar */}
-        <div
-          className="absolute left-0 top-0 bottom-0 w-[3px] z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{ backgroundColor: article.accent }}
-        />
       </a>
     </motion.div>
   );
@@ -181,7 +169,7 @@ export default function ArticleCards() {
   return (
     <section className="relative py-24 md:py-32 bg-[#F5F0E8]">
       {/* Section header */}
-      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-16 text-center">
+      <div ref={headerRef} className="max-w-7xl mx-auto px-6 mb-14 text-center">
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -202,8 +190,8 @@ export default function ArticleCards() {
         </motion.h2>
       </div>
 
-      {/* Cards grid */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      {/* Cards grid - equal height via grid stretch */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-5">
         {articles.map((article, i) => (
           <ArticleCard key={article.id} article={article} index={i} />
         ))}
