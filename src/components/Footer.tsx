@@ -22,7 +22,7 @@ export default function Footer() {
         />
         <div className="absolute inset-0 bg-black/55" aria-hidden />
 
-        <div className="section-shell relative z-[1] mx-auto max-w-3xl px-4 text-center">
+        <div className="section-shell section-stack relative z-[1] mx-auto w-full max-w-3xl">
           <p className="section-eyebrow text-[var(--hub-champagne-light)]">Next step</p>
           <h2
             className="mt-4 text-balance text-3xl font-normal leading-tight text-on-photo md:text-4xl"
@@ -30,13 +30,13 @@ export default function Footer() {
           >
             Ready to plan a long weekend?
           </h2>
-          <p className="mx-auto mt-3 max-w-lg text-lg text-white/80 text-on-photo" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <p className="mt-3 max-w-lg text-lg text-white/80 text-on-photo md:mx-auto" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Lock in stays, tables, and cellar appointments on the official
             destination site.
           </p>
 
           <p
-            className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-white/55"
+            className="mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-white/65"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Join 50,000+ travelers exploring the valley each month
@@ -46,14 +46,14 @@ export default function Footer() {
             href="https://www.visitnapavalley.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-champagne mt-8 inline-flex min-h-12 min-w-[200px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)] transition"
+            className="btn-champagne mt-6 inline-flex min-h-12 min-w-[200px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)] transition"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Plan your visit
           </a>
 
           <form
-            className="mx-auto mt-10 max-w-md text-left"
+            className="mt-12 w-full max-w-md"
             onSubmit={(e) => {
               e.preventDefault();
               setSignedUp(true);
@@ -63,23 +63,23 @@ export default function Footer() {
               Email for weekend planning guide
             </label>
             <p
-              className="mb-2 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-white/70"
+              className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Get the weekend planning guide
             </p>
-            <div className="flex flex-col gap-2 sm:flex-row">
+            <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-stretch">
               <input
                 id="footer-email"
                 name="email"
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="footer-email-input min-h-12 flex-1 rounded-md border border-white/25 bg-white/10 px-4 text-sm text-white backdrop-blur-sm outline-none"
+                className="footer-email-input min-h-12 w-full min-w-0 flex-1 rounded-full border border-white/30 bg-white/12 px-5 text-sm text-white backdrop-blur-sm outline-none sm:rounded-full"
               />
               <button
                 type="submit"
-                className="footer-submit min-h-12 shrink-0 rounded-md border border-white/30 bg-transparent px-6 text-[10px] font-semibold uppercase tracking-[0.16em] text-white transition"
+                className="footer-submit min-h-12 w-full shrink-0 rounded-full bg-[var(--hub-champagne)] px-8 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)] transition sm:w-auto sm:min-w-[7.5rem]"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {signedUp ? "Thanks!" : "Submit"}
@@ -95,13 +95,15 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/8 bg-[var(--hub-navy-deep)]">
-        <div className="section-shell mx-auto flex max-w-6xl flex-col items-center gap-8 py-10 md:flex-row md:justify-between">
-          <img
-            src="/images/logos/vnv-primary-white.png"
-            alt="Visit Napa Valley"
-            className="h-7 w-auto opacity-90"
-          />
-          <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2" aria-label="Footer">
+        <div className="section-shell section-shell--wide mx-auto grid grid-cols-1 items-center gap-8 py-10 md:grid-cols-3 md:gap-6">
+          <div className="flex justify-center md:justify-start">
+            <img
+              src="/images/logos/vnv-primary-white.png"
+              alt="Visit Napa Valley"
+              className="h-7 w-auto opacity-90"
+            />
+          </div>
+          <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2 md:gap-x-6" aria-label="Footer">
             {["Stay", "Dine", "Wine", "Explore"].map((link) => (
               <a
                 key={link}
@@ -113,7 +115,7 @@ export default function Footer() {
               </a>
             ))}
           </nav>
-          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-5">
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:justify-end">
             <span className="flex items-center gap-3" aria-label="Wine Spectator co-brand">
               <span className="h-px w-8 bg-white/25" aria-hidden />
               <span
@@ -163,9 +165,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="section-shell mx-auto max-w-6xl pb-8">
+        <div className="section-shell section-shell--wide mx-auto pb-10 pt-2">
           <p
-            className="text-center text-[10px] text-white/28"
+            className="text-center text-[10px] leading-relaxed text-white/35"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             © {new Date().getFullYear()} Visit Napa Valley · Presented with{" "}

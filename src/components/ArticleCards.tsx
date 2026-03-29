@@ -70,7 +70,7 @@ export default function ArticleCards() {
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper-2)]"
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
-      <div ref={headerRef} className="section-shell section-stack mx-auto mb-12 max-w-2xl md:mb-16">
+      <div ref={headerRef} className="section-shell section-stack mx-auto mb-14 max-w-2xl md:mb-20">
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -126,13 +126,11 @@ function ArticleRow({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${article.label} in Napa Valley — open on Visit Napa Valley`}
-        className="group grid lg:grid-cols-2 lg:min-h-[340px]"
+        className={`group flex min-h-0 w-full min-w-0 flex-col lg:min-h-[340px] lg:flex-row ${
+          imageLeft ? "" : "lg:flex-row-reverse"
+        }`}
       >
-        <div
-          className={`relative aspect-[16/11] overflow-hidden sm:aspect-[16/10] lg:aspect-auto lg:min-h-[320px] ${
-            imageLeft ? "lg:order-none" : "lg:order-2"
-          }`}
-        >
+        <div className="relative aspect-[16/11] w-full min-w-0 shrink-0 overflow-hidden sm:aspect-[16/10] lg:aspect-auto lg:h-auto lg:w-1/2 lg:min-h-[320px]">
           <img
             src={article.image}
             alt=""
@@ -146,11 +144,7 @@ function ArticleRow({
           />
         </div>
 
-        <div
-          className={`flex flex-col justify-center px-6 py-10 md:px-10 md:py-12 lg:px-12 ${
-            imageLeft ? "lg:order-none" : "lg:order-1"
-          }`}
-        >
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center px-6 py-10 md:px-10 md:py-12 lg:px-12">
           <span
             className="mb-4 w-fit text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--hub-champagne)]"
             style={{ fontFamily: "'Inter', sans-serif" }}

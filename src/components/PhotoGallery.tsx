@@ -32,7 +32,7 @@ export default function PhotoGallery() {
         <div className="section-stack mb-10 md:mb-12">
           <p className="section-eyebrow text-[var(--hub-champagne-light)]">In the valley</p>
         </div>
-        <div className="grid gap-1 sm:grid-cols-2 sm:gap-2 md:gap-3">
+        <div className="mx-auto grid max-w-[72rem] gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6">
         {photos.map((img, i) => (
           <motion.figure
             key={img.src}

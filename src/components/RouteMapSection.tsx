@@ -46,9 +46,12 @@ export default function RouteMapSection() {
       role="region"
       aria-label="The route through Napa Valley"
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper)]"
-      style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
+      style={{
+        paddingTop: "var(--section-pad-y)",
+        paddingBottom: "clamp(2.25rem, 6vw, var(--section-pad-y))",
+      }}
     >
-      <div className="section-shell mx-auto max-w-4xl">
+      <div className="section-shell mx-auto w-full">
         <motion.div
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -65,7 +68,7 @@ export default function RouteMapSection() {
           initial={reducedMotion ? false : { opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.08 }}
-          className="relative mx-auto mt-10 w-full max-w-3xl overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-[0_16px_48px_-24px_rgba(22,20,26,0.2)]"
+          className="relative mx-auto mt-10 w-full max-w-[52rem] overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-[0_16px_48px_-24px_rgba(22,20,26,0.2)]"
         >
           <div className="aspect-[4/3] w-full min-h-[240px] sm:aspect-[5/3] sm:min-h-[280px]">
             <svg

@@ -86,43 +86,43 @@ export default function Navigation() {
         >
           <div className="section-shell section-shell--wide flex items-center gap-3 py-3.5">
             <div className="flex min-w-0 flex-1 items-center justify-start">
-            <a
-              href="#hero"
-              onClick={(e) => onNavClick(e, "#hero")}
-              className="group flex min-w-0 items-center gap-3"
-            >
-              <img
-                src={onHero ? "/images/logos/vnv-primary-white.png" : "/images/logos/vnv-primary-black.png"}
-                alt="Visit Napa Valley"
-                className="h-7 w-auto opacity-[0.96] sm:h-8"
-              />
-              <span
-                className={`hidden min-w-0 border-l pl-3 md:block ${
-                  onHero ? "border-white/25" : "border-black/10"
-                }`}
+              <a
+                href="#hero"
+                onClick={(e) => onNavClick(e, "#hero")}
+                className="group flex min-w-0 items-center gap-3"
               >
+                <img
+                  src={onHero ? "/images/logos/vnv-primary-white.png" : "/images/logos/vnv-primary-black.png"}
+                  alt="Visit Napa Valley"
+                  className="h-7 w-auto opacity-[0.96] sm:h-8"
+                />
                 <span
-                  className={`block text-[9px] font-semibold uppercase leading-tight tracking-[0.22em] ${
-                    onHero ? "text-white/55" : "text-[var(--hub-muted)]"
+                  className={`hidden min-w-0 border-l pl-3 md:block ${
+                    onHero ? "border-white/25" : "border-black/10"
                   }`}
-                  style={{ fontFamily: "'Inter', sans-serif" }}
                 >
-                  Wine Spectator
+                  <span
+                    className={`block text-[9px] font-semibold uppercase leading-tight tracking-[0.22em] ${
+                      onHero ? "text-white/55" : "text-[var(--hub-muted)]"
+                    }`}
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                  >
+                    Wine Spectator
+                  </span>
+                  <span
+                    className={`mt-0.5 block truncate text-[9px] font-normal tracking-[0.12em] ${
+                      onHero ? "text-white/40" : "text-stone-500"
+                    }`}
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                  >
+                    Content Hub
+                  </span>
                 </span>
-                <span
-                  className={`mt-0.5 block truncate text-[9px] font-normal tracking-[0.12em] ${
-                    onHero ? "text-white/40" : "text-stone-500"
-                  }`}
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
-                  Content Hub
-                </span>
-              </span>
-            </a>
+              </a>
             </div>
 
             <nav className="hidden shrink-0 md:flex" aria-label="Primary">
-              <div className="flex items-center gap-0.5 rounded-full border border-transparent px-1 py-0.5">
+              <div className="flex items-center gap-1 rounded-full border border-transparent px-1.5 py-1">
                 {navLinks.map((link) => {
                   const active = activeId === link.id;
                   return (
@@ -130,7 +130,7 @@ export default function Navigation() {
                       key={link.label}
                       href={link.href}
                       onClick={(e) => onNavClick(e, link.href)}
-                      className={`rounded-full px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
+                      className={`rounded-full px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
                         onHero
                           ? active
                             ? "bg-white/18 text-white"
@@ -153,7 +153,7 @@ export default function Navigation() {
                 href="https://www.visitnapavalley.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`hidden rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.16em] transition sm:inline-flex ${
+                className={`hidden shrink-0 whitespace-nowrap rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.16em] transition sm:inline-flex ${
                   onHero
                     ? "nav-plan-hero bg-white text-[var(--hub-ink)]"
                     : "btn-champagne bg-[var(--hub-champagne)] text-[var(--hub-ink)]"

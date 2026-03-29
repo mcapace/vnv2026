@@ -116,7 +116,7 @@ export default function PartnersSection() {
       className="border-t border-[var(--hub-line)] bg-[var(--hub-card)]"
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
-      <div ref={ref} className="section-shell mx-auto">
+      <div ref={ref} className="section-shell section-shell--wide mx-auto">
         <div className="section-stack mb-8 md:mb-10">
           <motion.p
             initial={reducedMotion ? false : { opacity: 0, y: 8 }}
@@ -135,13 +135,13 @@ export default function PartnersSection() {
           </motion.h2>
         </div>
 
-        <div className="mb-10 flex flex-wrap justify-center gap-2">
+        <div className="mb-10 flex flex-wrap justify-center gap-2.5 sm:gap-3">
           {filters.map((f) => (
             <button
               key={f}
               type="button"
               onClick={() => setFilter(f)}
-              className={`partner-filter-btn min-h-11 rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
+              className={`partner-filter-btn min-h-11 rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
                 filter === f
                   ? "bg-[var(--hub-ink)] text-white"
                   : "partner-filter-btn--idle border border-[var(--hub-line)] bg-white text-[var(--hub-muted)]"
