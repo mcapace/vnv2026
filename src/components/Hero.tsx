@@ -23,14 +23,14 @@ export default function Hero() {
           loading="eager"
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent"
           aria-hidden
         />
       </div>
 
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[2]" />
 
-      <div className="absolute bottom-0 left-0 right-0 z-10 px-[var(--shell-pad-x)] pb-20 text-left">
+      <div className="absolute bottom-0 left-0 right-0 z-10 max-w-4xl pb-16 px-8 text-left md:px-14 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.05 }}
-          className="font-hub-display max-w-3xl text-balance text-[clamp(3.5rem,8vw,6.5rem)] font-normal leading-[1.02] tracking-[-0.02em] text-white"
+          className="font-hub-display mt-4 max-w-3xl text-balance text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] text-white text-on-photo"
         >
           A World in{" "}
           <span className="font-hub-display italic text-[var(--hub-champagne)]">30 Miles</span>
@@ -67,7 +67,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.14 }}
-          className="font-hub-sans mt-8 max-w-xl text-base font-normal leading-[1.7] text-white/75 md:mt-9 md:text-lg md:leading-[1.65]"
+          className="hub-prose mt-4 max-w-lg text-white/75"
         >
           Wine, dine, stay, and explore—extraordinary density in one compact stretch of valley built
           for long weekends.
@@ -77,7 +77,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.22 }}
-          className="mt-8 flex flex-wrap items-center gap-3"
+          className="mt-7 flex flex-wrap items-center gap-3"
         >
           <a
             href="#discover"

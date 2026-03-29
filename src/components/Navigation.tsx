@@ -76,13 +76,18 @@ export default function Navigation() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           aria-label="Site"
-          className={`fixed top-0 left-0 right-0 z-50 flex h-16 items-center justify-between px-[var(--shell-pad-x)] transition-all duration-300 ${
+          className={`fixed top-0 left-0 right-0 z-50 flex h-16 items-center justify-between px-8 transition-all duration-300 md:px-14 lg:px-16 ${
             onHero
               ? "border-b border-transparent bg-transparent shadow-none"
               : "border-b border-[var(--hub-line)] bg-[var(--hub-card)]/95 shadow-sm backdrop-blur-md"
           }`}
         >
-          <div className="relative flex h-full w-full max-w-[88rem] mx-auto items-center justify-between">
+          <div
+            className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-black/30 to-transparent"
+            aria-hidden
+          />
+
+          <div className="relative z-10 flex h-full w-full items-center justify-between">
             <a
               href="#hero"
               onClick={(e) => onNavClick(e, "#hero")}
@@ -91,13 +96,13 @@ export default function Navigation() {
               <img
                 src={onHero ? "/images/logos/vnv-primary-white.png" : "/images/logos/vnv-primary-black.png"}
                 alt="Visit Napa Valley"
-                className="h-7 w-auto object-contain opacity-[0.96]"
+                className="h-7 w-auto object-contain"
                 width={160}
                 height={40}
               />
               <span
-                className={`font-hub-display min-w-0 truncate text-sm italic ${
-                  onHero ? "text-white/85" : "text-[var(--hub-ink)]"
+                className={`font-hub-display hidden text-sm italic sm:block ${
+                  onHero ? "text-white/80" : "text-[var(--hub-ink)]"
                 }`}
               >
                 Wine Spectator
@@ -105,7 +110,7 @@ export default function Navigation() {
             </a>
 
             <nav
-              className="absolute left-1/2 top-1/2 z-[5] hidden -translate-x-1/2 -translate-y-1/2 md:flex md:items-center md:gap-1"
+              className="absolute left-1/2 top-1/2 z-[5] hidden -translate-x-1/2 -translate-y-1/2 md:flex md:items-center md:gap-0.5"
               aria-label="Primary"
             >
               {navLinks.map((link) => {
@@ -115,15 +120,19 @@ export default function Navigation() {
                     key={link.label}
                     href={link.href}
                     onClick={(e) => onNavClick(e, link.href)}
-                    className={`rounded-full border-b-2 px-3 py-1.5 text-xs font-medium uppercase tracking-[0.12em] transition-colors duration-200 ${
+                    className={
                       onHero
-                        ? active
-                          ? "nav-pill-hero border-white/70 text-white"
-                          : "nav-pill-hero border-transparent text-white/80"
-                        : active
-                          ? "nav-pill-solid border-[var(--hub-champagne)] text-[var(--hub-ink)]"
-                          : "nav-pill-solid border-transparent text-[var(--hub-muted)]"
-                    }`}
+                        ? `rounded-full px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.15em] transition-colors duration-200 ${
+                            active
+                              ? "bg-white/15 text-white"
+                              : "text-white/80 hover:bg-white/10 hover:text-white"
+                          }`
+                        : `rounded-full px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.15em] transition-colors duration-200 ${
+                            active
+                              ? "bg-black/5 text-[var(--hub-ink)]"
+                              : "text-[var(--hub-muted)] hover:bg-black/5 hover:text-[var(--hub-ink)]"
+                          }`
+                    }
                   >
                     {link.label}
                   </a>
@@ -136,10 +145,10 @@ export default function Navigation() {
                 href="https://www.visitnapavalley.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`hidden items-center rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] transition-all duration-200 md:inline-flex ${
+                className={`hidden rounded-full border px-5 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.1em] transition-all duration-200 md:inline-flex ${
                   onHero
-                    ? "nav-plan-hero border border-white/50 text-white"
-                    : "border border-[var(--hub-line)] bg-[var(--hub-paper)] text-[var(--hub-ink)] hover:border-[var(--hub-champagne)]"
+                    ? "border-white/50 text-white hover:bg-white/90 hover:text-[var(--hub-ink)]"
+                    : "border-[var(--hub-line)] text-[var(--hub-ink)] hover:border-[var(--hub-champagne)] hover:bg-[var(--hub-paper)]"
                 }`}
               >
                 Plan visit
