@@ -141,10 +141,10 @@ export default function PartnersSection() {
               key={f}
               type="button"
               onClick={() => setFilter(f)}
-              className={`min-h-11 rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
+              className={`partner-filter-btn min-h-11 rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
                 filter === f
                   ? "bg-[var(--hub-ink)] text-white"
-                  : "border border-[var(--hub-line)] bg-white text-[var(--hub-muted)] hover:border-[var(--hub-wine)]/40"
+                  : "partner-filter-btn--idle border border-[var(--hub-line)] bg-white text-[var(--hub-muted)]"
               }`}
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
@@ -160,14 +160,14 @@ export default function PartnersSection() {
               initial={reducedMotion ? false : { opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: reducedMotion ? 0 : 0.04 + i * 0.03 }}
-              className="group flex flex-col overflow-hidden rounded-xl border border-[var(--hub-line)] bg-white shadow-sm transition duration-[400ms] ease-out hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)]"
+              className="partner-card group flex flex-col overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-[0_10px_40px_-18px_rgba(22,20,26,0.14)] transition-shadow duration-[400ms] ease-out"
             >
-              <a href={p.href} target="_blank" rel="noopener noreferrer" className="flex flex-1 flex-col outline-none focus-visible:ring-2 focus-visible:ring-[var(--hub-wine)]">
+              <a href={p.href} target="_blank" rel="noopener noreferrer" className="flex flex-1 flex-col">
                 <div className="relative aspect-[3/2] overflow-hidden">
                   <img
                     src={p.image}
                     alt=""
-                    className="h-full w-full object-cover transition duration-[400ms] ease-out group-hover:brightness-110"
+                    className="h-full w-full object-cover transition duration-[400ms] ease-out"
                     loading="lazy"
                     width={600}
                     height={400}
@@ -196,7 +196,7 @@ export default function PartnersSection() {
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   >
                     Visit
-                    <span className="transition-colors group-hover:text-[var(--hub-wine)]">→</span>
+                    <span className="text-[var(--hub-wine)]">→</span>
                   </span>
                 </div>
               </a>

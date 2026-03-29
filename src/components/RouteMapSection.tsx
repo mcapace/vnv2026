@@ -6,10 +6,10 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 type Cat = "stay" | "wine" | "dine" | "explore";
 
 const pinColors: Record<Cat, string> = {
-  stay: "#722f37",
-  wine: "#4a1f26",
-  dine: "#a65d3f",
-  explore: "#5a6b52",
+  stay: "#6b2e36",
+  wine: "#4a252c",
+  dine: "#8b5138",
+  explore: "#55624e",
 };
 
 const markers: Array<{
@@ -44,81 +44,87 @@ export default function RouteMapSection() {
     <section
       ref={ref}
       role="region"
-      aria-label="The route — thirty miles through Napa Valley"
+      aria-label="The route through Napa Valley"
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper)]"
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
-      <div className="section-shell mx-auto max-w-5xl">
+      <div className="section-shell mx-auto max-w-4xl">
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 14 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           className="mx-auto max-w-2xl text-center"
         >
           <p className="section-eyebrow">The route</p>
-          <h2 className="section-title mt-4">
-            Thirty miles, one unforgettable road
-          </h2>
-          <p className="hub-prose mx-auto mt-5 max-w-xl">
-            From Carneros in the south to Calistoga in the north—most stops sit
-            within a fifteen-minute drive of their neighbors.
+          <h2 className="section-title mt-4">Thirty miles, one unforgettable road</h2>
+          <p className="hub-prose mx-auto mt-5 max-w-lg">
+            From Carneros to Calistoga—most featured stops sit within a short drive of each other along the valley floor.
           </p>
         </motion.div>
 
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: reducedMotion ? 0 : 0.1 }}
-          className="relative mx-auto mt-12 aspect-[5/3] max-h-[min(72vh,560px)] w-full overflow-hidden rounded-xl border border-[var(--hub-line)] bg-[#eef1f6] shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
+          transition={{ delay: reducedMotion ? 0 : 0.08 }}
+          className="relative mx-auto mt-10 w-full max-w-3xl overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-[0_16px_48px_-24px_rgba(22,20,26,0.2)]"
         >
-          <svg
-            viewBox="0 0 100 100"
-            className="h-full w-full touch-pan-x touch-pan-y"
-            role="img"
-            aria-label="Stylized map of Napa Valley corridor with partner locations"
-          >
-            <defs>
-              <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#e8e4dc" />
-                <stop offset="100%" stopColor="#d4cfc5" />
-              </linearGradient>
-            </defs>
-            <rect width="100" height="100" fill="url(#hill)" />
-            <path
-              d="M 54 82 Q 48 60 46 44 T 38 18"
-              fill="none"
-              stroke="#c4b8a8"
-              strokeWidth="1.2"
-              opacity="0.9"
-            />
-            <text x="50" y="12" textAnchor="middle" fill="#6b6560" fontSize="3.2" fontFamily="Inter, sans-serif" letterSpacing="0.35em">
-              CALISTOGA
-            </text>
-            <text x="45" y="88" textAnchor="middle" fill="#6b6560" fontSize="3.2" fontFamily="Inter, sans-serif" letterSpacing="0.35em">
-              CARNEROS
-            </text>
-            {markers.map((m) => (
-              <g key={m.id} transform={`translate(${m.x},${m.y})`} className="cursor-pointer">
-                <circle
-                  r="5"
-                  fill={pinColors[m.cat]}
-                  opacity={active === m.id ? 1 : 0.88}
-                  stroke="#fff"
-                  strokeWidth="1.2"
-                  onMouseEnter={() => setActive(m.id)}
-                  onMouseLeave={() => setActive(null)}
-                  onClick={() => setActive(active === m.id ? null : m.id)}
-                />
-                <circle r="8" fill="transparent" />
-              </g>
-            ))}
-          </svg>
-
-          <div className="pointer-events-none absolute left-3 right-3 top-3 flex flex-wrap justify-center gap-2 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-muted)] drop-shadow-sm">
-            <span className="rounded-full bg-white/90 px-2 py-1">~15 min between clusters</span>
+          <div className="aspect-[4/3] w-full min-h-[240px] sm:aspect-[5/3] sm:min-h-[280px]">
+            <svg
+              viewBox="0 0 100 100"
+              className="h-full w-full"
+              preserveAspectRatio="xMidYMid slice"
+              role="img"
+              aria-label="Stylized Napa Valley corridor map with partner pins"
+            >
+              <defs>
+                <linearGradient id="mapParchment" x1="0.5" y1="0" x2="0.5" y2="1">
+                  <stop offset="0%" stopColor="#f0eae2" />
+                  <stop offset="100%" stopColor="#ddd4c8" />
+                </linearGradient>
+              </defs>
+              <rect width="100" height="100" fill="url(#mapParchment)" />
+              <path
+                d="M 54 84 Q 47 62 45 46 Q 43 32 40 22 L 38 16"
+                fill="none"
+                stroke="#6b2e36"
+                strokeOpacity="0.28"
+                strokeWidth="0.85"
+                strokeLinecap="round"
+              />
+              <text x="50" y="11" textAnchor="middle" fill="#5e5852" fontSize="2.6" fontFamily="Georgia, serif" letterSpacing="0.12em" opacity="0.9">
+                Calistoga
+              </text>
+              <text x="48" y="91" textAnchor="middle" fill="#5e5852" fontSize="2.6" fontFamily="Georgia, serif" letterSpacing="0.12em" opacity="0.9">
+                Carneros
+              </text>
+              {markers.map((m) => (
+                <g key={m.id} transform={`translate(${m.x},${m.y})`}>
+                  <circle
+                    r="7"
+                    fill="transparent"
+                    className="cursor-pointer"
+                    onMouseEnter={() => setActive(m.id)}
+                    onMouseLeave={() => setActive(null)}
+                    onClick={() => setActive(active === m.id ? null : m.id)}
+                  />
+                  <circle
+                    r="3.2"
+                    fill={pinColors[m.cat]}
+                    stroke="#fff"
+                    strokeWidth="0.9"
+                    opacity={active === m.id ? 1 : 0.92}
+                    className="pointer-events-none"
+                  />
+                </g>
+              ))}
+            </svg>
           </div>
 
+          <p className="absolute left-4 top-4 max-w-[11rem] rounded-md border border-[var(--hub-line)] bg-white/95 px-2.5 py-1.5 text-[9px] font-semibold uppercase leading-snug tracking-[0.1em] text-[var(--hub-muted)] shadow-sm backdrop-blur-sm">
+            ~15 min between clusters
+          </p>
+
           <div
-            className={`pointer-events-auto absolute bottom-3 left-3 right-3 z-10 mx-auto max-w-sm rounded-lg border border-[var(--hub-line)] bg-[var(--hub-card)]/98 p-3 shadow-lg backdrop-blur-sm transition-opacity duration-200 md:left-auto md:right-4 md:mx-0 ${
+            className={`absolute bottom-3 left-3 right-3 z-10 mx-auto max-w-xs rounded-[var(--hub-radius-sm)] border border-[var(--hub-line)] bg-[var(--hub-card)] p-3 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15)] transition-opacity duration-200 md:left-auto md:right-4 md:mx-0 ${
               active ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
           >
@@ -131,9 +137,8 @@ export default function RouteMapSection() {
           </div>
         </motion.div>
 
-        <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-[var(--hub-muted)]">
-          Illustrative map — distances are approximate driving times along the
-          valley corridor.
+        <p className="mx-auto mt-5 max-w-xl text-center text-xs text-[var(--hub-muted)]">
+          Illustrative map · approximate positions along the Napa Valley corridor.
         </p>
       </div>
     </section>
@@ -152,28 +157,31 @@ function MapTooltip({
       <img
         src={marker.thumb}
         alt=""
-        className="h-14 w-20 shrink-0 rounded object-cover"
-        width={80}
-        height={56}
+        className="h-12 w-[4.5rem] shrink-0 rounded-sm object-cover"
+        width={72}
+        height={48}
       />
       <div className="min-w-0 flex-1">
-            <span
-              className="inline-block rounded px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-white"
-              style={{ backgroundColor: pinColors[marker.cat] }}
-            >
-              {marker.cat}
-            </span>
-            <h3 className="mt-1 text-sm font-semibold text-[var(--hub-ink)]" style={{ fontFamily: "'Playfair Display', serif" }}>
-              {marker.title}
-            </h3>
-            <p className="mt-0.5 text-xs text-[var(--hub-muted)]">{marker.blurb}</p>
-            <button
-              type="button"
-              className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--hub-wine)] md:hidden"
-              onClick={onClose}
-            >
-              Close
-            </button>
+        <span
+          className="inline-block rounded-sm px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider text-white"
+          style={{ backgroundColor: pinColors[marker.cat] }}
+        >
+          {marker.cat}
+        </span>
+        <h3
+          className="mt-1.5 text-sm font-normal leading-tight text-[var(--hub-ink)]"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          {marker.title}
+        </h3>
+        <p className="mt-0.5 text-xs leading-snug text-[var(--hub-muted)]">{marker.blurb}</p>
+        <button
+          type="button"
+          className="mt-2 text-[10px] font-semibold uppercase tracking-wide text-[var(--hub-wine)] md:hidden"
+          onClick={onClose}
+        >
+          Close
+        </button>
       </div>
     </div>
   );

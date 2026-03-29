@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-[var(--hub-line)] text-white">
       <div
-        className="relative overflow-hidden bg-[#141212]"
+        className="relative overflow-hidden bg-[var(--hub-navy)]"
         style={{ paddingTop: "clamp(3rem,8vw,4.5rem)", paddingBottom: "clamp(3rem,8vw,4.5rem)" }}
       >
         <img
@@ -23,7 +23,7 @@ export default function Footer() {
         <div className="absolute inset-0 bg-black/55" aria-hidden />
 
         <div className="section-shell relative z-[1] mx-auto max-w-3xl px-4 text-center">
-          <p className="section-eyebrow text-[var(--hub-gold-bright)]">Next step</p>
+          <p className="section-eyebrow text-[var(--hub-champagne-light)]">Next step</p>
           <h2
             className="mt-4 text-balance text-3xl font-normal leading-tight text-on-photo md:text-4xl"
             style={{ fontFamily: "'Playfair Display', serif" }}
@@ -46,7 +46,7 @@ export default function Footer() {
             href="https://www.visitnapavalley.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex min-h-12 min-w-[200px] items-center justify-center rounded-md bg-[var(--hub-gold-bright)] px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#1a1a1a] transition hover:bg-white hover:text-[#1a1a1a]"
+            className="btn-champagne mt-8 inline-flex min-h-12 min-w-[200px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)] transition"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Plan your visit
@@ -75,11 +75,11 @@ export default function Footer() {
                 type="email"
                 required
                 placeholder="you@example.com"
-                className="min-h-12 flex-1 rounded-md border border-white/25 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 backdrop-blur-sm outline-none focus-visible:ring-2 focus-visible:ring-[var(--hub-gold-bright)]"
+                className="footer-email-input min-h-12 flex-1 rounded-md border border-white/25 bg-white/10 px-4 text-sm text-white backdrop-blur-sm outline-none"
               />
               <button
                 type="submit"
-                className="min-h-12 shrink-0 rounded-md border border-white/30 bg-transparent px-6 text-[10px] font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-white/12"
+                className="footer-submit min-h-12 shrink-0 rounded-md border border-white/30 bg-transparent px-6 text-[10px] font-semibold uppercase tracking-[0.16em] text-white transition"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {signedUp ? "Thanks!" : "Submit"}
@@ -94,7 +94,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/8 bg-[#0e0e0e]">
+      <div className="border-t border-white/8 bg-[var(--hub-navy-deep)]">
         <div className="section-shell mx-auto flex max-w-6xl flex-col items-center gap-8 py-10 md:flex-row md:justify-between">
           <img
             src="/images/logos/vnv-primary-white.png"
@@ -106,7 +106,7 @@ export default function Footer() {
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className="min-h-10 text-[11px] font-medium uppercase tracking-[0.16em] text-white/50 transition hover:text-[var(--hub-gold)]"
+                className="footer-anchor min-h-10 text-[11px] font-medium uppercase tracking-[0.16em] text-white/50 transition"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {link}
@@ -131,7 +131,7 @@ export default function Footer() {
                 href="https://www.instagram.com/visitnapavalley/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 min-w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition hover:border-white/40 hover:text-white"
+                className="footer-social flex h-11 w-11 min-w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition"
                 aria-label="Visit Napa Valley on Instagram"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -142,7 +142,7 @@ export default function Footer() {
                 href="https://www.facebook.com/visitnapavalley"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 min-w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition hover:border-white/40 hover:text-white"
+                className="footer-social flex h-11 w-11 min-w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition"
                 aria-label="Visit Napa Valley on Facebook"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -153,7 +153,7 @@ export default function Footer() {
                 href="https://www.youtube.com/user/VisitNapaValley"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-11 w-11 min-w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition hover:border-white/40 hover:text-white"
+                className="footer-social flex h-11 w-11 min-w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition"
                 aria-label="Visit Napa Valley on YouTube"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>

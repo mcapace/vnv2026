@@ -41,7 +41,7 @@ function StatCell({
         {stat.suffixPlus ? (showPlus ? "+" : "") : ""}
       </span>
       <span
-        className="mt-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--hub-gold-bright)]"
+        className="mt-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--hub-champagne-light)]"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
         {stat.label}
@@ -91,7 +91,7 @@ export default function IntroSection() {
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.08 }}
-          className="hub-prose mx-auto mt-8 max-w-2xl"
+          className="hub-prose-serif mx-auto mt-8 max-w-2xl"
         >
           No other wine country packs this much into a short drive. Long
           weekends here feel full—because they are—with room to slow down
@@ -101,8 +101,13 @@ export default function IntroSection() {
 
       <div
         ref={statsRef}
-        className="bg-[var(--hub-navy)] text-white"
-        style={{ paddingTop: "min(3.75rem, 60px)", paddingBottom: "min(3.75rem, 60px)" }}
+        className="text-white"
+        style={{
+          paddingTop: "min(3.5rem, 56px)",
+          paddingBottom: "min(3.5rem, 56px)",
+          background:
+            "linear-gradient(165deg, var(--hub-navy) 0%, var(--hub-navy-mid) 55%, var(--hub-navy-deep) 100%)",
+        }}
       >
         <div className="section-shell max-w-5xl">
           <div className="grid grid-cols-2 divide-x divide-y divide-white/18 md:grid-cols-4 md:divide-y-0">
@@ -116,15 +121,15 @@ export default function IntroSection() {
               />
             ))}
           </div>
-          <div className="mx-auto mt-10 max-w-2xl border-t border-white/20 pt-8">
+          <div className="mx-auto mt-10 max-w-2xl border-t border-white/12 pt-8">
             <p
-              className="text-center text-lg italic text-[var(--hub-card)]/90 md:text-xl"
+              className="text-center text-lg italic text-white/88 md:text-xl"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
               “The most concentrated wine region in the world.”
             </p>
-            <p className="mt-2 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hub-gold-bright)]">
-              — Wine Spectator
+            <p className="mt-3 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-champagne-light)]">
+              Wine Spectator
             </p>
           </div>
         </div>

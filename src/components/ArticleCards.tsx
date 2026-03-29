@@ -15,7 +15,7 @@ const articles = [
     id: "stay",
     label: "Stay",
     title: "Stay in Napa Valley",
-    subtitle: "Where luxury meets the land",
+    subtitle: "Where the valley becomes your room",
     description:
       "From vineyard-edge bungalows at Carneros Resort to the charm of Mount View Hotel & Inn in Calistoga.",
     image: "/images/photography/solage-pool-night.jpg",
@@ -26,9 +26,9 @@ const articles = [
     id: "dine",
     label: "Dine",
     title: "Dine in Napa Valley",
-    subtitle: "Every meal, a centerpiece",
+    subtitle: "Every reservation earns the drive",
     description:
-      "Bouchon Bistro, Calistoga Depot, The Grove at COPIA—dense talent in a short stretch of road.",
+      "Bouchon Bistro, Calistoga Depot, The Grove at COPIA—extraordinary kitchens, minutes apart.",
     image: "/images/photography/press-plating.jpg",
     objectPosition: "50% 40%",
     partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
@@ -37,9 +37,9 @@ const articles = [
     id: "wine",
     label: "Wine",
     title: "Wine in Napa Valley",
-    subtitle: "Taste the terroir",
+    subtitle: "Four hundred cellar doors, one corridor",
     description:
-      "Four hundred wineries—icons like Robert Mondavi, elegance at Etude, history at Louis Martini.",
+      "Icons like Robert Mondavi, elegance at Etude, history at Louis Martini—without endless mileage.",
     image: "/images/photography/wine-cellar-toast.jpg",
     objectPosition: "50% 35%",
     partners: ["Etude", "Robert Mondavi", "Louis Martini"],
@@ -49,9 +49,9 @@ const articles = [
     id: "explore",
     label: "Explore",
     title: "Explore in Napa Valley",
-    subtitle: "Beyond the vine",
+    subtitle: "When the day doesn’t end at the last pour",
     description:
-      "JaM Cellars Ballroom, Pure Luxury Tours, Marquee Pinball—proof the valley doesn’t end at the tasting room.",
+      "JaM Cellars Ballroom, Pure Luxury Tours, Marquee Pinball—the valley after dark and between vines.",
     image: "/images/photography/cadet-nightlife.jpg",
     objectPosition: "50% 40%",
     partners: ["JaM Cellars", "Pure Luxury Tours", "Marquee Pinball"],
@@ -67,16 +67,16 @@ export default function ArticleCards() {
     <section
       role="region"
       aria-labelledby="features-heading"
-      className="border-t border-[var(--hub-line)] bg-[var(--hub-card)]"
+      className="border-t border-[var(--hub-line)] bg-[var(--hub-paper-2)]"
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
-      <div ref={headerRef} className="section-shell mx-auto mb-10 max-w-2xl text-center md:mb-14">
+      <div ref={headerRef} className="section-shell mx-auto mb-12 max-w-2xl text-center md:mb-16">
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           className="section-eyebrow"
         >
-          Four features
+          Four pillars
         </motion.p>
         <motion.h2
           id="features-heading"
@@ -91,13 +91,13 @@ export default function ArticleCards() {
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
-          className="hub-prose mt-5"
+          className="hub-prose mx-auto mt-5 max-w-xl"
         >
           Four ways to experience the valley — each one closer than you think.
         </motion.p>
       </div>
 
-      <div className="border-y border-[var(--hub-line)]">
+      <div className="section-shell mx-auto flex max-w-5xl flex-col gap-10 md:gap-14">
         {articles.map((article, index) => (
           <ArticleRow key={article.id} article={article} index={index} />
         ))}
@@ -119,17 +119,17 @@ function ArticleRow({
   return (
     <article
       id={article.id}
-      className="scroll-mt-28 border-b border-[var(--hub-line)] bg-[var(--hub-paper)] last:border-b-0"
+      className="scroll-mt-28 overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-[0_12px_48px_-20px_rgba(22,20,26,0.18)]"
     >
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`${article.title} — open on Visit Napa Valley`}
-        className="group grid transition-shadow duration-[400ms] ease-in-out hover:shadow-[0_24px_60px_rgba(0,0,0,0.1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--hub-wine)] lg:grid-cols-2 lg:min-h-[380px]"
+        aria-label={`${article.label} in Napa Valley — open on Visit Napa Valley`}
+        className="group grid lg:grid-cols-2 lg:min-h-[340px]"
       >
         <div
-          className={`relative h-56 overflow-hidden sm:h-64 lg:h-full ${
+          className={`relative aspect-[16/11] overflow-hidden sm:aspect-[16/10] lg:aspect-auto lg:min-h-[320px] ${
             imageLeft ? "lg:order-none" : "lg:order-2"
           }`}
         >
@@ -137,7 +137,7 @@ function ArticleRow({
             src={article.image}
             alt=""
             role="presentation"
-            className="h-full w-full object-cover transition duration-[400ms] ease-in-out group-hover:brightness-110"
+            className="h-full w-full object-cover transition duration-500 ease-out"
             style={{ objectPosition: article.objectPosition }}
             loading="lazy"
             width={1200}
@@ -147,47 +147,44 @@ function ArticleRow({
         </div>
 
         <div
-          className={`flex flex-col justify-center px-6 py-10 lg:px-12 lg:py-14 xl:px-16 ${
+          className={`flex flex-col justify-center px-6 py-10 md:px-10 md:py-12 lg:px-12 ${
             imageLeft ? "lg:order-none" : "lg:order-1"
           }`}
         >
           <span
-            className="mb-3 w-fit text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--hub-gold-bright)]"
+            className="mb-4 w-fit text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--hub-champagne)]"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {article.label}
           </span>
           <h3
-            className="text-[clamp(1.65rem,3.2vw,2.25rem)] font-normal leading-tight text-[var(--hub-ink)]"
+            className="text-[clamp(1.75rem,3.5vw,2.35rem)] font-normal leading-[1.08] text-[var(--hub-ink)]"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             {article.title}
           </h3>
           <p
-            className="mt-2 text-xl italic text-[var(--hub-wine)]"
+            className="mt-3 text-xl font-normal italic text-[var(--hub-wine)] md:text-[1.35rem]"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             {article.subtitle}
           </p>
           {"wineSpectatorPick" in article && article.wineSpectatorPick && (
             <p
-              className="mt-3 inline-flex w-fit items-center gap-2 rounded border border-[var(--hub-wine)]/25 bg-white px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[var(--hub-wine)]"
+              className="mt-4 inline-flex w-fit items-center rounded-full border border-rose-900/15 bg-[var(--hub-accent-soft)] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-wine)]"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Wine Spectator editor&apos;s pick
             </p>
           )}
-          <p
-            className="mt-5 max-w-md text-[0.9375rem] leading-[1.7] text-[var(--hub-muted)]"
-            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
-          >
+          <p className="mt-6 max-w-md text-[0.9375rem] leading-[1.75] text-[var(--hub-muted)]">
             {article.description}
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             {article.partners.map((p) => (
               <span
                 key={p}
-                className="rounded-full border border-[var(--hub-line)] bg-[var(--hub-card)] px-3 py-1.5 text-[9px] font-medium uppercase tracking-wider text-[var(--hub-muted)] transition hover:underline"
+                className="rounded-full border border-[var(--hub-line)] bg-[var(--hub-paper)] px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.08em] text-[var(--hub-muted)]"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {p}
@@ -195,11 +192,11 @@ function ArticleRow({
             ))}
           </div>
           <span
-            className="mt-8 inline-flex w-fit items-center gap-2 border-b-2 border-[var(--hub-wine)] pb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hub-wine)] transition group-hover:border-amber-800 group-hover:text-amber-900"
+            className="mt-8 inline-flex w-fit items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-wine)]"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Visit Napa Valley
-            <span aria-hidden className="inline-block transition-colors group-hover:text-[var(--hub-gold-bright)]">
+            <span aria-hidden className="text-[var(--hub-champagne)]">
               →
             </span>
           </span>

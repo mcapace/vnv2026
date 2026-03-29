@@ -55,7 +55,7 @@ export default function VideoSection() {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-            className="section-eyebrow text-[var(--hub-gold-bright)] text-on-photo"
+            className="section-eyebrow text-[var(--hub-champagne-light)] text-on-photo"
           >
             Film
           </motion.p>
@@ -67,7 +67,7 @@ export default function VideoSection() {
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             See it to{" "}
-            <span className="text-[var(--hub-gold-bright)]">believe it</span>
+            <span className="text-[var(--hub-champagne-light)]">believe it</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 8 }}
@@ -136,7 +136,7 @@ export default function VideoSection() {
                 ref={closeRef}
                 type="button"
                 onClick={onClose}
-                className="absolute right-3 top-3 z-10 flex h-11 w-11 min-w-11 items-center justify-center rounded-full bg-black/55 text-white transition hover:bg-black/80"
+                className="video-close absolute right-3 top-3 z-10 flex h-11 w-11 min-w-11 items-center justify-center rounded-full bg-black/55 text-white transition"
                 aria-label="Close video"
               >
                 <svg

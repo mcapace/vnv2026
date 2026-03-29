@@ -221,7 +221,7 @@ export default function ItinerarySection() {
             href="https://www.visitnapavalley.com/plan-your-trip/"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex min-h-12 items-center justify-center rounded-md border-2 border-[var(--hub-wine)] bg-transparent px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hub-wine)] transition hover:bg-[var(--hub-wine)] hover:text-white"
+            className="itinerary-outline-cta mt-4 inline-flex min-h-12 items-center justify-center rounded-full border-2 border-[var(--hub-wine)] bg-transparent px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hub-wine)] transition"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Customize this itinerary
@@ -247,21 +247,21 @@ function DayAccordion({
   const headerId = `${panelId}-label`;
 
   return (
-    <div className="overflow-hidden rounded-lg border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-sm">
+    <div className="overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-[0_8px_40px_-20px_rgba(22,20,26,0.12)]">
       <button
         type="button"
         id={headerId}
         aria-expanded={isOpen}
         aria-controls={panelId}
         onClick={onToggle}
-        className="flex w-full min-h-14 items-start gap-4 px-4 py-4 text-left transition hover:bg-[var(--hub-paper)] sm:px-6"
+        className="itinerary-day-trigger flex w-full min-h-14 items-start gap-4 px-4 py-4 text-left transition sm:px-6"
       >
-        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--hub-wine)]/25 text-xs font-bold text-[var(--hub-wine)]">
+        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-rose-900/20 text-xs font-bold text-[var(--hub-wine)]">
           {index + 1}
         </span>
         <span className="min-w-0 flex-1">
           <span
-            className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--hub-gold-bright)]"
+            className="text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--hub-champagne)]"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             {day.day}
@@ -300,7 +300,7 @@ function DayAccordion({
           <DayRouteMini label={day.mapHint} />
           <ul className="relative mt-8 space-y-0 pl-2 sm:pl-3">
             <span
-              className="absolute left-[25px] top-2 bottom-2 w-px bg-[var(--hub-wine)]/35 sm:left-[29px]"
+              className="absolute left-[25px] top-2 bottom-2 w-px bg-rose-900/25 sm:left-[29px]"
               aria-hidden
             />
             {day.events.map((event, ei) => (
@@ -349,7 +349,7 @@ function DayAccordion({
                       href={event.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-wine)] underline-offset-4 hover:underline"
+                      className="itinerary-learn text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-wine)] underline-offset-4"
                       style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       Learn more →
@@ -357,7 +357,7 @@ function DayAccordion({
                   </h4>
                   {"wsTip" in event && event.wsTip && (
                     <p
-                      className="mt-3 border-l-2 border-[var(--hub-gold-bright)] pl-3 text-sm italic text-[var(--hub-muted)]"
+                      className="mt-3 border-l-2 border-[var(--hub-champagne)] pl-3 text-sm italic text-[var(--hub-muted)]"
                       style={{ fontFamily: "'Cormorant Garamond', serif" }}
                     >
                       {event.wsTip}
