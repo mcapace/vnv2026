@@ -58,8 +58,8 @@ export default function RouteMapSection() {
           className="section-stack mx-auto max-w-2xl"
         >
           <p className="section-eyebrow">The route</p>
-          <h2 className="section-title mt-4">Thirty miles, one unforgettable road</h2>
-          <p className="hub-prose mt-5 max-w-lg">
+          <h2 className="section-title">Thirty miles, one unforgettable road</h2>
+          <p className="hub-prose max-w-lg">
             From Carneros to Calistoga—most featured stops sit within a short drive of each other along the valley floor.
           </p>
         </motion.div>
@@ -68,7 +68,7 @@ export default function RouteMapSection() {
           initial={reducedMotion ? false : { opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.08 }}
-          className="relative mx-auto mt-10 w-full max-w-[52rem] overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-[0_16px_48px_-24px_rgba(22,20,26,0.2)]"
+          className="hub-card-elevated relative mx-auto mt-12 w-full max-w-[52rem] overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] md:mt-14"
         >
           <div className="aspect-[4/3] w-full min-h-[240px] sm:aspect-[5/3] sm:min-h-[280px]">
             <svg
@@ -140,7 +140,7 @@ export default function RouteMapSection() {
           </div>
         </motion.div>
 
-        <p className="mx-auto mt-5 max-w-xl text-center text-xs text-[var(--hub-muted)]">
+        <p className="mx-auto mt-8 max-w-xl text-center text-xs leading-relaxed text-[var(--hub-muted)] md:mt-10">
           Illustrative map · approximate positions along the Napa Valley corridor.
         </p>
       </div>

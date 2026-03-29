@@ -117,7 +117,7 @@ export default function PartnersSection() {
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
       <div ref={ref} className="section-shell section-shell--wide mx-auto">
-        <div className="section-stack mb-8 md:mb-10">
+        <div className="section-stack mb-10 md:mb-12">
           <motion.p
             initial={reducedMotion ? false : { opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -129,19 +129,20 @@ export default function PartnersSection() {
             initial={reducedMotion ? false : { opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: reducedMotion ? 0 : 0.06 }}
-            className="section-title mt-4 max-w-xl"
+            className="section-title max-w-xl"
           >
             Spots that anchor this story
           </motion.h2>
         </div>
 
-        <div className="mb-10 flex flex-wrap justify-center gap-2.5 sm:gap-3">
+        <div className="mb-12 flex justify-center md:mb-14">
+          <div className="partner-filter-bar">
           {filters.map((f) => (
             <button
               key={f}
               type="button"
               onClick={() => setFilter(f)}
-              className={`partner-filter-btn min-h-11 rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
+              className={`partner-filter-btn min-h-10 rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition sm:min-h-11 sm:px-5 sm:py-2.5 ${
                 filter === f
                   ? "bg-[var(--hub-ink)] text-white"
                   : "partner-filter-btn--idle border border-[var(--hub-line)] bg-white text-[var(--hub-muted)]"
@@ -151,16 +152,17 @@ export default function PartnersSection() {
               {f}
             </button>
           ))}
+          </div>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-7 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
           {filtered.map((p, i) => (
             <motion.article
               key={p.name}
               initial={reducedMotion ? false : { opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: reducedMotion ? 0 : 0.04 + i * 0.03 }}
-              className="partner-card group flex flex-col overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-[0_10px_40px_-18px_rgba(22,20,26,0.14)] transition-shadow duration-[400ms] ease-out"
+              className="partner-card hub-card-elevated group flex flex-col overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)]"
             >
               <a href={p.href} target="_blank" rel="noopener noreferrer" className="flex flex-1 flex-col">
                 <div className="relative aspect-[3/2] overflow-hidden">

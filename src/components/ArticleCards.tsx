@@ -70,7 +70,7 @@ export default function ArticleCards() {
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper-2)]"
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
-      <div ref={headerRef} className="section-shell section-stack mx-auto mb-14 max-w-2xl md:mb-20">
+      <div ref={headerRef} className="section-shell section-stack mx-auto mb-16 max-w-2xl md:mb-24">
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -83,7 +83,7 @@ export default function ArticleCards() {
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.06 }}
-          className="section-title mt-4"
+          className="section-title"
         >
           Stay, dine, wine &amp; explore
         </motion.h2>
@@ -91,13 +91,13 @@ export default function ArticleCards() {
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
-          className="hub-prose mx-auto mt-5 max-w-xl"
+          className="hub-prose mx-auto max-w-xl"
         >
           Four ways to experience the valley — each one closer than you think.
         </motion.p>
       </div>
 
-      <div className="section-shell mx-auto flex flex-col gap-10 md:gap-14">
+      <div className="section-shell mx-auto flex flex-col gap-12 md:gap-20">
         {articles.map((article, index) => (
           <ArticleRow key={article.id} article={article} index={index} />
         ))}
@@ -119,7 +119,7 @@ function ArticleRow({
   return (
     <article
       id={article.id}
-      className="scroll-mt-28 overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-[0_12px_48px_-20px_rgba(22,20,26,0.18)]"
+      className="hub-card-elevated scroll-mt-28 overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)]"
     >
       <a
         href={href}
@@ -144,7 +144,7 @@ function ArticleRow({
           />
         </div>
 
-        <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center px-6 py-10 md:px-10 md:py-12 lg:px-12">
+        <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center px-6 py-11 md:px-12 md:py-14 lg:px-14 lg:py-14">
           <span
             className="mb-4 w-fit text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--hub-champagne)]"
             style={{ fontFamily: "'Inter', sans-serif" }}

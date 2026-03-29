@@ -9,7 +9,10 @@ export default function Footer() {
     <footer className="relative border-t border-[var(--hub-line)] text-white">
       <div
         className="relative overflow-hidden bg-[var(--hub-navy)]"
-        style={{ paddingTop: "clamp(3rem,8vw,4.5rem)", paddingBottom: "clamp(3rem,8vw,4.5rem)" }}
+        style={{
+          paddingTop: "clamp(4rem, 10vw, 6rem)",
+          paddingBottom: "clamp(4rem, 10vw, 6rem)",
+        }}
       >
         <img
           src="/images/photography/chandon-hilltop.jpg"

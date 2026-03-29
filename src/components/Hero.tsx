@@ -33,68 +33,68 @@ export default function Hero() {
       />
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[2]" />
 
-      <div className="relative z-20 flex h-full flex-col justify-end pb-8 pt-20 text-center md:pb-12">
-        <div className="section-shell section-shell--wide mx-auto w-full pb-8 md:pb-10">
+      <div className="relative z-20 flex h-full flex-col justify-end pb-10 pt-24 text-center md:pb-14 md:pt-28">
+        <div className="section-shell section-shell--wide mx-auto w-full pb-10 md:pb-12">
           <div className="mx-auto w-full max-w-3xl">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-5 text-[11px] font-medium uppercase tracking-[0.35em] text-white/75"
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            Visit Napa Valley · Wine Spectator
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.05 }}
-            className="text-balance text-white"
-          >
-            <span
-              className="block font-normal leading-[1.02] tracking-[-0.02em] text-[clamp(2.25rem,7vw,4rem)]"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
-              A World in{" "}
-              <em className="not-italic text-[var(--hub-champagne-light)]" style={{ fontStyle: "normal" }}>
-                30 Miles
-              </em>
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.14 }}
-            className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-white/88 md:text-lg"
-            style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
-          >
-            Wine, dine, stay, and explore—extraordinary density in one
-            compact stretch of valley built for long weekends.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.22 }}
-            className="mt-10 flex w-full max-w-lg flex-col gap-3 sm:mx-auto sm:max-w-none sm:flex-row sm:justify-center sm:gap-4"
-          >
-            <a
-              href="#discover"
-              className="btn-champagne inline-flex min-h-[50px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-9 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)] transition"
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-7 text-[11px] font-medium uppercase tracking-[0.32em] text-white/80"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              Explore the hub
-            </a>
-            <a
-              href="#itinerary"
-              className="hero-outline-btn inline-flex min-h-[50px] items-center justify-center rounded-full border border-white/45 bg-white/10 px-9 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm transition"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              Visit Napa Valley · Wine Spectator
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.05 }}
+              className="text-balance text-white"
             >
-              Sample weekend
-            </a>
-          </motion.div>
+              <span
+                className="block font-normal leading-[1.02] tracking-[-0.02em] text-[clamp(2.25rem,7vw,4rem)]"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                A World in{" "}
+                <em className="not-italic text-[var(--hub-champagne-light)]" style={{ fontStyle: "normal" }}>
+                  30 Miles
+                </em>
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.14 }}
+              className="mx-auto mt-8 max-w-lg text-base leading-[1.7] text-white/88 md:mt-9 md:text-lg md:leading-[1.65]"
+              style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+            >
+              Wine, dine, stay, and explore—extraordinary density in one
+              compact stretch of valley built for long weekends.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.22 }}
+              className="mt-12 flex w-full max-w-lg flex-col gap-4 sm:mx-auto sm:mt-14 sm:max-w-none sm:flex-row sm:justify-center sm:gap-5"
+            >
+              <a
+                href="#discover"
+                className="btn-champagne inline-flex min-h-[52px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-10 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Explore the hub
+              </a>
+              <a
+                href="#itinerary"
+                className="hero-outline-btn inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/45 bg-white/10 px-10 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm transition"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Sample weekend
+              </a>
+            </motion.div>
           </div>
         </div>
 

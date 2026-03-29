@@ -26,10 +26,10 @@ export default function PhotoGallery() {
       ref={sectionRef}
       role="region"
       aria-label="Editorial photography from the valley"
-      className="border-t border-[var(--hub-line)] bg-[var(--hub-navy)] py-14 md:py-20"
+      className="border-t border-[var(--hub-line)] bg-[var(--hub-navy)] py-16 md:py-24"
     >
       <div className="section-shell">
-        <div className="section-stack mb-10 md:mb-12">
+        <div className="section-stack mb-12 md:mb-16">
           <p className="section-eyebrow text-[var(--hub-champagne-light)]">In the valley</p>
         </div>
         <div className="mx-auto grid max-w-[72rem] gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6">

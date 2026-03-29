@@ -167,7 +167,7 @@ export default function ItinerarySection() {
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper-2)]"
       style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
     >
-      <div ref={headerRef} className="section-shell section-stack mx-auto mb-10 max-w-2xl md:mb-12">
+      <div ref={headerRef} className="section-shell section-stack mx-auto mb-12 max-w-2xl md:mb-16">
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -179,7 +179,7 @@ export default function ItinerarySection() {
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.06 }}
-          className="section-title mt-4"
+          className="section-title"
         >
           Three days in{" "}
           <span className="text-[var(--hub-wine)]">paradise</span>
@@ -188,7 +188,7 @@ export default function ItinerarySection() {
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
-          className="hub-prose mt-5"
+          className="hub-prose"
         >
           One possible long weekend—swap cellar doors, linger over lunch, or
           add a fourth day. The mileage still clocks in at twenty-five to
@@ -247,7 +247,7 @@ function DayAccordion({
   const headerId = `${panelId}-label`;
 
   return (
-    <div className="overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] shadow-[0_8px_40px_-20px_rgba(22,20,26,0.12)]">
+    <div className="hub-card-elevated overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)]">
       <button
         type="button"
         id={headerId}

@@ -84,7 +84,7 @@ export default function Navigation() {
               : "border-[var(--hub-line)] bg-white/94 shadow-[0_1px_0_rgba(22,20,26,0.04)] backdrop-blur-xl"
           }`}
         >
-          <div className="section-shell section-shell--wide flex items-center gap-3 py-3.5">
+          <div className="section-shell section-shell--wide flex items-center gap-3 py-4 md:py-[1.125rem]">
             <div className="flex min-w-0 flex-1 items-center justify-start">
               <a
                 href="#hero"
