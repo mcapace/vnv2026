@@ -230,20 +230,18 @@ export default function ItinerarySection() {
           initial={{ opacity: 0, y: 15 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-[#C5A55A] text-[11px] tracking-[0.4em] uppercase mb-4"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="section-eyebrow mb-4"
         >
-          Sample Itinerary
+          Weekend itineraries
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C] mb-4 text-balance"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          className="section-title text-[#2C2C2C] mb-4"
         >
           Three Days in{" "}
-          <em className="text-[#63242D]">Paradise</em>
+          <em className="text-[#63242D] not-italic">Paradise</em>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 15 }}

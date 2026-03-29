@@ -40,7 +40,8 @@ export default function VideoSection() {
           <img
             src="/images/photography/chandon-hilltop.jpg"
             alt=""
-            className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: "center 35%" }}
             loading="lazy"
             decoding="async"
           />

@@ -3,91 +3,88 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-/** Desktop: 4-column grid. Hero tile 2×2 top-left; four singles top-right + mid; bottom row full-bleed. */
-const images = [
-  {
-    src: "/images/photography/chandon-hilltop.jpg",
-    alt: "Friends enjoying wine on a Napa Valley hilltop",
-    span: "col-span-2 row-span-2",
-  },
-  {
-    src: "/images/photography/press-plating.jpg",
-    alt: "Fine dining plating at Press restaurant",
-    span: "col-span-1 row-span-1",
-  },
+/**
+ * Editorial strip — images here do NOT repeat hero, video, or pillar cards
+ * (spa + poolside only; pillars use pool-night, press, cellar, cadet; video uses chandon).
+ */
+const stripImages = [
   {
     src: "/images/photography/stanly-ranch-spa.jpg",
-    alt: "Morning spa relaxation at Stanly Ranch",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    src: "/images/photography/wine-cellar-toast.jpg",
-    alt: "Wine cellar toast with friends",
-    span: "col-span-1 row-span-1",
+    alt: "Spa and wellness at Stanly Ranch, Napa Valley",
+    caption: "Slow down where the valley begins",
   },
   {
     src: "/images/photography/solage-poolside.jpg",
-    alt: "Poolside evening at Solage Spa",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    src: "/images/photography/cadet-nightlife.jpg",
-    alt: "Champagne Room nightlife at Cadet",
-    span: "col-span-2 row-span-1 md:col-span-4",
+    alt: "Poolside evening at Solage, Auberge Resorts Collection, Calistoga",
+    caption: "Evenings that stretch with the light",
   },
 ];
 
 export default function PhotoGallery() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section className="relative py-20 md:py-28 bg-[#FEFCF8] overflow-hidden">
-      <div ref={ref} className="section-shell max-w-7xl">
-        <div className="text-center mb-12 md:mb-14 max-w-3xl mx-auto">
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-[#C5A55A] text-[11px] tracking-[0.4em] uppercase mb-4"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+    <section
+      ref={ref}
+      className="relative border-t border-b border-[#C5A55A]/12 bg-[#F5F0E8]"
+      aria-labelledby="editorial-moments-heading"
+    >
+      <div className="section-shell max-w-7xl py-16 md:py-20">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+          <p className="section-eyebrow">Brand photography</p>
+          <h2
+            id="editorial-moments-heading"
+            className="section-title mt-3 text-[#2C2C2C]"
           >
-            Captured Moments
-          </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C] text-balance"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            Moments from the{" "}
+            <em className="text-[#63242D] not-italic">Thirty Miles</em>
+          </h2>
+          <p
+            className="mt-4 text-[#4A4A4A]/85 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            Live a Little &mdash; <em className="text-[#63242D]">or a Lot</em>
-          </motion.h2>
+            Partner-provided imagery will join this hub as it arrives—we&apos;ll
+            fold in new stays, tables, and cellar doors without crowding the
+            story.
+          </p>
         </div>
 
-        {/* Balanced bento: no scroll-parallax (avoids seams); last row spans full width on md+ */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 md:gap-4 auto-rows-[minmax(140px,22vw)] md:auto-rows-[minmax(180px,16vw)] max-md:max-h-none">
-          {images.map((img, i) => (
-            <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          {stripImages.map((img, i) => (
+            <motion.figure
               key={img.src}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 28 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
-                duration: 0.65,
-                delay: 0.1 + i * 0.06,
+                duration: 0.7,
+                delay: 0.12 + i * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className={`${img.span} relative overflow-hidden rounded-sm group ring-1 ring-[#2C2C2C]/6 bg-[#E8E2D9]`}
+              className="group relative overflow-hidden rounded-lg bg-[#E8E2D9] shadow-sm ring-1 ring-[#2C2C2C]/[0.07]"
             >
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                loading="lazy"
-                sizes="(max-width: 768px) 50vw, 25vw"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-[#63242D]/0 transition-colors duration-500 group-hover:bg-[#63242D]/20" />
-            </motion.div>
+              <div className="relative aspect-[4/5] sm:aspect-[16/11] md:aspect-[5/4] w-full">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[1.2s] ease-out group-hover:scale-[1.02]"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1a0a0d]/55 via-transparent to-transparent opacity-90 md:opacity-100"
+                  aria-hidden
+                />
+                <figcaption className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+                  <p
+                    className="text-white/95 text-sm md:text-base tracking-wide italic"
+                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  >
+                    {img.caption}
+                  </p>
+                </figcaption>
+              </div>
+            </motion.figure>
           ))}
         </div>
       </div>

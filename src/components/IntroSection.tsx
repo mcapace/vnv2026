@@ -26,10 +26,9 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-[#C5A55A] text-[11px] tracking-[0.4em] uppercase mb-6"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="section-eyebrow mb-6"
         >
-          Discover the Valley
+          The hub
         </motion.p>
 
         {/* Headline */}
@@ -37,13 +36,22 @@ export default function IntroSection() {
           initial={{ opacity: 0, y: 25 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C] leading-tight mb-8 text-balance"
+          className="text-3xl sm:text-4xl md:text-5xl text-[#2C2C2C] leading-tight mb-4 text-balance"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           Where Every Mile
           <br />
           <em className="text-[#63242D]">Tells a Story</em>
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.75, delay: 0.25 }}
+          className="text-[#63242D]/90 text-sm md:text-base font-medium tracking-wide uppercase mb-8"
+          style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.12em" }}
+        >
+          A World in 30 Miles — evergreen showcase of Napa&apos;s density advantage
+        </motion.p>
 
         {/* Divider */}
         <motion.div
@@ -65,13 +73,12 @@ export default function IntroSection() {
           className="text-[#4A4A4A] text-lg md:text-xl lg:text-[1.35rem] leading-relaxed max-w-3xl mx-auto"
           style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400 }}
         >
-          Stretching from the wetlands of Carneros to the volcanic peaks of
-          Calistoga, Napa Valley packs an extraordinary density of world-class
-          experiences into just thirty miles. No other wine region on earth
-          offers this concentration of Michelin-starred restaurants, legendary
-          wineries, luxury resorts, and one-of-a-kind adventures &mdash; all connected
-          by roads that wind through some of the most beautiful landscape in
-          California.
+          This valley rewards multi-day stays in a way no single-category
+          competitor can touch. From Carneros to Calistoga, thirty miles hold
+          Michelin-starred dining, legendary wineries, restorative stays, and
+          adventures you can string together into long weekends—connected by
+          roads that wind through one of California&apos;s most beautiful
+          landscapes.
         </motion.p>
 
         {/* Stats row */}

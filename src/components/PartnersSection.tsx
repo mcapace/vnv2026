@@ -85,20 +85,18 @@ export default function PartnersSection() {
             initial={{ opacity: 0, y: 15 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-[#C5A55A] text-[11px] tracking-[0.4em] uppercase mb-4"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+            className="section-eyebrow mb-4"
           >
-            Featured Partners
+            Featured partners
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl text-white text-balance max-w-3xl mx-auto"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="section-title text-white max-w-3xl mx-auto"
           >
             The Valley&apos;s{" "}
-            <em className="text-[#C5A55A]">Finest</em>
+            <em className="text-[#C5A55A] not-italic">Finest</em>
           </motion.h2>
         </div>
 

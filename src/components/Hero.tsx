@@ -20,12 +20,14 @@ export default function Hero() {
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden">
       {/* Background image with parallax — convertible through vineyards */}
-      <motion.div style={{ y, scale }} className="absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/images/photography/stanly-ranch-convertible.jpg')`,
-          }}
+      <motion.div style={{ y, scale }} className="absolute left-1/2 top-1/2 h-[122%] w-[122%] -translate-x-1/2 -translate-y-1/2">
+        <img
+          src="/images/photography/stanly-ranch-convertible.jpg"
+          alt="Open road through Napa Valley vineyards at golden hour"
+          className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+          style={{ objectPosition: "center 42%" }}
+          decoding="async"
+          fetchPriority="high"
         />
       </motion.div>
 
@@ -111,8 +113,9 @@ export default function Hero() {
             className="text-white/80 text-lg sm:text-xl md:text-2xl max-w-2xl mt-8 leading-relaxed font-light text-balance"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            From vine to table, from sunrise to starlight &mdash; discover why
-            Napa Valley rewards those who stay a little longer.
+            An evergreen look at why Napa rewards multi-day stays—dense with
+            wine, food, stays, and experiences you can stitch into unforgettable
+            weekends.
           </motion.p>
         )}
 
