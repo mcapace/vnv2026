@@ -31,14 +31,18 @@ export default function Hero() {
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[2]" />
 
       <div
-        className="absolute bottom-0 left-0 right-0 z-10 pb-16 text-left"
-        style={{ paddingLeft: "clamp(2rem, 5vw, 4rem)", paddingRight: "clamp(2rem, 5vw, 4rem)" }}
+        className="absolute bottom-0 left-0 right-0 z-10 pb-20 text-left"
+        style={{
+          paddingLeft: "clamp(2rem, 5vw, 4rem)",
+          paddingRight: "clamp(2rem, 5vw, 4rem)",
+          maxWidth: "52rem",
+        }}
       >
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-5 flex items-center gap-2.5"
+          className="mb-3 flex items-center gap-2.5"
           aria-label="Visit Napa Valley and Wine Spectator"
         >
           <img
@@ -60,7 +64,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.05 }}
-          className="font-hub-display mt-4 max-w-3xl text-balance text-[clamp(3rem,7vw,5.5rem)] leading-[1.0] text-white text-on-photo"
+          className="font-hub-display mt-4 max-w-3xl text-balance text-[clamp(2.25rem,5vw,4rem)] leading-[1.0] text-white text-on-photo"
         >
           A World in{" "}
           <span className="font-hub-display italic text-[var(--hub-champagne)]">30 Miles</span>
@@ -70,7 +74,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.14 }}
-          className="hub-prose mt-4 max-w-lg text-white/75"
+          className="hub-prose mt-3 max-w-lg text-white/75"
+          style={{ fontSize: "1rem", lineHeight: "1.65" }}
         >
           Wine, dine, stay, and explore—extraordinary density in one compact stretch of valley built
           for long weekends.
@@ -80,7 +85,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.22 }}
-          className="mt-7 flex flex-wrap items-center gap-3"
+          className="mt-5 flex flex-wrap items-center gap-3"
         >
           <a
             href="#discover"
