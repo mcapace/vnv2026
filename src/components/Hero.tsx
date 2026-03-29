@@ -1,5 +1,6 @@
 "use client";
 
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -9,11 +10,11 @@ export default function Hero() {
       aria-label="Hero"
       className="relative h-[100dvh] min-h-[560px] max-h-[100dvh] overflow-hidden bg-[#1a1512]"
     >
-      <div className="absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 z-0 after:pointer-events-none after:absolute after:inset-0 after:z-[1] after:bg-gradient-to-t after:from-black/75 after:via-black/30 after:to-transparent">
         <img
           src="/images/photography/stanly-ranch-convertible.jpg"
           alt="Open road through Napa Valley vineyards at golden hour"
-          className="h-full w-full object-cover"
+          className="relative z-0 h-full w-full object-cover"
           style={{ objectPosition: "center 44%" }}
           width={1920}
           height={1080}
@@ -23,40 +24,41 @@ export default function Hero() {
         />
       </div>
 
-      <div
-        className="pointer-events-none absolute inset-0 z-[1]"
-        style={{
-          background:
-            "radial-gradient(ellipse 85% 65% at 50% 45%, transparent 35%, rgba(15,12,10,0.45) 100%), linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 35%, transparent 55%, rgba(12,10,9,0.85) 100%)",
-        }}
-        aria-hidden
-      />
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[2]" />
 
-      <div className="relative z-20 flex h-full flex-col justify-end pb-10 pt-24 text-center md:pb-14 md:pt-28">
+      <div className="relative z-10 flex h-full flex-col justify-end pb-10 pt-24 text-center md:pb-14 md:pt-28">
         <div className="section-shell section-shell--wide mx-auto w-full pb-10 md:pb-12">
-          <div className="mx-auto w-full max-w-3xl">
-            <motion.p
+          <div className="relative z-10 mx-auto w-full max-w-3xl">
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="font-hub-sans mb-7 text-[11px] font-medium uppercase tracking-[0.32em] text-white/80"
+              className="mb-7 flex items-center justify-center gap-3"
+              aria-label="Visit Napa Valley and Wine Spectator"
             >
-              Visit Napa Valley · Wine Spectator
-            </motion.p>
+              <img
+                src="/images/logos/vnv-primary-white.png"
+                alt="Visit Napa Valley"
+                className="h-6 w-auto opacity-[0.96] sm:h-7"
+                width={160}
+                height={40}
+              />
+              <span className="font-hub-display text-lg font-light text-white/70 sm:text-xl" aria-hidden>
+                ×
+              </span>
+              <span className="font-hub-display text-lg font-medium tracking-[0.08em] text-white/90 sm:text-xl">
+                Wine Spectator
+              </span>
+            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.05 }}
-              className="text-balance text-white"
+              className="font-hub-display text-balance text-[clamp(3.5rem,8vw,6.5rem)] font-normal leading-[1.02] tracking-[-0.02em] text-white"
             >
-              <span className="font-hub-serif block font-normal leading-[1.02] tracking-[-0.02em] text-[clamp(2.25rem,7vw,4rem)]">
-                A World in{" "}
-                <em className="not-italic text-[var(--hub-champagne-light)]" style={{ fontStyle: "normal" }}>
-                  30 Miles
-                </em>
-              </span>
+              A World in{" "}
+              <span className="font-hub-display italic text-[var(--hub-champagne-light)]">30 Miles</span>
             </motion.h1>
 
             <motion.p
@@ -77,13 +79,13 @@ export default function Hero() {
             >
               <a
                 href="#discover"
-                className="font-hub-sans btn-champagne inline-flex min-h-[52px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-10 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)]"
+                className="font-hub-sans btn-champagne inline-flex items-center justify-center rounded-full bg-[var(--hub-champagne)] px-8 py-3.5 text-sm font-semibold text-[var(--hub-ink)]"
               >
                 Explore the hub
               </a>
               <a
                 href="#itinerary"
-                className="font-hub-sans hero-outline-btn inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/45 bg-white/10 px-10 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm transition"
+                className="font-hub-sans hero-outline-btn inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-3.5 text-sm font-semibold text-white transition"
               >
                 Sample weekend
               </a>
@@ -91,22 +93,18 @@ export default function Hero() {
           </div>
         </div>
 
-        <a
-          href="#discover"
-          className="hero-scroll-cta absolute bottom-4 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 text-white/55 transition"
-          aria-label="Scroll to main content"
+        <div
+          className="pointer-events-none absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+          aria-hidden
         >
-          <span className="font-hub-sans text-[10px] font-medium uppercase tracking-[0.22em]">Scroll</span>
-          <motion.span
-            aria-hidden
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+          <a
+            href="#discover"
+            className="pointer-events-auto text-white/60 transition hover:text-white/90"
+            aria-label="Scroll to main content"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </motion.span>
-        </a>
+            <ChevronDownIcon className="size-8 animate-bounce" strokeWidth={1.5} />
+          </a>
+        </div>
       </div>
     </section>
   );

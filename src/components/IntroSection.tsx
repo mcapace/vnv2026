@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -33,11 +33,11 @@ function StatCell({
 
   return (
     <div className="flex flex-col items-center justify-center px-3 py-8 text-center md:px-5 md:py-11">
-      <span className="font-hub-serif font-light tabular-nums text-[var(--hub-card)] text-[clamp(3rem,7vw,4.5rem)] leading-none tracking-[-0.02em]">
+      <span className="font-hub-display font-normal tabular-nums text-[clamp(3rem,6vw,4.5rem)] leading-none tracking-normal text-[var(--hub-champagne)]">
         {display}
         {stat.suffixPlus ? (showPlus ? "+" : "") : ""}
       </span>
-      <span className="font-hub-sans mt-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--hub-champagne-light)]">
+      <span className="mt-1 text-xs uppercase tracking-[0.2em] text-white/60">
         {stat.label}
       </span>
     </div>
@@ -95,34 +95,44 @@ export default function IntroSection() {
 
       <div
         ref={statsRef}
-        className="text-white"
+        className="relative grain-overlay bg-[var(--hub-navy)] text-white"
         style={{
           paddingTop: "clamp(2.75rem, 7vw, 4.5rem)",
           paddingBottom: "clamp(2.75rem, 7vw, 4.5rem)",
-          background:
-            "linear-gradient(165deg, var(--hub-navy) 0%, var(--hub-navy-mid) 55%, var(--hub-navy-deep) 100%)",
         }}
       >
-        <div className="section-shell">
-          <div className="grid grid-cols-2 divide-x divide-y divide-white/18 md:grid-cols-4 md:divide-y-0">
+        <div className="section-shell relative z-[2]">
+          <div className="flex flex-wrap md:flex-nowrap md:items-stretch md:justify-center">
             {stats.map((stat, i) => (
-              <StatCell
-                key={stat.key}
-                stat={stat}
-                index={i}
-                reducedMotion={reducedMotion}
-                inView={!!statsInView}
-              />
+              <Fragment key={stat.key}>
+                {i > 0 ? (
+                  <div
+                    className="hidden h-16 w-px shrink-0 self-center bg-white/10 md:block"
+                    aria-hidden
+                  />
+                ) : null}
+                <div className="flex w-1/2 basis-1/2 justify-center md:min-w-0 md:w-auto md:flex-1 md:basis-0">
+                  <StatCell
+                    stat={stat}
+                    index={i}
+                    reducedMotion={reducedMotion}
+                    inView={!!statsInView}
+                  />
+                </div>
+              </Fragment>
             ))}
           </div>
-          <div className="mx-auto mt-14 max-w-2xl border-t border-white/14 pt-10 md:mt-16 md:pt-12">
-            <p className="font-hub-display text-center text-lg italic leading-relaxed text-white/88 md:text-xl">
-              “The most concentrated wine region in the world.”
+          <blockquote className="mx-auto mt-14 max-w-2xl border-t border-white/14 pt-10 text-center md:mt-16 md:pt-12">
+            <span className="font-hub-display block text-[5rem] leading-none text-[var(--hub-champagne)] opacity-40 -mb-4">
+              &ldquo;
+            </span>
+            <p className="font-hub-display text-[clamp(1.25rem,2.5vw,1.625rem)] italic leading-relaxed text-white/90">
+              The most concentrated wine region in the world.
             </p>
-            <p className="font-hub-sans mt-4 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-champagne-light)]">
-              Wine Spectator
-            </p>
-          </div>
+            <footer className="mt-4 text-xs uppercase tracking-[0.2em] text-white/50">
+              — Wine Spectator
+            </footer>
+          </blockquote>
         </div>
       </div>
     </section>

@@ -98,22 +98,15 @@ export default function ArticleCards() {
       </div>
 
       <div className="section-shell mx-auto flex flex-col gap-12 md:gap-20">
-        {articles.map((article, index) => (
-          <ArticleRow key={article.id} article={article} index={index} />
+        {articles.map((article) => (
+          <ArticleRow key={article.id} article={article} />
         ))}
       </div>
     </section>
   );
 }
 
-function ArticleRow({
-  article,
-  index,
-}: {
-  article: (typeof articles)[0];
-  index: number;
-}) {
-  const imageLeft = index % 2 === 0;
+function ArticleRow({ article }: { article: (typeof articles)[0] }) {
   const href = pillarHref[article.id] ?? "https://www.visitnapavalley.com";
 
   return (
@@ -125,58 +118,46 @@ function ArticleRow({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`${article.label} in Napa Valley — open on Visit Napa Valley`}
-        className={`group flex min-h-0 w-full min-w-0 flex-col items-stretch lg:min-h-[min(520px,85vh)] lg:max-h-[640px] lg:flex-row ${
-          imageLeft ? "" : "lg:flex-row-reverse"
-        }`}
+        aria-label={`${article.label} in Napa Valley — ${article.description} — open on Visit Napa Valley`}
+        className="group relative block min-h-[280px] w-full overflow-hidden lg:min-h-[440px]"
       >
-        <div className="relative min-h-[240px] w-full min-w-0 shrink-0 overflow-hidden bg-[var(--hub-paper-2)] sm:min-h-[300px] lg:w-1/2 lg:min-h-0 lg:max-w-[50%]">
-          <img
-            src={article.image}
-            alt=""
-            role="presentation"
-            className="absolute inset-0 h-full w-full object-cover motion-safe:transition motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-[1.02]"
-            style={{ objectPosition: article.objectPosition }}
-            loading="lazy"
-            width={1200}
-            height={800}
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        </div>
+        <img
+          src={article.image}
+          alt=""
+          role="presentation"
+          className="absolute inset-0 h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-105"
+          style={{ objectPosition: article.objectPosition }}
+          loading="lazy"
+          width={1200}
+          height={800}
+          sizes="(max-width: 1024px) 100vw, min(1200px, 100vw)"
+        />
 
-        <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center px-7 py-12 md:px-12 md:py-14 lg:max-w-[50%] lg:px-14 lg:py-16">
-          <span className="font-hub-sans mb-5 w-fit text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--hub-champagne)]">
-            {article.label}
-          </span>
-          <h3 className="font-hub-serif text-[clamp(1.875rem,3.2vw,2.45rem)] font-normal leading-[1.06] tracking-[-0.02em] text-[var(--hub-ink)]">
-            {article.title}
-          </h3>
-          <p className="font-hub-display mt-4 text-xl font-normal italic leading-snug text-[var(--hub-wine)] md:text-[1.375rem]">
-            {article.subtitle}
-          </p>
+        <span className="absolute left-4 top-4 z-10 rounded-full bg-white/90 px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[var(--hub-ink)]">
+          {article.label}
+        </span>
+
+        <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-6 pb-7 pt-16">
+          <h3 className="font-hub-display text-2xl font-normal text-white">{article.title}</h3>
+          <p className="font-hub-display mt-1 text-base italic text-white/80">{article.subtitle}</p>
           {"wineSpectatorPick" in article && article.wineSpectatorPick && (
-            <p className="font-hub-sans mt-5 inline-flex w-fit items-center rounded-full border border-rose-900/15 bg-[var(--hub-accent-soft)] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-wine)]">
+            <p className="font-hub-sans mt-3 inline-flex w-fit items-center rounded-full border border-white/25 bg-white/10 px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-white/90">
               Wine Spectator editor&apos;s pick
             </p>
           )}
-          <p className="font-hub-sans mt-7 max-w-lg text-[0.96875rem] leading-[1.78] text-[var(--hub-muted)]">
-            {article.description}
-          </p>
-          <div className="mt-7 flex flex-wrap gap-2.5">
+          <div className="flex flex-wrap">
             {article.partners.map((p) => (
               <span
                 key={p}
-                className="font-hub-sans rounded-full border border-[var(--hub-line)] bg-[var(--hub-paper)] px-3.5 py-1.5 text-[9px] font-medium uppercase tracking-[0.08em] text-[var(--hub-muted)]"
+                className="mr-1 mt-3 inline-flex items-center gap-1 rounded-full border border-white/25 px-2.5 py-0.5 text-xs text-white/70"
               >
                 {p}
               </span>
             ))}
           </div>
-          <span className="font-hub-sans mt-9 inline-flex w-fit items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-wine)]">
+          <span className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-white/40 px-4 py-2 text-xs font-medium tracking-wide text-white transition-all duration-300 hover:bg-white hover:text-[var(--hub-ink)] group-hover:bg-white group-hover:text-[var(--hub-ink)]">
             Visit Napa Valley
-            <span aria-hidden className="text-[var(--hub-champagne)]">
-              →
-            </span>
+            <span aria-hidden>→</span>
           </span>
         </div>
       </a>

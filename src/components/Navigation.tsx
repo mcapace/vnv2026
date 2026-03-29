@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -14,44 +14,41 @@ const navLinks = [
 type SectionId = (typeof navLinks)[number]["id"] | "";
 
 export default function Navigation() {
-  const [pastHero, setPastHero] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState<SectionId>("");
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      const vh = window.innerHeight;
-      setPastHero(window.scrollY > vh * 0.85);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const refreshActive = useCallback(() => {
-    const ids = navLinks.map((l) => l.id);
-    const headerOffset = 112;
-    let current: SectionId = "";
-    for (const id of ids) {
-      const el = document.getElementById(id);
-      if (!el) continue;
-      const top = el.getBoundingClientRect().top;
-      if (top <= headerOffset) current = id;
-    }
-    setActiveId(current);
-  }, []);
-
   useEffect(() => {
-    const run = () => refreshActive();
-    const initial = window.setTimeout(run, 0);
-    window.addEventListener("scroll", run, { passive: true });
-    window.addEventListener("resize", run, { passive: true });
-    return () => {
-      window.clearTimeout(initial);
-      window.removeEventListener("scroll", run);
-      window.removeEventListener("resize", run);
-    };
-  }, [refreshActive]);
+    const nodes = navLinks
+      .map((l) => document.getElementById(l.id))
+      .filter((n): n is HTMLElement => n !== null);
+    if (nodes.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const intersecting = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        const first = intersecting[0];
+        if (first?.target.id) setActiveId(first.target.id as SectionId);
+      },
+      {
+        root: null,
+        rootMargin: "-72px 0px -58% 0px",
+        threshold: [0, 0.08, 0.15, 0.25, 0.4],
+      }
+    );
+
+    nodes.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -69,7 +66,7 @@ export default function Navigation() {
     }
   };
 
-  const onHero = !pastHero;
+  const onHero = !scrolled;
 
   return (
     <>
@@ -78,10 +75,10 @@ export default function Navigation() {
           initial={{ y: -8, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className={`fixed top-0 left-0 right-0 z-50 border-b transition-[background,box-shadow,backdrop-filter,border-color] duration-300 ${
+          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
             onHero
-              ? "border-white/10 bg-stone-900/40 shadow-none backdrop-blur-md"
-              : "border-[var(--hub-line)] bg-white/94 shadow-[0_1px_0_rgba(22,20,26,0.04)] backdrop-blur-xl"
+              ? "border-b border-transparent bg-transparent shadow-none"
+              : "border-b border-[var(--hub-line)] bg-[var(--hub-card)]/95 shadow-sm backdrop-blur-md"
           }`}
         >
           <div className="section-shell section-shell--wide flex items-center gap-3 py-4 md:py-[1.125rem]">
@@ -97,30 +94,17 @@ export default function Navigation() {
                   className="h-7 w-auto opacity-[0.96] sm:h-8"
                 />
                 <span
-                  className={`hidden min-w-0 border-l pl-3 md:block ${
-                    onHero ? "border-white/25" : "border-black/10"
+                  className={`font-hub-display hidden text-lg italic md:inline ${
+                    onHero ? "text-white/70" : "text-[var(--hub-muted)]"
                   }`}
                 >
-                  <span
-                    className={`font-hub-sans block text-[9px] font-semibold uppercase leading-tight tracking-[0.22em] ${
-                      onHero ? "text-white/55" : "text-[var(--hub-muted)]"
-                    }`}
-                  >
-                    Wine Spectator
-                  </span>
-                  <span
-                    className={`font-hub-sans mt-0.5 block truncate text-[9px] font-normal tracking-[0.12em] ${
-                      onHero ? "text-white/40" : "text-stone-500"
-                    }`}
-                  >
-                    Content Hub
-                  </span>
+                  Wine Spectator
                 </span>
               </a>
             </div>
 
             <nav className="hidden shrink-0 md:flex" aria-label="Primary">
-              <div className="flex items-center gap-1 rounded-full border border-transparent px-1.5 py-1">
+              <div className="flex items-center gap-1 border border-transparent px-1.5 py-1">
                 {navLinks.map((link) => {
                   const active = activeId === link.id;
                   return (
@@ -128,14 +112,14 @@ export default function Navigation() {
                       key={link.label}
                       href={link.href}
                       onClick={(e) => onNavClick(e, link.href)}
-                      className={`font-hub-sans rounded-full px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
+                      className={`font-hub-sans rounded-full border-b-2 px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition ${
                         onHero
                           ? active
-                            ? "bg-white/18 text-white"
-                            : "nav-pill-hero text-white/80"
+                            ? "nav-pill-hero border-white/70 text-white"
+                            : "nav-pill-hero border-transparent text-white/80"
                           : active
-                            ? "bg-[var(--hub-accent-soft)] text-[var(--hub-wine)]"
-                            : "nav-pill-solid text-stone-600"
+                            ? "nav-pill-solid border-[var(--hub-champagne)] text-[var(--hub-ink)]"
+                            : "nav-pill-solid border-transparent text-stone-600"
                       }`}
                     >
                       {link.label}
