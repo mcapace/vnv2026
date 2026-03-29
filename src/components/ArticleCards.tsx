@@ -78,7 +78,7 @@ function ArticleCard({
         href="https://www.visitnapavalley.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="article-card block group relative overflow-hidden rounded-lg shadow-md ring-1 ring-[#2C2C2C]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5A55A]"
+        className="article-card block group relative overflow-hidden rounded-2xl shadow-[0_4px_24px_-4px_rgba(44,28,32,0.12)] ring-1 ring-[#2C2C2C]/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C5A55A]"
         style={{ minHeight: "380px", height: "clamp(22rem, 52vw, 30rem)" }}
       >
         <img
