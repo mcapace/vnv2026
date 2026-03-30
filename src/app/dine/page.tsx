@@ -11,7 +11,7 @@ export default function DinePage() {
 
       {/* Hero */}
       <div
-        className="relative flex-shrink-0 overflow-hidden"
+        className="relative overflow-hidden flex-shrink-0"
         style={{ height: "70vh", minHeight: "520px", backgroundColor: "var(--hub-navy)" }}
       >
         <img
