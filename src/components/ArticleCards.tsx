@@ -154,8 +154,10 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
       />
 
       <span
-        className="absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.15em]"
+        className="absolute left-4 top-4 z-10 rounded-full px-3 text-[0.65rem] font-bold uppercase tracking-[0.15em]"
         style={{
+          paddingTop: "0.375rem",
+          paddingBottom: "0.375rem",
           backgroundColor: "rgba(0,0,0,0.55)",
           color: "rgba(255,255,255,0.95)",
           backdropFilter: "blur(8px)",
@@ -232,7 +234,7 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
                 alignItems: "center",
                 borderRadius: "9999px",
                 border: "1px solid rgba(255,255,255,0.3)",
-                padding: "0.125rem 0.5rem",
+                padding: "0.3rem 0.75rem",
                 fontSize: "0.625rem",
                 color: "rgba(255,255,255,0.75)",
                 whiteSpace: "nowrap",
