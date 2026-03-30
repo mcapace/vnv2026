@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import type { MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -13,10 +14,20 @@ const navLinks = [
 
 type SectionId = (typeof navLinks)[number]["id"] | "";
 
+function WeatherIcon({ condition }: { condition: string }) {
+  if (condition === "Sunny") return <span>☀️</span>;
+  if (condition === "Cloudy") return <span>⛅</span>;
+  if (condition === "Foggy") return <span>🌫️</span>;
+  if (condition === "Rainy" || condition === "Showers") return <span>🌧️</span>;
+  if (condition === "Stormy") return <span>⛈️</span>;
+  return <span>🌤️</span>;
+}
+
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState<SectionId>("");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [weather, setWeather] = useState<{ temp: number; condition: string } | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -57,7 +68,28 @@ export default function Navigation() {
     };
   }, [mobileOpen]);
 
-  const onNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  useEffect(() => {
+    fetch(
+      "https://api.open-meteo.com/v1/forecast?latitude=38.2975&longitude=-122.2869&current=temperature_2m,weathercode&temperature_unit=fahrenheit&timezone=America%2FLos_Angeles"
+    )
+      .then((r) => r.json())
+      .then((d) => {
+        const code = d.current.weathercode;
+        const temp = Math.round(d.current.temperature_2m);
+        let condition = "Clear";
+        if (code === 0) condition = "Sunny";
+        else if (code <= 3) condition = "Cloudy";
+        else if (code <= 48) condition = "Foggy";
+        else if (code <= 67) condition = "Rainy";
+        else if (code <= 77) condition = "Snowy";
+        else if (code <= 82) condition = "Showers";
+        else condition = "Stormy";
+        setWeather({ temp, condition });
+      })
+      .catch(() => {});
+  }, []);
+
+  const onNavClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("/#")) {
       e.preventDefault();
       const id = href.slice(2);
@@ -203,8 +235,28 @@ export default function Navigation() {
             })}
           </nav>
 
-          {/* Right — Plan visit + mobile menu */}
+          {/* Right — weather + Plan visit + mobile menu */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
+            {weather && (
+              <div
+                className="hidden md:flex items-center gap-1.5"
+                style={{
+                  fontSize: "0.625rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.08em",
+                  color: onHero ? "rgba(255,255,255,0.7)" : "var(--hub-muted)",
+                  borderRight: `1px solid ${onHero ? "rgba(255,255,255,0.15)" : "var(--hub-line)"}`,
+                  paddingRight: "1rem",
+                  marginRight: "0.25rem",
+                }}
+              >
+                <span style={{ fontSize: "0.875rem", lineHeight: 1 }}>
+                  <WeatherIcon condition={weather.condition} />
+                </span>
+                <span>{weather.temp}°F</span>
+                <span style={{ opacity: 0.6 }}>Napa</span>
+              </div>
+            )}
             <a
               href="https://www.visitnapavalley.com"
               target="_blank"
