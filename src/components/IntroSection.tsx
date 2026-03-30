@@ -58,13 +58,13 @@ function StatCell({
       </span>
       <span
         style={{
-          marginTop: "0.375rem",
           fontSize: "0.625rem",
-          textTransform: "uppercase",
+          fontWeight: 700,
           letterSpacing: "0.2em",
-          color: "rgba(255,255,255,0.65)",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.45)",
+          marginTop: "1rem",
           display: "block",
-          textAlign: "center",
         }}
       >
         {stat.label}
