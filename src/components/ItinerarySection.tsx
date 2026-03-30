@@ -197,15 +197,21 @@ export default function ItinerarySection() {
           ))}
         </ol>
 
-        <div className="mt-12 border-t border-[var(--hub-line)] pt-10 text-center">
-          <p className="font-hub-sans text-sm text-[var(--hub-muted)]">
+        <div
+          className="mt-8 pt-8 text-center"
+          style={{ borderTop: "1px solid var(--hub-line)" }}
+        >
+          <p
+            className="font-hub-sans text-sm text-[var(--hub-muted)]"
+            style={{ marginBottom: "0.875rem" }}
+          >
             Want this route tailored?
           </p>
           <a
             href="https://www.visitnapavalley.com/plan-your-trip/"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--hub-wine)] px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[var(--hub-wine-deep)]"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--hub-wine)] px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[var(--hub-wine-deep)]"
           >
             Customize this itinerary
           </a>
