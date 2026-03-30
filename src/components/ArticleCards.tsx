@@ -109,8 +109,7 @@ export default function ArticleCards() {
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose mx-auto max-w-xl"
         >
-          Wine Spectator&apos;s complete guide to Napa Valley — four articles published across spring
-          2026. The first is live now.
+          Four articles. Four ways to experience the valley. Published across spring 2026.
         </motion.p>
       </div>
 
