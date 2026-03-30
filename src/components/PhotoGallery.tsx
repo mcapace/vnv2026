@@ -28,11 +28,28 @@ export default function PhotoGallery() {
       ref={sectionRef}
       role="region"
       aria-label="Editorial photography from the valley"
-      className="border-t border-[var(--hub-line)] bg-[var(--hub-navy)] py-16 md:py-24"
+      className="bg-[var(--hub-navy)] py-10 md:py-16"
     >
       <div className="section-shell">
-        <div className="section-stack mb-12 md:mb-16">
+        <div className="section-stack mb-10 md:mb-12">
           <p className="section-eyebrow text-[var(--hub-champagne-light)]">In the valley</p>
+          <h2
+            className="section-title mt-4"
+            style={{
+              color: "#ffffff",
+              fontSize: "clamp(2rem, 4.5vw, 3rem)",
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontWeight: 400,
+            }}
+          >
+            Where every stay tells a story
+          </h2>
+          <p
+            className="hub-prose mt-4 max-w-xl text-center"
+            style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem" }}
+          >
+            Two properties. Two moods. One valley.
+          </p>
         </div>
         <div className="mx-auto grid max-w-[72rem] grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:gap-10">
           {photos.map((img, i) => (
