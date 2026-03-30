@@ -23,16 +23,36 @@ export default function Footer() {
           <span className="font-hub-display text-lg italic text-white/70">Wine Spectator</span>
         </div>
 
-        <div className="section-stack mx-auto w-full max-w-3xl">
+        <div
+          className="section-stack mx-auto w-full max-w-3xl"
+          style={{
+            textAlign: "center",
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <p className="section-eyebrow text-[var(--hub-champagne-light)]">Next step</p>
           <h2 className="font-hub-serif mt-[clamp(1.25rem,3vw,1.75rem)] text-balance text-3xl font-normal leading-tight tracking-[-0.02em] text-on-photo md:text-[2.35rem]">
             Ready to plan a long weekend?
           </h2>
-          <p className="font-hub-display mt-4 max-w-lg text-lg leading-snug text-white/85 text-on-photo md:mx-auto">
+          <p
+            className="font-hub-display mx-auto mt-4 max-w-lg text-lg leading-snug text-white/85 text-on-photo"
+            style={{ textAlign: "center" }}
+          >
             Lock in stays, tables, and cellar appointments on the official destination site.
           </p>
 
-          <p className="font-hub-sans mt-8 text-xs font-semibold uppercase tracking-[0.18em] text-white/65">
+          <p
+            style={{
+              fontSize: "0.625rem",
+              fontWeight: 600,
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.45)",
+              marginTop: "1.5rem",
+            }}
+          >
             Join 50,000+ travelers exploring the valley each month
           </p>
 
@@ -40,44 +60,100 @@ export default function Footer() {
             href="https://www.visitnapavalley.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-hub-sans btn-champagne mt-6 inline-flex min-h-12 min-w-[200px] items-center justify-center rounded-full bg-[var(--hub-champagne)] px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)] transition"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "var(--hub-champagne)",
+              color: "var(--hub-ink)",
+              borderRadius: "9999px",
+              padding: "0.875rem 2.5rem",
+              fontSize: "0.625rem",
+              fontWeight: 700,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+              marginTop: "1.5rem",
+              transition: "opacity 0.2s ease",
+            }}
           >
             Plan your visit
           </a>
 
           <form
-            className="mt-12 w-full max-w-md"
             onSubmit={(e) => {
               e.preventDefault();
               setSignedUp(true);
             }}
+            style={{ marginTop: "2.5rem", width: "100%", maxWidth: "28rem" }}
           >
             <label htmlFor="footer-email" className="sr-only">
               Email for weekend planning guide
             </label>
-            <p className="font-hub-sans mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80">
+            <p
+              style={{
+                fontSize: "0.625rem",
+                fontWeight: 700,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                color: "rgba(255,255,255,0.55)",
+                marginBottom: "0.875rem",
+              }}
+            >
               Get the weekend planning guide
             </p>
-            <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-end sm:gap-5">
-              <input
-                id="footer-email"
-                name="email"
-                type="email"
-                required
-                placeholder="you@example.com"
-                className="footer-email-input w-full min-w-0 flex-1 border-0 border-b border-b-white/30 bg-transparent px-0 py-2 text-sm text-white transition-colors focus:border-b-[var(--hub-champagne)] focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="footer-submit shrink-0 rounded-full bg-[var(--hub-champagne)] px-5 py-2.5 text-xs font-semibold tracking-wide text-[var(--hub-ink)]"
-              >
-                {signedUp ? "Thanks!" : "Submit"}
-              </button>
-            </div>
-            {signedUp && (
-              <p className="mt-2 text-center text-xs text-white/65">
-                Thanks — pair this hub with Visit Napa Valley&apos;s trip tools for your dates.
+            {signedUp ? (
+              <p style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.6)", textAlign: "center" }}>
+                Thanks — check your inbox for the guide.
               </p>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "rgba(255,255,255,0.07)",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  borderRadius: "9999px",
+                  padding: "0.25rem 0.25rem 0.25rem 1.25rem",
+                  gap: "0.5rem",
+                }}
+              >
+                <input
+                  id="footer-email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="your@email.com"
+                  style={{
+                    flex: 1,
+                    minWidth: 0,
+                    backgroundColor: "transparent",
+                    border: "none",
+                    outline: "none",
+                    fontSize: "0.8125rem",
+                    color: "rgba(255,255,255,0.85)",
+                    padding: "0.375rem 0",
+                  }}
+                />
+                <button
+                  type="submit"
+                  style={{
+                    flexShrink: 0,
+                    backgroundColor: "var(--hub-champagne)",
+                    color: "var(--hub-ink)",
+                    borderRadius: "9999px",
+                    padding: "0.625rem 1.25rem",
+                    fontSize: "0.5625rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    border: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  Submit
+                </button>
+              </div>
             )}
           </form>
         </div>
@@ -134,7 +210,7 @@ export default function Footer() {
             {["Stay", "Dine", "Wine", "Explore"].map((link) => (
               <a
                 key={link}
-                href={`#${link.toLowerCase()}`}
+                href={`/${link.toLowerCase()}`}
                 className="footer-anchor font-hub-sans min-h-10 text-[11px] font-medium uppercase tracking-[0.16em] text-white/50 transition"
               >
                 {link}
