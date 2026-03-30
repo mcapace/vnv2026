@@ -130,17 +130,20 @@ export default function IntroSection() {
 
       <div
         ref={statsRef}
-        className="grain-overlay relative"
+        className="relative"
         style={{
           backgroundColor: "var(--hub-navy)",
           paddingTop: "clamp(2.5rem, 5vw, 3.5rem)",
           paddingBottom: "clamp(3.5rem, 8vw, 5.5rem)",
+          display: "block",
+          width: "100%",
         }}
       >
         <div
-          className="relative z-[2] mx-auto"
+          className="relative z-[2]"
           style={{
             maxWidth: "64rem",
+            margin: "0 auto",
             paddingLeft: "clamp(2rem, 5vw, 4rem)",
             paddingRight: "clamp(2rem, 5vw, 4rem)",
             textAlign: "center",
