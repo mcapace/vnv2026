@@ -12,8 +12,8 @@ const photos = [
   },
   {
     src: "/images/photography/solage-poolside.jpg",
-    alt: "Poolside at Solage, Calistoga",
-    caption: "Poolside at Solage, Calistoga",
+    alt: "Solage, Calistoga",
+    caption: "Solage, Calistoga",
     objectPosition: "center 48%" as const,
   },
 ];
@@ -52,7 +52,7 @@ export default function PhotoGallery() {
             className="hub-prose mt-4 max-w-xl text-center"
             style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem" }}
           >
-            Wellness at Stanly Ranch. Golden hour at Solage. This is what thirty miles looks like.
+            Two moods. One valley.
           </p>
         </div>
         <div className="mx-auto grid max-w-[72rem] grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:gap-10">
@@ -76,8 +76,17 @@ export default function PhotoGallery() {
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
               </div>
-              <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-5 pb-5 pt-20 text-left md:px-6 md:pb-6 md:pt-24">
-                <span className="font-hub-display text-base leading-snug text-white/95 md:text-lg">
+              <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-5 pb-4 pt-12 text-left md:px-6 md:pb-5 md:pt-14">
+                <span
+                  style={{
+                    fontFamily: "var(--font-inter), sans-serif",
+                    fontSize: "0.75rem",
+                    fontWeight: 500,
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.7)",
+                  }}
+                >
                   {img.caption}
                 </span>
               </figcaption>
