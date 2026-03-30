@@ -36,21 +36,16 @@ export default function PhotoGallery() {
     >
       <div className="section-shell">
         <div className="section-stack mb-10 md:mb-12">
-          <p className="section-eyebrow text-[var(--hub-champagne-light)]">In the valley</p>
-          <h2
-            className="section-title mt-4"
-            style={{
-              color: "#ffffff",
-              fontSize: "clamp(2rem, 4.5vw, 3rem)",
-              fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontWeight: 400,
-            }}
-          >
-            Life in the valley
+          <p className="section-eyebrow" style={{ color: "var(--hub-champagne-light)" }}>
+            In the valley
+          </p>
+          <h2 className="section-title mt-4" style={{ color: "#ffffff" }}>
+            Life in the{" "}
+            <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>valley</span>
           </h2>
           <p
             className="hub-prose mt-4 max-w-xl text-center"
-            style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem" }}
+            style={{ color: "rgba(255,255,255,0.55)" }}
           >
             Two moods. One valley.
           </p>
