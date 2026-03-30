@@ -27,44 +27,17 @@ function townPosition(p: number): { x: number; y: number } {
   return { x, y };
 }
 
-function TownMarker({ x, y, label }: { x: number; y: number; label: string }) {
-  return (
-    <g>
-      <foreignObject
-        x={x - 14}
-        y={y - 14}
-        width={28}
-        height={28}
-        className="overflow-visible pointer-events-none"
-      >
-        <div className="flex h-full w-full items-center justify-center">
-          <div className="pulse-pin relative h-[10px] w-[10px] shrink-0 rounded-full bg-[var(--hub-champagne)]" />
-        </div>
-      </foreignObject>
-      <text
-        x={x + 12}
-        y={y + 4}
-        fontSize={11}
-        fill="var(--hub-ink)"
-        fontFamily="var(--font-inter), system-ui, sans-serif"
-        style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
-      >
-        {label}
-      </text>
-    </g>
-  );
-}
-
-function NapaCorridorMapIllustration() {
+function NapaCorridorMapIllustration({ inView }: { inView: boolean }) {
   return (
     <svg
       viewBox="0 0 320 520"
       width="100%"
       className="mx-auto block h-auto max-w-xs"
       role="img"
-      aria-label="Illustrated map of the Napa Valley corridor from Napa and Carneros to Calistoga along Highway 29, with the Silverado Trail indicated"
+      aria-label="Illustrated map of the Napa Valley corridor"
     >
-      <path
+      {/* Silverado Trail — dashed, fades in */}
+      <motion.path
         d={SILVERADO_PATH}
         fill="none"
         stroke="var(--hub-champagne)"
@@ -72,16 +45,26 @@ function NapaCorridorMapIllustration() {
         strokeOpacity={0.38}
         strokeDasharray="7 11"
         strokeLinecap="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={inView ? { pathLength: 1, opacity: 1 } : {}}
+        transition={{ duration: 1.8, ease: "easeInOut", delay: 0.3 }}
       />
-      <path
+
+      {/* Hwy 29 — main road draws itself */}
+      <motion.path
         d={MAIN_PATH}
         fill="none"
         stroke="var(--hub-champagne)"
         strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"
+        initial={{ pathLength: 0 }}
+        animate={inView ? { pathLength: 1 } : {}}
+        transition={{ duration: 1.6, ease: "easeInOut", delay: 0.1 }}
       />
-      <text
+
+      {/* ~30 miles label */}
+      <motion.text
         x={24}
         y={268}
         fontSize={10}
@@ -89,12 +72,62 @@ function NapaCorridorMapIllustration() {
         fillOpacity={0.72}
         fontFamily="var(--font-inter), system-ui, sans-serif"
         style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.4, delay: 1.8 }}
       >
         ~30 miles
-      </text>
-      {towns.map((town) => {
+      </motion.text>
+
+      {/* Town markers — stagger in after road finishes */}
+      {towns.map((town, i) => {
         const { x, y } = townPosition(town.p);
-        return <TownMarker key={town.id} x={x} y={y} label={town.label} />;
+        return (
+          <motion.g
+            key={town.id}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{
+              duration: 0.35,
+              delay: 1.0 + i * 0.12,
+              ease: "backOut",
+            }}
+            style={{ transformOrigin: `${x}px ${y}px` }}
+          >
+            {/* Pulse ring */}
+            <motion.circle
+              cx={x}
+              cy={y}
+              r={8}
+              fill="none"
+              stroke="var(--hub-champagne)"
+              strokeWidth={1}
+              initial={{ opacity: 0.6, scale: 1 }}
+              animate={inView ? { opacity: 0, scale: 2.2 } : {}}
+              transition={{
+                duration: 1.5,
+                delay: 1.3 + i * 0.12,
+                repeat: Infinity,
+                repeatDelay: 2,
+                ease: "easeOut",
+              }}
+              style={{ transformOrigin: `${x}px ${y}px` }}
+            />
+            {/* Solid dot */}
+            <circle cx={x} cy={y} r={4.5} fill="var(--hub-champagne)" />
+            {/* Label */}
+            <text
+              x={x + 13}
+              y={y + 4}
+              fontSize={11}
+              fill="var(--hub-ink)"
+              fontFamily="var(--font-inter), system-ui, sans-serif"
+              style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+            >
+              {town.label}
+            </text>
+          </motion.g>
+        );
       })}
     </svg>
   );
@@ -115,9 +148,7 @@ export default function RouteMapSection() {
     >
       <div className="section-shell mx-auto w-full">
         {/* Two column layout */}
-        <div
-          className="mx-auto grid w-full max-w-[72rem] grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-[4rem]"
-        >
+        <div className="mx-auto grid w-full max-w-[72rem] grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-[4rem]">
           {/* Left — map */}
           <motion.div
             initial={reducedMotion ? false : { opacity: 0, x: -16 }}
@@ -133,7 +164,7 @@ export default function RouteMapSection() {
               From the bay fog of Carneros to the thermal springs of Calistoga — the entire valley runs
               along a single corridor. Most stops are fifteen minutes apart.
             </p>
-            <NapaCorridorMapIllustration />
+            <NapaCorridorMapIllustration inView={!!inView} />
           </motion.div>
 
           {/* Right — town breakdown */}
