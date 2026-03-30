@@ -120,10 +120,21 @@ export default function Navigation() {
               alt="Visit Napa Valley"
               style={{ height: "1.75rem", width: "auto", objectFit: "contain" }}
             />
+            <span
+              className="sm:inline hidden"
+              style={{
+                color: onHero ? "rgba(255,255,255,0.35)" : "rgba(42,38,35,0.3)",
+                fontSize: "0.75rem",
+                fontWeight: 300,
+                lineHeight: 1,
+              }}
+            >
+              ×
+            </span>
             <img
               src={onHero ? "/images/logos/wine-spectator/ws-logo-white.png" : "/images/logos/wine-spectator/ws-logo-dark.png"}
               alt="Wine Spectator"
-              className="hidden sm:inline"
+              className="sm:inline hidden"
               style={{
                 height: "1.5rem",
                 width: "auto",

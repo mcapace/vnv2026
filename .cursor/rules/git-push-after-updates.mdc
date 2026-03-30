@@ -1,0 +1,14 @@
+---
+description: After any code change, commit and push to origin
+alwaysApply: true
+---
+
+# Git: push after updates
+
+When you modify project source or assets (not user docs unless asked):
+
+1. Run `git status` in the project root.
+2. Stage relevant files, commit with a short imperative message, and `git push` to the tracked remote (usually `origin` and current branch).
+3. If the repo has no remote or push fails, report the error; do not leave edits uncommitted without saying so.
+
+Skip push only if the user explicitly asks not to commit/push or the workspace is not a git repo.
