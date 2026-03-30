@@ -5,11 +5,11 @@ import type { MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Stay", href: "/stay", id: "stay" as const },
-  { label: "Dine", href: "/dine", id: "dine" as const },
-  { label: "Wine", href: "/wine", id: "wine" as const },
-  { label: "Explore", href: "/explore", id: "explore" as const },
-  { label: "Itinerary", href: "/#itinerary", id: "itinerary" as const },
+  { label: "Stay", href: "/stay", id: "stay" as const, live: true },
+  { label: "Dine", href: "/dine", id: "dine" as const, live: true },
+  { label: "Wine", href: "/wine", id: "wine" as const, live: false },
+  { label: "Explore", href: "/explore", id: "explore" as const, live: false },
+  { label: "Itinerary", href: "/#itinerary", id: "itinerary" as const, live: false },
 ];
 
 type SectionId = (typeof navLinks)[number]["id"] | "";
@@ -205,6 +205,8 @@ export default function Navigation() {
                   href={link.href}
                   onClick={(e) => onNavClick(e, link.href)}
                   style={{
+                    display: "inline-flex",
+                    alignItems: "center",
                     fontSize: "0.625rem",
                     fontWeight: 600,
                     letterSpacing: "0.15em",
@@ -230,6 +232,22 @@ export default function Navigation() {
                   }}
                 >
                   {link.label}
+                  {link.live && (
+                    <span
+                      style={{
+                        display: "inline-block",
+                        width: "4px",
+                        height: "4px",
+                        borderRadius: "9999px",
+                        backgroundColor: "var(--hub-champagne)",
+                        marginLeft: "3px",
+                        verticalAlign: "middle",
+                        marginBottom: "1px",
+                        flexShrink: 0,
+                      }}
+                      aria-label="Article live"
+                    />
+                  )}
                 </a>
               );
             })}
@@ -250,7 +268,7 @@ export default function Navigation() {
                   marginRight: "0.25rem",
                 }}
               >
-                <span style={{ fontSize: "0.875rem", lineHeight: 1 }}>
+                <span style={{ fontSize: "0.75rem", lineHeight: 1 }}>
                   <WeatherIcon condition={weather.condition} />
                 </span>
                 <span>{weather.temp}°F</span>
@@ -363,6 +381,22 @@ export default function Navigation() {
                   }}
                 >
                   {link.label}
+                  {link.live && (
+                    <span
+                      style={{
+                        display: "inline-block",
+                        width: "4px",
+                        height: "4px",
+                        borderRadius: "9999px",
+                        backgroundColor: "var(--hub-champagne)",
+                        marginLeft: "3px",
+                        verticalAlign: "middle",
+                        marginBottom: "1px",
+                        flexShrink: 0,
+                      }}
+                      aria-label="Article live"
+                    />
+                  )}
                 </motion.a>
               ))}
             </nav>
