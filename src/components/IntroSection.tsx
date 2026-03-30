@@ -8,7 +8,7 @@ const stats = [
   { key: "wineries", target: 400, suffixPlus: true, label: "Wineries" },
   { key: "miles", target: 30, suffixPlus: false, label: "Miles" },
   { key: "michelin", target: 9, suffixPlus: false, label: "Michelin stars" },
-  { key: "towns", target: 5, suffixPlus: false, label: "Distinct towns" },
+  { key: "towns", target: 4, suffixPlus: false, label: "Distinct towns" },
 ] as const;
 
 function StatCell({
