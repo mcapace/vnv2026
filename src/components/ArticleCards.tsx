@@ -140,7 +140,7 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
         src={article.image}
         alt=""
         role="presentation"
-        className={`absolute inset-0 h-full w-full object-cover ${isLive ? "motion-safe:transition-transform motion-safe:duration-[700ms] motion-safe:ease-out motion-safe:group-hover:scale-105" : ""}`}
+        className={`absolute inset-0 h-full w-full object-cover ${isLive ? "motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-105" : ""}`}
         style={{
           objectPosition: article.objectPosition,
           filter: isComingSoon ? "grayscale(30%) brightness(0.75)" : "none",
