@@ -68,9 +68,12 @@ export default function ArticleCards() {
       role="region"
       aria-labelledby="features-heading"
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper-2)]"
-      style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
+      style={{
+        paddingTop: "clamp(3rem, 7vw, 5rem)",
+        paddingBottom: "clamp(3rem, 7vw, 5rem)",
+      }}
     >
-      <div ref={headerRef} className="section-shell section-stack mx-auto mb-16 max-w-2xl md:mb-24">
+      <div ref={headerRef} className="section-shell section-stack mx-auto mb-10 max-w-2xl md:mb-14">
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -97,7 +100,7 @@ export default function ArticleCards() {
         </motion.p>
       </div>
 
-      <div className="section-shell mx-auto flex flex-col gap-12 md:gap-20">
+      <div className="section-shell mx-auto grid grid-cols-1 gap-6 md:grid-cols-2">
         {articles.map((article) => (
           <ArticleRow key={article.id} article={article} />
         ))}
@@ -119,7 +122,8 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${article.label} in Napa Valley — ${article.description} — open on Visit Napa Valley`}
-        className="group relative block min-h-[280px] w-full overflow-hidden lg:min-h-[440px]"
+        className="group relative block overflow-hidden"
+        style={{ minHeight: "420px" }}
       >
         <img
           src={article.image}
