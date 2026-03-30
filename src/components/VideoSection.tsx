@@ -1,13 +1,22 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 
 const VIDEO_SRC = "/videos/AdobeStock_274812042.mov";
 
 export default function VideoSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    void v.play().catch(() => {
+      /* autoplay may be deferred; muted clips usually recover on next user gesture */
+    });
+  }, []);
 
   return (
     <section
@@ -18,8 +27,9 @@ export default function VideoSection() {
       style={{ minHeight: "min(68vh, 720px)" }}
     >
       <video
+        ref={videoRef}
         src={VIDEO_SRC}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 z-0 h-full w-full object-cover"
         style={{ objectPosition: "center 38%" }}
         autoPlay
         playsInline
