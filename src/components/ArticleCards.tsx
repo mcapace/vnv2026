@@ -185,7 +185,10 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
         </span>
       ) : null}
 
-      <div className="absolute bottom-0 left-0 right-0 z-10 px-6 pb-7 pt-16">
+      <div
+        className="absolute bottom-0 left-0 right-0 z-10"
+        style={{ padding: "3rem 1.5rem 1.5rem" }}
+      >
         <h3
           style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",
@@ -204,13 +207,20 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
             fontSize: "1rem",
             fontStyle: "italic",
             color: "rgba(255,255,255,0.75)",
-            marginBottom: "0.75rem",
+            marginBottom: "0.5rem",
           }}
         >
           {article.subtitle}
         </p>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem", marginBottom: "1rem" }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.375rem",
+            marginBottom: "0.875rem",
+          }}
+        >
           {article.partners.map((p) => (
             <span
               key={p}
@@ -219,8 +229,8 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
                 alignItems: "center",
                 borderRadius: "9999px",
                 border: "1px solid rgba(255,255,255,0.3)",
-                padding: "0.125rem 0.625rem",
-                fontSize: "0.7rem",
+                padding: "0.125rem 0.5rem",
+                fontSize: "0.625rem",
                 color: "rgba(255,255,255,0.75)",
                 whiteSpace: "nowrap",
               }}
