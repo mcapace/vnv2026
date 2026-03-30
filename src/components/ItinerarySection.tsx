@@ -164,10 +164,13 @@ export default function ItinerarySection() {
       id="itinerary"
       role="region"
       aria-label="Weekend itineraries"
-      className="border-t border-[var(--hub-line)] bg-[var(--hub-paper-2)]"
-      style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
+      className="border-t border-[var(--hub-line)] bg-[var(--hub-paper)]"
+      style={{
+        paddingTop: "clamp(3rem, 6vw, 5rem)",
+        paddingBottom: "clamp(3rem, 6vw, 5rem)",
+      }}
     >
-      <div ref={headerRef} className="section-shell section-stack mx-auto mb-12 max-w-2xl md:mb-16">
+      <div ref={headerRef} className="section-shell section-stack mx-auto mb-8 max-w-2xl md:mb-10">
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -182,7 +185,7 @@ export default function ItinerarySection() {
           className="section-title"
         >
           Three days in{" "}
-          <span className="text-[var(--hub-wine)]">paradise</span>
+          <span className="text-[var(--hub-champagne)]">paradise</span>
         </motion.h2>
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
@@ -196,7 +199,7 @@ export default function ItinerarySection() {
         </motion.p>
       </div>
 
-      <div className="section-shell mx-auto max-w-3xl">
+      <div className="section-shell mx-auto max-w-2xl">
         <ol className="space-y-4">
           {days.map((day, dayIndex) => (
             <li key={day.title} className="list-none">
@@ -218,7 +221,7 @@ export default function ItinerarySection() {
             href="https://www.visitnapavalley.com/plan-your-trip/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-hub-sans itinerary-outline-cta mt-4 inline-flex min-h-12 items-center justify-center rounded-full border-2 border-[var(--hub-wine)] bg-transparent px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--hub-wine)] transition"
+            className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--hub-wine)] px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[var(--hub-wine-deep)]"
           >
             Customize this itinerary
           </a>
@@ -243,7 +246,10 @@ function DayAccordion({
   const headerId = `${panelId}-label`;
 
   return (
-    <div className="hub-card-elevated overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)]">
+    <div
+      className="hub-card-elevated overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)]"
+      style={{ borderLeft: isOpen ? "3px solid var(--hub-wine)" : "3px solid transparent" }}
+    >
       <button
         type="button"
         id={headerId}
@@ -259,7 +265,7 @@ function DayAccordion({
           <span className="font-hub-sans text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--hub-champagne)]">
             {day.day}
           </span>
-          <span className="font-hub-serif mt-1 block text-xl font-normal capitalize tracking-[-0.02em] text-[var(--hub-ink)] sm:text-2xl">
+          <span className="font-hub-serif mt-1 block text-2xl font-normal capitalize tracking-[-0.02em] text-[var(--hub-ink)] sm:text-3xl">
             {day.title}
           </span>
           <span className="font-hub-display mt-0.5 block text-base leading-snug text-[var(--hub-muted)]">
