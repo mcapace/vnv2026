@@ -137,22 +137,6 @@ const typeStyle: Record<string, { bg: string; label: string }> = {
   explore: { bg: "var(--hub-sage)", label: "Explore" },
 };
 
-function DayRouteMini({ label }: { label: string }) {
-  return (
-    <div className="mt-4 flex items-center gap-3 rounded-md border border-[var(--hub-line)] bg-[var(--hub-card)] px-3 py-2.5">
-      <svg viewBox="0 0 120 24" className="h-6 w-[4.5rem] shrink-0 text-[var(--hub-wine)]" aria-hidden>
-        <line x1="4" y1="14" x2="108" y2="14" stroke="currentColor" strokeWidth="2" opacity="0.35" />
-        <circle cx="20" cy="14" r="4" fill="currentColor" />
-        <circle cx="60" cy="14" r="4" fill="currentColor" opacity="0.85" />
-        <circle cx="100" cy="14" r="4" fill="currentColor" opacity="0.55" />
-      </svg>
-      <p className="text-[10px] font-medium uppercase tracking-[0.12em] text-[var(--hub-muted)]">
-        {label}
-      </p>
-    </div>
-  );
-}
-
 export default function ItinerarySection() {
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-50px" });
@@ -247,101 +231,224 @@ function DayAccordion({
 
   return (
     <div
-      className="hub-card-elevated overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)]"
+      className="overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] hub-card-elevated"
       style={{ borderLeft: isOpen ? "3px solid var(--hub-wine)" : "3px solid transparent" }}
     >
+      {/* Accordion trigger */}
       <button
         type="button"
         id={headerId}
         aria-expanded={isOpen}
         aria-controls={panelId}
         onClick={onToggle}
-        className="itinerary-day-trigger flex w-full min-h-14 items-start gap-4 px-4 py-4 text-left transition sm:px-6"
+        className="itinerary-day-trigger flex w-full items-center gap-4 px-5 py-5 text-left transition sm:px-6"
       >
-        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-rose-900/20 text-xs font-bold text-[var(--hub-wine)]">
+        <span
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "2rem",
+            height: "2rem",
+            borderRadius: "9999px",
+            border: "1px solid rgba(107,46,54,0.2)",
+            fontSize: "0.75rem",
+            fontWeight: 700,
+            color: "var(--hub-wine)",
+            flexShrink: 0,
+          }}
+        >
           {index + 1}
         </span>
-        <span className="min-w-0 flex-1">
-          <span className="font-hub-sans text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--hub-champagne)]">
+        <span style={{ flex: 1, minWidth: 0 }}>
+          <span
+            style={{
+              display: "block",
+              fontSize: "0.625rem",
+              fontWeight: 700,
+              letterSpacing: "0.24em",
+              textTransform: "uppercase",
+              color: "var(--hub-champagne)",
+              marginBottom: "0.25rem",
+            }}
+          >
             {day.day}
           </span>
-          <span className="font-hub-serif mt-1 block text-xl font-normal tracking-[-0.02em] text-[var(--hub-ink)] sm:text-2xl">
+          <span
+            style={{
+              display: "block",
+              fontFamily: "var(--font-playfair), Georgia, serif",
+              fontSize: "clamp(1.125rem, 2.5vw, 1.5rem)",
+              fontWeight: 400,
+              color: "var(--hub-ink)",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.2,
+            }}
+          >
             {day.title}
           </span>
-          <span className="font-hub-display mt-0.5 block text-base leading-snug text-[var(--hub-muted)]">
+          <span
+            style={{
+              display: "block",
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "0.9375rem",
+              color: "var(--hub-muted)",
+              marginTop: "0.125rem",
+            }}
+          >
             {day.subtitle}
           </span>
         </span>
         <span
-          className="mt-1 shrink-0 text-[var(--hub-muted)] transition-transform duration-300"
-          style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}
+          style={{
+            color: "var(--hub-muted)",
+            transition: "transform 0.3s ease",
+            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            flexShrink: 0,
+          }}
           aria-hidden
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
             <path d="M6 9l6 6 6-6" />
           </svg>
         </span>
       </button>
 
+      {/* Accordion panel */}
       {isOpen && (
         <div
           id={panelId}
           role="region"
           aria-labelledby={headerId}
-          className="border-t border-[var(--hub-line)] px-4 pb-5 pt-2 sm:px-6"
+          style={{ borderTop: "1px solid var(--hub-line)", padding: "1.25rem 1.5rem 1.5rem" }}
         >
-          <DayRouteMini label={day.mapHint} />
-          <ul className="relative mt-8 space-y-0 pl-2 sm:pl-3">
+          {/* Route hint */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              padding: "0.625rem 0.875rem",
+              borderRadius: "0.5rem",
+              border: "1px solid var(--hub-line)",
+              backgroundColor: "var(--hub-paper)",
+              marginBottom: "1.75rem",
+            }}
+          >
+            <svg viewBox="0 0 120 24" style={{ height: "1.25rem", width: "4rem", flexShrink: 0, color: "var(--hub-wine)" }} aria-hidden>
+              <line x1="4" y1="14" x2="108" y2="14" stroke="currentColor" strokeWidth="2" opacity="0.35" />
+              <circle cx="20" cy="14" r="4" fill="currentColor" />
+              <circle cx="60" cy="14" r="4" fill="currentColor" opacity="0.85" />
+              <circle cx="100" cy="14" r="4" fill="currentColor" opacity="0.55" />
+            </svg>
             <span
-              className="absolute left-[17px] top-2 bottom-2 w-px bg-rose-900/25 sm:left-[19px]"
-              aria-hidden
-            />
+              style={{
+                fontSize: "0.625rem",
+                fontWeight: 600,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "var(--hub-muted)",
+              }}
+            >
+              {day.mapHint}
+            </span>
+          </div>
+
+          {/* Events list */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
             {day.events.map((event, ei) => (
-              <li
+              <div
                 key={event.activity}
-                className={`relative flex gap-4 pb-6 pl-6 sm:gap-5 sm:pl-8 sm:pb-8 ${
-                  ei === day.events.length - 1 ? "pb-2 sm:pb-2" : ""
-                } ${ei > 0 ? "border-t border-[var(--hub-line)] pt-6 sm:pt-8" : ""}`}
+                style={{
+                  display: "flex",
+                  gap: "1.25rem",
+                  paddingTop: ei > 0 ? "1.5rem" : 0,
+                  paddingBottom: ei < day.events.length - 1 ? "1.5rem" : 0,
+                  borderTop: ei > 0 ? "1px solid var(--hub-line)" : "none",
+                }}
               >
-                <span
-                  className="absolute left-[11px] top-7 z-[1] h-3 w-3 rounded-full border-2 border-[var(--hub-card)] bg-[var(--hub-wine)] sm:left-[13px] sm:top-8"
-                  aria-hidden
-                />
-                <div className="min-w-0 flex-1 pt-4">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <time className="font-hub-sans text-sm font-semibold tabular-nums text-[var(--hub-ink)] sm:text-base">
-                      {event.time}
-                    </time>
-                    <span
-                      className="font-hub-sans rounded px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-white"
-                      style={{
-                        backgroundColor: typeStyle[event.type].bg,
-                      }}
-                    >
-                      {typeStyle[event.type].label}
-                    </span>
-                  </div>
-                  <h4 className="font-hub-serif mt-2 text-lg font-normal leading-snug tracking-[-0.015em] text-[var(--hub-ink)] sm:text-xl">
+                {/* Left: time + type badge */}
+                <div
+                  style={{
+                    flexShrink: 0,
+                    width: "5.5rem",
+                    paddingTop: "0.125rem",
+                  }}
+                >
+                  <time
+                    style={{
+                      display: "block",
+                      fontSize: "0.8125rem",
+                      fontWeight: 600,
+                      color: "var(--hub-ink)",
+                      fontVariantNumeric: "tabular-nums",
+                      marginBottom: "0.375rem",
+                    }}
+                  >
+                    {event.time}
+                  </time>
+                  <span
+                    style={{
+                      display: "inline-block",
+                      fontSize: "0.5625rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "#ffffff",
+                      backgroundColor: typeStyle[event.type].bg,
+                      padding: "0.125rem 0.5rem",
+                      borderRadius: "0.25rem",
+                    }}
+                  >
+                    {typeStyle[event.type].label}
+                  </span>
+                </div>
+
+                {/* Right: activity details */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <h4
+                    style={{
+                      fontFamily: "var(--font-playfair), Georgia, serif",
+                      fontSize: "1.0625rem",
+                      fontWeight: 400,
+                      color: "var(--hub-ink)",
+                      lineHeight: 1.3,
+                      marginBottom: "0.375rem",
+                    }}
+                  >
                     {event.activity}
                   </h4>
                   {"wsTip" in event && event.wsTip && (
-                    <p className="font-hub-display mt-3 border-l-2 border-[var(--hub-champagne)] pl-3 text-sm italic text-[var(--hub-muted)]">
+                    <p
+                      style={{
+                        fontFamily: "var(--font-cormorant), Georgia, serif",
+                        fontSize: "0.875rem",
+                        fontStyle: "italic",
+                        color: "var(--hub-champagne)",
+                        borderLeft: "2px solid var(--hub-champagne)",
+                        paddingLeft: "0.625rem",
+                        marginBottom: "0.375rem",
+                      }}
+                    >
                       {event.wsTip}
                     </p>
                   )}
-                  <p className="font-hub-display mt-3 max-w-xl text-[1.0625rem] leading-[1.75] text-[var(--hub-muted)]">
+                  <p
+                    style={{
+                      fontFamily: "var(--font-cormorant), Georgia, serif",
+                      fontSize: "1rem",
+                      lineHeight: 1.65,
+                      color: "var(--hub-muted)",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
                     {event.description}
                   </p>
                   <a
                     href={event.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-hub-sans"
                     style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.25rem",
-                      marginTop: "0.75rem",
                       fontSize: "0.6875rem",
                       fontWeight: 600,
                       letterSpacing: "0.1em",
@@ -353,9 +460,9 @@ function DayAccordion({
                     Visit site →
                   </a>
                 </div>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </div>
