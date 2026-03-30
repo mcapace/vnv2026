@@ -90,8 +90,12 @@ export default function IntroSection() {
       style={{ paddingTop: "clamp(2.5rem, 5vw, 4rem)", paddingBottom: 0 }}
     >
       <div
-        className="section-shell section-stack mx-auto max-w-3xl"
-        style={{ paddingBottom: "clamp(2rem, 4vw, 3rem)" }}
+        className="section-shell section-stack mx-auto max-w-3xl pb-12 md:pb-14"
+        style={{
+          textAlign: "center",
+          alignItems: "center",
+          paddingBottom: "clamp(2rem, 4vw, 3rem)",
+        }}
       >
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 10 }}
@@ -139,6 +143,7 @@ export default function IntroSection() {
             maxWidth: "64rem",
             paddingLeft: "clamp(2rem, 5vw, 4rem)",
             paddingRight: "clamp(2rem, 5vw, 4rem)",
+            textAlign: "center",
           }}
         >
           {/* Stats row */}
@@ -149,18 +154,19 @@ export default function IntroSection() {
               gap: 0,
               borderTop: "1px solid rgba(255,255,255,0.08)",
               borderBottom: "1px solid rgba(255,255,255,0.08)",
+              textAlign: "center",
             }}
           >
             {stats.map((stat, i) => (
               <div
                 key={stat.key}
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
+                  textAlign: "center",
                   alignItems: "center",
                   justifyContent: "center",
+                  display: "flex",
+                  flexDirection: "column",
                   padding: "2.5rem 1rem",
-                  textAlign: "center",
                   borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
                 }}
               >
@@ -175,47 +181,57 @@ export default function IntroSection() {
           </div>
 
           {/* Blockquote */}
-          <blockquote
+          <div
             style={{
               margin: "3rem auto 0",
-              maxWidth: "42rem",
               textAlign: "center",
-              width: "100%",
-              display: "block",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <p
+            <blockquote
               style={{
-                fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontSize: "clamp(1.375rem, 2.8vw, 1.875rem)",
-                fontStyle: "italic",
-                fontWeight: 400,
-                lineHeight: 1.55,
-                color: "rgba(255,255,255,0.88)",
-                marginBottom: "1.5rem",
+                margin: 0,
+                maxWidth: "42rem",
                 textAlign: "center",
                 width: "100%",
+                display: "block",
               }}
             >
-              &ldquo;The most concentrated wine region in the world.&rdquo;
-            </p>
-            <footer
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.875rem",
-              }}
-            >
-              <div style={{ height: "1px", width: "2.5rem", backgroundColor: "rgba(255,255,255,0.15)" }} />
-              <img
-                src="/images/logos/wine-spectator/ws-logo-white.png"
-                alt="Wine Spectator"
-                style={{ height: "1rem", width: "auto", opacity: 0.45 }}
-              />
-              <div style={{ height: "1px", width: "2.5rem", backgroundColor: "rgba(255,255,255,0.15)" }} />
-            </footer>
-          </blockquote>
+              <p
+                style={{
+                  fontFamily: "var(--font-cormorant), Georgia, serif",
+                  fontSize: "clamp(1.375rem, 2.8vw, 1.875rem)",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                  lineHeight: 1.55,
+                  color: "rgba(255,255,255,0.88)",
+                  marginBottom: "1.5rem",
+                  textAlign: "center",
+                  width: "100%",
+                }}
+              >
+                &ldquo;The most concentrated wine region in the world.&rdquo;
+              </p>
+              <footer
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "0.875rem",
+                }}
+              >
+                <div style={{ height: "1px", width: "2.5rem", backgroundColor: "rgba(255,255,255,0.15)" }} />
+                <img
+                  src="/images/logos/wine-spectator/ws-logo-white.png"
+                  alt="Wine Spectator"
+                  style={{ height: "1rem", width: "auto", opacity: 0.45 }}
+                />
+                <div style={{ height: "1px", width: "2.5rem", backgroundColor: "rgba(255,255,255,0.15)" }} />
+              </footer>
+            </blockquote>
+          </div>
         </div>
       </div>
     </section>
