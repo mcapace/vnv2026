@@ -64,7 +64,7 @@ export default function Hero() {
           <img
             src="/images/logos/wine-spectator/ws-logo-white.png"
             alt="Wine Spectator"
-            style={{ height: "1rem", width: "auto", objectFit: "contain", opacity: 0.8 }}
+            style={{ height: "1.6rem", width: "auto", objectFit: "contain", opacity: 0.85 }}
           />
         </motion.div>
 

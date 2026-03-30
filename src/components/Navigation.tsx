@@ -125,10 +125,10 @@ export default function Navigation() {
               alt="Wine Spectator"
               className="hidden sm:inline"
               style={{
-                height: "1.1rem",
+                height: "1.5rem",
                 width: "auto",
                 objectFit: "contain",
-                opacity: onHero ? 0.7 : 0.85,
+                opacity: onHero ? 0.75 : 0.9,
               }}
             />
           </a>
