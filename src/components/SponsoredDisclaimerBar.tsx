@@ -1,6 +1,12 @@
 /** Fixed strip height — keep in sync with Navigation `top` offset */
 export const SPONSORED_BAR_HEIGHT = "1.875rem";
 
+/**
+ * IntersectionObserver `rootMargin` only allows px or % (not calc/rem).
+ * ≈ sponsored bar (1.875rem) + nav (4rem) at default 16px root.
+ */
+export const SITE_HEADER_OFFSET_PX = 94;
+
 export default function SponsoredDisclaimerBar() {
   return (
     <div

@@ -3,7 +3,10 @@
 import { useState, useEffect } from "react";
 import type { MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import SponsoredDisclaimerBar, { SPONSORED_BAR_HEIGHT } from "@/components/SponsoredDisclaimerBar";
+import SponsoredDisclaimerBar, {
+  SITE_HEADER_OFFSET_PX,
+  SPONSORED_BAR_HEIGHT,
+} from "@/components/SponsoredDisclaimerBar";
 
 const navLinks = [
   { label: "Stay", href: "/stay", id: "stay" as const, live: true },
@@ -53,7 +56,7 @@ export default function Navigation() {
       },
       {
         root: null,
-        rootMargin: `calc(-1 * (${SPONSORED_BAR_HEIGHT} + 4rem)) 0px -58% 0px`,
+        rootMargin: `-${SITE_HEADER_OFFSET_PX}px 0px -58% 0px`,
         threshold: [0, 0.08, 0.15, 0.25, 0.4],
       }
     );
