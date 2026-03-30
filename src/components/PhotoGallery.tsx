@@ -151,7 +151,8 @@ export default function PhotoGallery() {
             flexWrap: "nowrap",
             justifyContent: "center",
             gap: "0.5rem",
-            marginTop: "1.5rem",
+            marginTop: "2rem",
+            marginBottom: "1.5rem",
             overflowX: "auto",
           }}
         >
