@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Stay", href: "#stay", id: "stay" as const },
-  { label: "Dine", href: "#dine", id: "dine" as const },
-  { label: "Wine", href: "#wine", id: "wine" as const },
-  { label: "Explore", href: "#explore", id: "explore" as const },
-  { label: "Itinerary", href: "#itinerary", id: "itinerary" as const },
+  { label: "Stay", href: "/stay", id: "stay" as const },
+  { label: "Dine", href: "/dine", id: "dine" as const },
+  { label: "Wine", href: "/wine", id: "wine" as const },
+  { label: "Explore", href: "/explore", id: "explore" as const },
+  { label: "Itinerary", href: "/#itinerary", id: "itinerary" as const },
 ];
 
 type SectionId = (typeof navLinks)[number]["id"] | "";
@@ -58,12 +58,22 @@ export default function Navigation() {
   }, [mobileOpen]);
 
   const onNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("#") && href.length > 1) {
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const id = href.slice(2);
+      if (window.location.pathname !== "/") {
+        window.location.href = href;
+      } else {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }
+      setMobileOpen(false);
+    } else if (href.startsWith("#")) {
       e.preventDefault();
       const id = href.slice(1);
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       setMobileOpen(false);
     }
+    // For full path links like /stay, /dine — let the browser navigate normally
   };
 
   const onHero = !scrolled;
