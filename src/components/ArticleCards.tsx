@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
 const articles = [
@@ -67,6 +67,7 @@ export default function ArticleCards() {
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
   const reducedMotion = useReducedMotion();
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
     <section
@@ -107,18 +108,35 @@ export default function ArticleCards() {
       </div>
 
       <div className="section-shell mx-auto grid grid-cols-1 gap-6 md:grid-cols-2">
-        {articles.map((article) => (
-          <ArticleRow key={article.id} article={article} />
+        {articles.map((article, i) => (
+          <ArticleRow
+            key={article.id}
+            article={article}
+            index={i}
+            hoveredIdx={hoveredIdx}
+            setHoveredIdx={setHoveredIdx}
+          />
         ))}
       </div>
     </section>
   );
 }
 
-function ArticleRow({ article }: { article: (typeof articles)[0] }) {
+function ArticleRow({
+  article,
+  index,
+  hoveredIdx,
+  setHoveredIdx,
+}: {
+  article: (typeof articles)[0];
+  index: number;
+  hoveredIdx: number | null;
+  setHoveredIdx: Dispatch<SetStateAction<number | null>>;
+}) {
   const href = article.articleUrl ?? `/${article.id}`;
   const isLive = article.status === "live";
   const isComingSoon = article.status === "coming-soon";
+  const isHovered = hoveredIdx === index;
 
   const shellClassName = "group relative block overflow-hidden";
   const shellStyle: React.CSSProperties = {
@@ -133,11 +151,12 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
         src={article.image}
         alt=""
         role="presentation"
-        className={`absolute inset-0 h-full w-full object-cover ${isLive ? "motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-105" : ""}`}
+        className="absolute inset-0 h-full w-full object-cover"
         style={{
           objectPosition: article.objectPosition,
           filter: isComingSoon ? "grayscale(30%) brightness(0.75)" : "none",
           transition: "transform 0.7s ease",
+          transform: isHovered ? "scale(1.04)" : "scale(1)",
         }}
         loading="lazy"
         width={1200}
@@ -294,10 +313,21 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
   return (
     <article
       id={article.id}
-      className="scroll-mt-28 overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] hub-card-elevated"
+      className="group scroll-mt-28 border border-[var(--hub-line)]"
+      onMouseEnter={() => setHoveredIdx(index)}
+      onMouseLeave={() => setHoveredIdx(null)}
       style={{
         backgroundColor: "var(--hub-card)",
         opacity: isComingSoon ? 0.72 : 1,
+        cursor: isLive ? "pointer" : "default",
+        transform: isHovered ? "translateY(-6px)" : "translateY(0)",
+        boxShadow: isHovered
+          ? "0 20px 40px rgba(42,38,35,0.14), 0 8px 16px rgba(42,38,35,0.08)"
+          : "0 2px 8px rgba(42,38,35,0.06)",
+        transition:
+          "transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease",
+        borderRadius: "var(--hub-radius)",
+        overflow: "hidden",
       }}
     >
       {isLive ? (
