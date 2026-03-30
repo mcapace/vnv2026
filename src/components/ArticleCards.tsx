@@ -3,13 +3,6 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
-const pillarHref: Record<string, string> = {
-  stay: "https://www.visitnapavalley.com/hotels/",
-  dine: "https://www.visitnapavalley.com/restaurants/",
-  wine: "https://www.visitnapavalley.com/wineries/",
-  explore: "https://www.visitnapavalley.com/things-to-do/",
-};
-
 const articles = [
   {
     id: "stay",
@@ -23,7 +16,7 @@ const articles = [
     partners: ["Carneros Resort", "Mount View Hotel & Inn"],
     status: "live" as const,
     publishDate: null as string | null,
-    articleUrl: "https://www.winespectator.com",
+    articleUrl: "/stay",
   },
   {
     id: "dine",
@@ -37,7 +30,7 @@ const articles = [
     partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
     status: "coming-soon" as const,
     publishDate: "Coming soon",
-    articleUrl: null,
+    articleUrl: "/dine",
   },
   {
     id: "wine",
@@ -51,7 +44,7 @@ const articles = [
     partners: ["Etude", "Robert Mondavi", "Louis Martini"],
     status: "coming-soon" as const,
     publishDate: "Coming soon",
-    articleUrl: null,
+    articleUrl: "/wine",
     wineSpectatorPick: true,
   },
   {
@@ -66,7 +59,7 @@ const articles = [
     partners: ["JaM Cellars", "Pure Luxury Tours", "Marquee Pinball"],
     status: "coming-soon" as const,
     publishDate: "Coming soon",
-    articleUrl: null,
+    articleUrl: "/explore",
   },
 ];
 
@@ -123,7 +116,7 @@ export default function ArticleCards() {
 }
 
 function ArticleRow({ article }: { article: (typeof articles)[0] }) {
-  const href = article.articleUrl ?? pillarHref[article.id] ?? "https://www.visitnapavalley.com";
+  const href = article.articleUrl ?? `/${article.id}`;
   const isLive = article.status === "live";
   const isComingSoon = article.status === "coming-soon";
 
@@ -301,8 +294,6 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
       {isLive ? (
         <a
           href={href}
-          target="_blank"
-          rel="noopener noreferrer"
           aria-label={`Read: ${article.title}`}
           className={shellClassName}
           style={shellStyle}
