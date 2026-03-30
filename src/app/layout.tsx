@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import PageTransition from "@/components/PageTransition";
 import { Cormorant_Garamond, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
@@ -95,7 +96,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Script
           id="json-ld-destination"
           type="application/ld+json"
