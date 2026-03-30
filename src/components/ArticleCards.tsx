@@ -109,7 +109,7 @@ export default function ArticleCards() {
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose mx-auto max-w-xl"
         >
-          Four articles. Four ways to experience the valley. Published across spring 2026.
+          Stay. Dine. Wine. Explore. One valley, thirty miles, four stories.
         </motion.p>
       </div>
 
