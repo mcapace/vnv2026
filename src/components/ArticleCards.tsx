@@ -123,73 +123,181 @@ export default function ArticleCards() {
 
 function ArticleRow({ article }: { article: (typeof articles)[0] }) {
   const href = article.articleUrl ?? pillarHref[article.id] ?? "https://www.visitnapavalley.com";
-  const linkDestination = article.articleUrl ? "Wine Spectator" : "Visit Napa Valley";
+  const isLive = article.status === "live";
+  const isComingSoon = article.status === "coming-soon";
+
+  const shellClassName = "group relative block overflow-hidden";
+  const shellStyle: React.CSSProperties = {
+    minHeight: "420px",
+    cursor: isLive ? "pointer" : "default",
+    pointerEvents: isComingSoon ? "none" : "auto",
+  };
+
+  const cardBody = (
+    <>
+      <img
+        src={article.image}
+        alt=""
+        role="presentation"
+        className={`absolute inset-0 h-full w-full object-cover ${isLive ? "motion-safe:transition-transform motion-safe:duration-[700ms] motion-safe:ease-out motion-safe:group-hover:scale-105" : ""}`}
+        style={{
+          objectPosition: article.objectPosition,
+          filter: isComingSoon ? "grayscale(30%) brightness(0.75)" : "none",
+          transition: "transform 0.7s ease",
+        }}
+        loading="lazy"
+        width={1200}
+        height={800}
+        sizes="(max-width: 1024px) 100vw, min(1200px, 100vw)"
+      />
+
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 40%, transparent 70%)",
+        }}
+      />
+
+      <span
+        className="absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em]"
+        style={{ backgroundColor: "rgba(255,255,255,0.92)", color: "var(--hub-ink)" }}
+      >
+        {article.label}
+      </span>
+
+      {isComingSoon && article.publishDate ? (
+        <span
+          className="absolute right-4 top-4 z-10 rounded-full px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em]"
+          style={{ backgroundColor: "var(--hub-champagne)", color: "var(--hub-navy)" }}
+        >
+          {article.publishDate}
+        </span>
+      ) : null}
+
+      {isLive ? (
+        <span
+          className="absolute right-4 top-4 z-10 rounded-full px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em]"
+          style={{ backgroundColor: "var(--hub-wine)", color: "#ffffff" }}
+        >
+          Read now
+        </span>
+      ) : null}
+
+      <div className="absolute bottom-0 left-0 right-0 z-10 px-6 pb-7 pt-16">
+        <h3
+          style={{
+            fontFamily: "var(--font-cormorant), Georgia, serif",
+            fontSize: "clamp(1.5rem, 3vw, 2.125rem)",
+            fontWeight: 400,
+            color: "#ffffff",
+            lineHeight: 1.15,
+            marginBottom: "0.375rem",
+          }}
+        >
+          {article.title}
+        </h3>
+        <p
+          style={{
+            fontFamily: "var(--font-cormorant), Georgia, serif",
+            fontSize: "1rem",
+            fontStyle: "italic",
+            color: "rgba(255,255,255,0.75)",
+            marginBottom: "0.75rem",
+          }}
+        >
+          {article.subtitle}
+        </p>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem", marginBottom: "1rem" }}>
+          {article.partners.map((p) => (
+            <span
+              key={p}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                borderRadius: "9999px",
+                border: "1px solid rgba(255,255,255,0.3)",
+                padding: "0.125rem 0.625rem",
+                fontSize: "0.7rem",
+                color: "rgba(255,255,255,0.75)",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {p}
+            </span>
+          ))}
+        </div>
+
+        {isLive ? (
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              borderRadius: "9999px",
+              backgroundColor: "var(--hub-champagne)",
+              color: "var(--hub-navy)",
+              fontSize: "0.75rem",
+              fontWeight: 600,
+              padding: "0.625rem 1.25rem",
+              letterSpacing: "0.04em",
+            }}
+          >
+            Read the article →
+          </span>
+        ) : (
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.375rem",
+              borderRadius: "9999px",
+              border: "1px solid rgba(255,255,255,0.3)",
+              color: "rgba(255,255,255,0.5)",
+              fontSize: "0.75rem",
+              fontWeight: 500,
+              padding: "0.625rem 1.25rem",
+              letterSpacing: "0.04em",
+            }}
+          >
+            Article coming soon
+          </span>
+        )}
+      </div>
+    </>
+  );
 
   return (
     <article
       id={article.id}
-      className="hub-card-elevated scroll-mt-28 overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)]"
+      className="scroll-mt-28 overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] hub-card-elevated"
+      style={{
+        backgroundColor: "var(--hub-card)",
+        opacity: isComingSoon ? 0.72 : 1,
+      }}
     >
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${article.label} in Napa Valley — ${article.description} — open on ${linkDestination}`}
-        className="group relative block overflow-hidden"
-        style={{ minHeight: "480px" }}
-      >
-        <img
-          src={article.image}
-          alt=""
-          role="presentation"
-          className="absolute inset-0 h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-105"
-          style={{ objectPosition: article.objectPosition }}
-          loading="lazy"
-          width={1200}
-          height={800}
-          sizes="(max-width: 1024px) 100vw, min(1200px, 100vw)"
-        />
-
-        <span className="absolute left-4 top-4 z-10 rounded-full bg-white/90 px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[var(--hub-ink)]">
-          {article.label}
-        </span>
-
-        <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-6 pb-7 pt-16">
-          <h3 className="font-hub-display text-2xl font-normal text-white">{article.title}</h3>
-          <p className="font-hub-display mt-1 text-base italic text-white/80">{article.subtitle}</p>
-          {"wineSpectatorPick" in article && article.wineSpectatorPick && (
-            <p className="font-hub-sans mt-3 inline-flex w-fit items-center rounded-full border border-white/25 bg-white/10 px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-white/90">
-              Wine Spectator editor&apos;s pick
-            </p>
-          )}
-          <div className="flex flex-wrap">
-            {article.partners.map((p) => (
-              <span
-                key={p}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.25rem",
-                  borderRadius: "9999px",
-                  border: "1px solid rgba(255,255,255,0.25)",
-                  padding: "0.125rem 0.625rem",
-                  fontSize: "0.75rem",
-                  color: "rgba(255,255,255,0.7)",
-                  marginRight: "0.375rem",
-                  marginTop: "0.75rem",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {p}
-              </span>
-            ))}
-          </div>
-          <span className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-white/40 px-4 py-2 text-xs font-medium tracking-wide text-white transition-all duration-300 hover:bg-white hover:text-[var(--hub-ink)] group-hover:bg-white group-hover:text-[var(--hub-ink)]">
-            {article.articleUrl ? "Read on Wine Spectator" : "Visit Napa Valley"}
-            <span aria-hidden>→</span>
-          </span>
+      {isLive ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Read: ${article.title}`}
+          className={shellClassName}
+          style={shellStyle}
+        >
+          {cardBody}
+        </a>
+      ) : (
+        <div
+          className={shellClassName}
+          style={shellStyle}
+          aria-label={`${article.title} — coming soon`}
+          role="group"
+        >
+          {cardBody}
         </div>
-      </a>
+      )}
     </article>
   );
 }
