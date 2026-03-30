@@ -24,21 +24,24 @@ export default function Footer() {
         </div>
 
         <div
-          className="section-stack mx-auto w-full max-w-3xl"
-          style={{
-            textAlign: "center",
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-          }}
+          className="mx-auto w-full max-w-2xl"
+          style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}
         >
-          <p className="section-eyebrow text-[var(--hub-champagne-light)]">Next step</p>
-          <h2 className="font-hub-serif mt-[clamp(1.25rem,3vw,1.75rem)] text-balance text-3xl font-normal leading-tight tracking-[-0.02em] text-on-photo md:text-[2.35rem]">
+          <p
+            className="section-eyebrow text-[var(--hub-champagne-light)]"
+            style={{ textAlign: "center", width: "100%" }}
+          >
+            Next step
+          </p>
+          <h2
+            className="font-hub-serif mt-[clamp(1.25rem,3vw,1.75rem)] text-balance text-3xl font-normal leading-tight tracking-[-0.02em] text-on-photo md:text-[2.35rem]"
+            style={{ textAlign: "center", width: "100%" }}
+          >
             Ready to plan a long weekend?
           </h2>
           <p
-            className="font-hub-display mx-auto mt-4 max-w-lg text-lg leading-snug text-white/85 text-on-photo"
-            style={{ textAlign: "center" }}
+            className="font-hub-display text-lg leading-snug text-white/85 text-on-photo"
+            style={{ textAlign: "center", maxWidth: "32rem", margin: "1rem auto 0" }}
           >
             Lock in stays, tables, and cellar appointments on the official destination site.
           </p>
@@ -51,6 +54,8 @@ export default function Footer() {
               textTransform: "uppercase",
               color: "rgba(255,255,255,0.45)",
               marginTop: "1.5rem",
+              textAlign: "center",
+              width: "100%",
             }}
           >
             Join 50,000+ travelers exploring the valley each month
@@ -85,7 +90,7 @@ export default function Footer() {
               e.preventDefault();
               setSignedUp(true);
             }}
-            style={{ marginTop: "2.5rem", width: "100%", maxWidth: "28rem" }}
+            style={{ width: "100%", maxWidth: "28rem", marginTop: "2rem" }}
           >
             <label htmlFor="footer-email" className="sr-only">
               Email for weekend planning guide
@@ -98,6 +103,7 @@ export default function Footer() {
                 textTransform: "uppercase",
                 color: "rgba(255,255,255,0.55)",
                 marginBottom: "0.875rem",
+                textAlign: "center",
               }}
             >
               Get the weekend planning guide
@@ -194,7 +200,10 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="mt-12 flex flex-col gap-6 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div
+          className="mt-12 border-t border-white/10 pt-6"
+          style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}
+        >
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
             <p className="font-hub-sans text-xs text-white/40">
               © {new Date().getFullYear()} Visit Napa Valley
