@@ -28,7 +28,11 @@ export default function PhotoGallery() {
       ref={sectionRef}
       role="region"
       aria-label="Editorial photography from the valley"
-      className="bg-[var(--hub-navy)] py-10 md:py-16"
+      className="bg-[var(--hub-navy)]"
+      style={{
+        paddingTop: "clamp(2rem, 3vw, 3rem)",
+        paddingBottom: "clamp(2rem, 3vw, 3rem)",
+      }}
     >
       <div className="section-shell">
         <div className="section-stack mb-10 md:mb-12">
@@ -42,13 +46,13 @@ export default function PhotoGallery() {
               fontWeight: 400,
             }}
           >
-            Where every stay tells a story
+            Life in the valley
           </h2>
           <p
             className="hub-prose mt-4 max-w-xl text-center"
             style={{ color: "rgba(255,255,255,0.6)", fontSize: "1rem" }}
           >
-            Two properties. Two moods. One valley.
+            Wellness at Stanly Ranch. Golden hour at Solage. This is what thirty miles looks like.
           </p>
         </div>
         <div className="mx-auto grid max-w-[72rem] grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:gap-10">
