@@ -32,7 +32,7 @@ function StatCell({
   const showPlus = stat.suffixPlus && (!active || done);
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center text-center">
       <span
         style={{
           fontFamily: "var(--font-cormorant), Georgia, serif",
@@ -49,7 +49,7 @@ function StatCell({
       <span className="mt-1 text-xs uppercase tracking-[0.2em] text-white/70">
         {stat.label}
       </span>
-    </>
+    </div>
   );
 }
 
