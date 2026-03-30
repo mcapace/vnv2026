@@ -9,7 +9,8 @@ const partnerCards: Array<{
   name: string;
   category: Cat;
   description: string;
-  image?: string;
+  image: string;
+  objectPosition?: string;
   href: string;
 }> = [
   {
@@ -17,13 +18,15 @@ const partnerCards: Array<{
     category: "Stay",
     description: "Cottages at the edge of Carneros fog and vines.",
     image: "/images/photography/stanly-ranch-spa.jpg",
+    objectPosition: "center 42%",
     href: "https://www.carnerosresort.com/",
   },
   {
     name: "Mount View Hotel & Inn",
     category: "Stay",
-    description: "Calistoga mineral spa heritage rooms.",
+    description: "Calistoga mineral spa heritage rooms since 1919.",
     image: "/images/photography/solage-poolside.jpg",
+    objectPosition: "center 48%",
     href: "https://www.mountviewhotel.com/",
   },
   {
@@ -31,18 +34,23 @@ const partnerCards: Array<{
     category: "Wine",
     description: "Carneros Pinot on the terrace.",
     image: "/images/photography/wine-cellar-toast.jpg",
+    objectPosition: "center 45%",
     href: "https://www.etudewines.com/",
   },
   {
     name: "Robert Mondavi Winery",
     category: "Wine",
     description: "The Oakville benchmark, reborn for tours and tastings.",
+    image: "/images/photography/chandon-group.jpg",
+    objectPosition: "center 48%",
     href: "https://www.robertmondavi.com/",
   },
   {
     name: "Louis Martini Winery",
     category: "Wine",
     description: "Generations of Cabernet craft in St. Helena.",
+    image: "/images/photography/chandon-hilltop.jpg",
+    objectPosition: "center 35%",
     href: "https://www.louismartini.com/",
   },
   {
@@ -50,27 +58,31 @@ const partnerCards: Array<{
     category: "Dine",
     description: "Yountville bistro classics with Thomas Keller polish.",
     image: "/images/photography/press-plating.jpg",
-    href: "https://www.bouchonbistro.com/",
+    objectPosition: "center 48%",
+    href: "https://www.thomaskeller.com/bouchonyountville",
   },
   {
     name: "Calistoga Depot",
     category: "Dine",
-    description: "Grand ceiling lunches in a historic depot.",
-    image: "/images/photography/press-plating.jpg",
-    href: "https://www.visitnapavalley.com/restaurants/",
+    description: "Six train cars, one distillery, endless Calistoga charm.",
+    image: "/images/photography/cadet-dining.jpg",
+    objectPosition: "center 48%",
+    href: "https://www.calistogadepot.com/",
   },
   {
-    name: "The Grove @ COPIA",
+    name: "The Grove at COPIA",
     category: "Dine",
-    description: "CIA Copia campus dining with valley access.",
+    description: "CIA campus dining with garden-to-table cuisine.",
     image: "/images/photography/chandon-brunch.jpg",
-    href: "https://www.cia.edu/copia/",
+    objectPosition: "center 48%",
+    href: "https://www.ciaatcopia.com/grove-restaurant",
   },
   {
     name: "JaM Cellars Ballroom",
     category: "Explore",
-    description: "Napa’s live-music downtown anchor.",
+    description: "Napa's live-music downtown anchor.",
     image: "/images/photography/cadet-nightlife.jpg",
+    objectPosition: "center 48%",
     href: "https://www.jamcellars.com/",
   },
   {
@@ -78,26 +90,27 @@ const partnerCards: Array<{
     category: "Explore",
     description: "Tailored chauffeured days across the valley.",
     image: "/images/photography/stanly-ranch-convertible.jpg",
+    objectPosition: "center 30%",
     href: "https://www.pureluxury.com/napa-valley-wine-tours/",
   },
   {
     name: "Marquee Pinball Lounge",
     category: "Explore",
-    description: "Playful cocktails and vintage games.",
-    image: "/images/photography/cadet-nightlife.jpg",
+    description: "Playful cocktails and vintage games in downtown Napa.",
+    image: "/images/photography/solage-pool-night.jpg",
+    objectPosition: "center 48%",
     href: "https://www.visitnapavalley.com/things-to-do/",
   },
 ];
 
 const filters = ["All", "Stay", "Dine", "Wine", "Explore"] as const;
 
-function PartnerGradientPlaceholder({ name }: { name: string }) {
-  return (
-    <div className="flex h-full min-h-0 w-full items-center justify-center bg-gradient-to-br from-[var(--hub-navy-mid)] to-[var(--hub-wine-deep)] p-4">
-      <span className="text-center font-hub-display text-2xl text-white/30">{name}</span>
-    </div>
-  );
-}
+const categoryColor: Record<Cat, string> = {
+  Stay: "var(--hub-wine)",
+  Wine: "var(--hub-wine-deep)",
+  Dine: "var(--hub-terra)",
+  Explore: "var(--hub-sage)",
+};
 
 export default function PartnersSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -112,11 +125,16 @@ export default function PartnersSection() {
 
   return (
     <section
-      className="border-t border-[var(--hub-line)] bg-[var(--hub-card)]"
-      style={{ paddingTop: "var(--section-pad-y)", paddingBottom: "var(--section-pad-y)" }}
+      className="border-t border-[var(--hub-line)]"
+      style={{
+        backgroundColor: "var(--hub-paper)",
+        paddingTop: "clamp(3rem, 7vw, 5rem)",
+        paddingBottom: "clamp(3rem, 7vw, 5rem)",
+      }}
     >
       <div ref={ref} className="section-shell section-shell--wide mx-auto">
-        <div className="section-stack mb-10 md:mb-12">
+        {/* Header */}
+        <div className="section-stack mx-auto mb-10 max-w-2xl">
           <motion.p
             initial={reducedMotion ? false : { opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -128,77 +146,157 @@ export default function PartnersSection() {
             initial={reducedMotion ? false : { opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: reducedMotion ? 0 : 0.06 }}
-            className="section-title max-w-xl"
+            className="section-title"
           >
-            Spots that anchor this story
+            Spots that{" "}
+            <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>anchor</span>{" "}
+            this story
           </motion.h2>
         </div>
 
-        <div className="mb-12 flex justify-center md:mb-14">
-          <div className="partner-filter-bar">
-            {filters.map((f) => (
-              <button
-                key={f}
-                type="button"
-                onClick={() => setFilter(f)}
-                className={`partner-filter-btn font-hub-sans min-h-10 rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] transition-all duration-200 sm:min-h-11 sm:px-5 sm:py-2.5 ${
-                  filter === f
-                    ? "border border-transparent bg-[var(--hub-wine)] text-white"
-                    : "partner-filter-btn--idle border border-[var(--hub-line)] bg-transparent text-[var(--hub-muted)] hover:border-stone-400"
-                }`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
+        {/* Filter pills */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "0.375rem",
+            marginBottom: "2.5rem",
+          }}
+        >
+          {filters.map((f) => (
+            <button
+              key={f}
+              type="button"
+              onClick={() => setFilter(f)}
+              style={{
+                fontSize: "0.625rem",
+                fontWeight: 700,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                padding: "0.5rem 1.125rem",
+                borderRadius: "9999px",
+                border:
+                  filter === f ? "1.5px solid var(--hub-wine)" : "1.5px solid var(--hub-line)",
+                backgroundColor: filter === f ? "var(--hub-wine)" : "transparent",
+                color: filter === f ? "#ffffff" : "var(--hub-muted)",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+            >
+              {f}
+            </button>
+          ))}
         </div>
 
+        {/* Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p, i) => (
             <motion.article
               key={p.name}
               initial={reducedMotion ? false : { opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: reducedMotion ? 0 : 0.04 + i * 0.03 }}
-              className="partner-card group relative overflow-hidden rounded-[var(--hub-radius)] bg-[var(--hub-card)]"
+              transition={{ delay: reducedMotion ? 0 : Math.min(i * 0.05, 0.3) }}
+              style={{
+                borderRadius: "var(--hub-radius)",
+                border: "1px solid var(--hub-line)",
+                backgroundColor: "var(--hub-card)",
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                transition: "box-shadow 0.35s ease, transform 0.35s ease",
+              }}
+              className="partner-card group"
             >
-              <a href={p.href} target="_blank" rel="noopener noreferrer" className="flex flex-1 flex-col">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  {p.image ? (
-                    <img
-                      src={p.image}
-                      alt=""
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                      width={600}
-                      height={400}
-                    />
-                  ) : p.name === "Robert Mondavi Winery" ? (
-                    <>
-                      {/* TODO: Replace with unique photo for Robert Mondavi Winery */}
-                      <PartnerGradientPlaceholder name={p.name} />
-                    </>
-                  ) : p.name === "Louis Martini Winery" ? (
-                    <>
-                      {/* TODO: Replace with unique photo for Louis Martini Winery */}
-                      <PartnerGradientPlaceholder name={p.name} />
-                    </>
-                  ) : (
-                    <>
-                      {/* TODO: Replace with unique photo for this partner */}
-                      <PartnerGradientPlaceholder name={p.name} />
-                    </>
-                  )}
-                  <span className="absolute left-3 top-3 z-10 rounded-full bg-white/90 px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-[var(--hub-ink)]">
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: "flex", flexDirection: "column", flex: 1, textDecoration: "none" }}
+              >
+                {/* Image */}
+                <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden" }}>
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      objectPosition: p.objectPosition ?? "center 48%",
+                      transition: "transform 0.7s ease",
+                    }}
+                    className="group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  {/* Category badge */}
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "0.75rem",
+                      left: "0.75rem",
+                      zIndex: 10,
+                      fontSize: "0.5625rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: "#ffffff",
+                      backgroundColor: categoryColor[p.category],
+                      padding: "0.3rem 0.625rem",
+                      borderRadius: "9999px",
+                    }}
+                  >
                     {p.category}
                   </span>
                 </div>
-                <div className="p-5">
-                  <h3 className="mb-1 font-hub-serif text-lg font-normal text-[var(--hub-ink)]">{p.name}</h3>
-                  <p className="text-sm leading-relaxed text-[var(--hub-muted)]">{p.description}</p>
-                  <span className="itinerary-learn mt-4 inline-flex items-center gap-1 text-xs font-medium tracking-wide text-[var(--hub-champagne)] hover:underline">
-                    Visit
-                    <span aria-hidden>→</span>
+
+                {/* Content */}
+                <div
+                  style={{
+                    padding: "1.125rem 1.25rem 1.25rem",
+                    flex: 1,
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-playfair), Georgia, serif",
+                      fontSize: "1rem",
+                      fontWeight: 400,
+                      color: "var(--hub-ink)",
+                      marginBottom: "0.375rem",
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {p.name}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.8125rem",
+                      color: "var(--hub-muted)",
+                      lineHeight: 1.55,
+                      flex: 1,
+                      marginBottom: "0.875rem",
+                    }}
+                  >
+                    {p.description}
+                  </p>
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.25rem",
+                      fontSize: "0.625rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "var(--hub-champagne)",
+                    }}
+                  >
+                    Visit →
                   </span>
                 </div>
               </a>
