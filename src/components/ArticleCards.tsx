@@ -161,8 +161,13 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
       />
 
       <span
-        className="absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.18em]"
-        style={{ backgroundColor: "rgba(255,255,255,0.92)", color: "var(--hub-ink)" }}
+        className="absolute left-4 top-4 z-10 rounded-full px-2.5 py-0.5 text-[0.55rem] font-semibold uppercase tracking-[0.2em]"
+        style={{
+          backgroundColor: "rgba(0,0,0,0.45)",
+          color: "rgba(255,255,255,0.9)",
+          backdropFilter: "blur(8px)",
+          border: "1px solid rgba(255,255,255,0.25)",
+        }}
       >
         {article.label}
       </span>
