@@ -14,47 +14,59 @@ const articles = [
   {
     id: "stay",
     label: "Stay",
-    title: "Stay in Napa Valley",
+    title: "The Best Places to Stay in Napa Valley",
     subtitle: "Where the valley becomes your room",
     description:
-      "From vineyard-edge bungalows at Carneros Resort to the charm of Mount View Hotel & Inn in Calistoga.",
+      "From vineyard-edge bungalows at Carneros Resort to the mineral-spa heritage of Mount View Hotel & Inn in Calistoga — a guide to sleeping well in wine country.",
     image: "/images/photography/solage-pool-night.jpg",
     objectPosition: "50% 48%",
     partners: ["Carneros Resort", "Mount View Hotel & Inn"],
+    status: "live" as const,
+    publishDate: null as string | null,
+    articleUrl: "https://www.winespectator.com",
   },
   {
     id: "dine",
     label: "Dine",
-    title: "Dine in Napa Valley",
+    title: "Where to Eat in Napa Valley",
     subtitle: "Every reservation earns the drive",
     description:
-      "Bouchon Bistro, Calistoga Depot, The Grove at COPIA—extraordinary kitchens, minutes apart.",
+      "Bouchon Bistro, Calistoga Depot, The Grove at COPIA — extraordinary kitchens within thirty miles of each other.",
     image: "/images/photography/press-plating.jpg",
     objectPosition: "50% 48%",
     partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
+    status: "coming-soon" as const,
+    publishDate: "Coming soon",
+    articleUrl: null,
   },
   {
     id: "wine",
     label: "Wine",
-    title: "Wine in Napa Valley",
+    title: "The Best Wineries in Napa Valley",
     subtitle: "Four hundred cellar doors, one corridor",
     description:
-      "Icons like Robert Mondavi, elegance at Etude, history at Louis Martini—without endless mileage.",
+      "Icons like Robert Mondavi, elegance at Etude, history at Louis Martini — the Wine Spectator guide to Napa's cellars.",
     image: "/images/photography/wine-cellar-toast.jpg",
     objectPosition: "50% 45%",
     partners: ["Etude", "Robert Mondavi", "Louis Martini"],
+    status: "coming-soon" as const,
+    publishDate: "Coming soon",
+    articleUrl: null,
     wineSpectatorPick: true,
   },
   {
     id: "explore",
     label: "Explore",
-    title: "Explore in Napa Valley",
-    subtitle: "When the day doesn’t end at the last pour",
+    title: "Things to Do in Napa Valley",
+    subtitle: "When the day doesn't end at the last pour",
     description:
-      "JaM Cellars Ballroom, Pure Luxury Tours, Marquee Pinball—the valley after dark and between vines.",
+      "JaM Cellars Ballroom, Pure Luxury Tours, Marquee Pinball — the valley after dark and between vines.",
     image: "/images/photography/cadet-nightlife.jpg",
     objectPosition: "50% 48%",
     partners: ["JaM Cellars", "Pure Luxury Tours", "Marquee Pinball"],
+    status: "coming-soon" as const,
+    publishDate: "Coming soon",
+    articleUrl: null,
   },
 ];
 
@@ -110,7 +122,8 @@ export default function ArticleCards() {
 }
 
 function ArticleRow({ article }: { article: (typeof articles)[0] }) {
-  const href = pillarHref[article.id] ?? "https://www.visitnapavalley.com";
+  const href = article.articleUrl ?? pillarHref[article.id] ?? "https://www.visitnapavalley.com";
+  const linkDestination = article.articleUrl ? "Wine Spectator" : "Visit Napa Valley";
 
   return (
     <article
@@ -121,7 +134,7 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`${article.label} in Napa Valley — ${article.description} — open on Visit Napa Valley`}
+        aria-label={`${article.label} in Napa Valley — ${article.description} — open on ${linkDestination}`}
         className="group relative block overflow-hidden"
         style={{ minHeight: "480px" }}
       >
@@ -172,7 +185,7 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
             ))}
           </div>
           <span className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-white/40 px-4 py-2 text-xs font-medium tracking-wide text-white transition-all duration-300 hover:bg-white hover:text-[var(--hub-ink)] group-hover:bg-white group-hover:text-[var(--hub-ink)]">
-            Visit Napa Valley
+            {article.articleUrl ? "Read on Wine Spectator" : "Visit Napa Valley"}
             <span aria-hidden>→</span>
           </span>
         </div>
