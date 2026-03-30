@@ -28,8 +28,8 @@ const articles = [
     image: "/images/photography/press-plating.jpg",
     objectPosition: "50% 48%",
     partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
-    status: "coming-soon" as const,
-    publishDate: "Coming soon",
+    status: "live" as const,
+    publishDate: null as string | null,
     articleUrl: "/dine",
   },
   {
