@@ -6,7 +6,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 const regions = [
   {
     id: "carneros",
-    label: "Carneros · South",
+    label: "Carneros",
     headline: "Life in the valley",
     accentWord: "valley",
     subtitle: "Where the morning fog burns off by ten, and the vines start at your door.",
@@ -23,7 +23,7 @@ const regions = [
   },
   {
     id: "yountville",
-    label: "Yountville · Mid-Valley",
+    label: "Yountville",
     headline: "Where dinner is the destination",
     accentWord: "destination",
     subtitle: "More Michelin stars per square mile than anywhere else in America.",
@@ -40,7 +40,7 @@ const regions = [
   },
   {
     id: "calistoga",
-    label: "Calistoga · North",
+    label: "Calistoga",
     headline: "The valley at its most unhurried",
     accentWord: "unhurried",
     subtitle: "Mineral springs, vintage charm, and the best pool in wine country.",
@@ -57,7 +57,7 @@ const regions = [
   },
   {
     id: "valley",
-    label: "The Valley · All of it",
+    label: "The Valley",
     headline: "Thirty miles of yes",
     accentWord: "yes",
     subtitle:
@@ -148,10 +148,11 @@ export default function PhotoGallery() {
         <div
           style={{
             display: "flex",
-            flexWrap: "wrap",
+            flexWrap: "nowrap",
             justifyContent: "center",
             gap: "0.5rem",
             marginTop: "1.5rem",
+            overflowX: "auto",
           }}
         >
           {regions.map((r, i) => (
