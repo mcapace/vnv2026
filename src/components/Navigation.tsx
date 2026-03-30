@@ -76,107 +76,184 @@ export default function Navigation() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           aria-label="Site"
-          style={{ paddingLeft: "clamp(2rem, 5vw, 4rem)", paddingRight: "clamp(2rem, 5vw, 4rem)" }}
-          className={`fixed top-0 left-0 right-0 z-50 flex h-16 items-center justify-between transition-all duration-300 ${
-            onHero
-              ? "border-b border-transparent bg-transparent shadow-none"
-              : "border-b border-[var(--hub-line)] bg-[var(--hub-card)]/95 shadow-sm backdrop-blur-md"
-          }`}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 50,
+            height: "4rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingLeft: "clamp(2rem, 5vw, 4rem)",
+            paddingRight: "clamp(2rem, 5vw, 4rem)",
+            transition: "background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease",
+            backgroundColor: onHero ? "transparent" : "rgba(253,252,250,0.96)",
+            borderBottom: onHero ? "1px solid transparent" : "1px solid rgba(42,38,35,0.1)",
+            boxShadow: onHero ? "none" : "0 1px 12px rgba(42,38,35,0.06)",
+            backdropFilter: onHero ? "none" : "blur(12px)",
+          }}
         >
+          {/* Top gradient for nav legibility over hero */}
           <div
-            className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-black/30 to-transparent"
             aria-hidden
+            style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: -1,
+              pointerEvents: "none",
+              background: onHero
+                ? "linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 70%, transparent 100%)"
+                : "none",
+            }}
           />
 
-          <div className="relative z-10 flex h-full w-full items-center justify-between">
+          {/* Left — Logo */}
+          <a
+            href="#hero"
+            onClick={(e) => onNavClick(e, "#hero")}
+            style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexShrink: 0 }}
+          >
+            <img
+              src={onHero ? "/images/logos/vnv-primary-white.png" : "/images/logos/vnv-primary-black.png"}
+              alt="Visit Napa Valley"
+              style={{ height: "1.75rem", width: "auto", objectFit: "contain" }}
+            />
+            <span
+              className="hidden sm:inline"
+              style={{
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontSize: "0.875rem",
+                fontStyle: "italic",
+                color: onHero ? "rgba(255,255,255,0.55)" : "var(--hub-muted)",
+              }}
+            >
+              Wine Spectator
+            </span>
+          </a>
+
+          {/* Center — Nav links */}
+          <nav
+            aria-label="Primary"
+            className="hidden items-center gap-0.5 md:flex"
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
+            {navLinks.map((link) => {
+              const active = activeId === link.id;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => onNavClick(e, link.href)}
+                  style={{
+                    fontSize: "0.625rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.15em",
+                    textTransform: "uppercase",
+                    padding: "0.375rem 0.75rem",
+                    borderRadius: "9999px",
+                    textDecoration: "none",
+                    transition: "background-color 0.2s, color 0.2s",
+                    color: onHero
+                      ? active
+                        ? "#ffffff"
+                        : "rgba(255,255,255,0.9)"
+                      : active
+                        ? "var(--hub-ink)"
+                        : "var(--hub-muted)",
+                    backgroundColor: onHero
+                      ? active
+                        ? "rgba(255,255,255,0.15)"
+                        : "transparent"
+                      : active
+                        ? "rgba(42,38,35,0.06)"
+                        : "transparent",
+                  }}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+          </nav>
+
+          {/* Right — Plan visit + mobile menu */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
             <a
-              href="#hero"
-              onClick={(e) => onNavClick(e, "#hero")}
-              className="relative z-10 flex min-w-0 shrink-0 items-center gap-3"
+              href="https://www.visitnapavalley.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex"
+              style={{
+                fontSize: "0.625rem",
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                padding: "0.5rem 1.25rem",
+                borderRadius: "9999px",
+                textDecoration: "none",
+                border: onHero ? "1.5px solid rgba(255,255,255,0.6)" : "1.5px solid rgba(42,38,35,0.25)",
+                color: onHero ? "#ffffff" : "var(--hub-ink)",
+                backgroundColor: "transparent",
+                transition: "all 0.2s ease",
+              }}
             >
-              <img
-                src={onHero ? "/images/logos/vnv-primary-white.png" : "/images/logos/vnv-primary-black.png"}
-                alt="Visit Napa Valley"
-                className="h-7 w-auto object-contain"
-                width={160}
-                height={40}
-              />
-              <span
-                className={`font-hub-display hidden text-sm italic sm:block ${
-                  onHero ? "text-white/80" : "text-[var(--hub-ink)]"
-                }`}
-              >
-                Wine Spectator
-              </span>
+              Plan visit
             </a>
-
-            <nav
-              className="absolute left-1/2 top-1/2 z-[5] hidden -translate-x-1/2 -translate-y-1/2 md:flex md:items-center md:gap-0.5"
-              aria-label="Primary"
+            <button
+              type="button"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden"
+              style={{
+                width: "2.5rem",
+                height: "2.5rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "9999px",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                color: onHero ? "#ffffff" : "var(--hub-ink)",
+              }}
+              aria-expanded={mobileOpen}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
-              {navLinks.map((link) => {
-                const active = activeId === link.id;
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={(e) => onNavClick(e, link.href)}
-                    className={
-                      onHero
-                        ? `rounded-full px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.15em] transition-colors duration-200 ${
-                            active
-                              ? "bg-white/15 text-white"
-                              : "text-white/80 hover:bg-white/10 hover:text-white"
-                          }`
-                        : `rounded-full px-3 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.15em] transition-colors duration-200 ${
-                            active
-                              ? "bg-black/5 text-[var(--hub-ink)]"
-                              : "text-[var(--hub-muted)] hover:bg-black/5 hover:text-[var(--hub-ink)]"
-                          }`
-                    }
-                  >
-                    {link.label}
-                  </a>
-                );
-              })}
-            </nav>
-
-            <div className="relative z-10 flex shrink-0 items-center gap-2">
-              <a
-                href="https://www.visitnapavalley.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`hidden rounded-full border px-5 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.1em] transition-all duration-200 md:inline-flex ${
-                  onHero
-                    ? "border-white/50 text-white hover:bg-white/90 hover:text-[var(--hub-ink)]"
-                    : "border-[var(--hub-line)] text-[var(--hub-ink)] hover:border-[var(--hub-champagne)] hover:bg-[var(--hub-paper)]"
-                }`}
-              >
-                Plan visit
-              </a>
-              <button
-                type="button"
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className={`flex h-10 w-10 items-center justify-center rounded-full md:hidden ${
-                  onHero ? "text-white" : "text-[var(--hub-ink)]"
-                }`}
-                aria-expanded={mobileOpen}
-                aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              >
-                <span className="sr-only">Menu</span>
-                <div className="flex w-5 flex-col gap-1.5">
-                  <span
-                    className={`h-px transition-transform ${onHero ? "bg-white" : "bg-[var(--hub-ink)]"} ${mobileOpen ? "translate-y-[6px] rotate-45" : ""}`}
-                  />
-                  <span
-                    className={`h-px transition-opacity ${onHero ? "bg-white" : "bg-[var(--hub-ink)]"} ${mobileOpen ? "opacity-0" : ""}`}
-                  />
-                  <span
-                    className={`h-px transition-transform ${onHero ? "bg-white" : "bg-[var(--hub-ink)]"} ${mobileOpen ? "-translate-y-[6px] -rotate-45" : ""}`}
-                  />
-                </div>
-              </button>
-            </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px", width: "18px" }}>
+                <span
+                  style={{
+                    height: "1.5px",
+                    background: "currentColor",
+                    display: "block",
+                    transition: "transform 0.2s",
+                    transform: mobileOpen ? "translateY(6.5px) rotate(45deg)" : "none",
+                  }}
+                />
+                <span
+                  style={{
+                    height: "1.5px",
+                    background: "currentColor",
+                    display: "block",
+                    transition: "opacity 0.2s",
+                    opacity: mobileOpen ? 0 : 1,
+                  }}
+                />
+                <span
+                  style={{
+                    height: "1.5px",
+                    background: "currentColor",
+                    display: "block",
+                    transition: "transform 0.2s",
+                    transform: mobileOpen ? "translateY(-6.5px) rotate(-45deg)" : "none",
+                  }}
+                />
+              </div>
+            </button>
           </div>
         </motion.nav>
       </header>
@@ -190,7 +267,7 @@ export default function Navigation() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 flex flex-col bg-[var(--hub-navy)] px-6 pb-10 pt-24 md:hidden"
           >
-            <nav className="flex flex-1 flex-col gap-1" aria-label="Mobile">
+            <nav style={{ display: "flex", flexDirection: "column", gap: "0", flex: 1 }} aria-label="Mobile">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.label}
@@ -199,7 +276,18 @@ export default function Navigation() {
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.04 }}
-                  className="font-hub-serif min-h-[52px] border-b border-white/10 py-4 text-2xl font-normal text-white"
+                  style={{
+                    fontFamily: "var(--font-playfair), Georgia, serif",
+                    fontSize: "1.5rem",
+                    fontWeight: 400,
+                    color: "#ffffff",
+                    textDecoration: "none",
+                    padding: "1rem 0",
+                    borderBottom: "1px solid rgba(255,255,255,0.1)",
+                    minHeight: "52px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
                 >
                   {link.label}
                 </motion.a>
@@ -209,7 +297,21 @@ export default function Navigation() {
               href="https://www.visitnapavalley.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-hub-sans mt-auto flex min-h-[52px] items-center justify-center rounded-full bg-[var(--hub-champagne)] py-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--hub-ink)]"
+              style={{
+                marginTop: "auto",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: "52px",
+                borderRadius: "9999px",
+                backgroundColor: "var(--hub-champagne)",
+                color: "var(--hub-navy)",
+                fontSize: "0.625rem",
+                fontWeight: 700,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                textDecoration: "none",
+              }}
             >
               Plan your visit
             </a>
