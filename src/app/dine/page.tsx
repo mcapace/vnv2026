@@ -31,7 +31,7 @@ export default function DinePage() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%)",
+              "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0.25) 75%, rgba(0,0,0,0.05) 100%)",
           }}
         />
         <div
@@ -53,13 +53,13 @@ export default function DinePage() {
                 fontWeight: 600,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: "rgba(255,255,255,0.5)",
+                color: "rgba(255,255,255,0.85)",
                 textDecoration: "none",
               }}
             >
               The Hub
             </Link>
-            <span style={{ color: "rgba(255,255,255,0.3)" }}>·</span>
+            <span style={{ color: "rgba(255,255,255,0.55)" }}>·</span>
             <span
               style={{
                 fontSize: "0.625rem",
@@ -90,7 +90,8 @@ export default function DinePage() {
               fontFamily: "var(--font-cormorant), Georgia, serif",
               fontSize: "1.125rem",
               fontStyle: "italic",
-              color: "rgba(255,255,255,0.65)",
+              color: "rgba(255,255,255,0.95)",
+              textShadow: "0 1px 4px rgba(0,0,0,0.55)",
               maxWidth: "38rem",
             }}
           >
@@ -104,7 +105,7 @@ export default function DinePage() {
               fontWeight: 500,
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color: "rgba(255,255,255,0.4)",
+              color: "rgba(255,255,255,0.80)",
             }}
           >
             Sponsored Content · Presented by Visit Napa Valley

@@ -209,7 +209,7 @@ export default function IntroSection() {
                   fontStyle: "italic",
                   fontWeight: 400,
                   lineHeight: 1.55,
-                  color: "rgba(255,255,255,0.88)",
+                  color: "rgba(255,255,255,0.90)",
                   marginBottom: "1.5rem",
                   textAlign: "center",
                   width: "100%",
@@ -229,7 +229,7 @@ export default function IntroSection() {
                 <img
                   src="/images/logos/wine-spectator/ws-logo-white.png"
                   alt="Wine Spectator"
-                  style={{ height: "1rem", width: "auto", opacity: 0.45 }}
+                  style={{ height: "1rem", width: "auto", opacity: 0.72 }}
                 />
                 <div style={{ height: "1px", width: "2.5rem", backgroundColor: "rgba(255,255,255,0.15)" }} />
               </footer>

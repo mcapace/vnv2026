@@ -114,7 +114,8 @@ export default function Hero() {
           style={{
             fontSize: "1.0625rem",
             lineHeight: 1.65,
-            color: "rgba(255,255,255,0.72)",
+            color: "rgba(255,255,255,0.92)",
+            textShadow: "0 1px 4px rgba(0,0,0,0.5)",
             maxWidth: "32rem",
             marginBottom: "2rem",
           }}
@@ -177,7 +178,7 @@ export default function Hero() {
       >
         <a href="#discover" aria-label="Scroll to main content">
           <ChevronDownIcon
-            style={{ width: "1.25rem", height: "1.25rem", color: "rgba(255,255,255,0.55)" }}
+            style={{ width: "1.25rem", height: "1.25rem", color: "rgba(255,255,255,0.80)" }}
             className="animate-bounce"
             strokeWidth={1.5}
           />

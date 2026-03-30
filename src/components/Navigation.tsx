@@ -223,7 +223,7 @@ export default function Navigation() {
                     color: onHero
                       ? active
                         ? "#ffffff"
-                        : "rgba(255,255,255,0.9)"
+                        : "rgba(255,255,255,0.92)"
                       : active
                         ? "var(--hub-ink)"
                         : "var(--hub-muted)",
@@ -267,7 +267,7 @@ export default function Navigation() {
                   fontSize: "0.625rem",
                   fontWeight: 600,
                   letterSpacing: "0.08em",
-                  color: onHero ? "rgba(255,255,255,0.7)" : "var(--hub-muted)",
+                  color: onHero ? "rgba(255,255,255,0.85)" : "var(--hub-muted)",
                   borderRight: `1px solid ${onHero ? "rgba(255,255,255,0.15)" : "var(--hub-line)"}`,
                   paddingRight: "1rem",
                   marginRight: "0.25rem",
