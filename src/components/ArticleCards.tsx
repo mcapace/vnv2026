@@ -91,7 +91,7 @@ export default function ArticleCards() {
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           className="section-eyebrow"
         >
-          Four pillars
+          The guide
         </motion.p>
         <motion.h2
           id="features-heading"
@@ -100,7 +100,8 @@ export default function ArticleCards() {
           transition={{ delay: reducedMotion ? 0 : 0.06 }}
           className="section-title"
         >
-          Stay, dine, wine &amp; explore
+          A World in 30 Miles —{" "}
+          <span style={{ color: "var(--hub-champagne)" }}>The Series</span>
         </motion.h2>
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
@@ -108,7 +109,8 @@ export default function ArticleCards() {
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose mx-auto max-w-xl"
         >
-          Four ways to experience the valley — each one closer than you think.
+          Wine Spectator&apos;s complete guide to Napa Valley — four articles published across spring
+          2026. The first is live now.
         </motion.p>
       </div>
 
