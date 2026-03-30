@@ -32,7 +32,16 @@ function StatCell({
   const showPlus = stat.suffixPlus && (!active || done);
 
   return (
-    <div className="flex flex-col items-center justify-center text-center">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        width: "100%",
+      }}
+    >
       <span
         style={{
           fontFamily: "var(--font-cormorant), Georgia, serif",
@@ -40,13 +49,24 @@ function StatCell({
           fontWeight: 400,
           lineHeight: 1,
           color: "var(--hub-champagne)",
-          fontVariantNumeric: "tabular-nums",
+          display: "block",
+          textAlign: "center",
         }}
       >
         {display}
         {stat.suffixPlus ? (showPlus ? "+" : "") : ""}
       </span>
-      <span className="mt-1 text-xs uppercase tracking-[0.2em] text-white/70">
+      <span
+        style={{
+          marginTop: "0.375rem",
+          fontSize: "0.625rem",
+          textTransform: "uppercase",
+          letterSpacing: "0.2em",
+          color: "rgba(255,255,255,0.65)",
+          display: "block",
+          textAlign: "center",
+        }}
+      >
         {stat.label}
       </span>
     </div>
@@ -67,11 +87,11 @@ export default function IntroSection() {
       role="region"
       aria-labelledby="discover-heading"
       className="border-b border-[var(--hub-line)] bg-[var(--hub-paper)]"
-      style={{ paddingTop: "clamp(3.5rem, 8vw, 5.5rem)", paddingBottom: 0 }}
+      style={{ paddingTop: "clamp(2.5rem, 5vw, 4rem)", paddingBottom: 0 }}
     >
       <div
-        className="section-shell section-stack mx-auto max-w-3xl pb-12 md:pb-14"
-        style={{ paddingBottom: "max(2.5rem, var(--section-pad-y))" }}
+        className="section-shell section-stack mx-auto max-w-3xl"
+        style={{ paddingBottom: "clamp(2rem, 4vw, 3rem)" }}
       >
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 10 }}
@@ -109,7 +129,7 @@ export default function IntroSection() {
         className="grain-overlay relative"
         style={{
           backgroundColor: "var(--hub-navy)",
-          paddingTop: "clamp(3.5rem, 8vw, 5.5rem)",
+          paddingTop: "clamp(2.5rem, 5vw, 3.5rem)",
           paddingBottom: "clamp(3.5rem, 8vw, 5.5rem)",
         }}
       >
@@ -157,9 +177,11 @@ export default function IntroSection() {
           {/* Blockquote */}
           <blockquote
             style={{
-              margin: "3.5rem auto 0",
+              margin: "3rem auto 0",
               maxWidth: "42rem",
               textAlign: "center",
+              width: "100%",
+              display: "block",
             }}
           >
             <p
@@ -171,6 +193,8 @@ export default function IntroSection() {
                 lineHeight: 1.55,
                 color: "rgba(255,255,255,0.88)",
                 marginBottom: "1.5rem",
+                textAlign: "center",
+                width: "100%",
               }}
             >
               &ldquo;The most concentrated wine region in the world.&rdquo;
