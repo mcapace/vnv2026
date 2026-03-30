@@ -123,7 +123,7 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
         rel="noopener noreferrer"
         aria-label={`${article.label} in Napa Valley — ${article.description} — open on Visit Napa Valley`}
         className="group relative block overflow-hidden"
-        style={{ minHeight: "420px" }}
+        style={{ minHeight: "480px" }}
       >
         <img
           src={article.image}
@@ -153,7 +153,19 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
             {article.partners.map((p) => (
               <span
                 key={p}
-                className="mr-1 mt-3 inline-flex items-center gap-1 rounded-full border border-white/25 px-2.5 py-0.5 text-xs text-white/70"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.25rem",
+                  borderRadius: "9999px",
+                  border: "1px solid rgba(255,255,255,0.25)",
+                  padding: "0.125rem 0.625rem",
+                  fontSize: "0.75rem",
+                  color: "rgba(255,255,255,0.7)",
+                  marginRight: "0.375rem",
+                  marginTop: "0.75rem",
+                  whiteSpace: "nowrap",
+                }}
               >
                 {p}
               </span>
