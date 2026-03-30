@@ -111,29 +111,158 @@ export default function RouteMapSection() {
       role="region"
       aria-label="The route through Napa Valley"
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper)]"
-      style={{
-        paddingTop: "var(--section-pad-y)",
-        paddingBottom: "clamp(2.25rem, 6vw, var(--section-pad-y))",
-      }}
+      style={{ paddingTop: "clamp(3rem, 7vw, 5rem)", paddingBottom: "clamp(3rem, 7vw, 5rem)" }}
     >
       <div className="section-shell mx-auto w-full">
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
-          className="section-stack mx-auto max-w-2xl"
+        {/* Two column layout */}
+        <div
+          className="mx-auto grid w-full max-w-[72rem] grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-[4rem]"
         >
-          <p className="section-eyebrow">The route</p>
-          <h2 className="section-title">Thirty miles, one unforgettable road</h2>
-        </motion.div>
+          {/* Left — map */}
+          <motion.div
+            initial={reducedMotion ? false : { opacity: 0, x: -16 }}
+            animate={inView ? { opacity: 1, x: 0 } : reducedMotion ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="section-eyebrow mb-4">The route</p>
+            <h2 className="section-title" style={{ textAlign: "left" }}>
+              Thirty miles,{" "}
+              <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>one road</span>
+            </h2>
+            <p className="hub-prose mt-4" style={{ textAlign: "left" }}>
+              From the bay fog of Carneros to the thermal springs of Calistoga — the entire valley runs
+              along a single corridor. Most stops are fifteen minutes apart.
+            </p>
+            <NapaCorridorMapIllustration />
+          </motion.div>
 
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: reducedMotion ? 0 : 0.08 }}
-          className="mx-auto mt-10 w-full max-w-xs md:mt-12"
-        >
-          <NapaCorridorMapIllustration />
-        </motion.div>
+          {/* Right — town breakdown */}
+          <motion.div
+            initial={reducedMotion ? false : { opacity: 0, x: 16 }}
+            animate={inView ? { opacity: 1, x: 0 } : reducedMotion ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            style={{ display: "flex", flexDirection: "column", gap: 0 }}
+          >
+            {[
+              {
+                town: "Calistoga",
+                region: "North",
+                note: "Hot springs, Depot, top-valley Cab",
+                drive: "Top of the valley",
+                color: "var(--hub-wine)",
+              },
+              {
+                town: "St. Helena",
+                region: "Upper Mid",
+                note: "Meadowood, Press, Louis Martini",
+                drive: "~10 min south",
+                color: "var(--hub-champagne)",
+              },
+              {
+                town: "Oakville / Rutherford",
+                region: "Mid-Valley",
+                note: "Robert Mondavi, benchmark Cab country",
+                drive: "~8 min south",
+                color: "var(--hub-champagne)",
+              },
+              {
+                town: "Yountville",
+                region: "Lower Mid",
+                note: "Thomas Keller, Bouchon, French Laundry",
+                drive: "~10 min south",
+                color: "var(--hub-champagne)",
+              },
+              {
+                town: "Napa / Carneros",
+                region: "South",
+                note: "Carneros Resort, Oxbow Market, CIA COPIA",
+                drive: "~12 min south",
+                color: "var(--hub-sage)",
+              },
+            ].map((item, i, arr) => (
+              <div
+                key={item.town}
+                style={{
+                  display: "flex",
+                  gap: "1rem",
+                  alignItems: "flex-start",
+                  padding: "1.25rem 0",
+                  borderBottom: i < arr.length - 1 ? "1px solid var(--hub-line)" : "none",
+                }}
+              >
+                {/* Color dot */}
+                <div style={{ flexShrink: 0, paddingTop: "0.375rem" }}>
+                  <div
+                    style={{
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "9999px",
+                      backgroundColor: item.color,
+                    }}
+                  />
+                </div>
+                {/* Content */}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "baseline",
+                      justifyContent: "space-between",
+                      gap: "0.5rem",
+                      marginBottom: "0.25rem",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--font-playfair), Georgia, serif",
+                        fontSize: "1rem",
+                        fontWeight: 400,
+                        color: "var(--hub-ink)",
+                      }}
+                    >
+                      {item.town}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "0.625rem",
+                        fontWeight: 600,
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        color: "var(--hub-muted)",
+                        flexShrink: 0,
+                      }}
+                    >
+                      {item.region}
+                    </span>
+                  </div>
+                  <p
+                    style={{
+                      fontSize: "0.8125rem",
+                      color: "var(--hub-muted)",
+                      lineHeight: 1.5,
+                      marginBottom: "0.25rem",
+                    }}
+                  >
+                    {item.note}
+                  </p>
+                  {i > 0 && (
+                    <span
+                      style={{
+                        fontSize: "0.625rem",
+                        fontWeight: 600,
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                        color: "rgba(42,38,35,0.35)",
+                      }}
+                    >
+                      {item.drive}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
