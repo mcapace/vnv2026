@@ -154,10 +154,9 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
       />
 
       <span
-        className="absolute left-4 top-4 z-10 rounded-full px-3 text-[0.65rem] font-bold uppercase tracking-[0.15em]"
+        className="absolute left-4 top-4 z-10 rounded-full text-[0.65rem] font-bold uppercase tracking-[0.15em]"
         style={{
-          paddingTop: "0.375rem",
-          paddingBottom: "0.375rem",
+          padding: "0.4rem 1rem",
           backgroundColor: "rgba(0,0,0,0.55)",
           color: "rgba(255,255,255,0.95)",
           backdropFilter: "blur(8px)",
@@ -170,8 +169,9 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
 
       {isComingSoon && article.publishDate ? (
         <span
-          className="absolute right-4 top-4 z-10 rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.15em]"
+          className="absolute right-4 top-4 z-10 rounded-full text-[0.65rem] font-bold uppercase tracking-[0.15em]"
           style={{
+            padding: "0.5rem 1.25rem",
             backgroundColor: "rgba(255,255,255,0.15)",
             color: "rgba(255,255,255,0.95)",
             backdropFilter: "blur(8px)",
@@ -185,8 +185,9 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
 
       {isLive ? (
         <span
-          className="absolute right-4 top-4 z-10 rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.15em]"
+          className="absolute right-4 top-4 z-10 rounded-full text-[0.65rem] font-bold uppercase tracking-[0.15em]"
           style={{
+            padding: "0.5rem 1.25rem",
             backgroundColor: "var(--hub-wine)",
             color: "#ffffff",
             width: "fit-content",
