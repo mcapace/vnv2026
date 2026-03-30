@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SiFacebook, SiInstagram, SiYoutube } from "react-icons/si";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -173,13 +174,15 @@ export default function Footer() {
           )}
         </div>
 
-        {/* Social icons */}
+        {/* Social icons — Simple Icons brand marks */}
         <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginBottom: "3rem" }}>
-          {[
-            { href: "https://www.instagram.com/visitnapavalley/", label: "Instagram", path: "M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm5.5-9.1a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0zM7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z" },
-            { href: "https://www.facebook.com/visitnapavalley", label: "Facebook", path: "M22 12a10 10 0 1 0-11.5 9.9v-7H7v-3h3.5v-2.3c0-3.5 2-5.4 5.3-5.4 1.5 0 3 .3 3 .3v3.3h-1.7c-1.7 0-2.2 1-2.2 2.1V12H17l-.6 3h-2.9v7A10 10 0 0 0 22 12z" },
-            { href: "https://www.youtube.com/user/VisitNapaValley", label: "YouTube", path: "M23.5 7.2s-.23-1.65-1-2.4c-.9-.94-1.9-.95-2.4-1-3.36-.24-8.4-.24-8.4-.24h-.01s-5.04 0-8.4.24c-.5.05-1.5.06-2.4 1-.77.75-1 2.4-1 2.4S2 9.18 2 11.3v2.05c0 2.12.26 4.1.26 4.1s.23 1.65 1 2.4c.9.94 2.08.91 2.6 1 1.89.18 8.14.23 8.14.23s5.05-.01 8.41-.25c.5-.05 1.5-.06 2.4-1 .77-.75 1-2.4 1-2.4s.26-1.97.26-4.1V11.3c0-2.12-.26-4.1-.26-4.1zM9.75 14.52v-6.7L16 11.2l-6.25 3.32z" },
-          ].map(({ href, label, path }) => (
+          {(
+            [
+              { href: "https://www.instagram.com/visitnapavalley/", label: "Instagram", Icon: SiInstagram },
+              { href: "https://www.facebook.com/visitnapavalley", label: "Facebook", Icon: SiFacebook },
+              { href: "https://www.youtube.com/user/VisitNapaValley", label: "YouTube", Icon: SiYoutube },
+            ] as const
+          ).map(({ href, label, Icon }) => (
             <a
               key={label}
               href={href}
@@ -199,9 +202,7 @@ export default function Footer() {
                 textDecoration: "none",
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d={path} />
-              </svg>
+              <Icon aria-hidden style={{ width: "1.125rem", height: "1.125rem" }} />
             </a>
           ))}
         </div>

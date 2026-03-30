@@ -55,6 +55,8 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  /* Fixed sponsored bar + main nav (see SponsoredDisclaimerBar + Navigation) */
+  scroll-padding-top: calc(1.875rem + 4rem);
 }
 
 @media (prefers-reduced-motion: reduce) {

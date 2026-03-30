@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import type { MouseEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import SponsoredDisclaimerBar, { SPONSORED_BAR_HEIGHT } from "@/components/SponsoredDisclaimerBar";
 
 const navLinks = [
   { label: "Stay", href: "/stay", id: "stay" as const, live: true },
@@ -52,7 +53,7 @@ export default function Navigation() {
       },
       {
         root: null,
-        rootMargin: "-64px 0px -58% 0px",
+        rootMargin: `calc(-1 * (${SPONSORED_BAR_HEIGHT} + 4rem)) 0px -58% 0px`,
         threshold: [0, 0.08, 0.15, 0.25, 0.4],
       }
     );
@@ -113,6 +114,7 @@ export default function Navigation() {
   return (
     <>
       <header>
+        <SponsoredDisclaimerBar />
         <motion.nav
           initial={{ y: -8, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -120,7 +122,7 @@ export default function Navigation() {
           aria-label="Site"
           style={{
             position: "fixed",
-            top: 0,
+            top: SPONSORED_BAR_HEIGHT,
             left: 0,
             right: 0,
             zIndex: 50,
@@ -356,7 +358,8 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 flex flex-col bg-[var(--hub-navy)] px-6 pb-10 pt-24 md:hidden"
+            className="fixed inset-0 z-40 flex flex-col bg-[var(--hub-navy)] px-6 pb-10 md:hidden"
+            style={{ paddingTop: `calc(${SPONSORED_BAR_HEIGHT} + 4rem + 1rem)` }}
           >
             <nav style={{ display: "flex", flexDirection: "column", gap: "0", flex: 1 }} aria-label="Mobile">
               {navLinks.map((link, i) => (
