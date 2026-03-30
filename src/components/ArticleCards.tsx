@@ -162,6 +162,7 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
           color: "rgba(255,255,255,0.95)",
           backdropFilter: "blur(8px)",
           border: "1px solid rgba(255,255,255,0.2)",
+          width: "fit-content",
         }}
       >
         {article.label}
@@ -175,6 +176,7 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
             color: "rgba(255,255,255,0.95)",
             backdropFilter: "blur(8px)",
             border: "1px solid rgba(255,255,255,0.25)",
+            width: "fit-content",
           }}
         >
           {article.publishDate}
@@ -184,7 +186,11 @@ function ArticleRow({ article }: { article: (typeof articles)[0] }) {
       {isLive ? (
         <span
           className="absolute right-4 top-4 z-10 rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.15em]"
-          style={{ backgroundColor: "var(--hub-wine)", color: "#ffffff" }}
+          style={{
+            backgroundColor: "var(--hub-wine)",
+            color: "#ffffff",
+            width: "fit-content",
+          }}
         >
           Read now
         </span>
