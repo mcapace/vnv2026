@@ -1,28 +1,46 @@
 "use client";
 
+import { useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Hero() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const imageY = useTransform(scrollY, [0, 600], ["0%", "18%"]);
+
   return (
     <section
+      ref={heroRef}
       id="hero"
       aria-label="Hero"
       className="relative h-[100dvh] min-h-[600px] overflow-hidden bg-[#1a1512]"
     >
       {/* Background image */}
       <div className="pointer-events-none absolute inset-0 z-0">
-        <img
-          src="/images/photography/stanly-ranch-convertible.jpg"
-          alt="Open road through Napa Valley vineyards at golden hour"
-          className="h-full w-full object-cover"
-          style={{ objectPosition: "center 20%" }}
-          width={1920}
-          height={1080}
-          decoding="async"
-          fetchPriority="high"
-          loading="eager"
-        />
+        <motion.div
+          style={{
+            position: "absolute",
+            inset: "-10% 0",
+            y: imageY,
+          }}
+        >
+          <img
+            src="/images/photography/stanly-ranch-convertible.jpg"
+            alt="Napa Valley"
+            width={1920}
+            height={1080}
+            decoding="async"
+            fetchPriority="high"
+            loading="eager"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center 25%",
+            }}
+          />
+        </motion.div>
       </div>
 
       {/* Gradient overlay — strong at bottom for text legibility */}
