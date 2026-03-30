@@ -134,7 +134,7 @@ export default function PartnersSection() {
     >
       <div ref={ref} className="section-shell section-shell--wide mx-auto">
         {/* Header */}
-        <div className="section-stack mx-auto mb-10 max-w-2xl">
+        <div className="section-stack mb-10" style={{ textAlign: "center", maxWidth: "100%" }}>
           <motion.p
             initial={reducedMotion ? false : { opacity: 0, y: 8 }}
             animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
@@ -161,6 +161,7 @@ export default function PartnersSection() {
             flexWrap: "wrap",
             justifyContent: "center",
             gap: "0.375rem",
+            marginTop: "1.75rem",
             marginBottom: "2.5rem",
           }}
         >
