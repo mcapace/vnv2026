@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -32,15 +32,24 @@ function StatCell({
   const showPlus = stat.suffixPlus && (!active || done);
 
   return (
-    <div className="flex flex-col items-center justify-center px-3 py-8 text-center md:px-5 md:py-11">
-      <span className="font-hub-display font-normal tabular-nums text-[clamp(3rem,6vw,4.5rem)] leading-none tracking-normal text-[var(--hub-champagne)]">
+    <>
+      <span
+        style={{
+          fontFamily: "var(--font-cormorant), Georgia, serif",
+          fontSize: "clamp(2.75rem, 5.5vw, 4.25rem)",
+          fontWeight: 400,
+          lineHeight: 1,
+          color: "var(--hub-champagne)",
+          fontVariantNumeric: "tabular-nums",
+        }}
+      >
         {display}
         {stat.suffixPlus ? (showPlus ? "+" : "") : ""}
       </span>
       <span className="mt-1 text-xs uppercase tracking-[0.2em] text-white/70">
         {stat.label}
       </span>
-    </div>
+    </>
   );
 }
 
@@ -97,48 +106,90 @@ export default function IntroSection() {
 
       <div
         ref={statsRef}
-        className="relative grain-overlay bg-[var(--hub-navy)] text-white"
+        className="grain-overlay relative"
         style={{
-          paddingTop: "clamp(2.75rem, 7vw, 4.5rem)",
-          paddingBottom: "clamp(3.5rem, 8vw, 6rem)",
+          backgroundColor: "var(--hub-navy)",
+          paddingTop: "clamp(3.5rem, 8vw, 5.5rem)",
+          paddingBottom: "clamp(3.5rem, 8vw, 5.5rem)",
         }}
       >
-        <div className="section-shell relative z-[2]">
-          <div className="flex flex-wrap md:flex-nowrap md:items-stretch md:justify-center">
+        <div
+          className="relative z-[2] mx-auto"
+          style={{
+            maxWidth: "64rem",
+            paddingLeft: "clamp(2rem, 5vw, 4rem)",
+            paddingRight: "clamp(2rem, 5vw, 4rem)",
+          }}
+        >
+          {/* Stats row */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: 0,
+              borderTop: "1px solid rgba(255,255,255,0.08)",
+              borderBottom: "1px solid rgba(255,255,255,0.08)",
+            }}
+          >
             {stats.map((stat, i) => (
-              <Fragment key={stat.key}>
-                {i > 0 ? (
-                  <div
-                    className="hidden h-16 w-px shrink-0 self-center bg-white/10 md:block"
-                    aria-hidden
-                  />
-                ) : null}
-                <div className="flex w-1/2 basis-1/2 justify-center md:min-w-0 md:w-auto md:flex-1 md:basis-0">
-                  <StatCell
-                    stat={stat}
-                    index={i}
-                    reducedMotion={reducedMotion}
-                    inView={!!statsInView}
-                  />
-                </div>
-              </Fragment>
+              <div
+                key={stat.key}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "2.5rem 1rem",
+                  textAlign: "center",
+                  borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
+                }}
+              >
+                <StatCell
+                  stat={stat}
+                  index={i}
+                  reducedMotion={reducedMotion}
+                  inView={!!statsInView}
+                />
+              </div>
             ))}
           </div>
-          <blockquote className="mx-auto mt-14 max-w-2xl border-t border-white/14 pt-10 text-center md:mt-16 md:pt-12">
-            <span className="font-hub-display block text-[5rem] leading-none text-[var(--hub-champagne)] opacity-40 -mb-2">
-              &ldquo;
-            </span>
-            <p className="font-hub-display text-[clamp(1.25rem,2.5vw,1.625rem)] italic leading-relaxed text-white/90">
-              The most concentrated wine region in the world.
+
+          {/* Blockquote */}
+          <blockquote
+            style={{
+              margin: "3.5rem auto 0",
+              maxWidth: "42rem",
+              textAlign: "center",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-cormorant), Georgia, serif",
+                fontSize: "clamp(1.375rem, 2.8vw, 1.875rem)",
+                fontStyle: "italic",
+                fontWeight: 400,
+                lineHeight: 1.55,
+                color: "rgba(255,255,255,0.88)",
+                marginBottom: "1.5rem",
+              }}
+            >
+              &ldquo;The most concentrated wine region in the world.&rdquo;
             </p>
-            <footer className="mt-5 flex items-center justify-center gap-3 text-white/50">
-              <div style={{ height: "1px", width: "2rem", backgroundColor: "rgba(255,255,255,0.2)" }} />
+            <footer
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.875rem",
+              }}
+            >
+              <div style={{ height: "1px", width: "2.5rem", backgroundColor: "rgba(255,255,255,0.15)" }} />
               <img
                 src="/images/logos/wine-spectator/ws-logo-white.png"
                 alt="Wine Spectator"
-                style={{ height: "0.875rem", width: "auto", opacity: 0.5 }}
+                style={{ height: "1rem", width: "auto", opacity: 0.45 }}
               />
-              <div style={{ height: "1px", width: "2rem", backgroundColor: "rgba(255,255,255,0.2)" }} />
+              <div style={{ height: "1px", width: "2.5rem", backgroundColor: "rgba(255,255,255,0.15)" }} />
             </footer>
           </blockquote>
         </div>
