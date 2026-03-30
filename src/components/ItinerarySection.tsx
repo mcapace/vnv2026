@@ -211,7 +211,13 @@ export default function ItinerarySection() {
             href="https://www.visitnapavalley.com/plan-your-trip/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--hub-wine)] px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[var(--hub-wine-deep)]"
+            className="mt-4 inline-flex items-center justify-center rounded-full px-8 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white transition-colors duration-200"
+            style={{
+              backgroundColor: "var(--hub-wine)",
+              display: "inline-flex",
+              minWidth: 0,
+              width: "auto",
+            }}
           >
             Customize this itinerary
           </a>
