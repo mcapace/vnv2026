@@ -231,42 +231,65 @@ function DayAccordion({
 
   return (
     <div
-      className="overflow-hidden rounded-[var(--hub-radius)] border border-[var(--hub-line)] bg-[var(--hub-card)] hub-card-elevated"
-      style={{ borderLeft: isOpen ? "3px solid var(--hub-wine)" : "3px solid transparent" }}
+      style={{
+        borderRadius: "var(--hub-radius)",
+        border: "1px solid var(--hub-line)",
+        backgroundColor: "var(--hub-card)",
+        overflow: "hidden",
+        boxShadow: isOpen ? "var(--hub-shadow-card)" : "var(--hub-shadow-sm)",
+        transition: "box-shadow 0.3s ease",
+      }}
     >
-      {/* Accordion trigger */}
+      {/* Trigger */}
       <button
         type="button"
         id={headerId}
         aria-expanded={isOpen}
         aria-controls={panelId}
         onClick={onToggle}
-        className="itinerary-day-trigger flex w-full items-center gap-4 px-5 py-5 text-left transition sm:px-6"
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          gap: "1rem",
+          padding: "1.25rem 1.5rem",
+          textAlign: "left",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          borderLeft: isOpen ? "3px solid var(--hub-wine)" : "3px solid transparent",
+          transition: "border-color 0.2s ease, background-color 0.2s ease",
+        }}
       >
+        {/* Day number circle */}
         <span
           style={{
+            flexShrink: 0,
+            width: "2.25rem",
+            height: "2.25rem",
+            borderRadius: "9999px",
+            backgroundColor: isOpen ? "var(--hub-wine)" : "transparent",
+            border: `1.5px solid ${isOpen ? "var(--hub-wine)" : "rgba(107,46,54,0.25)"}`,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            width: "2rem",
-            height: "2rem",
-            borderRadius: "9999px",
-            border: "1px solid rgba(107,46,54,0.2)",
             fontSize: "0.75rem",
             fontWeight: 700,
-            color: "var(--hub-wine)",
-            flexShrink: 0,
+            color: isOpen ? "#ffffff" : "var(--hub-wine)",
+            transition: "all 0.2s ease",
           }}
         >
           {index + 1}
         </span>
+
+        {/* Text */}
         <span style={{ flex: 1, minWidth: 0 }}>
           <span
             style={{
               display: "block",
-              fontSize: "0.625rem",
+              fontSize: "0.5625rem",
               fontWeight: 700,
-              letterSpacing: "0.24em",
+              letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "var(--hub-champagne)",
               marginBottom: "0.25rem",
@@ -278,7 +301,7 @@ function DayAccordion({
             style={{
               display: "block",
               fontFamily: "var(--font-playfair), Georgia, serif",
-              fontSize: "clamp(1.125rem, 2.5vw, 1.5rem)",
+              fontSize: "clamp(1.125rem, 2vw, 1.375rem)",
               fontWeight: 400,
               color: "var(--hub-ink)",
               letterSpacing: "-0.02em",
@@ -290,8 +313,7 @@ function DayAccordion({
           <span
             style={{
               display: "block",
-              fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontSize: "0.9375rem",
+              fontSize: "0.8125rem",
               color: "var(--hub-muted)",
               marginTop: "0.125rem",
             }}
@@ -299,117 +321,140 @@ function DayAccordion({
             {day.subtitle}
           </span>
         </span>
+
+        {/* Event count + chevron */}
         <span
           style={{
-            color: "var(--hub-muted)",
-            transition: "transform 0.3s ease",
-            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
             flexShrink: 0,
           }}
-          aria-hidden
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-            <path d="M6 9l6 6 6-6" />
-          </svg>
+          <span
+            style={{
+              fontSize: "0.625rem",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              color: "var(--hub-muted)",
+              opacity: isOpen ? 0 : 1,
+              transition: "opacity 0.2s ease",
+            }}
+          >
+            {day.events.length} stops
+          </span>
+          <span
+            style={{
+              color: "var(--hub-muted)",
+              transition: "transform 0.3s ease",
+              transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            }}
+            aria-hidden
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </span>
         </span>
       </button>
 
-      {/* Accordion panel */}
+      {/* Panel */}
       {isOpen && (
         <div
           id={panelId}
           role="region"
           aria-labelledby={headerId}
-          style={{ borderTop: "1px solid var(--hub-line)", padding: "1.25rem 1.5rem 1.5rem" }}
+          style={{ borderTop: "1px solid var(--hub-line)" }}
         >
-          {/* Route hint */}
+          {/* Route strip */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
               gap: "0.75rem",
-              padding: "0.625rem 0.875rem",
-              borderRadius: "0.5rem",
-              border: "1px solid var(--hub-line)",
-              backgroundColor: "var(--hub-paper)",
-              marginBottom: "1.75rem",
+              padding: "0.75rem 1.5rem",
+              backgroundColor: "var(--hub-navy)",
             }}
           >
-            <svg viewBox="0 0 120 24" style={{ height: "1.25rem", width: "4rem", flexShrink: 0, color: "var(--hub-wine)" }} aria-hidden>
-              <line x1="4" y1="14" x2="108" y2="14" stroke="currentColor" strokeWidth="2" opacity="0.35" />
-              <circle cx="20" cy="14" r="4" fill="currentColor" />
-              <circle cx="60" cy="14" r="4" fill="currentColor" opacity="0.85" />
-              <circle cx="100" cy="14" r="4" fill="currentColor" opacity="0.55" />
+            <svg viewBox="0 0 120 20" style={{ height: "1rem", width: "3.5rem", flexShrink: 0, color: "var(--hub-champagne)" }} aria-hidden>
+              <line x1="4" y1="10" x2="108" y2="10" stroke="currentColor" strokeWidth="1.5" opacity="0.4" />
+              <circle cx="20" cy="10" r="3.5" fill="currentColor" />
+              <circle cx="60" cy="10" r="3.5" fill="currentColor" opacity="0.7" />
+              <circle cx="100" cy="10" r="3.5" fill="currentColor" opacity="0.45" />
             </svg>
             <span
               style={{
-                fontSize: "0.625rem",
-                fontWeight: 600,
-                letterSpacing: "0.12em",
+                fontSize: "0.5625rem",
+                fontWeight: 700,
+                letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                color: "var(--hub-muted)",
+                color: "rgba(255,255,255,0.55)",
               }}
             >
               {day.mapHint}
             </span>
           </div>
 
-          {/* Events list */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+          {/* Events */}
+          <div>
             {day.events.map((event, ei) => (
               <div
                 key={event.activity}
                 style={{
-                  display: "flex",
-                  gap: "1.25rem",
-                  paddingTop: ei > 0 ? "1.5rem" : 0,
-                  paddingBottom: ei < day.events.length - 1 ? "1.5rem" : 0,
+                  display: "grid",
+                  gridTemplateColumns: "4.5rem 1fr",
                   borderTop: ei > 0 ? "1px solid var(--hub-line)" : "none",
                 }}
               >
-                {/* Left: time + type badge */}
+                {/* Left column — time band */}
                 <div
                   style={{
-                    flexShrink: 0,
-                    width: "5.5rem",
-                    paddingTop: "0.125rem",
+                    backgroundColor: "var(--hub-paper-2)",
+                    borderRight: "1px solid var(--hub-line)",
+                    padding: "1.25rem 0.75rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    gap: "0.5rem",
                   }}
                 >
                   <time
                     style={{
-                      display: "block",
-                      fontSize: "0.8125rem",
-                      fontWeight: 600,
+                      fontSize: "0.625rem",
+                      fontWeight: 700,
                       color: "var(--hub-ink)",
-                      fontVariantNumeric: "tabular-nums",
-                      marginBottom: "0.375rem",
+                      letterSpacing: "0.04em",
+                      textAlign: "center",
+                      lineHeight: 1.3,
+                      whiteSpace: "pre-line",
                     }}
                   >
-                    {event.time}
+                    {event.time.replace(" ", "\n")}
                   </time>
                   <span
                     style={{
-                      display: "inline-block",
-                      fontSize: "0.5625rem",
+                      fontSize: "0.5rem",
                       fontWeight: 700,
-                      letterSpacing: "0.12em",
+                      letterSpacing: "0.1em",
                       textTransform: "uppercase",
                       color: "#ffffff",
                       backgroundColor: typeStyle[event.type].bg,
-                      padding: "0.125rem 0.5rem",
+                      padding: "0.125rem 0.375rem",
                       borderRadius: "0.25rem",
+                      textAlign: "center",
                     }}
                   >
                     {typeStyle[event.type].label}
                   </span>
                 </div>
 
-                {/* Right: activity details */}
-                <div style={{ flex: 1, minWidth: 0 }}>
+                {/* Right column — content */}
+                <div style={{ padding: "1.25rem 1.25rem 1rem" }}>
                   <h4
                     style={{
                       fontFamily: "var(--font-playfair), Georgia, serif",
-                      fontSize: "1.0625rem",
+                      fontSize: "1rem",
                       fontWeight: 400,
                       color: "var(--hub-ink)",
                       lineHeight: 1.3,
@@ -421,13 +466,13 @@ function DayAccordion({
                   {"wsTip" in event && event.wsTip && (
                     <p
                       style={{
-                        fontFamily: "var(--font-cormorant), Georgia, serif",
-                        fontSize: "0.875rem",
+                        fontSize: "0.8125rem",
                         fontStyle: "italic",
                         color: "var(--hub-champagne)",
                         borderLeft: "2px solid var(--hub-champagne)",
-                        paddingLeft: "0.625rem",
+                        paddingLeft: "0.5rem",
                         marginBottom: "0.375rem",
+                        lineHeight: 1.5,
                       }}
                     >
                       {event.wsTip}
@@ -436,10 +481,10 @@ function DayAccordion({
                   <p
                     style={{
                       fontFamily: "var(--font-cormorant), Georgia, serif",
-                      fontSize: "1rem",
+                      fontSize: "0.9375rem",
                       lineHeight: 1.65,
                       color: "var(--hub-muted)",
-                      marginBottom: "0.5rem",
+                      marginBottom: "0.625rem",
                     }}
                   >
                     {event.description}
@@ -449,9 +494,12 @@ function DayAccordion({
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
-                      fontSize: "0.6875rem",
-                      fontWeight: 600,
-                      letterSpacing: "0.1em",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.25rem",
+                      fontSize: "0.625rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.12em",
                       textTransform: "uppercase",
                       color: "var(--hub-champagne)",
                       textDecoration: "none",
