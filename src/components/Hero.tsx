@@ -61,17 +61,11 @@ export default function Hero() {
             style={{ height: "1.75rem", width: "auto" }}
           />
           <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "1rem", fontWeight: 300 }}>×</span>
-          <span
-            style={{
-              fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontSize: "1rem",
-              fontStyle: "italic",
-              color: "rgba(255,255,255,0.75)",
-              letterSpacing: "0.02em",
-            }}
-          >
-            Wine Spectator
-          </span>
+          <img
+            src="/images/logos/wine-spectator/ws-logo-white.png"
+            alt="Wine Spectator"
+            style={{ height: "1rem", width: "auto", objectFit: "contain", opacity: 0.8 }}
+          />
         </motion.div>
 
         {/* Headline */}

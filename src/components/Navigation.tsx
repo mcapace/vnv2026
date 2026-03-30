@@ -120,17 +120,17 @@ export default function Navigation() {
               alt="Visit Napa Valley"
               style={{ height: "1.75rem", width: "auto", objectFit: "contain" }}
             />
-            <span
+            <img
+              src={onHero ? "/images/logos/wine-spectator/ws-logo-white.png" : "/images/logos/wine-spectator/ws-logo-dark.png"}
+              alt="Wine Spectator"
               className="hidden sm:inline"
               style={{
-                fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontSize: "0.875rem",
-                fontStyle: "italic",
-                color: onHero ? "rgba(255,255,255,0.55)" : "var(--hub-muted)",
+                height: "1.1rem",
+                width: "auto",
+                objectFit: "contain",
+                opacity: onHero ? 0.7 : 0.85,
               }}
-            >
-              Wine Spectator
-            </span>
+            />
           </a>
 
           {/* Center — Nav links */}
