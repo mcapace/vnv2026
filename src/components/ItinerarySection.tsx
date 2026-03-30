@@ -183,7 +183,7 @@ export default function ItinerarySection() {
         </motion.p>
       </div>
 
-      <div className="section-shell mx-auto max-w-2xl">
+      <div className="section-shell mx-auto max-w-3xl">
         <ol className="space-y-4">
           {days.map((day, dayIndex) => (
             <li key={day.title} className="list-none">
@@ -265,8 +265,8 @@ function DayAccordion({
         <span
           style={{
             flexShrink: 0,
-            width: "2.25rem",
-            height: "2.25rem",
+            width: "2.5rem",
+            height: "2.5rem",
             borderRadius: "9999px",
             backgroundColor: isOpen ? "var(--hub-wine)" : "transparent",
             border: `1.5px solid ${isOpen ? "var(--hub-wine)" : "rgba(107,46,54,0.25)"}`,
@@ -333,9 +333,10 @@ function DayAccordion({
         >
           <span
             style={{
-              fontSize: "0.625rem",
+              fontSize: "0.5625rem",
               fontWeight: 600,
-              letterSpacing: "0.08em",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
               color: "var(--hub-muted)",
               opacity: isOpen ? 0 : 1,
               transition: "opacity 0.2s ease",
@@ -373,10 +374,10 @@ function DayAccordion({
               alignItems: "center",
               gap: "0.75rem",
               padding: "0.75rem 1.5rem",
-              backgroundColor: "var(--hub-navy)",
+              backgroundColor: "var(--hub-paper-2)",
             }}
           >
-            <svg viewBox="0 0 120 20" style={{ height: "1rem", width: "3.5rem", flexShrink: 0, color: "var(--hub-champagne)" }} aria-hidden>
+            <svg viewBox="0 0 120 20" style={{ height: "1rem", width: "3.5rem", flexShrink: 0, color: "var(--hub-wine)" }} aria-hidden>
               <line x1="4" y1="10" x2="108" y2="10" stroke="currentColor" strokeWidth="1.5" opacity="0.4" />
               <circle cx="20" cy="10" r="3.5" fill="currentColor" />
               <circle cx="60" cy="10" r="3.5" fill="currentColor" opacity="0.7" />
@@ -388,7 +389,7 @@ function DayAccordion({
                 fontWeight: 700,
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                color: "rgba(255,255,255,0.55)",
+                color: "var(--hub-muted)",
               }}
             >
               {day.mapHint}
@@ -402,14 +403,14 @@ function DayAccordion({
                 key={event.activity}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "4.5rem 1fr",
+                  gridTemplateColumns: "5.5rem 1fr",
                   borderTop: ei > 0 ? "1px solid var(--hub-line)" : "none",
                 }}
               >
                 {/* Left column — time band */}
                 <div
                   style={{
-                    backgroundColor: "var(--hub-paper-2)",
+                    backgroundColor: "rgba(42,38,35,0.03)",
                     borderRight: "1px solid var(--hub-line)",
                     padding: "1.25rem 0.75rem",
                     display: "flex",
@@ -426,11 +427,10 @@ function DayAccordion({
                       color: "var(--hub-ink)",
                       letterSpacing: "0.04em",
                       textAlign: "center",
-                      lineHeight: 1.3,
-                      whiteSpace: "pre-line",
+                      whiteSpace: "nowrap",
                     }}
                   >
-                    {event.time.replace(" ", "\n")}
+                    {event.time}
                   </time>
                   <span
                     style={{
