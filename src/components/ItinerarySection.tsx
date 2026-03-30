@@ -265,7 +265,7 @@ function DayAccordion({
           <span className="font-hub-sans text-[10px] font-bold uppercase tracking-[0.24em] text-[var(--hub-champagne)]">
             {day.day}
           </span>
-          <span className="font-hub-serif mt-1 block text-2xl font-normal capitalize tracking-[-0.02em] text-[var(--hub-ink)] sm:text-3xl">
+          <span className="font-hub-serif mt-1 block text-xl font-normal tracking-[-0.02em] text-[var(--hub-ink)] sm:text-2xl">
             {day.title}
           </span>
           <span className="font-hub-display mt-0.5 block text-base leading-snug text-[var(--hub-muted)]">
@@ -293,27 +293,19 @@ function DayAccordion({
           <DayRouteMini label={day.mapHint} />
           <ul className="relative mt-8 space-y-0 pl-2 sm:pl-3">
             <span
-              className="absolute left-[25px] top-2 bottom-2 w-px bg-rose-900/25 sm:left-[29px]"
+              className="absolute left-[17px] top-2 bottom-2 w-px bg-rose-900/25 sm:left-[19px]"
               aria-hidden
             />
             {day.events.map((event, ei) => (
               <li
                 key={event.activity}
-                className={`relative flex gap-4 pb-10 pl-10 sm:gap-5 sm:pl-12 sm:pb-12 ${
+                className={`relative flex gap-4 pb-6 pl-6 sm:gap-5 sm:pl-8 sm:pb-8 ${
                   ei === day.events.length - 1 ? "pb-2 sm:pb-2" : ""
-                } ${ei > 0 ? "border-t border-[var(--hub-line)] pt-10 sm:pt-12" : ""}`}
+                } ${ei > 0 ? "border-t border-[var(--hub-line)] pt-6 sm:pt-8" : ""}`}
               >
                 <span
-                  className="absolute left-[19px] top-7 z-[1] h-3 w-3 rounded-full border-2 border-[var(--hub-card)] bg-[var(--hub-wine)] sm:left-[23px] sm:top-8"
+                  className="absolute left-[11px] top-7 z-[1] h-3 w-3 rounded-full border-2 border-[var(--hub-card)] bg-[var(--hub-wine)] sm:left-[13px] sm:top-8"
                   aria-hidden
-                />
-                <img
-                  src={event.thumb}
-                  alt=""
-                  className="relative z-[1] mt-5 h-14 w-14 shrink-0 rounded-full object-cover object-center ring-2 ring-[var(--hub-line)] sm:h-16 sm:w-16"
-                  width={64}
-                  height={64}
-                  loading="lazy"
                 />
                 <div className="min-w-0 flex-1 pt-4">
                   <div className="flex flex-wrap items-center gap-2">
@@ -329,16 +321,8 @@ function DayAccordion({
                       {typeStyle[event.type].label}
                     </span>
                   </div>
-                  <h4 className="font-hub-serif mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-lg font-normal leading-snug tracking-[-0.015em] text-[var(--hub-ink)] sm:text-xl">
+                  <h4 className="font-hub-serif mt-2 text-lg font-normal leading-snug tracking-[-0.015em] text-[var(--hub-ink)] sm:text-xl">
                     {event.activity}
-                    <a
-                      href={event.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-hub-sans itinerary-learn text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--hub-wine)] underline-offset-4"
-                    >
-                      Learn more →
-                    </a>
                   </h4>
                   {"wsTip" in event && event.wsTip && (
                     <p className="font-hub-display mt-3 border-l-2 border-[var(--hub-champagne)] pl-3 text-sm italic text-[var(--hub-muted)]">
@@ -348,6 +332,26 @@ function DayAccordion({
                   <p className="font-hub-display mt-3 max-w-xl text-[1.0625rem] leading-[1.75] text-[var(--hub-muted)]">
                     {event.description}
                   </p>
+                  <a
+                    href={event.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-hub-sans"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.25rem",
+                      marginTop: "0.75rem",
+                      fontSize: "0.6875rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      color: "var(--hub-champagne)",
+                      textDecoration: "none",
+                    }}
+                  >
+                    Visit site →
+                  </a>
                 </div>
               </li>
             ))}
