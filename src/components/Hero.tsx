@@ -26,7 +26,7 @@ export default function Hero() {
           }}
         >
           <img
-            src="/images/photography/stanly-ranch-convertible.jpg"
+            src="/images/photography/hero-stanly-ranch-convertible.png"
             alt="Napa Valley"
             width={1920}
             height={1080}
@@ -37,7 +37,7 @@ export default function Hero() {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              objectPosition: "center 25%",
+              objectPosition: "center 42%",
             }}
           />
         </motion.div>
@@ -103,7 +103,7 @@ export default function Hero() {
           }}
         >
           A World in{" "}
-          <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>30 Miles</span>
+          <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>One Valley</span>
         </motion.h1>
 
         {/* Body copy */}
@@ -120,8 +120,8 @@ export default function Hero() {
             marginBottom: "2rem",
           }}
         >
-          Wine, dine, stay, and explore—extraordinary density in one compact stretch of valley built for
-          long weekends.
+          Live a little—or a lot. World-class wine, chef-led tables, trails, spas, and small-town nights
+          are never more than a short drive apart—whether you&apos;re here for two nights or a full week.
         </motion.p>
 
         {/* CTA buttons */}

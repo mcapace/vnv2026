@@ -11,19 +11,19 @@ const days = [
     mapHint: "South · Carneros → Yountville",
     events: [
       {
-        time: "2:00 PM",
+        time: "3:00 PM",
         activity: "Check in at Carneros Resort & Spa",
         description:
-          "Private cottages among the vines—your base for what comes next.",
+          "Private cottages among the vines. Many Napa Valley hotels begin check-in around 4:00 PM—drop bags, grab a pool hour, then roll into the afternoon.",
         type: "stay",
         thumb: "/images/photography/stanly-ranch-spa.jpg",
         url: "https://www.carnerosresort.com/",
       },
       {
-        time: "4:00 PM",
+        time: "4:30 PM",
         activity: "Tasting at Etude Wines",
         description:
-          "Carneros Pinot on the terrace, where the breeze matches the pour.",
+          "Cool-climate Pinot Noir and Chardonnay from the Carneros benchlands—book an afternoon slot that fits check-in.",
         type: "wine",
         thumb: "/images/photography/wine-cellar-toast.jpg",
         url: "https://www.etudewines.com/",
@@ -41,60 +41,52 @@ const days = [
   },
   {
     day: "Day two",
-    title: "The heart of the valley",
-    subtitle: "Oakville to St. Helena",
-    mapHint: "Mid-valley · Oakville & St. Helena",
+    title: "Oakville to the city of Napa",
+    subtitle: "Mid-valley wine · downtown Napa at night",
+    mapHint: "Oakville → city of Napa (via Hwy 29)",
     events: [
       {
         time: "10:00 AM",
         activity: "Robert Mondavi Winery",
         description:
-          "Tour the reopened icon—where much of modern Napa began.",
+          "Tour the reopened Oakville icon—where much of modern Napa Valley began.",
         type: "wine",
         thumb: "/images/photography/wine-cellar-toast.jpg",
         url: "https://www.robertmondavi.com/",
         wsTip:
-          "Wine Spectator tip: ask about the reserve Cabernet tasting in the estate room.",
+          "Wine Spectator tip: ask what’s new in the reopened hospitality spaces—tasting formats evolved with the architecture.",
       },
       {
         time: "12:30 PM",
-        activity: "Lunch at The Grove @ COPIA",
-        description: "Campus dining with serious wine adjacency.",
+        activity: "Lunch at The Grove @ CIA at COPIA",
+        description:
+          "Wine-country cooking at the Culinary Institute’s Napa campus—indoor-outdoor seating steps from Oxbow.",
         type: "dine",
         thumb: "/images/photography/chandon-brunch.jpg",
         url: "https://www.cia.edu/copia/",
       },
       {
-        time: "3:00 PM",
-        activity: "Pure Luxury Tour",
+        time: "3:30 PM",
+        activity: "JaM Cellars (downtown Napa)",
         description:
-          "Chauffeured miles tailored to what you like in the glass.",
-        type: "explore",
-        thumb: "/images/photography/stanly-ranch-convertible.jpg",
-        url: "https://www.pureluxury.com/napa-valley-wine-tours/",
-      },
-      {
-        time: "8:00 PM",
-        activity: "JaM Cellars Ballroom",
-        description:
-          "Live music and downtown energy without leaving the valley vibe.",
+          "Start at the First Street tasting room; live shows hit the Ballroom when it’s on the calendar—confirm listings before you go.",
         type: "explore",
         thumb: "/images/photography/cadet-nightlife.jpg",
-        url: "https://www.jamcellars.com/",
+        url: "https://jamcellars.com/visit/",
       },
     ],
   },
   {
     day: "Day three",
-    title: "The top of the valley",
-    subtitle: "Calistoga & beyond",
-    mapHint: "North · Calistoga",
+    title: "Calistoga to St. Helena",
+    subtitle: "North-end spa · Silverado Trail · Meadowood",
+    mapHint: "North · Calistoga → St. Helena",
     events: [
       {
         time: "9:00 AM",
         activity: "Mount View Hotel & Spa",
         description:
-          "Mud baths, mineral water, and a slow start at the northern rim.",
+          "Calistoga slow morning—spa menu and pool time vary by season; reserve treatments and confirm mineral-pool access when you book.",
         type: "stay",
         thumb: "/images/photography/solage-poolside.jpg",
         url: "https://www.mountviewhotel.com/",
@@ -103,28 +95,28 @@ const days = [
         time: "11:30 AM",
         activity: "Louis Martini Winery",
         description:
-          "Heritage Cabernet in a cellar that has seen generations.",
+          "Silverado Trail heritage house—structured Cabernet tastings and a cellar steeped in Napa Valley history.",
         type: "wine",
         thumb: "/images/photography/wine-cellar-toast.jpg",
         url: "https://www.louismartini.com/",
       },
       {
         time: "1:00 PM",
-        activity: "Lunch at Calistoga Depot",
+        activity: "Lunch at Forum, Meadowood Napa Valley",
         description:
-          "A depot turned dining room—high-ceiling charm at the top of the map.",
+          "Wine-country fine dining on the Meadowood estate—book ahead and build the rest of the afternoon around the reservation.",
         type: "dine",
         thumb: "/images/photography/press-plating.jpg",
-        url: "https://www.visitnapavalley.com/restaurants/",
+        url: "https://meadowood.com/dining/forum/",
       },
       {
-        time: "4:00 PM",
-        activity: "Marquee Pinball Lounge",
+        time: "3:30 PM",
+        activity: "St. Helena stroll or tasting",
         description:
-          "Pinball and cocktails—a playful last stop before the road home.",
+          "Walk Main Street tasting rooms or add one more Silverado Trail stop before pointing the car south—flex the finale to match energy.",
         type: "explore",
-        thumb: "/images/photography/cadet-nightlife.jpg",
-        url: "https://www.visitnapavalley.com/things-to-do/",
+        thumb: "/images/photography/chandon-hilltop.jpg",
+        url: "https://www.visitnapavalley.com/towns/st-helena/",
       },
     ],
   },
@@ -147,7 +139,7 @@ export default function ItinerarySection() {
     <section
       id="itinerary"
       role="region"
-      aria-label="Weekend itineraries"
+      aria-label="Sample itineraries"
       className="border-t border-[var(--hub-line)] bg-[var(--hub-paper)]"
       style={{
         paddingTop: "clamp(3rem, 6vw, 5rem)",
@@ -160,7 +152,7 @@ export default function ItinerarySection() {
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           className="section-eyebrow"
         >
-          Weekend itineraries
+          Sample itineraries
         </motion.p>
         <motion.h2
           initial={reducedMotion ? false : { opacity: 0, y: 12 }}
@@ -177,9 +169,18 @@ export default function ItinerarySection() {
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose"
         >
-          One possible long weekend—swap cellar doors, linger over lunch, or
-          add a fourth day. The mileage still clocks in at twenty-five to
-          thirty.
+          A sample three-day rhythm you can steal outright or remix. Swap days, add a fourth night, or
+          tighten to two—distances stay short, but Napa County covers far more ground than the valley floor
+          alone, so build slack for the drive you actually want.
+        </motion.p>
+        <motion.p
+          initial={reducedMotion ? false : { opacity: 0, y: 8 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: reducedMotion ? 0 : 0.16 }}
+          className="hub-prose mt-4 text-sm text-[var(--hub-muted)]"
+        >
+          Partner links open the venue’s site for reservations; Visit Napa Valley links point to official
+          planning tools when we’re suggesting a town or category rather than a single business.
         </motion.p>
       </div>
 

@@ -22,7 +22,7 @@ export default function VideoSection() {
     <section
       ref={ref}
       role="region"
-      aria-label="Film — see Napa Valley in motion"
+      aria-label="Video — see Napa Valley in motion"
       className="relative flex items-center justify-center overflow-hidden"
       style={{ minHeight: "min(68vh, 720px)" }}
     >
@@ -52,7 +52,7 @@ export default function VideoSection() {
           className="section-eyebrow"
           style={{ color: "var(--hub-champagne-light)" }}
         >
-          Film
+          In motion
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 14 }}
@@ -69,7 +69,7 @@ export default function VideoSection() {
           transition={{ delay: 0.12 }}
           className="font-hub-display mx-auto mt-5 max-w-lg text-lg leading-snug text-white/75 text-on-photo"
         >
-          Thirty miles of wine country in motion.
+          A cinematic sweep of wine country—vine rows, back roads, and golden-hour light.
         </motion.p>
       </div>
     </section>

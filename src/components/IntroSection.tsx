@@ -6,9 +6,9 @@ import { useCountUp } from "@/hooks/useCountUp";
 
 const stats = [
   { key: "wineries", target: 400, suffixPlus: true, label: "Wineries" },
-  { key: "miles", target: 30, suffixPlus: false, label: "Miles" },
+  { key: "miles", target: 50, suffixPlus: false, label: "Miles (Napa County)" },
   { key: "michelin", target: 9, suffixPlus: false, label: "Michelin stars" },
-  { key: "towns", target: 4, suffixPlus: false, label: "Distinct towns" },
+  { key: "towns", target: 5, suffixPlus: false, label: "Towns & cities" },
 ] as const;
 
 function StatCell({
@@ -102,7 +102,7 @@ export default function IntroSection() {
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           className="section-eyebrow"
         >
-          Why thirty miles
+          Why this valley
         </motion.p>
         <motion.h2
           id="discover-heading"
@@ -122,9 +122,10 @@ export default function IntroSection() {
           className="hub-prose-serif max-w-2xl text-center"
           style={{ maxWidth: "38rem", opacity: 0.8 }}
         >
-          No other wine country packs this much into a short drive. Long
-          weekends here feel full—because they are—with room to slow down
-          between the highlights.
+          Napa Valley rewards every kind of trip—quick escapes, week-long
+          immersions, and everything between. The same corridor holds hundreds of
+          cellar doors, chef-led kitchens, and trailheads, so you can go wide
+          without spending your whole vacation in the car.
         </motion.p>
       </div>
 

@@ -15,8 +15,8 @@ export default function StayPage() {
         style={{ height: "70vh", minHeight: "520px", backgroundColor: "var(--hub-navy)" }}
       >
         <img
-          src="/images/photography/solage-pool-night.jpg"
-          alt="Carneros Resort, Napa Valley"
+          src="/images/photography/stanly-ranch-spa.jpg"
+          alt="Spa and pool at a Napa Valley resort"
           style={{
             position: "absolute",
             inset: 0,

@@ -5,32 +5,34 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const regions = [
   {
-    id: "carneros",
-    label: "Carneros",
-    headline: "Life in the valley",
-    accentWord: "valley",
-    subtitle: "Where the morning fog burns off by ten, and the vines start at your door.",
+    id: "south",
+    label: "South · Gateway",
+    headline: "American Canyon & Carneros",
+    accentWord: "Carneros",
+    subtitle:
+      "Cool-climate vines, resort pools, and the closest wine country to the Bay—start here before heading up-valley.",
     photos: [
       {
         src: "/images/photography/stanly-ranch-spa.jpg",
         caption: "Stanly Ranch, Napa",
       },
       {
-        src: "/images/photography/solage-poolside.jpg",
-        caption: "Solage, Calistoga",
+        src: "/images/photography/chandon-brunch.jpg",
+        caption: "Bubbles at Domaine Chandon, Yountville",
       },
     ],
   },
   {
-    id: "yountville",
-    label: "Yountville",
-    headline: "Where dinner is the destination",
-    accentWord: "destination",
-    subtitle: "More Michelin stars per square mile than anywhere else in America.",
+    id: "mid",
+    label: "Mid-valley · Towns",
+    headline: "Yountville to St. Helena",
+    accentWord: "St. Helena",
+    subtitle:
+      "Walkable chef country, Oakville & Rutherford benchlands, and Main Street wine bars—densest stretch of tables and tasting rooms.",
     photos: [
       {
         src: "/images/photography/press-plating.jpg",
-        caption: "Press, St. Helena",
+        caption: "Fine dining, mid-valley",
       },
       {
         src: "/images/photography/cadet-dining.jpg",
@@ -39,29 +41,29 @@ const regions = [
     ],
   },
   {
-    id: "calistoga",
-    label: "Calistoga",
-    headline: "The valley at its most unhurried",
-    accentWord: "unhurried",
-    subtitle: "Mineral springs, vintage charm, and the best pool in wine country.",
+    id: "north",
+    label: "North end",
+    headline: "Calistoga slows the clock",
+    accentWord: "Calistoga",
+    subtitle: "Geysers, mineral pools, and vineyard views at the top of the valley—plan fewer stops and longer pauses.",
     photos: [
       {
         src: "/images/photography/solage-pool-night.jpg",
         caption: "Solage after dark",
       },
       {
-        src: "/images/photography/chandon-brunch.jpg",
-        caption: "Domaine Chandon, Yountville",
+        src: "/images/photography/solage-poolside.jpg",
+        caption: "Pool days, Calistoga",
       },
     ],
   },
   {
-    id: "valley",
-    label: "The Valley",
-    headline: "Thirty miles of yes",
-    accentWord: "yes",
+    id: "corridor",
+    label: "Full run",
+    headline: "One corridor, many moods",
+    accentWord: "corridor",
     subtitle:
-      "From the bay fog of Carneros to the thermal springs of Calistoga — every mile counts.",
+      "Highway 29 and the Silverado Trail tie it together—bay fog to Mayacamas ridgelines without ever feeling far from the next reservation.",
     photos: [
       {
         src: "/images/photography/chandon-hilltop.jpg",

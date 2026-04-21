@@ -11,8 +11,8 @@ const articles = [
     subtitle: "Where the valley becomes your room",
     description:
       "From vineyard-edge bungalows at Carneros Resort to the mineral-spa heritage of Mount View Hotel & Inn in Calistoga — a guide to sleeping well in wine country.",
-    image: "/images/photography/solage-pool-night.jpg",
-    objectPosition: "50% 48%",
+    image: "/images/photography/stanly-ranch-spa.jpg",
+    objectPosition: "50% 45%",
     partners: ["Carneros Resort", "Mount View Hotel & Inn"],
     status: "live" as const,
     publishDate: null as string | null,
@@ -24,7 +24,7 @@ const articles = [
     title: "Where to Eat in Napa Valley",
     subtitle: "Every reservation earns the drive",
     description:
-      "Bouchon Bistro, Calistoga Depot, The Grove at COPIA — extraordinary kitchens within thirty miles of each other.",
+      "Bouchon Bistro, Calistoga Depot, The Grove at CIA at COPIA — three very different tables along one wine-country corridor.",
     image: "/images/photography/press-plating.jpg",
     objectPosition: "50% 48%",
     partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
@@ -35,10 +35,10 @@ const articles = [
   {
     id: "wine",
     label: "Wine",
-    title: "The Best Wineries in Napa Valley",
-    subtitle: "Four hundred cellar doors, one corridor",
+    title: "Wineries Across Napa Valley",
+    subtitle: "Four hundred cellar doors, many styles",
     description:
-      "Icons like Robert Mondavi, elegance at Etude, history at Louis Martini — the Wine Spectator guide to Napa's cellars.",
+      "From icons like Robert Mondavi to elegance at Etude and heritage at Louis Martini — a spectrum of Napa Valley cellars, with Wine Spectator context.",
     image: "/images/photography/wine-cellar-toast.jpg",
     objectPosition: "50% 45%",
     partners: ["Etude", "Robert Mondavi", "Louis Martini"],
@@ -53,7 +53,7 @@ const articles = [
     title: "Things to Do in Napa Valley",
     subtitle: "When the day doesn't end at the last pour",
     description:
-      "JaM Cellars Ballroom, Pure Luxury Tours, Marquee Pinball — the valley after dark and between vines.",
+      "JaM Cellars live music, Pure Luxury chauffeured days, Marquee Pinball in downtown Napa — après-vine energy across Napa Valley.",
     image: "/images/photography/cadet-nightlife.jpg",
     objectPosition: "50% 48%",
     partners: ["JaM Cellars", "Pure Luxury Tours", "Marquee Pinball"],
@@ -94,8 +94,8 @@ export default function ArticleCards() {
           transition={{ delay: reducedMotion ? 0 : 0.06 }}
           className="section-title"
         >
-          A World in 30 Miles —{" "}
-          <span style={{ color: "var(--hub-champagne)" }}>The Series</span>
+          Live a Little —{" "}
+          <span style={{ color: "var(--hub-champagne)" }}>or a Lot</span>
         </motion.h2>
         <motion.p
           initial={reducedMotion ? false : { opacity: 0, y: 8 }}
@@ -103,7 +103,7 @@ export default function ArticleCards() {
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose mx-auto max-w-xl"
         >
-          Stay. Dine. Wine. Explore. One valley, thirty miles, four stories.
+          Four stories—stay, dine, wine, explore—each anchored by real places you can book tonight.
         </motion.p>
       </div>
 

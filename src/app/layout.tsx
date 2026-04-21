@@ -25,17 +25,17 @@ const cormorant = Cormorant_Garamond({
 });
 
 const siteUrl = "https://vnv2026.vercel.app";
-const ogImage = `${siteUrl}/images/photography/stanly-ranch-convertible.jpg`;
+const ogImage = `${siteUrl}/images/photography/hero-stanly-ranch-convertible.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "A World in 30 Miles | Visit Napa Valley × Wine Spectator",
+  title: "A World in One Valley | Visit Napa Valley × Wine Spectator",
   description:
-    "Wine, dine, stay, and explore in one 30-mile stretch of valley. Plan your Napa Valley long weekend with Visit Napa Valley and Wine Spectator.",
+    "Live a little—or a lot—in Napa Valley. Plan wine country stays, dining, and experiences with Visit Napa Valley and Wine Spectator.",
   openGraph: {
-    title: "A World in 30 Miles | Visit Napa Valley × Wine Spectator",
+    title: "A World in One Valley | Visit Napa Valley × Wine Spectator",
     description:
-      "Wine, dine, stay, and explore in one unforgettable 30-mile corridor.",
+      "From Carneros to Calistoga: wine, food, and adventure in one storied California valley.",
     type: "website",
     url: siteUrl,
     images: [
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "A World in 30 Miles | Visit Napa Valley × Wine Spectator",
+    title: "A World in One Valley | Visit Napa Valley × Wine Spectator",
     description:
-      "Wine, dine, stay, and explore in one 30-mile stretch of Napa Valley.",
+      "Live a little—or a lot—in Napa Valley. Stays, dining, wineries, and things to do.",
     images: [ogImage],
   },
 };
@@ -61,7 +61,7 @@ const jsonLd = {
   "@type": "TouristDestination",
   name: "Napa Valley",
   description:
-    "Napa Valley wine country — stays, dining, wineries, and experiences within thirty miles.",
+    "Napa Valley wine country — stays, dining, wineries, and experiences from the bay to the Mayacamas.",
   touristType: "Wine tourism",
   containsPlace: {
     "@type": "AdministrativeArea",
@@ -83,7 +83,7 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/images/photography/stanly-ranch-convertible.jpg"
+          href="/images/photography/hero-stanly-ranch-convertible.png"
           imageSizes="100vw"
         />
       </head>

@@ -3,9 +3,9 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 
 export const metadata = {
-  title: "The Best Wineries in Napa Valley | Wine Spectator × Visit Napa Valley",
+  title: "Wineries Across Napa Valley | Wine Spectator × Visit Napa Valley",
   description:
-    "Icons like Robert Mondavi, elegance at Etude, history at Louis Martini — Wine Spectator's guide to Napa Valley wineries.",
+    "From iconic estates to intimate tastings—Wine Spectator context on the diversity of Napa Valley wineries.",
 };
 
 export default function WinePage() {
@@ -77,7 +77,7 @@ export default function WinePage() {
               maxWidth: "42rem",
             }}
           >
-            The Best Wineries in Napa Valley
+            Wineries Across Napa Valley
           </h1>
           <p
             style={{

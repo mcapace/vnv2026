@@ -866,7 +866,7 @@ export default function DinePage() {
                   color: "var(--hub-ink)",
                 }}
               >
-                The Best Wineries in Napa Valley →
+                Wineries Across Napa Valley →
               </span>
             </Link>
           </div>

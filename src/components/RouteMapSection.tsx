@@ -9,11 +9,12 @@ const SILVERADO_PATH =
   "M 134 495 C 134 382 133 282 132 192 C 131 142 130 102 129 68 L 128 42";
 
 const towns = [
-  { id: "napa", label: "Napa / Carneros", p: 0 },
-  { id: "yountville", label: "Yountville", p: 0.22 },
-  { id: "oakville", label: "Oakville / Rutherford", p: 0.42 },
-  { id: "sthelena", label: "St. Helena", p: 0.65 },
-  { id: "calistoga", label: "Calistoga", p: 0.88 },
+  { id: "amcan", label: "Am. Canyon", p: 0.03 },
+  { id: "napa", label: "Napa / Carneros", p: 0.16 },
+  { id: "yountville", label: "Yountville", p: 0.34 },
+  { id: "oakville", label: "Oakville / Rutherford", p: 0.5 },
+  { id: "sthelena", label: "St. Helena", p: 0.7 },
+  { id: "calistoga", label: "Calistoga", p: 0.9 },
 ] as const;
 
 const MAP_BOTTOM = 495;
@@ -63,11 +64,11 @@ function NapaCorridorMapIllustration({ inView }: { inView: boolean }) {
         transition={{ duration: 1.6, ease: "easeInOut", delay: 0.1 }}
       />
 
-      {/* ~30 miles label */}
+      {/* Corridor length — county span vs. compact valley floor */}
       <motion.text
         x={24}
         y={268}
-        fontSize={10}
+        fontSize={9}
         fill="var(--hub-ink)"
         fillOpacity={0.72}
         fontFamily="var(--font-inter), system-ui, sans-serif"
@@ -76,7 +77,7 @@ function NapaCorridorMapIllustration({ inView }: { inView: boolean }) {
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.4, delay: 1.8 }}
       >
-        ~30 miles
+        ~50 mi county
       </motion.text>
 
       {/* Town markers — stagger in after road finishes */}
@@ -157,12 +158,13 @@ export default function RouteMapSection() {
           >
             <p className="section-eyebrow mb-4">The route</p>
             <h2 className="section-title" style={{ textAlign: "left" }}>
-              Thirty miles,{" "}
-              <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>one road</span>
+              One corridor,{" "}
+              <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>six anchors</span>
             </h2>
             <p className="hub-prose mt-4" style={{ textAlign: "left" }}>
-              From the bay fog of Carneros to the thermal springs of Calistoga — the entire valley runs
-              along a single corridor. Most stops are fifteen minutes apart.
+              Highway 29 and the Silverado Trail stitch the county together—from American Canyon’s
+              gateway to Calistoga’s geothermal north. Mileage is longer than the valley floor alone, but
+              most tasting-to-table hops still clock in under twenty minutes.
             </p>
             <NapaCorridorMapIllustration inView={!!inView} />
           </motion.div>
@@ -177,37 +179,44 @@ export default function RouteMapSection() {
             {[
               {
                 town: "Calistoga",
-                region: "North",
-                note: "Hot springs, Depot, top-valley Cab",
-                drive: "Top of the valley",
+                region: "North end",
+                note: "Geothermal pools, Main Street strolls, slower finales",
+                drive: "Top of the map",
                 color: "var(--hub-wine)",
               },
               {
                 town: "St. Helena",
-                region: "Upper Mid",
-                note: "Meadowood, Press, Louis Martini",
-                drive: "~10 min south",
+                region: "Upper valley",
+                note: "Silverado Trail estates, downtown tasting rooms",
+                drive: "~12 min south",
                 color: "var(--hub-champagne)",
               },
               {
                 town: "Oakville / Rutherford",
-                region: "Mid-Valley",
-                note: "Robert Mondavi, benchmark Cab country",
-                drive: "~8 min south",
+                region: "Mid-valley AVAs",
+                note: "World-famous Cabernet appellations—vineyard addresses, not municipalities",
+                drive: "~10 min south",
                 color: "var(--hub-champagne)",
               },
               {
                 town: "Yountville",
-                region: "Lower Mid",
-                note: "Thomas Keller, Bouchon, French Laundry",
+                region: "Central",
+                note: "Walkable chef culture, Michelin density, wine-country inns",
                 drive: "~10 min south",
                 color: "var(--hub-champagne)",
               },
               {
                 town: "Napa / Carneros",
-                region: "South",
-                note: "Carneros Resort, Oxbow Market, CIA COPIA",
+                region: "South valley",
+                note: "City of Napa, Carneros benchlands, Oxbow Market",
                 drive: "~12 min south",
+                color: "var(--hub-sage)",
+              },
+              {
+                town: "American Canyon",
+                region: "Gateway",
+                note: "Southern entry to Napa County—widen the trip lens from here",
+                drive: "South gateway",
                 color: "var(--hub-sage)",
               },
             ].map((item, i, arr) => (

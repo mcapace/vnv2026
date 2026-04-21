@@ -54,8 +54,8 @@ export default function Footer() {
           marginBottom: "1rem",
           letterSpacing: "-0.02em",
         }}>
-          Ready to plan a{" "}
-          <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>long weekend?</span>
+          Ready to turn inspiration into{" "}
+          <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>real plans?</span>
         </h2>
 
         {/* Body */}
@@ -67,7 +67,8 @@ export default function Footer() {
           maxWidth: "28rem",
           margin: "0 auto 2rem",
         }}>
-          Lock in stays, tables, and cellar appointments on the official destination site.
+          Book the stays, tastings, and tables you&apos;ve been circling—plus trails, spas, and events you
+          didn&apos;t know to ask for—all on the official Visit Napa Valley trip planner.
         </p>
 
         {/* Social proof */}
