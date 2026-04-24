@@ -25,7 +25,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 const siteUrl = "https://vnv2026.vercel.app";
-const ogImage = `${siteUrl}/images/photography/hero-stanly-ranch-convertible.png`;
+const ogImage = `${siteUrl}/images/photography/hero-stanly-ranch-convertible.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -83,7 +83,7 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/images/photography/hero-stanly-ranch-convertible.png"
+          href="/images/photography/hero-stanly-ranch-convertible.jpg"
           imageSizes="100vw"
         />
       </head>

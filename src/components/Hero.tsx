@@ -21,15 +21,15 @@ export default function Hero() {
         <motion.div
           style={{
             position: "absolute",
-            inset: "-10% 0",
+            inset: "-4% 0",
             y: imageY,
           }}
         >
           <img
-            src="/images/photography/hero-stanly-ranch-convertible.png"
-            alt="Napa Valley"
-            width={1920}
-            height={1080}
+            src="/images/photography/hero-stanly-ranch-convertible.jpg"
+            alt="Napa Valley—convertible on a wine-country road with vineyards and hills"
+            width={3000}
+            height={1486}
             decoding="async"
             fetchPriority="high"
             loading="eager"
@@ -37,7 +37,7 @@ export default function Hero() {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              objectPosition: "center 42%",
+              objectPosition: "center 36%",
             }}
           />
         </motion.div>
