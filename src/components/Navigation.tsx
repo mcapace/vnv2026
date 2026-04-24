@@ -109,7 +109,7 @@ export default function Navigation() {
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       setMobileOpen(false);
     }
-    // For full path links like /stay, /dine — let the browser navigate normally
+    // For full path links like /stay, /dine, let the browser navigate normally
   };
 
   const onHero = !scrolled;
@@ -156,7 +156,7 @@ export default function Navigation() {
             }}
           />
 
-          {/* Left — Logo */}
+          {/* Left: logo */}
           <a
             href="#hero"
             onClick={(e) => onNavClick(e, "#hero")}
@@ -191,7 +191,7 @@ export default function Navigation() {
             />
           </a>
 
-          {/* Center — Nav links */}
+          {/* Center: nav links */}
           <nav
             aria-label="Primary"
             className="hidden items-center gap-0.5 md:flex"
@@ -258,7 +258,7 @@ export default function Navigation() {
             })}
           </nav>
 
-          {/* Right — weather + Plan visit + mobile menu */}
+          {/* Right: weather, Plan visit, mobile menu */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
             {weather && (
               <div

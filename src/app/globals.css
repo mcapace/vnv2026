@@ -1,25 +1,25 @@
 /*
- * Color & cadence approximation — Napa Standard / “Taste of the Good Life”
+ * Color and cadence, Napa Standard, “Taste of the Good Life”
  * Fonts: next/font in layout.tsx (Inter, Playfair Display, Cormorant Garamond).
  */
 @import "tailwindcss";
 
 :root {
-  /* Linen & card — sun-washed, host’s table */
+  /* Linen and card. Sun-washed, host’s table */
   --hub-paper: #f7f4ef;
   --hub-paper-2: #efe9df;
   --hub-card: #fdfcfa;
-  /* Ink — warm charcoal (softer than pure black) */
+  /* Ink: warm charcoal, softer than pure black */
   --hub-ink: #2a2623;
   --hub-muted: #524d47;
   --hub-line: rgba(42, 38, 35, 0.11);
-  /* Wine — terroir burgundy, approachable not ink-dark */
+  /* Wine: terroir burgundy, approachable, not ink-dark */
   --hub-wine: #6b2e36;
   --hub-wine-deep: #4a252c;
-  /* Accent — honey brass / late harvest (indulgence, still relaxed) */
+  /* Accent: honey brass / late harvest, indulgent but still relaxed */
   --hub-champagne: #b8894a;
   --hub-champagne-light: #cc9f5c;
-  /* Contrast bands — valley dusk, not digital navy */
+  /* Contrast bands: valley dusk, not digital navy */
   --hub-navy: #241f1a;
   --hub-navy-mid: #2f2820;
   --hub-navy-deep: #3a3228;
@@ -29,7 +29,7 @@
   --hub-accent-soft: rgba(107, 46, 54, 0.07);
   --hub-radius: 1rem;
   --hub-radius-sm: 0.5rem;
-  /* Vertical rhythm — closer to Deutsch / premium landing cadence */
+  /* Vertical rhythm, closer to Deutsch and premium landing cadence */
   --section-pad-y: clamp(4.5rem, 11vw, 8rem);
   --shell-pad-x: clamp(1.5rem, 5vw, 3.5rem);
   --hub-ease-elegant: cubic-bezier(0.22, 1, 0.36, 1);
@@ -148,7 +148,7 @@ body {
   color: var(--hub-ink);
 }
 
-/* Headline stack spacing (editorial — not cramped) */
+/* Headline stack spacing: editorial, not cramped */
 .section-stack .section-title {
   margin-top: clamp(1.5rem, 3.5vw, 2.125rem);
 }
@@ -322,6 +322,21 @@ body {
 
 .footer-email-input::placeholder {
   color: rgba(255, 255, 255, 0.45);
+}
+
+/* Stack email field and submit on narrow viewports (e.g. 375px) so the input stays fully visible. */
+@media (max-width: 30rem) {
+  .footer-email-form {
+    flex-direction: column;
+    border-radius: 1rem;
+    padding: 0.65rem 0.75rem 0.75rem;
+  }
+  .footer-email-form .footer-email-input {
+    width: 100%;
+  }
+  .footer-email-form button[type="submit"] {
+    width: 100%;
+  }
 }
 
 .partner-filter-btn--idle:hover {

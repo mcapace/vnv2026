@@ -9,11 +9,10 @@ const SILVERADO_PATH =
   "M 134 495 C 134 382 133 282 132 192 C 131 142 130 102 129 68 L 128 42";
 
 const towns = [
-  { id: "amcan", label: "Am. Canyon", p: 0.03 },
-  { id: "napa", label: "Napa / Carneros", p: 0.16 },
-  { id: "yountville", label: "Yountville", p: 0.34 },
-  { id: "oakville", label: "Oakville / Rutherford", p: 0.5 },
-  { id: "sthelena", label: "St. Helena", p: 0.7 },
+  { id: "amcan", label: "Am. Canyon", p: 0.05 },
+  { id: "napa", label: "Napa", p: 0.25 },
+  { id: "yountville", label: "Yountville", p: 0.45 },
+  { id: "sthelena", label: "St. Helena", p: 0.66 },
   { id: "calistoga", label: "Calistoga", p: 0.9 },
 ] as const;
 
@@ -28,16 +27,16 @@ function townPosition(p: number): { x: number; y: number } {
   return { x, y };
 }
 
-function NapaCorridorMapIllustration({ inView }: { inView: boolean }) {
+function RouteMapIllustration({ inView }: { inView: boolean }) {
   return (
     <svg
       viewBox="0 0 320 520"
       width="100%"
       className="mx-auto block h-auto max-w-xs"
       role="img"
-      aria-label="Illustrated map of the Napa Valley corridor"
+      aria-label="Illustrated map of Highway 29, the Silverado Trail, and five towns in Napa Valley"
     >
-      {/* Silverado Trail — dashed, fades in */}
+      {/* Silverado Trail (dashed) */}
       <motion.path
         d={SILVERADO_PATH}
         fill="none"
@@ -51,7 +50,7 @@ function NapaCorridorMapIllustration({ inView }: { inView: boolean }) {
         transition={{ duration: 1.8, ease: "easeInOut", delay: 0.3 }}
       />
 
-      {/* Hwy 29 — main road draws itself */}
+      {/* Highway 29 (main stroke) */}
       <motion.path
         d={MAIN_PATH}
         fill="none"
@@ -64,7 +63,7 @@ function NapaCorridorMapIllustration({ inView }: { inView: boolean }) {
         transition={{ duration: 1.6, ease: "easeInOut", delay: 0.1 }}
       />
 
-      {/* Corridor length — county span vs. compact valley floor */}
+      {/* Approximate north-to-south span */}
       <motion.text
         x={24}
         y={268}
@@ -77,10 +76,10 @@ function NapaCorridorMapIllustration({ inView }: { inView: boolean }) {
         animate={inView ? { opacity: 1 } : {}}
         transition={{ duration: 0.4, delay: 1.8 }}
       >
-        ~50 mi county
+        ~50 mi
       </motion.text>
 
-      {/* Town markers — stagger in after road finishes */}
+      {/* Town markers, staggered after the roads */}
       {towns.map((town, i) => {
         const { x, y } = townPosition(town.p);
         return (
@@ -150,7 +149,6 @@ export default function RouteMapSection() {
       <div className="section-shell mx-auto w-full">
         {/* Two column layout */}
         <div className="mx-auto grid w-full max-w-[72rem] grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-[4rem]">
-          {/* Left — map */}
           <motion.div
             initial={reducedMotion ? false : { opacity: 0, x: -16 }}
             animate={inView ? { opacity: 1, x: 0 } : reducedMotion ? { opacity: 1, x: 0 } : {}}
@@ -158,18 +156,18 @@ export default function RouteMapSection() {
           >
             <p className="section-eyebrow mb-4">The route</p>
             <h2 className="section-title" style={{ textAlign: "left" }}>
-              One corridor,{" "}
-              <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>six anchors</span>
+              Two roads,{" "}
+              <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>five towns</span>
+              {", one valley."}
             </h2>
             <p className="hub-prose mt-4" style={{ textAlign: "left" }}>
-              Highway 29 and the Silverado Trail stitch the county together—from American Canyon’s
-              gateway to Calistoga’s geothermal north. Mileage is longer than the valley floor alone, but
-              most tasting-to-table hops still clock in under twenty minutes.
+              Highway 29 runs the valley floor. The Silverado Trail traces the east side. Between them sit
+              five towns and more wineries than any sensible itinerary can hold. Most hops between tastings
+              and tables still clock in under twenty minutes.
             </p>
-            <NapaCorridorMapIllustration inView={!!inView} />
+            <RouteMapIllustration inView={!!inView} />
           </motion.div>
 
-          {/* Right — town breakdown */}
           <motion.div
             initial={reducedMotion ? false : { opacity: 0, x: 16 }}
             animate={inView ? { opacity: 1, x: 0 } : reducedMotion ? { opacity: 1, x: 0 } : {}}
@@ -179,44 +177,32 @@ export default function RouteMapSection() {
             {[
               {
                 town: "Calistoga",
-                region: "North end",
-                note: "Geothermal pools, Main Street strolls, slower finales",
-                drive: "Top of the map",
+                note: "Geothermal pools, Main Street strolls, the quieter finale.",
+                drive: "",
                 color: "var(--hub-wine)",
               },
               {
                 town: "St. Helena",
-                region: "Upper valley",
-                note: "Silverado Trail estates, downtown tasting rooms",
+                note: "Estate tastings and downtown rooms you can walk between.",
                 drive: "~12 min south",
-                color: "var(--hub-champagne)",
-              },
-              {
-                town: "Oakville / Rutherford",
-                region: "Mid-valley AVAs",
-                note: "World-famous Cabernet appellations—vineyard addresses, not municipalities",
-                drive: "~10 min south",
                 color: "var(--hub-champagne)",
               },
               {
                 town: "Yountville",
-                region: "Central",
-                note: "Walkable chef culture, Michelin density, wine-country inns",
-                drive: "~10 min south",
+                note: "Walkable blocks and the Michelin addresses you already know by name.",
+                drive: "~12 min south",
                 color: "var(--hub-champagne)",
               },
               {
-                town: "Napa / Carneros",
-                region: "South valley",
-                note: "City of Napa, Carneros benchlands, Oxbow Market",
-                drive: "~12 min south",
+                town: "Napa",
+                note: "Downtown energy, Oxbow Market, Carneros fog on the vines.",
+                drive: "~10 min south",
                 color: "var(--hub-sage)",
               },
               {
                 town: "American Canyon",
-                region: "Gateway",
-                note: "Southern entry to Napa County—widen the trip lens from here",
-                drive: "South gateway",
+                note: "The southern gateway. The valley widens open from here.",
+                drive: "~12 min south",
                 color: "var(--hub-sage)",
               },
             ].map((item, i, arr) => (
@@ -243,15 +229,7 @@ export default function RouteMapSection() {
                 </div>
                 {/* Content */}
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "baseline",
-                      justifyContent: "space-between",
-                      gap: "0.5rem",
-                      marginBottom: "0.25rem",
-                    }}
-                  >
+                  <div style={{ marginBottom: "0.25rem" }}>
                     <span
                       style={{
                         fontFamily: "var(--font-playfair), Georgia, serif",
@@ -261,18 +239,6 @@ export default function RouteMapSection() {
                       }}
                     >
                       {item.town}
-                    </span>
-                    <span
-                      style={{
-                        fontSize: "0.625rem",
-                        fontWeight: 600,
-                        letterSpacing: "0.12em",
-                        textTransform: "uppercase",
-                        color: "var(--hub-muted)",
-                        flexShrink: 0,
-                      }}
-                    >
-                      {item.region}
                     </span>
                   </div>
                   <p
@@ -285,7 +251,7 @@ export default function RouteMapSection() {
                   >
                     {item.note}
                   </p>
-                  {i > 0 && (
+                  {i > 0 && item.drive && (
                     <span
                       style={{
                         fontSize: "0.625rem",

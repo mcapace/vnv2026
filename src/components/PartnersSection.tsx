@@ -5,6 +5,8 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 
 type Cat = "Stay" | "Wine" | "Dine" | "Explore";
 
+const PLACEHOLDER = "/images/photography/placeholder-venue.svg" as const;
+
 const partnerCards: Array<{
   name: string;
   category: Cat;
@@ -13,22 +15,25 @@ const partnerCards: Array<{
   objectPosition?: string;
   href: string;
 }> = [
+  // TODO: File references Stanly Ranch; replace with authentic Carneros Resort & Spa photography. Awaiting from photo team.
   {
     name: "Carneros Resort & Spa",
     category: "Stay",
     description: "Cottages at the edge of Carneros fog and vines.",
-    image: "/images/photography/stanly-ranch-spa.jpg",
+    image: PLACEHOLDER,
     objectPosition: "center 42%",
     href: "https://www.carnerosresort.com/",
   },
+  // TODO: Asset is Solage (different Calistoga property). Replace with authentic Mount View Hotel & Inn photography. Awaiting from photo team.
   {
     name: "Mount View Hotel & Inn",
     category: "Stay",
     description: "Calistoga mineral spa heritage rooms since 1919.",
-    image: "/images/photography/solage-poolside.jpg",
+    image: PLACEHOLDER,
     objectPosition: "center 48%",
     href: "https://www.mountviewhotel.com/",
   },
+  // TODO: Stock wine-cellar art; replace with authentic Etude Wines (Carneros) photography. Awaiting from photo team.
   {
     name: "Etude Wines",
     category: "Wine",
@@ -37,22 +42,25 @@ const partnerCards: Array<{
     objectPosition: "center 45%",
     href: "https://www.etudewines.com/",
   },
+  // TODO: Replace with authentic Robert Mondavi Winery photography. Awaiting from photo team.
   {
     name: "Robert Mondavi Winery",
     category: "Wine",
     description: "The Oakville benchmark, reborn for tours and tastings.",
-    image: "/images/photography/chandon-group.jpg",
+    image: PLACEHOLDER,
     objectPosition: "center 48%",
     href: "https://www.robertmondavi.com/",
   },
+  // TODO: Replace with authentic Louis Martini Winery photography. Awaiting from photo team.
   {
     name: "Louis Martini Winery",
     category: "Wine",
     description: "Generations of Cabernet craft in St. Helena.",
-    image: "/images/photography/chandon-hilltop.jpg",
+    image: PLACEHOLDER,
     objectPosition: "center 35%",
     href: "https://www.louismartini.com/",
   },
+  // TODO: Generic plate shot; replace with authentic Bouchon Bistro photography when a venue-specific asset is available.
   {
     name: "Bouchon Bistro",
     category: "Dine",
@@ -61,45 +69,50 @@ const partnerCards: Array<{
     objectPosition: "center 48%",
     href: "https://www.thomaskeller.com/bouchonyountville",
   },
+  // TODO: File references Cadet (dining), not the Depot. Replace with authentic Calistoga Depot photography. Awaiting from photo team.
   {
     name: "Calistoga Depot",
     category: "Dine",
     description: "Six train cars, one distillery, endless Calistoga charm.",
-    image: "/images/photography/cadet-dining.jpg",
+    image: PLACEHOLDER,
     objectPosition: "center 48%",
     href: "https://www.calistogadepot.com/",
   },
+  // TODO: Replace with authentic Grove at COPIA photography.
   {
     name: "The Grove at COPIA",
     category: "Dine",
     description: "CIA campus dining with garden-to-table cuisine.",
-    image: "/images/photography/chandon-brunch.jpg",
+    image: PLACEHOLDER,
     objectPosition: "center 48%",
     href: "https://www.ciaatcopia.com/grove-restaurant",
   },
+  // TODO: File references Cadet (nightlife), not JaM Cellars. Replace with authentic JaM Cellars Ballroom photography. Awaiting from photo team.
   {
     name: "JaM Cellars Ballroom",
     category: "Explore",
     description: "Napa's live-music downtown anchor.",
-    image: "/images/photography/cadet-nightlife.jpg",
+    image: PLACEHOLDER,
     objectPosition: "center 48%",
     href: "https://www.jamcellars.com/",
   },
+  // TODO: Stanly Ranch brand imagery is not Pure Luxury Tours. Replace with authentic tour or vehicle photography. Awaiting from photo team.
   {
     name: "Pure Luxury Tours",
     category: "Explore",
     description: "Tailored chauffeured days across the valley.",
-    image: "/images/photography/stanly-ranch-convertible.jpg",
+    image: PLACEHOLDER,
     objectPosition: "center 30%",
     href: "https://www.pureluxury.com/napa-valley-wine-tours/",
   },
+  // TODO: Asset is Solage (pool at night), not Marquee. Replace with authentic Marquee Pinball Lounge photography. Awaiting from photo team.
   {
     name: "Marquee Pinball Lounge",
     category: "Explore",
     description: "Playful cocktails and vintage games in downtown Napa.",
-    image: "/images/photography/solage-pool-night.jpg",
+    image: PLACEHOLDER,
     objectPosition: "center 48%",
-    href: "https://www.visitnapavalley.com/things-to-do/",
+    href: "https://www.marqueepinball.com/",
   },
 ];
 

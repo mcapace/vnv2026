@@ -6,8 +6,8 @@ import { useCountUp } from "@/hooks/useCountUp";
 
 const stats = [
   { key: "wineries", target: 400, suffixPlus: true, label: "Wineries" },
-  { key: "miles", target: 50, suffixPlus: false, label: "Miles (Napa County)" },
-  { key: "michelin", target: 9, suffixPlus: false, label: "Michelin stars" },
+  { key: "miles", target: 50, suffixPlus: false, label: "Miles" },
+  { key: "michelin", target: 15, suffixPlus: false, label: "Michelin stars" },
   { key: "towns", target: 5, suffixPlus: false, label: "Towns & cities" },
 ] as const;
 
@@ -122,10 +122,10 @@ export default function IntroSection() {
           className="hub-prose-serif max-w-2xl text-center"
           style={{ maxWidth: "38rem", opacity: 0.8 }}
         >
-          Napa Valley rewards every kind of trip—quick escapes, week-long
-          immersions, and everything between. The same corridor holds hundreds of
-          cellar doors, chef-led kitchens, and trailheads, so you can go wide
-          without spending your whole vacation in the car.
+          Napa Valley rewards every kind of trip. Quick escapes, week-long
+          immersions, and everything between. Hundreds of cellar doors, chef-led
+          kitchens, and trailheads sit close enough that you can go wide
+          without spending your vacation behind the wheel.
         </motion.p>
       </div>
 

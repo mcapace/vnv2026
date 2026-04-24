@@ -19,44 +19,60 @@ export default function Hero() {
       {/* Background image */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <motion.div
+          className="h-full w-full"
           style={{
             position: "absolute",
             inset: "-4% 0",
             y: imageY,
           }}
         >
-          <img
-            src="/images/photography/hero-stanly-ranch-convertible.jpg"
-            alt="Napa Valley—convertible on a wine-country road with vineyards and hills"
-            width={3000}
-            height={1486}
-            decoding="async"
-            fetchPriority="high"
-            loading="eager"
+          <picture
+            className="block h-full w-full"
             style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center 36%",
+              minHeight: "100%",
             }}
-          />
+          >
+            <source
+              type="image/avif"
+              srcSet="/images/photography/hero-stanly-ranch-convertible.avif"
+            />
+            <source
+              type="image/webp"
+              srcSet="/images/photography/hero-stanly-ranch-convertible.webp"
+            />
+            <img
+              src="/images/photography/hero-stanly-ranch-convertible.jpg"
+              alt="Napa Valley: convertible on a wine-country road with vineyards and hills behind"
+              width={2560}
+              height={1268}
+              decoding="async"
+              fetchPriority="high"
+              loading="eager"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center 36%",
+                display: "block",
+              }}
+            />
+          </picture>
         </motion.div>
       </div>
 
-      {/* Gradient overlay — strong at bottom for text legibility */}
+      {/* Gradient overlay: lighter so vineyard and hills read through */}
       <div
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.15) 65%, rgba(0,0,0,0.05) 100%)",
+            "linear-gradient(to top, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.32) 36%, rgba(0,0,0,0.12) 64%, rgba(0,0,0,0.04) 100%)",
         }}
         aria-hidden
       />
 
-      {/* Grain overlay */}
       <div className="grain-overlay pointer-events-none absolute inset-0 z-[2]" />
 
-      {/* Hero content — anchored to bottom left */}
+      {/* Hero content, bottom left */}
       <div
         className="absolute bottom-0 left-0 right-0 z-10 text-left"
         style={{
@@ -86,7 +102,6 @@ export default function Hero() {
           />
         </motion.div>
 
-        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -102,11 +117,10 @@ export default function Hero() {
             textShadow: "0 2px 24px rgba(0,0,0,0.4)",
           }}
         >
-          A World in{" "}
-          <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>One Valley</span>
+          Live a Little{" "}
+          <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>or a Lot</span>
         </motion.h1>
 
-        {/* Body copy */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -120,8 +134,9 @@ export default function Hero() {
             marginBottom: "2rem",
           }}
         >
-          Live a little—or a lot. World-class wine, chef-led tables, trails, spas, and small-town nights
-          are never more than a short drive apart—whether you&apos;re here for two nights or a full week.
+          There&apos;s the quick escape, and then there&apos;s the week that rearranges your calendar.
+          World-class wine, chef-led tables, trails, spas, small-town nights. All within a short drive.
+          Show up how you want.
         </motion.p>
 
         {/* CTA buttons */}

@@ -1,41 +1,34 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const VIDEO_SRC = "/videos/AdobeStock_274812042.mov";
+/** Temporary poster only; final campaign file will be video. */
+const PLACEHOLDER_POSTER = "/images/photography/chandon-hilltop.jpg";
 
 export default function VideoSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    void v.play().catch(() => {
-      /* autoplay may be deferred; muted clips usually recover on next user gesture */
-    });
-  }, []);
 
   return (
     <section
       ref={ref}
       role="region"
-      aria-label="Video — see Napa Valley in motion"
+      aria-label="In motion, see Napa Valley"
       className="relative flex items-center justify-center overflow-hidden"
       style={{ minHeight: "min(68vh, 720px)" }}
     >
-      <video
-        ref={videoRef}
-        src={VIDEO_SRC}
+      {/* TODO: Replace with approved VNV "Live a Little or a Lot" campaign video. Awaiting final file from Hilary Chalson / Madi Griggs. */}
+      <img
+        src={PLACEHOLDER_POSTER}
+        alt=""
         className="absolute inset-0 z-0 h-full w-full object-cover"
         style={{ objectPosition: "center 38%" }}
-        autoPlay
-        playsInline
-        muted
-        loop
-        preload="auto"
+        width={1920}
+        height={1080}
+        sizes="100vw"
+        fetchPriority="low"
+        loading="lazy"
         aria-hidden
       />
 
@@ -69,7 +62,7 @@ export default function VideoSection() {
           transition={{ delay: 0.12 }}
           className="font-hub-display mx-auto mt-5 max-w-lg text-lg leading-snug text-white/75 text-on-photo"
         >
-          A cinematic sweep of wine country—vine rows, back roads, and golden-hour light.
+          A cinematic sweep of wine country. Vine rows, back roads, golden-hour light.
         </motion.p>
       </div>
     </section>

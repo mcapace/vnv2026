@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Things to Do in Napa Valley | Wine Spectator × Visit Napa Valley",
   description:
-    "JaM Cellars Ballroom, Pure Luxury Tours, Marquee Pinball — Wine Spectator's guide to exploring Napa Valley.",
+    "JaM Cellars Ballroom, Pure Luxury Tours, Marquee Pinball, and the rest. A Wine Spectator guide to exploring Napa Valley.",
 };
 
 export default function ExplorePage() {
@@ -99,16 +99,67 @@ export default function ExplorePage() {
         style={{ padding: "clamp(3rem, 7vw, 5rem) clamp(2rem, 5vw, 4rem)" }}
       >
         <div style={{ maxWidth: "48rem", margin: "0 auto" }}>
-          <p className="hub-prose-serif" style={{ color: "var(--hub-muted)" }}>
-            Article content coming soon. The full guide to exploring Napa Valley will be published here
-            shortly.
+          <p
+            className="hub-prose-serif"
+            style={{
+              color: "var(--hub-muted)",
+              fontSize: "1.1875rem",
+              lineHeight: 1.75,
+              marginBottom: "1.5rem",
+            }}
+          >
+            The full guide is in production. It will cover live music, tours, after-dark Napa, and the
+            out-of-tasting-room side of the valley, with the same level of on-the-ground detail as the rest
+            of this hub.
           </p>
+          <p
+            className="hub-prose-serif"
+            style={{
+              color: "var(--hub-muted)",
+              fontSize: "1.1875rem",
+              lineHeight: 1.75,
+              marginBottom: "1.5rem",
+            }}
+          >
+            For activities, event calendars, and things to do today, start with the official{" "}
+            <a
+              href="https://www.visitnapavalley.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--hub-champagne)", textDecoration: "none" }}
+            >
+              visitnapavalley.com
+            </a>{" "}
+            listings.
+          </p>
+          <div style={{ borderTop: "1px solid var(--hub-line)", paddingTop: "2rem", marginTop: "1rem" }}>
+            <p
+              style={{ fontSize: "0.8125rem", color: "var(--hub-muted)", lineHeight: 1.65, marginBottom: 0 }}
+            >
+              This guide is being produced in partnership with Visit Napa Valley. For the latest on events
+              and seasons, see{" "}
+              <a
+                href="https://www.visitnapavalley.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--hub-champagne)", textDecoration: "none" }}
+              >
+                visitnapavalley.com
+              </a>
+              .
+            </p>
+          </div>
 
           <div
             style={{
-              marginTop: "4rem",
+              marginTop: "3rem",
               paddingTop: "2rem",
               borderTop: "1px solid var(--hub-line)",
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "1rem",
             }}
           >
             <Link
@@ -127,6 +178,20 @@ export default function ExplorePage() {
             >
               ← Back to the hub
             </Link>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "1.25rem" }}>
+              <Link
+                href="/stay"
+                style={{ fontSize: "0.7rem", fontWeight: 600, color: "var(--hub-muted)", textDecoration: "none" }}
+              >
+                Where to stay
+              </Link>
+              <Link
+                href="/wine"
+                style={{ fontSize: "0.7rem", fontWeight: 600, color: "var(--hub-muted)", textDecoration: "none" }}
+              >
+                Wineries
+              </Link>
+            </div>
           </div>
         </div>
       </div>

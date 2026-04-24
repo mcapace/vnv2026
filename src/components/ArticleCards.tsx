@@ -7,10 +7,11 @@ const articles = [
   {
     id: "stay",
     label: "Stay",
+    cardPrimary: "Where you land",
     title: "Where to Stay in Napa Valley",
     subtitle: "Where the valley becomes your room",
     description:
-      "From vineyard-edge bungalows at Carneros Resort to the mineral-spa heritage of Mount View Hotel & Inn in Calistoga — a guide to sleeping well in wine country.",
+      "From vineyard-edge bungalows at Carneros Resort to the mineral-spa heritage of Mount View Hotel & Inn in Calistoga, a guide to sleeping well in wine country.",
     image: "/images/photography/stanly-ranch-spa.jpg",
     objectPosition: "50% 45%",
     partners: ["Carneros Resort", "Mount View Hotel & Inn"],
@@ -21,10 +22,11 @@ const articles = [
   {
     id: "dine",
     label: "Dine",
+    cardPrimary: "Tables worth the drive",
     title: "Where to Eat in Napa Valley",
     subtitle: "Every reservation earns the drive",
     description:
-      "Bouchon Bistro, Calistoga Depot, The Grove at CIA at COPIA — three very different tables along one wine-country corridor.",
+      "Bouchon Bistro, Calistoga Depot, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
     image: "/images/photography/press-plating.jpg",
     objectPosition: "50% 48%",
     partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
@@ -35,10 +37,11 @@ const articles = [
   {
     id: "wine",
     label: "Wine",
+    cardPrimary: "The cellar doors",
     title: "Wineries Across Napa Valley",
     subtitle: "Four hundred cellar doors, many styles",
     description:
-      "From icons like Robert Mondavi to elegance at Etude and heritage at Louis Martini — a spectrum of Napa Valley cellars, with Wine Spectator context.",
+      "From icons like Robert Mondavi to elegance at Etude and heritage at Louis Martini. A spectrum of Napa Valley cellars, with Wine Spectator context.",
     image: "/images/photography/wine-cellar-toast.jpg",
     objectPosition: "50% 45%",
     partners: ["Etude", "Robert Mondavi", "Louis Martini"],
@@ -50,10 +53,11 @@ const articles = [
   {
     id: "explore",
     label: "Explore",
+    cardPrimary: "After the last pour",
     title: "Things to Do in Napa Valley",
     subtitle: "When the day doesn't end at the last pour",
     description:
-      "JaM Cellars live music, Pure Luxury chauffeured days, Marquee Pinball in downtown Napa — après-vine energy across Napa Valley.",
+      "JaM Cellars live music, Pure Luxury chauffeured days, Marquee Pinball in downtown Napa. Après-vine energy across Napa Valley.",
     image: "/images/photography/cadet-nightlife.jpg",
     objectPosition: "50% 48%",
     partners: ["JaM Cellars", "Pure Luxury Tours", "Marquee Pinball"],
@@ -94,7 +98,7 @@ export default function ArticleCards() {
           transition={{ delay: reducedMotion ? 0 : 0.06 }}
           className="section-title"
         >
-          Live a Little —{" "}
+          Live a Little{" "}
           <span style={{ color: "var(--hub-champagne)" }}>or a Lot</span>
         </motion.h2>
         <motion.p
@@ -103,7 +107,9 @@ export default function ArticleCards() {
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose mx-auto max-w-xl"
         >
-          Four stories—stay, dine, wine, explore—each anchored by real places you can book tonight.
+          Four ways in. Check in somewhere that feels like the vacation itself. Sit down at a table that
+          earns the drive. Taste the wine that built the place. Find the rest of what the valley does after
+          the last pour.
         </motion.p>
       </div>
 
@@ -136,13 +142,11 @@ function ArticleRow({
   const href = article.articleUrl ?? `/${article.id}`;
   const isLive = article.status === "live";
   const isComingSoon = article.status === "coming-soon";
-  const isHovered = hoveredIdx === index;
+  const isHovered = isLive && hoveredIdx === index;
 
-  const shellClassName = "group relative block overflow-hidden";
+  const shellClassName = "group relative block h-full min-h-[420px] overflow-hidden";
   const shellStyle: React.CSSProperties = {
-    minHeight: "420px",
     cursor: isLive ? "pointer" : "default",
-    pointerEvents: isComingSoon ? "none" : "auto",
   };
 
   const cardBody = (
@@ -154,7 +158,7 @@ function ArticleRow({
         className="absolute inset-0 h-full w-full object-cover"
         style={{
           objectPosition: article.objectPosition,
-          filter: isComingSoon ? "grayscale(30%) brightness(0.75)" : "none",
+          filter: isComingSoon ? "grayscale(20%) brightness(0.9)" : "none",
           transition: "transform 0.7s ease",
           transform: isHovered ? "scale(1.04)" : "scale(1)",
         }}
@@ -173,13 +177,13 @@ function ArticleRow({
       />
 
       <span
-        className="absolute left-4 top-4 z-10 rounded-full text-[0.65rem] font-bold uppercase tracking-[0.15em]"
+        className="absolute left-4 top-4 z-10 rounded-full text-[0.55rem] font-semibold uppercase tracking-[0.18em]"
         style={{
-          padding: "0.4rem 1rem",
-          backgroundColor: "rgba(0,0,0,0.55)",
-          color: "rgba(255,255,255,0.95)",
+          padding: "0.3rem 0.7rem",
+          backgroundColor: "rgba(0,0,0,0.4)",
+          color: "rgba(255,255,255,0.65)",
           backdropFilter: "blur(8px)",
-          border: "1px solid rgba(255,255,255,0.2)",
+          border: "1px solid rgba(255,255,255,0.12)",
           width: "fit-content",
         }}
       >
@@ -223,21 +227,33 @@ function ArticleRow({
         <h3
           style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",
-            fontSize: "clamp(1.375rem, 2.2vw, 1.875rem)",
+            fontSize: "clamp(1.5rem, 2.4vw, 2rem)",
             fontWeight: 400,
             color: "#ffffff",
-            lineHeight: 1.15,
-            marginBottom: "0.375rem",
+            lineHeight: 1.12,
+            marginBottom: "0.5rem",
           }}
         >
-          {article.title}
+          {article.cardPrimary}
         </h3>
         <p
           style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",
-            fontSize: "1rem",
+            fontSize: "1.05rem",
+            fontWeight: 400,
+            color: "rgba(255,255,255,0.88)",
+            lineHeight: 1.3,
+            marginBottom: "0.35rem",
+          }}
+        >
+          {article.title}
+        </p>
+        <p
+          style={{
+            fontFamily: "var(--font-cormorant), Georgia, serif",
+            fontSize: "0.95rem",
             fontStyle: "italic",
-            color: "rgba(255,255,255,0.75)",
+            color: "rgba(255,255,255,0.65)",
             marginBottom: "0.5rem",
           }}
         >
@@ -271,24 +287,7 @@ function ArticleRow({
           ))}
         </div>
 
-        {isLive ? (
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.375rem",
-              borderRadius: "9999px",
-              backgroundColor: "var(--hub-champagne)",
-              color: "var(--hub-navy)",
-              fontSize: "0.75rem",
-              fontWeight: 600,
-              padding: "0.625rem 1.25rem",
-              letterSpacing: "0.04em",
-            }}
-          >
-            Read the article →
-          </span>
-        ) : (
+        {isComingSoon ? (
           <span
             style={{
               display: "inline-flex",
@@ -305,7 +304,7 @@ function ArticleRow({
           >
             Article coming soon
           </span>
-        )}
+        ) : null}
       </div>
     </>
   );
@@ -314,11 +313,13 @@ function ArticleRow({
     <article
       id={article.id}
       className="group scroll-mt-28 border border-[var(--hub-line)]"
-      onMouseEnter={() => setHoveredIdx(index)}
+      onMouseEnter={() => {
+        if (isLive) setHoveredIdx(index);
+      }}
       onMouseLeave={() => setHoveredIdx(null)}
       style={{
         backgroundColor: "var(--hub-card)",
-        opacity: isComingSoon ? 0.72 : 1,
+        opacity: isComingSoon ? 0.7 : 1,
         cursor: isLive ? "pointer" : "default",
         transform: isHovered ? "translateY(-6px)" : "translateY(0)",
         boxShadow: isHovered
@@ -333,7 +334,7 @@ function ArticleRow({
       {isLive ? (
         <a
           href={href}
-          aria-label={`Read: ${article.title}`}
+          aria-label={`Read: ${article.cardPrimary}, ${article.title}`}
           className={shellClassName}
           style={shellStyle}
         >
@@ -343,7 +344,7 @@ function ArticleRow({
         <div
           className={shellClassName}
           style={shellStyle}
-          aria-label={`${article.title} — coming soon`}
+          aria-label={`${article.title}, coming soon`}
           role="group"
         >
           {cardBody}

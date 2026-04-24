@@ -3,27 +3,28 @@
 import { useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
+// Internal: partner links go to venue sites; VNV links are for town/category planning (not shown to users).
 const days = [
   {
     day: "Day one",
-    title: "Arrive & unwind",
-    subtitle: "Carneros to Yountville",
-    mapHint: "South · Carneros → Yountville",
+    title: "Carneros to Yountville",
+    subtitle: "Arrive & unwind",
+    mapHint: "South · Carneros to Yountville",
     events: [
       {
         time: "3:00 PM",
         activity: "Check in at Carneros Resort & Spa",
         description:
-          "Private cottages among the vines. Many Napa Valley hotels begin check-in around 4:00 PM—drop bags, grab a pool hour, then roll into the afternoon.",
+          "Private cottages among the vines. Many Napa Valley hotels begin check-in around 4:00 PM. Drop bags, grab a pool hour, then roll into the afternoon.",
         type: "stay",
         thumb: "/images/photography/stanly-ranch-spa.jpg",
         url: "https://www.carnerosresort.com/",
       },
       {
         time: "4:30 PM",
-        activity: "Tasting at Etude Wines",
+        activity: "Tasting at Etude",
         description:
-          "Cool-climate Pinot Noir and Chardonnay from the Carneros benchlands—book an afternoon slot that fits check-in.",
+          "Cool-climate Pinot Noir and Chardonnay from the Carneros benchlands. Book an afternoon slot that fits check-in.",
         type: "wine",
         thumb: "/images/photography/wine-cellar-toast.jpg",
         url: "https://www.etudewines.com/",
@@ -31,92 +32,84 @@ const days = [
       {
         time: "7:30 PM",
         activity: "Dinner at Bouchon Bistro",
-        description:
-          "Yountville’s benchmark bistro—save room for the classics.",
+        description: "Yountville’s benchmark bistro. Save room for the classics.",
         type: "dine",
         thumb: "/images/photography/press-plating.jpg",
-        url: "https://www.bouchonbistro.com/",
+        url: "https://www.thomaskeller.com/bouchonyountville",
       },
     ],
   },
+  // TODO: Confirm Day 2 stops with Madi Griggs. Current version reflects client note that Mondavi sits between Yountville and St. Helena and belongs on the mid-valley day.
   {
     day: "Day two",
-    title: "Oakville to the city of Napa",
-    subtitle: "Mid-valley wine · downtown Napa at night",
-    mapHint: "Oakville → city of Napa (via Hwy 29)",
+    title: "Yountville to St. Helena",
+    subtitle: "Mid-valley tasting and an estate dinner",
+    mapHint: "Mid-valley · Yountville through Oakville to St. Helena",
     events: [
       {
-        time: "10:00 AM",
-        activity: "Robert Mondavi Winery",
+        time: "11:00 AM",
+        activity: "Tasting at Robert Mondavi Winery",
         description:
-          "Tour the reopened Oakville icon—where much of modern Napa Valley began.",
+          "Late morning in Oakville at the reopened icon, where much of modern Napa Valley began. Book a tasting that lets you ease up from Yountville without rushing.",
         type: "wine",
         thumb: "/images/photography/wine-cellar-toast.jpg",
         url: "https://www.robertmondavi.com/",
         wsTip:
-          "Wine Spectator tip: ask what’s new in the reopened hospitality spaces—tasting formats evolved with the architecture.",
+          "Wine Spectator tip: ask what’s new in the reopened hospitality spaces. Tasting formats evolved with the architecture.",
       },
       {
-        time: "12:30 PM",
-        activity: "Lunch at The Grove @ CIA at COPIA",
+        time: "2:30 PM",
+        activity: "Tasting at Louis Martini Winery",
         description:
-          "Wine-country cooking at the Culinary Institute’s Napa campus—indoor-outdoor seating steps from Oxbow.",
-        type: "dine",
-        thumb: "/images/photography/chandon-brunch.jpg",
-        url: "https://www.cia.edu/copia/",
-      },
-      {
-        time: "3:30 PM",
-        activity: "JaM Cellars (downtown Napa)",
-        description:
-          "Start at the First Street tasting room; live shows hit the Ballroom when it’s on the calendar—confirm listings before you go.",
-        type: "explore",
-        thumb: "/images/photography/cadet-nightlife.jpg",
-        url: "https://jamcellars.com/visit/",
-      },
-    ],
-  },
-  {
-    day: "Day three",
-    title: "Calistoga to St. Helena",
-    subtitle: "North-end spa · Silverado Trail · Meadowood",
-    mapHint: "North · Calistoga → St. Helena",
-    events: [
-      {
-        time: "9:00 AM",
-        activity: "Mount View Hotel & Spa",
-        description:
-          "Calistoga slow morning—spa menu and pool time vary by season; reserve treatments and confirm mineral-pool access when you book.",
-        type: "stay",
-        thumb: "/images/photography/solage-poolside.jpg",
-        url: "https://www.mountviewhotel.com/",
-      },
-      {
-        time: "11:30 AM",
-        activity: "Louis Martini Winery",
-        description:
-          "Silverado Trail heritage house—structured Cabernet tastings and a cellar steeped in Napa Valley history.",
+          "Afternoon on the Silverado Trail in St. Helena: heritage house, structured Cabernet, and a cellar steeped in Napa Valley history.",
         type: "wine",
         thumb: "/images/photography/wine-cellar-toast.jpg",
         url: "https://www.louismartini.com/",
       },
       {
-        time: "1:00 PM",
+        time: "7:00 PM",
+        activity: "Dinner at The Grove at COPIA",
+        description:
+          "Estate dinner on the Culinary Institute campus in Napa: wine-country cooking with indoor-outdoor seating. It is a drive south on Hwy 29 from St. Helena for the table, or swap for a St. Helena restaurant if you want to stay put for the night.",
+        type: "dine",
+        thumb: "/images/photography/chandon-brunch.jpg",
+        url: "https://www.ciaatcopia.com/grove-restaurant",
+      },
+    ],
+  },
+  // TODO: Confirm St. Helena Visit site URL with VNV; legacy /towns/st-helena/ 404s. Using the live town hub (things-to-do).
+  {
+    day: "Day three",
+    title: "St. Helena to Calistoga",
+    subtitle: "North-end spa and a slower finale",
+    mapHint: "North · St. Helena to Calistoga",
+    events: [
+      {
+        time: "10:00 AM",
+        activity: "St. Helena stroll or tasting",
+        description:
+          "Walk Main Street tasting rooms or add a Silverado Trail stop while the day is still cool. Flex the morning to match energy.",
+        type: "explore",
+        thumb: "/images/photography/chandon-hilltop.jpg",
+        url: "https://www.visitnapavalley.com/things-to-do/towns-regions/st-helena/",
+      },
+      {
+        time: "12:30 PM",
         activity: "Lunch at Forum, Meadowood Napa Valley",
         description:
-          "Wine-country fine dining on the Meadowood estate—book ahead and build the rest of the afternoon around the reservation.",
+          "Wine-country fine dining on the Meadowood estate in St. Helena. Book ahead and build the rest of the afternoon around the reservation.",
         type: "dine",
         thumb: "/images/photography/press-plating.jpg",
         url: "https://meadowood.com/dining/forum/",
       },
       {
         time: "3:30 PM",
-        activity: "St. Helena stroll or tasting",
+        activity: "Mount View Hotel & Spa",
         description:
-          "Walk Main Street tasting rooms or add one more Silverado Trail stop before pointing the car south—flex the finale to match energy.",
-        type: "explore",
-        thumb: "/images/photography/chandon-hilltop.jpg",
-        url: "https://www.visitnapavalley.com/towns/st-helena/",
+          "Calistoga slow afternoon. Spa menu and pool time vary by season. Reserve treatments and confirm mineral-pool access when you book.",
+        type: "stay",
+        thumb: "/images/photography/solage-poolside.jpg",
+        url: "https://www.mountviewhotel.com/",
       },
     ],
   },
@@ -169,18 +162,9 @@ export default function ItinerarySection() {
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose"
         >
-          A sample three-day rhythm you can steal outright or remix. Swap days, add a fourth night, or
-          tighten to two—distances stay short, but Napa County covers far more ground than the valley floor
-          alone, so build slack for the drive you actually want.
-        </motion.p>
-        <motion.p
-          initial={reducedMotion ? false : { opacity: 0, y: 8 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: reducedMotion ? 0 : 0.16 }}
-          className="hub-prose mt-4 text-sm text-[var(--hub-muted)]"
-        >
-          Partner links open the venue’s site for reservations; Visit Napa Valley links point to official
-          planning tools when we’re suggesting a town or category rather than a single business.
+          A sample three-day rhythm. Steal it outright or remix. Swap days, add a fourth night, tighten to
+          two. Distances stay short, but Napa Valley covers more ground than the valley floor alone, so leave
+          room to actually enjoy the drive.
         </motion.p>
       </div>
 
@@ -208,8 +192,9 @@ export default function ItinerarySection() {
           >
             Want this route tailored?
           </p>
+          {/* TODO: Confirm final "Plan your trip" URL with VNV. Client spec was /plan-your-trip/; that path 404s on the live site; using maps & travel info hub (200) until VNV confirms. */}
           <a
-            href="https://www.visitnapavalley.com/plan-your-trip/"
+            href="https://www.visitnapavalley.com/maps-travel-info/"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-4"
@@ -263,7 +248,7 @@ function DayAccordion({
         transition: "box-shadow 0.3s ease",
       }}
     >
-      {/* Trigger */}
+      {/* Accordion trigger */}
       <button
         type="button"
         id={headerId}
@@ -284,7 +269,7 @@ function DayAccordion({
           transition: "border-color 0.2s ease, background-color 0.2s ease",
         }}
       >
-        {/* Day number circle */}
+        {/* Day number */}
         <span
           style={{
             flexShrink: 0,
@@ -305,7 +290,7 @@ function DayAccordion({
           {index + 1}
         </span>
 
-        {/* Text */}
+        {/* Titles */}
         <span style={{ flex: 1, minWidth: 0 }}>
           <span
             style={{
@@ -345,7 +330,7 @@ function DayAccordion({
           </span>
         </span>
 
-        {/* Event count + chevron */}
+        {/* Stops + chevron */}
         <span
           style={{
             display: "flex",
@@ -382,7 +367,7 @@ function DayAccordion({
         </span>
       </button>
 
-      {/* Panel */}
+      {/* Open panel */}
       {isOpen && (
         <div
           id={panelId}
@@ -430,7 +415,7 @@ function DayAccordion({
                   borderTop: ei > 0 ? "1px solid var(--hub-line)" : "none",
                 }}
               >
-                {/* Left column — time band */}
+                {/* Time column */}
                 <div
                   style={{
                     backgroundColor: "rgba(42,38,35,0.03)",
@@ -472,7 +457,7 @@ function DayAccordion({
                   </span>
                 </div>
 
-                {/* Right column — content */}
+                {/* Event details */}
                 <div style={{ padding: "1.25rem 1.25rem 1rem" }}>
                   <h4
                     style={{

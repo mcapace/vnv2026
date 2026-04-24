@@ -95,8 +95,8 @@ export default function DinePage() {
               maxWidth: "38rem",
             }}
           >
-            People come for the wine. Fair enough. But three restaurants—in Yountville, Napa, and
-            Calistoga—have a habit of becoming the reason visitors rebook.
+            People come for the wine. Fair enough.             But three restaurants in Yountville, Napa, and Calistoga have a habit of becoming the reason
+            visitors rebook.
           </p>
           <p
             style={{
@@ -133,7 +133,7 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Bouchon Bistro — Yountville
+            Bouchon Bistro, Yountville
           </h2>
 
           <p
@@ -147,7 +147,7 @@ export default function DinePage() {
           >
             Start with the room, because the room earns that. Thomas Keller handed the design job to
             Adam D. Tihany with a single directive: make it feel Parisian. Not the California version of
-            Parisian. The actual thing—the kind of room that carries a faint memory of butter and old
+            Parisian. The actual thing, the kind of room that carries a faint memory of butter and old
             wood and maybe, if the light hits right, a Gauloise somebody smoked out back in 1973.
           </p>
 
@@ -187,8 +187,8 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Keller opened Bouchon in October 1998. The French Laundry had already made him—by most
-            reasonable accounts—the most significant chef in America. He didn&apos;t need another
+            Keller opened Bouchon in October 1998. The French Laundry had already made him, by most
+            reasonable accounts, the most significant chef in America. He didn&apos;t need another
             restaurant. But the question Bouchon was asking turned out to be more interesting than
             anything his reputation required: what does it actually mean to do a French bistro
             correctly? Not fine dining dressed down. Not some ironic riff on French cooking. The real
@@ -207,8 +207,8 @@ export default function DinePage() {
           >
             Twenty-five-plus years in, certain items on the menu have become non-negotiable. The roast
             chicken, obviously. Steak frites done with a level of care that most places reserve for the
-            prix fixe. Leg of lamb. Trout amandine, which is—and this is not meant
-            dismissively—essentially a butter delivery system. Regulars don&apos;t bother with the menu
+            prix fixe. Leg of lamb.             Trout amandine, which is (and this is not meant dismissively) essentially a butter delivery
+            system. Regulars don&apos;t bother with the menu
             anymore. First-timers figure it out fast.
           </p>
 
@@ -254,7 +254,7 @@ export default function DinePage() {
             }}
           >
             The wine list matters more here than at most restaurants. Vin en Carafe selections are
-            sourced exclusively for Bouchon from wineries in Napa and France—not the
+            sourced exclusively for Bouchon from wineries in Napa and France, not the
             standard-allocation bottles making the rounds through every tasting room in the county. These
             were made with this room and this food in mind. The staff knows the list cold. Ask about a
             pairing and they&apos;ll give a real answer. That sounds like it should be standard. It very
@@ -274,7 +274,7 @@ export default function DinePage() {
             rillettes. Warm goat cheese salad. A patio facing Washington Street where the whole of
             Yountville drifts by. Dinner is when the room tightens up and hums. Reservations are essential
             on weekends in high season. Anyone arriving a few minutes early will find the bar is a
-            perfectly good place to be—and more than a few guests have decided they didn&apos;t want to
+            perfectly good place to be, and more than a few guests have decided they didn&apos;t want to
             leave it for the dining room.
           </p>
 
@@ -348,7 +348,7 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Calistoga Depot — Calistoga
+            Calistoga Depot, Calistoga
           </h2>
 
           <p
@@ -361,7 +361,7 @@ export default function DinePage() {
             }}
           >
             A quick history lesson, because the building demands it. Samuel Brannan became
-            California&apos;s first millionaire during the Gold Rush of 1849—not by mining, but by
+            California&apos;s first millionaire during the Gold Rush of 1849, not by mining, but by
             selling supplies to miners. Smart man. He founded Calistoga, built the first hot springs
             resort, opened a distillery, and in 1868 constructed the train depot that served as the
             northern end of the Napa Valley line.
@@ -377,7 +377,7 @@ export default function DinePage() {
             }}
           >
             Brannan wanted tourists. He got them for a while. Then the freight line shut down, the depot
-            went dark, and Calistoga became the quiet tail of the valley—a town people drove through on
+            went dark, and Calistoga became the quiet tail of the valley, a town people drove through on
             the way to somewhere that seemed more important.
           </p>
 
@@ -421,8 +421,8 @@ export default function DinePage() {
             }}
           >
             The best advice for visitors: don&apos;t plan. Just walk around. The main building is a Great
-            Hall with high ceilings, a bar decorated with miners&apos; shovels—a nod to how Brannan made
-            his fortune—and two massive copper stills that actually produce spirits. This is the
+            Hall with high ceilings, a bar decorated with miners&apos; shovels, a nod to how Brannan made
+            his fortune, and two massive copper stills that actually produce spirits. This is the
             Calistoga Depot Distillery 1868. The lineup includes Fame &amp; Misfortune rye, Prosperous
             &amp; Penniless gin, and brandies aged in Boisset wine barrels. The whole program connects
             directly back to Brannan&apos;s own distillery on this exact property a hundred and sixty years
@@ -489,7 +489,7 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            The First Millionaire&apos;s Saloon—named for Brannan—has barstools that are literal saddles
+            The First Millionaire&apos;s Saloon, named for Brannan, has barstools that are literal saddles
             and a spirits list heavy on the house whiskeys and brandies. The backyard beer garden runs two
             outdoor bars with live music Friday through Sunday night. The Napa Valley Vine Trail, all 47
             miles of it, terminates right here at the original depot. Cyclists show up on weekend
@@ -581,7 +581,7 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            The Grove at COPIA — Napa
+            The Grove at COPIA, Napa
           </h2>
 
           <p
@@ -608,8 +608,8 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            They deserve the credit. A restaurant attached to a culinary school campus, in a tourist
-            district—the expectation is competent. What The Grove delivers is considerably better than
+            They deserve the credit. For a restaurant tied to a culinary school in a busy tourist
+            district, competent is the default. What The Grove delivers is considerably better than
             that.
           </p>
 
@@ -637,9 +637,9 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            On a warm evening, dinner on that terrace—a glass of wine, a plate of pasta the kitchen made
-            that afternoon from flour, eggs, and whatever they&apos;d picked from the garden that
-            morning—becomes the kind of meal that lingers. The kind that surfaces at odd moments afterward:
+            On a warm evening, dinner on that terrace (a glass of wine, a plate of pasta the kitchen made
+            that afternoon from flour, eggs, and whatever they&apos;d picked from the garden that morning)
+            becomes the kind of meal that lingers. The kind that surfaces at odd moments afterward:
             in airports, on highways, at a desk three weeks later.
           </p>
 
@@ -653,11 +653,11 @@ export default function DinePage() {
             }}
           >
             The menu is organized around those gardens, and not loosely. Produce gets harvested daily. The
-            kitchen writes the menu based on what&apos;s ripe. The whole
-            approach is Italian, Mediterranean: handmade pasta, vegetables treated as the main act,
-            shareable plates, a refusal to over-complicate. The meatballs have reached a kind of local
-            fame. The insalata with garden herbs and house vinaigrette is the sort of dish that has no right
-            being that memorable—plain-looking, absurdly good.
+            kitchen writes the menu based on what&apos;s ripe. The whole approach is Italian and
+            Mediterranean: handmade pasta, vegetables treated as the main act, shareable plates, and a
+            refusal to over-complicate. The meatballs have reached a kind of local fame. The insalata with
+            garden herbs and house vinaigrette is the sort of dish that has no right to be that memorable:
+            plain-looking, absurdly good.
           </p>
 
           {/* Pull quote */}
@@ -703,10 +703,10 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Happy hour—Wednesday through Friday, 4 to 6—is a smart pre-dinner stop. Small plates and
-            cocktails that show off the kitchen&apos;s range without requiring a full commitment. The outdoor
-            bar at dusk, olive trees overhead, the Napa River a short walk away—it is the sort of wine
-            country evening that makes people reconsider their flights home.
+            Happy hour (Wednesday through Friday, 4 to 6) is a smart pre-dinner stop. Small plates and
+            cocktails show off the kitchen&apos;s range without requiring a full commitment. The outdoor bar
+            at dusk, olive trees overhead, the Napa River a short walk away: it is the sort of wine-country
+            evening that makes people reconsider their flights home.
           </p>
 
           <p
@@ -720,8 +720,8 @@ export default function DinePage() {
           >
             One more thing about the campus. The wine bar has self-dispensing tasting machines with up to 24
             pours, which is a low-key, surprisingly useful way to work through the valley&apos;s range.
-            Cooking classes run by reservation. The Chuck Williams Culinary Arts Museum—over 4,000 objects
-            from the Williams-Sonoma founder&apos;s personal collection—is easily worth an hour before
+            Cooking classes run by reservation. The Chuck Williams Culinary Arts Museum (more than 4,000
+            objects from the Williams-Sonoma founder&apos;s personal collection) is easily worth an hour before
             dinner.
           </p>
 

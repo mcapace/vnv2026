@@ -1,4 +1,4 @@
-/** Fixed strip height — keep in sync with Navigation `top` offset */
+/** Fixed strip height: keep in sync with Navigation `top` offset */
 export const SPONSORED_BAR_HEIGHT = "1.875rem";
 
 /**
@@ -41,7 +41,7 @@ export default function SponsoredDisclaimerBar() {
           maxWidth: "72rem",
         }}
       >
-        Sponsored content — Produced in partnership with Visit Napa Valley and Wine Spectator.
+        Sponsored content. Produced in partnership with Visit Napa Valley and Wine Spectator.
       </p>
     </div>
   );

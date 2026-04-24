@@ -67,8 +67,8 @@ export default function Footer() {
           maxWidth: "28rem",
           margin: "0 auto 2rem",
         }}>
-          Book the stays, tastings, and tables you&apos;ve been circling—plus trails, spas, and events you
-          didn&apos;t know to ask for—all on the official Visit Napa Valley trip planner.
+          Book the stays, tastings, and tables you&apos;ve been circling, plus trails, spas, and events you
+          didn&apos;t know to ask for, all on the official Visit Napa Valley trip planner.
         </p>
 
         {/* Social proof */}
@@ -110,53 +110,62 @@ export default function Footer() {
 
         {/* Email capture */}
         <div style={{ marginBottom: "3rem" }}>
-          <p style={{
-            fontSize: "0.5625rem",
-            fontWeight: 700,
-            letterSpacing: "0.16em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.45)",
-            marginBottom: "0.875rem",
-          }}>
+          <p
+            id="footer-weekend-guide-label"
+            style={{
+              fontSize: "0.5625rem",
+              fontWeight: 700,
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.45)",
+              marginBottom: "0.875rem",
+            }}
+          >
             Get the weekend planning guide
           </p>
           {signedUp ? (
             <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.55)" }}>
-              Thanks — check your inbox for the guide.
+              Thanks. Check your inbox for the guide.
             </p>
           ) : (
-            <div style={{
-              display: "flex",
-              alignItems: "center",
-              backgroundColor: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.15)",
-              borderRadius: "9999px",
-              padding: "0.25rem 0.25rem 0.25rem 1.25rem",
-              maxWidth: "26rem",
-              margin: "0 auto",
-            }}>
+            <form
+              className="footer-email-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (email.trim()) setSignedUp(true);
+              }}
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "stretch",
+                gap: "0.5rem",
+                backgroundColor: "rgba(255,255,255,0.07)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                borderRadius: "9999px",
+                padding: "0.35rem 0.35rem 0.35rem 1rem",
+                maxWidth: "26rem",
+                margin: "0 auto",
+              }}
+            >
+              <label htmlFor="footer-planning-email" className="sr-only">
+                Email for weekend planning guide
+              </label>
               <input
+                id="footer-planning-email"
                 type="email"
+                name="email"
+                autoComplete="email"
                 required
                 placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{
-                  flex: 1,
-                  minWidth: 0,
-                  backgroundColor: "transparent",
-                  border: "none",
-                  outline: "none",
-                  fontSize: "0.8125rem",
-                  color: "rgba(255,255,255,0.85)",
-                  padding: "0.375rem 0",
-                }}
+                className="footer-email-input min-h-11 min-w-0 flex-1 border-0 bg-transparent py-2 pl-0 pr-1 text-[0.8125rem] text-white/85 outline-none"
+                style={{ color: "rgba(255,255,255,0.85)" }}
               />
               <button
-                type="button"
-                onClick={() => { if (email) setSignedUp(true); }}
+                type="submit"
+                className="min-h-11 shrink-0 self-center"
                 style={{
-                  flexShrink: 0,
                   backgroundColor: "var(--hub-champagne)",
                   color: "var(--hub-ink)",
                   borderRadius: "9999px",
@@ -171,11 +180,11 @@ export default function Footer() {
               >
                 Submit
               </button>
-            </div>
+            </form>
           )}
         </div>
 
-        {/* Social icons — Simple Icons brand marks */}
+        {/* Social icons (Simple Icons brand marks) */}
         <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginBottom: "3rem" }}>
           {(
             [
@@ -210,7 +219,7 @@ export default function Footer() {
 
       </div>
 
-      {/* Bottom bar — full width */}
+      {/* Bottom bar */}
       <div style={{
         borderTop: "1px solid rgba(255,255,255,0.08)",
         padding: "1.25rem clamp(1.5rem, 5vw, 4rem)",
@@ -224,10 +233,12 @@ export default function Footer() {
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
           <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.35)" }}>
-            © {new Date().getFullYear()} Visit Napa Valley
+            © 2026 Visit Napa Valley
           </p>
           <a
-            href="#"
+            href="https://www.visitnapavalley.com/privacy-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.35)", textDecoration: "none" }}
           >
             Privacy Policy

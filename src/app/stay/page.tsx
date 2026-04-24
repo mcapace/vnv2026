@@ -104,7 +104,8 @@ export default function StayPage() {
             }}
           >
             Most people blow through Napa in forty-eight hours and wonder why it felt rushed. Book two
-            hotels instead of one—south end and north end—and the whole valley opens up.
+            hotels instead of one, with one stay anchoring the south end and another the north, and the
+            whole valley opens up.
           </p>
           <p
             style={{
@@ -141,7 +142,7 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            Carneros Resort and Spa — Napa
+            Carneros Resort and Spa, Napa
           </h2>
 
           <p
@@ -169,7 +170,7 @@ export default function StayPage() {
           >
             It comes up off the San Pablo Bay before sunrise. Thick, damp, weirdly quiet. Sits on the
             vineyards like it has nowhere else to be. By mid-morning it lifts and the light goes gold
-            and sharp—the kind of light that makes people put their phones in a drawer and forget about
+            and sharp, the kind of light that makes people put their phones in a drawer and forget about
             them for hours.
           </p>
 
@@ -183,7 +184,7 @@ export default function StayPage() {
             }}
           >
             Carneros is the cooler, windier, less famous end of Napa Valley. The wines are different down
-            here—Pinot Noir and Chardonnay instead of the big Cabernets—and the whole pace of things runs
+            here, Pinot Noir and Chardonnay instead of the big Cabernets, and the whole pace of things runs
             slower. Fewer tour buses. More birds.
           </p>
 
@@ -214,9 +215,9 @@ export default function StayPage() {
           >
             The Signature Cottages are where most guests end up. Wood-burning fireplaces. An outdoor
             shower that will ruin every other shower going forward. The beds are the kind nobody can
-            describe without sounding like an advertisement—suffice it to say nine uninterrupted hours is
-            not unusual here. The backyards are private enough that an entire afternoon can pass with a
-            book and not another guest in sight.
+            describe without sounding like a brochure. Suffice it to say, nine uninterrupted hours is not
+            unusual here. The backyards are private enough that an entire afternoon can pass with a book
+            and not another guest in sight.
           </p>
 
           {/* Pull quote */}
@@ -248,7 +249,7 @@ export default function StayPage() {
             }}
           >
             A routine forms without anyone planning it. Coffee on the porch. A wander through the FARM
-            culinary gardens, which are real gardens, not a set piece—staff can be spotted actually
+            culinary gardens, which are real gardens, not a set piece: staff can be spotted actually
             harvesting chard most mornings. Maybe a ten-minute drive to Domaine Carneros for a
             mid-morning sparkling wine. That estate, founded by Taittinger, looks like a château that
             got lost on its way to Champagne and ended up on a California hillside. The terrace alone
@@ -294,8 +295,8 @@ export default function StayPage() {
             }}
           >
             For wine enthusiasts: the Carneros AVA is weirdly underrated for how good it is. Less crowded
-            than Oakville or Rutherford. The producers—Etude, Bouchaine, Saintsbury, Domaine
-            Carneros—make cool-climate Pinot Noir and Chardonnay that tastes nothing like the big ripe
+            than Oakville or Rutherford. The producers (Etude, Bouchaine, Saintsbury, Domaine Carneros)
+            make cool-climate Pinot Noir and Chardonnay that tastes nothing like the big ripe
             Cabs everyone associates with Napa. Leaner, more nervous, more interesting. This resort sits
             in the geographic center of all of it.
           </p>
@@ -383,7 +384,7 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            Mount View Hotel & Spa — Calistoga
+            Mount View Hotel & Spa, Calistoga
           </h2>
 
           <p
@@ -410,7 +411,7 @@ export default function StayPage() {
             }}
           >
             Calistoga has resisted the polish that&apos;s overtaken a lot of Napa to the south. Not
-            aggressively—just cheerfully, persistently. The result is a place that feels like itself
+            aggressively, but cheerfully and persistently. The result is a place that feels like itself
             instead of a version of itself designed for out-of-towners. That&apos;s the whole draw.
           </p>
 
@@ -516,7 +517,7 @@ export default function StayPage() {
             }}
           >
             True Spa is run by two independent therapists who partner with the hotel. The independence
-            matters—they actually control the program. The Calistoga mud wraps use volcanic ash mixed the
+            matters: they actually control the program. The Calistoga mud wraps use volcanic ash mixed the
             old way, not the diluted version available at the five or six other places in town offering
             something with the same name. There&apos;s a Himalayan salt sauna. A heated pool with enough
             lounge space to claim a cabana and not move until dinner. Ten percent off spa services for
@@ -534,10 +535,10 @@ export default function StayPage() {
           >
             Calistoga is a town best explored without a plan. Lincoln Avenue has solid farm-to-table
             restaurants, a handful of shops selling things people would actually use, and tasting rooms for
-            winemakers who are too small or too stubborn to set up shop further south. The wines
-            here—Cabernet Sauvignon and Zinfandel from the warm, dry top of the valley—are a different
-            planet from what the tasting rooms down in Carneros pour. That&apos;s the argument for doing
-            both ends of this valley in one trip.
+            winemakers who are too small or too stubborn to set up shop further south. The wines up here
+            (think Cabernet Sauvignon and Zinfandel from the warm, dry north) are a different planet from
+            what the tasting rooms down in Carneros pour. That&apos;s the argument for doing both ends of
+            this valley in one trip.
           </p>
 
           <p
@@ -551,9 +552,10 @@ export default function StayPage() {
           >
             Before leaving Calistoga: the Calistoga Depot is a few blocks from the hotel and worth a
             whole evening. Jean-Charles Boisset bought the 1868 train station and turned it into a
-            distillery, a set of train-car dining rooms, a live music venue, a beer garden. Dinner in the
-            JCB Parlor Car—oysters, caviar, Champagne, a room that looks like the Orient Express and a
-            jewel box had a baby—will explain the current Calistoga moment better than anything on paper.
+            distillery, a set of train-car dining rooms, a live music venue, a beer garden. Book dinner
+            in the JCB Parlor Car: oysters, caviar, and Champagne in a dining room that somehow splits the
+            difference between the Orient Express and a jewel box. It captures the current Calistoga
+            moment more clearly than anything on paper.
           </p>
 
           <p
@@ -642,7 +644,7 @@ export default function StayPage() {
             </p>
           </div>
 
-          {/* Navigation — next article + back */}
+          {/* Navigation, next article + back */}
           <div
             style={{
               display: "flex",

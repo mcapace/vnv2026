@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "A World in One Valley | Visit Napa Valley × Wine Spectator",
   description:
-    "Live a little—or a lot—in Napa Valley. Plan wine country stays, dining, and experiences with Visit Napa Valley and Wine Spectator.",
+    "Live a Little or a Lot in Napa Valley. Plan wine country stays, dining, and experiences with Visit Napa Valley and Wine Spectator.",
   openGraph: {
     title: "A World in One Valley | Visit Napa Valley × Wine Spectator",
     description:
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "A World in One Valley | Visit Napa Valley × Wine Spectator",
     description:
-      "Live a little—or a lot—in Napa Valley. Stays, dining, wineries, and things to do.",
+      "Live a Little or a Lot in Napa Valley. Stays, dining, wineries, and things to do.",
     images: [ogImage],
   },
 };
@@ -61,7 +61,7 @@ const jsonLd = {
   "@type": "TouristDestination",
   name: "Napa Valley",
   description:
-    "Napa Valley wine country — stays, dining, wineries, and experiences from the bay to the Mayacamas.",
+    "Napa Valley wine country: stays, dining, wineries, and experiences from the bay to the Mayacamas.",
   touristType: "Wine tourism",
   containsPlace: {
     "@type": "AdministrativeArea",

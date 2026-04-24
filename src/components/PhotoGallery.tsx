@@ -3,79 +3,43 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
-const regions = [
+// TODO: Confirm final 5-town list with Madi Griggs (VNV). Oakville and Rutherford are AVAs per client and should NOT appear as towns here.
+const VALLEY_TOWNS = [
   {
-    id: "south",
-    label: "South · Gateway",
-    headline: "American Canyon & Carneros",
-    accentWord: "Carneros",
-    subtitle:
-      "Cool-climate vines, resort pools, and the closest wine country to the Bay—start here before heading up-valley.",
-    photos: [
-      {
-        src: "/images/photography/stanly-ranch-spa.jpg",
-        caption: "Stanly Ranch, Napa",
-      },
-      {
-        src: "/images/photography/chandon-brunch.jpg",
-        caption: "Bubbles at Domaine Chandon, Yountville",
-      },
-    ],
+    id: "napa",
+    label: "Napa",
+    subcopy:
+      "Downtown rooms, the Oxbow Market, and Carneros fog on the vines before breakfast.",
   },
   {
-    id: "mid",
-    label: "Mid-valley · Towns",
-    headline: "Yountville to St. Helena",
-    accentWord: "St. Helena",
-    subtitle:
-      "Walkable chef country, Oakville & Rutherford benchlands, and Main Street wine bars—densest stretch of tables and tasting rooms.",
-    photos: [
-      {
-        src: "/images/photography/press-plating.jpg",
-        caption: "Fine dining, mid-valley",
-      },
-      {
-        src: "/images/photography/cadet-dining.jpg",
-        caption: "Cadet, Napa",
-      },
-    ],
+    id: "yountville",
+    label: "Yountville",
+    subcopy: "Walkable blocks, the Michelin addresses you already know by name.",
   },
   {
-    id: "north",
-    label: "North end",
-    headline: "Calistoga slows the clock",
-    accentWord: "Calistoga",
-    subtitle: "Geysers, mineral pools, and vineyard views at the top of the valley—plan fewer stops and longer pauses.",
-    photos: [
-      {
-        src: "/images/photography/solage-pool-night.jpg",
-        caption: "Solage after dark",
-      },
-      {
-        src: "/images/photography/solage-poolside.jpg",
-        caption: "Pool days, Calistoga",
-      },
-    ],
+    id: "st-helena",
+    label: "St. Helena",
+    subcopy: "Estate tastings, a Main Street you can actually shop, rooms a short walk from dinner.",
   },
   {
-    id: "corridor",
-    label: "Full run",
-    headline: "One corridor, many moods",
-    accentWord: "corridor",
-    subtitle:
-      "Highway 29 and the Silverado Trail tie it together—bay fog to Mayacamas ridgelines without ever feeling far from the next reservation.",
-    photos: [
-      {
-        src: "/images/photography/chandon-hilltop.jpg",
-        caption: "Above the valley floor",
-      },
-      {
-        src: "/images/photography/chandon-group.jpg",
-        caption: "Domaine Chandon, Yountville",
-      },
-    ],
+    id: "calistoga",
+    label: "Calistoga",
+    subcopy: "Geothermal pools, a town that never polished itself smooth, the quieter finale.",
   },
-];
+  {
+    id: "american-canyon",
+    label: "American Canyon",
+    subcopy: "The southern gateway. The valley widens open from here.",
+  },
+] as const;
+
+function townPlaceholderSrc(
+  town: (typeof VALLEY_TOWNS)[number],
+  slot: number
+): string {
+  const text = `${town.label} view ${slot + 1} placeholder`;
+  return `https://placehold.co/1200x1600/241f1a/9a8f85?text=${encodeURIComponent(text).replace(/%20/g, "+")}&font=source-sans-pro`;
+}
 
 export default function PhotoGallery() {
   const reducedMotion = useReducedMotion();
@@ -83,7 +47,7 @@ export default function PhotoGallery() {
   const [isPaused, setIsPaused] = useState(false);
 
   const advance = useCallback(() => {
-    setActiveIndex((i) => (i + 1) % regions.length);
+    setActiveIndex((i) => (i + 1) % VALLEY_TOWNS.length);
   }, []);
 
   useEffect(() => {
@@ -92,12 +56,12 @@ export default function PhotoGallery() {
     return () => clearInterval(timer);
   }, [advance, isPaused, reducedMotion]);
 
-  const region = regions[activeIndex];
+  const region = VALLEY_TOWNS[activeIndex];
 
   return (
     <section
       role="region"
-      aria-label="Napa Valley regions"
+      aria-label="Napa Valley by town"
       style={{
         backgroundColor: "var(--hub-navy)",
         paddingTop: "clamp(2.5rem, 5vw, 4rem)",
@@ -106,7 +70,6 @@ export default function PhotoGallery() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Header */}
       <div
         className="section-shell section-stack mx-auto mb-10"
         style={{ maxWidth: "48rem", textAlign: "center" }}
@@ -125,16 +88,13 @@ export default function PhotoGallery() {
             className="section-title mt-4"
             style={{ color: "#ffffff" }}
           >
-            {region.headline.replace(region.accentWord, "").trim().split(" ").join(" ")}{" "}
-            <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>
-              {region.accentWord}
-            </span>
+            {region.label}
           </motion.h2>
         </AnimatePresence>
 
         <AnimatePresence mode="wait">
           <motion.p
-            key={region.id + "-subtitle"}
+            key={region.id + "-subcopy"}
             initial={reducedMotion ? undefined : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={reducedMotion ? undefined : { opacity: 0 }}
@@ -142,25 +102,23 @@ export default function PhotoGallery() {
             className="hub-prose mt-4 text-center"
             style={{ color: "rgba(255,255,255,0.55)" }}
           >
-            {region.subtitle}
+            {region.subcopy}
           </motion.p>
         </AnimatePresence>
 
-        {/* Region pills */}
         <div
           style={{
             display: "flex",
-            flexWrap: "nowrap",
+            flexWrap: "wrap",
             justifyContent: "center",
             gap: "0.5rem",
             marginTop: "2rem",
             marginBottom: "1.5rem",
-            overflowX: "auto",
           }}
         >
-          {regions.map((r, i) => (
+          {VALLEY_TOWNS.map((town, i) => (
             <button
-              key={r.id}
+              key={town.id}
               type="button"
               onClick={() => {
                 setActiveIndex(i);
@@ -169,28 +127,26 @@ export default function PhotoGallery() {
               style={{
                 fontSize: "0.625rem",
                 fontWeight: 600,
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                padding: "0.375rem 0.875rem",
+                letterSpacing: "0.12em",
+                textTransform: "none",
+                padding: "0.45rem 0.9rem",
                 borderRadius: "9999px",
                 border:
                   i === activeIndex
                     ? "1px solid var(--hub-champagne)"
                     : "1px solid rgba(255,255,255,0.2)",
-                backgroundColor:
-                  i === activeIndex ? "var(--hub-champagne)" : "transparent",
-                color: i === activeIndex ? "var(--hub-navy)" : "rgba(255,255,255,0.6)",
+                backgroundColor: i === activeIndex ? "var(--hub-champagne)" : "transparent",
+                color: i === activeIndex ? "var(--hub-navy)" : "rgba(255,255,255,0.75)",
                 cursor: "pointer",
                 transition: "all 0.2s ease",
               }}
             >
-              {r.label}
+              {town.label}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Photos */}
       <div className="section-shell mx-auto" style={{ maxWidth: "72rem" }}>
         <AnimatePresence mode="wait">
           <motion.div
@@ -199,68 +155,42 @@ export default function PhotoGallery() {
             animate={{ opacity: 1, y: 0 }}
             exit={reducedMotion ? undefined : { opacity: 0, y: -12 }}
             transition={{ duration: 0.5 }}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "1.5rem",
-            }}
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2"
           >
-            {region.photos.map((photo) => (
-              <figure
-                key={photo.src}
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  overflow: "hidden",
-                  borderRadius: "var(--hub-radius)",
-                  backgroundColor: "rgba(0,0,0,0.25)",
-                  margin: 0,
-                }}
-              >
-                <div style={{ position: "relative", aspectRatio: "3/4" }}>
-                  <img
-                    src={photo.src}
-                    alt={photo.caption}
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "center 48%",
-                    }}
-                    loading="lazy"
-                  />
-                </div>
-                <figcaption
+            {/* Two distinct placeholders per town; not shared across town tabs. */}
+            {[0, 1].map((slot) => (
+                <figure
+                  key={`${region.id}-photo-${slot}`}
                   style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%)",
-                    padding: "2rem 1.25rem 1rem",
+                    position: "relative",
+                    width: "100%",
+                    overflow: "hidden",
+                    borderRadius: "var(--hub-radius)",
+                    backgroundColor: "rgba(0,0,0,0.25)",
+                    margin: 0,
                   }}
                 >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-inter), sans-serif",
-                      fontSize: "0.7rem",
-                      fontWeight: 500,
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      color: "rgba(255,255,255,0.65)",
-                    }}
-                  >
-                    {photo.caption}
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
+                  <div style={{ position: "relative", aspectRatio: "3/4" }}>
+                    {/* TODO: Photo team to supply authentic imagery for this town tab. Current placeholder is a stock image and must not ship live. */}
+                    <img
+                      src={townPlaceholderSrc(region, slot)}
+                      alt={`${region.label} (placeholder image ${slot + 1} of 2, pending authentic VNV photography)`}
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        objectPosition: "center",
+                      }}
+                      loading="lazy"
+                    />
+                  </div>
+                </figure>
+              ))}
           </motion.div>
         </AnimatePresence>
 
-        {/* Progress dots */}
         <div
           style={{
             display: "flex",
@@ -269,21 +199,20 @@ export default function PhotoGallery() {
             marginTop: "1.5rem",
           }}
         >
-          {regions.map((_, i) => (
+          {VALLEY_TOWNS.map((t, i) => (
             <button
-              key={i}
+              key={t.id}
               type="button"
               onClick={() => {
                 setActiveIndex(i);
                 setIsPaused(true);
               }}
-              aria-label={`View ${regions[i].label}`}
+              aria-label={`View ${t.label}`}
               style={{
                 width: i === activeIndex ? "1.5rem" : "0.375rem",
                 height: "0.375rem",
                 borderRadius: "9999px",
-                backgroundColor:
-                  i === activeIndex ? "var(--hub-champagne)" : "rgba(255,255,255,0.25)",
+                backgroundColor: i === activeIndex ? "var(--hub-champagne)" : "rgba(255,255,255,0.25)",
                 border: "none",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
