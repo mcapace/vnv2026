@@ -46,12 +46,12 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Gradient overlay: lighter so vineyard and hills read through */}
+      {/* Gradient vignette — lighter footprint so the photo carries more */}
       <div
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            "linear-gradient(to top, rgba(0,0,0,0.58) 0%, rgba(0,0,0,0.32) 36%, rgba(0,0,0,0.12) 64%, rgba(0,0,0,0.04) 100%)",
+            "linear-gradient(to top, rgba(0,0,0,0.36) 0%, rgba(0,0,0,0.16) 32%, rgba(0,0,0,0.05) 55%, transparent 76%)",
         }}
         aria-hidden
       />

@@ -151,7 +151,7 @@ export default function Navigation() {
               zIndex: -1,
               pointerEvents: "none",
               background: onHero
-                ? "linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 70%, transparent 100%)"
+                ? "linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.09) 55%, transparent 100%)"
                 : "none",
             }}
           />
