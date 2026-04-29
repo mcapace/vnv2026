@@ -2,9 +2,9 @@
 
 import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { PUBLIC_ASSET_REV } from "@/constants/publicAssets";
+import { hubDeliveryHeroSrc } from "@/constants/publicAssets";
 
-const stayHeroImg = `/images/photography/hub-delivery/stanly-ranch-hero-web.jpg?rev=${PUBLIC_ASSET_REV}`;
+const stayHeroImg = hubDeliveryHeroSrc();
 
 const articles = [
   {

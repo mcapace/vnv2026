@@ -3,7 +3,7 @@ import Script from "next/script";
 import PageTransition from "@/components/PageTransition";
 import { Cormorant_Garamond, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import { PUBLIC_ASSET_REV } from "@/constants/publicAssets";
+import { hubDeliveryHeroSrc } from "@/constants/publicAssets";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,7 +26,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 const siteUrl = "https://vnv2026.vercel.app";
-const heroPath = `/images/photography/hub-delivery/stanly-ranch-hero-web.jpg?rev=${PUBLIC_ASSET_REV}`;
+const heroPath = hubDeliveryHeroSrc();
 const ogImage = `${siteUrl.replace(/\/$/, "")}${heroPath}`;
 
 export const metadata: Metadata = {

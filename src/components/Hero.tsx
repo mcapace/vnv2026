@@ -3,9 +3,9 @@
 import { useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { PUBLIC_ASSET_REV } from "@/constants/publicAssets";
+import { hubDeliveryHeroSrc } from "@/constants/publicAssets";
 
-const HERO_IMG = `/images/photography/hub-delivery/stanly-ranch-hero-web.jpg?rev=${PUBLIC_ASSET_REV}`;
+const HERO_IMG = hubDeliveryHeroSrc();
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);

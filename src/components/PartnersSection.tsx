@@ -2,6 +2,7 @@
 
 import { useRef, useMemo, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import { hubDeliveryHeroSrc } from "@/constants/publicAssets";
 
 type Cat = "Stay" | "Wine" | "Dine" | "Explore";
 
@@ -23,7 +24,7 @@ const partnerCards: Array<{
     name: "Carneros Resort & Spa",
     category: "Stay",
     description: "Cottages at the edge of Carneros fog and vines.",
-    image: "/images/photography/hub-delivery/stanly-ranch-hero-web.jpg",
+    image: hubDeliveryHeroSrc(),
     objectPosition: "center 42%",
     href: "https://www.carnerosresort.com/",
   },
