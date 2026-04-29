@@ -40,7 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Raw hero TIFF (web JPEG is under public/images/photography/hub-delivery/)
+# Raw hero TIFF (exported hub JPEG lives in public/images/photography/hub-delivery/)
 public/images/Assets for Hub/**/*.tif
 # Campaign video streams from JW Player; keep local masters out of Git
 public/images/Assets for Hub/Video/**/*.mp4
