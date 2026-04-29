@@ -1,22 +1,16 @@
 /**
- * Homepage hero JPEG in `public/images/photography/hub-delivery/`.
+ * Homepage hero JPEG: `public/images/photography/hub-delivery/…`
+ * Regenerate: `./scripts/sync-hub-hero-from-stanly-tif.sh`
+ * After asset updates: rename the JPG (new URL = fresh CDN), update HERO_FILENAME, bump REV.
  *
- * Filename is **versioned** (not stable `*-web.jpg`) so Vercel’s edge cache cannot
- * keep serving an old JPEG after replacements — same URL was returning stale pixels.
- *
- * Regenerate from the Stanly TIFF (`Assets for Hub/Stanly Ranch Hero Image/*.tif`):
- *   ./scripts/sync-hub-hero-from-stanly-tif.sh
- *
- * After a new hero: give the JPEG a **new filename** below, bump PUBLIC_ASSET_REV,
- * delete the obsolete JPEG from `/public`, commit, push.
+ * IMPORTANT: Omit `?query` on URLs — avoids edge/CDN quirks; cache-bust with filename/rev bumps.
  */
-export const PUBLIC_ASSET_REV = "6";
+export const PUBLIC_ASSET_REV = "8";
 
-/** Matches the file checked into `public` (prefer a distinct name each art update). */
-const HERO_HUB_JPEG =
-  "/images/photography/hub-delivery/hub-hero-shot18-stanly-ranch.jpg";
+const HERO_FILENAME = "hub-hero-shot18-stanly-ranch.jpg" as const;
+const HERO_DIR = "/images/photography/hub-delivery";
 
-/** Use for <img src>, <link href=preload>, and partner cards that reuse this photo. */
+/** Path-only (no domain, no query) for `<img>`, `<Image>`, preload, OG. */
 export function hubDeliveryHeroSrc(): string {
-  return `${HERO_HUB_JPEG}?rev=${PUBLIC_ASSET_REV}`;
+  return `${HERO_DIR}/${HERO_FILENAME}`;
 }

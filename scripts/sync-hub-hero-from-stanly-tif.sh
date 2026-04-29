@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Rebuild the live hub hero JPEG from the client Stanly TIFF in Assets for Hub.
 # Writes `hub-hero-shot18-stanly-ranch.jpg` (see src/constants/publicAssets.ts).
-# After export: bump PUBLIC_ASSET_REV in src/constants/publicAssets.ts, commit, push.
+# After export: bump PUBLIC_ASSET_REV (Hero key) when you need deployments to visibly refresh.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 STANLY_DIR="$ROOT/public/images/Assets for Hub/Stanly Ranch Hero Image"
@@ -18,6 +18,6 @@ if ! command -v magick &>/dev/null; then
 fi
 echo "Source: $SRC"
 mkdir -p "$(dirname "$OUT")"
-magick "$SRC" -resize '2560x>' -strip -quality 84 -sampling-factor 4:2:0 "$OUT"
+magick "$SRC" -resize '2560x>' -strip -quality 87 -sampling-factor 4:2:0 "$OUT"
 echo "Wrote: $OUT"
 ls -la "$OUT"

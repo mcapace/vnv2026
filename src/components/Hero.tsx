@@ -1,11 +1,12 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { hubDeliveryHeroSrc } from "@/constants/publicAssets";
+import { PUBLIC_ASSET_REV, hubDeliveryHeroSrc } from "@/constants/publicAssets";
 
-const HERO_IMG = hubDeliveryHeroSrc();
+const HERO_SRC = hubDeliveryHeroSrc();
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -22,31 +23,26 @@ export default function Hero() {
       {/* Background image */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <motion.div
-          className="h-full w-full"
           style={{
             position: "absolute",
             inset: "-4% 0",
             y: imageY,
           }}
+          className="h-full w-full"
         >
-          <picture className="block h-full w-full" style={{ minHeight: "100%" }}>
-            <img
-              src={HERO_IMG}
+          <div className="relative min-h-[115%] w-full overflow-hidden">
+            <Image
+              key={PUBLIC_ASSET_REV}
+              src={HERO_SRC}
               alt="Stanly Ranch: vineyards and Napa Valley hills in soft morning light"
-              width={2400}
-              height={1189}
-              decoding="async"
-              fetchPriority="high"
-              loading="eager"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center 42%",
-                display: "block",
-              }}
+              fill
+              priority
+              unoptimized
+              sizes="100vw"
+              className="pointer-events-none object-cover"
+              style={{ objectPosition: "center 42%" }}
             />
-          </picture>
+          </div>
         </motion.div>
       </div>
 

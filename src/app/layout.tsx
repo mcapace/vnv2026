@@ -26,8 +26,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 const siteUrl = "https://vnv2026.vercel.app";
-const heroPath = hubDeliveryHeroSrc();
-const ogImage = `${siteUrl.replace(/\/$/, "")}${heroPath}`;
+const ogImage = new URL(hubDeliveryHeroSrc(), siteUrl).href;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -81,14 +80,6 @@ export default function RootLayout({
       lang="en"
       className={`h-full ${inter.variable} ${playfair.variable} ${cormorant.variable}`}
     >
-      <head>
-        <link
-          rel="preload"
-          as="image"
-          href={heroPath}
-          imageSizes="100vw"
-        />
-      </head>
       <body
         className={`${inter.className} hub-page min-h-full flex flex-col antialiased`}
       >
