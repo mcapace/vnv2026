@@ -3,8 +3,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-/** Client delivery: campaign .mp4 under public. JW dashboard (playlist) is for reference; browser uses this file. */
-const CAMPAIGN_VIDEO = encodeURI("/images/Assets for Hub/Video/VNV_LiveALittle_Chandon_30_Unslated.mp4");
+/** JW Player embed — property/media from dashboard (`p/X65hTucY` / media `hPiR6aJO`). Video is streamed from JW, not bundled in repo. */
+const JW_PLAYER_EMBED = "https://content.jwplatform.com/players/hPiR6aJO-X65hTucY.html";
 
 export default function VideoSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,20 +18,17 @@ export default function VideoSection() {
       className="relative flex items-center justify-center overflow-hidden"
       style={{ minHeight: "min(68vh, 720px)" }}
     >
-      <video
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
-        style={{ objectPosition: "center 38%" }}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        width={1920}
-        height={1080}
-        aria-hidden
-      >
-        <source src={CAMPAIGN_VIDEO} type="video/mp4" />
-      </video>
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
+        <iframe
+          src={JW_PLAYER_EMBED}
+          title="Visit Napa Valley campaign video"
+          className="absolute left-1/2 top-1/2 z-0 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 border-0"
+          allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
+      </div>
 
       <div
         className="absolute inset-0 z-[1]"
