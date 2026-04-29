@@ -33,12 +33,26 @@ const VALLEY_TOWNS = [
   },
 ] as const;
 
-function townPlaceholderSrc(
-  town: (typeof VALLEY_TOWNS)[number],
-  slot: number
-): string {
-  const text = `${town.label} view ${slot + 1} placeholder`;
-  return `https://placehold.co/1200x1600/241f1a/9a8f85?text=${encodeURIComponent(text).replace(/%20/g, "+")}&font=source-sans-pro`;
+/** Two photos per town — VNV photography + partner assets under `public/images`. */
+const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string, string]> = {
+  "american-canyon": [
+    "/images/photography/chandon-brunch.jpg",
+    "/images/photography/chandon-hilltop.jpg",
+  ],
+  napa: ["/images/photography/cadet-dining.jpg", "/images/photography/cadet-nightlife.jpg"],
+  yountville: ["/images/photography/press-plating.jpg", "/images/photography/wine-cellar-toast.jpg"],
+  "st-helena": [
+    "/images/photography/stanly-ranch-spa.jpg",
+    "/images/photography/stanly-ranch-convertible.jpg",
+  ],
+  calistoga: [
+    "/images/Assets for Hub/Partner Images/Mount View/POOL-ACCESS-MVH-SPA.jpg",
+    "/images/photography/solage-pool-night.jpg",
+  ],
+};
+
+function townImageSrc(townId: (typeof VALLEY_TOWNS)[number]["id"], slot: 0 | 1): string {
+  return encodeURI(TOWN_IMAGES[townId][slot]);
 }
 
 export default function PhotoGallery() {
@@ -158,7 +172,7 @@ export default function PhotoGallery() {
             className="grid grid-cols-1 gap-6 sm:grid-cols-2"
           >
             {/* Two distinct placeholders per town; not shared across town tabs. */}
-            {[0, 1].map((slot) => (
+            {([0, 1] as const).map((slot) => (
                 <figure
                   key={`${region.id}-photo-${slot}`}
                   style={{
@@ -171,10 +185,9 @@ export default function PhotoGallery() {
                   }}
                 >
                   <div style={{ position: "relative", aspectRatio: "3/4" }}>
-                    {/* TODO: Photo team to supply authentic imagery for this town tab. Current placeholder is a stock image and must not ship live. */}
                     <img
-                      src={townPlaceholderSrc(region, slot)}
-                      alt={`${region.label} (placeholder image ${slot + 1} of 2, pending authentic VNV photography)`}
+                      src={townImageSrc(region.id, slot)}
+                      alt={`${region.label}, Napa Valley — photo ${slot + 1} of 2`}
                       style={{
                         position: "absolute",
                         inset: 0,

@@ -3,6 +3,9 @@
 import { useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { PUBLIC_ASSET_REV } from "@/constants/publicAssets";
+
+const HERO_IMG = `/images/photography/hub-delivery/stanly-ranch-hero-web.jpg?rev=${PUBLIC_ASSET_REV}`;
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -28,7 +31,7 @@ export default function Hero() {
         >
           <picture className="block h-full w-full" style={{ minHeight: "100%" }}>
             <img
-              src="/images/photography/hub-delivery/stanly-ranch-hero-web.jpg"
+              src={HERO_IMG}
               alt="Stanly Ranch: vineyards and Napa Valley hills in soft morning light"
               width={2400}
               height={1189}

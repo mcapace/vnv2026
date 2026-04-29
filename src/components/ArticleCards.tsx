@@ -2,6 +2,9 @@
 
 import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import { PUBLIC_ASSET_REV } from "@/constants/publicAssets";
+
+const stayHeroImg = `/images/photography/hub-delivery/stanly-ranch-hero-web.jpg?rev=${PUBLIC_ASSET_REV}`;
 
 const articles = [
   {
@@ -12,7 +15,7 @@ const articles = [
     subtitle: "Where the valley becomes your room",
     description:
       "From vineyard-edge bungalows at Carneros Resort to the mineral-spa heritage of Mount View Hotel & Inn in Calistoga, a guide to sleeping well in wine country.",
-    image: "/images/photography/hub-delivery/stanly-ranch-hero-web.jpg",
+    image: stayHeroImg,
     objectPosition: "50% 45%",
     partners: ["Carneros Resort", "Mount View Hotel & Inn"],
     status: "live" as const,
