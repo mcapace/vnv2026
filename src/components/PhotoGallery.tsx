@@ -6,6 +6,11 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 // TODO: Confirm final 5-town list with Madi Griggs (VNV). Oakville and Rutherford are AVAs per client and should NOT appear as towns here.
 const VALLEY_TOWNS = [
   {
+    id: "american-canyon",
+    label: "American Canyon",
+    subcopy: "The southern gateway. The valley widens open from here.",
+  },
+  {
     id: "napa",
     label: "Napa",
     subcopy:
@@ -25,11 +30,6 @@ const VALLEY_TOWNS = [
     id: "calistoga",
     label: "Calistoga",
     subcopy: "Geothermal pools, a town that never polished itself smooth, the quieter finale.",
-  },
-  {
-    id: "american-canyon",
-    label: "American Canyon",
-    subcopy: "The southern gateway. The valley widens open from here.",
   },
 ] as const;
 

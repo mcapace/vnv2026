@@ -775,7 +775,7 @@ export default function DinePage() {
               500 1st St, Napa, CA 94559
             </p>
             <a
-              href="https://www.ciaatcopia.com/grove-restaurant"
+              href="https://www.ciagroverestaurant.com/"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -790,7 +790,7 @@ export default function DinePage() {
                 textDecoration: "none",
               }}
             >
-              Visit ciaatcopia.com →
+              Reserve at The Grove →
             </a>
           </div>
 

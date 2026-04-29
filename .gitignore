@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Raw hero TIFF (web JPEG is under public/images/photography/hub-delivery/)
+public/images/Assets for Hub/**/*.tif

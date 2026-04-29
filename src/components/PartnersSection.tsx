@@ -7,6 +7,10 @@ type Cat = "Stay" | "Wine" | "Dine" | "Explore";
 
 const PLACEHOLDER = "/images/photography/placeholder-venue.svg" as const;
 
+/** Client asset pack (URLs encode spaces). */
+const img = (path: string) => encodeURI(`/images/Assets for Hub/${path}`);
+const CIA_GROVE = "https://www.ciagroverestaurant.com/";
+
 const partnerCards: Array<{
   name: string;
   category: Cat;
@@ -15,34 +19,30 @@ const partnerCards: Array<{
   objectPosition?: string;
   href: string;
 }> = [
-  // TODO: File references Stanly Ranch; replace with authentic Carneros Resort & Spa photography. Awaiting from photo team.
   {
     name: "Carneros Resort & Spa",
     category: "Stay",
     description: "Cottages at the edge of Carneros fog and vines.",
-    image: PLACEHOLDER,
+    image: "/images/photography/hub-delivery/stanly-ranch-hero-web.jpg",
     objectPosition: "center 42%",
     href: "https://www.carnerosresort.com/",
   },
-  // TODO: Asset is Solage (different Calistoga property). Replace with authentic Mount View Hotel & Inn photography. Awaiting from photo team.
   {
     name: "Mount View Hotel & Inn",
     category: "Stay",
     description: "Calistoga mineral spa heritage rooms since 1919.",
-    image: PLACEHOLDER,
+    image: img("Partner Images/Mount View/POOL-ACCESS-MVH-SPA.jpg"),
     objectPosition: "center 48%",
     href: "https://www.mountviewhotel.com/",
   },
-  // TODO: Stock wine-cellar art; replace with authentic Etude Wines (Carneros) photography. Awaiting from photo team.
   {
     name: "Etude Wines",
     category: "Wine",
     description: "Carneros Pinot on the terrace.",
-    image: "/images/photography/wine-cellar-toast.jpg",
+    image: img("Partner Images/Etude/ETU_Winery1_HR.jpg"),
     objectPosition: "center 45%",
     href: "https://www.etudewines.com/",
   },
-  // TODO: Replace with authentic Robert Mondavi Winery photography. Awaiting from photo team.
   {
     name: "Robert Mondavi Winery",
     category: "Wine",
@@ -51,12 +51,11 @@ const partnerCards: Array<{
     objectPosition: "center 48%",
     href: "https://www.robertmondavi.com/",
   },
-  // TODO: Replace with authentic Louis Martini Winery photography. Awaiting from photo team.
   {
     name: "Louis Martini Winery",
     category: "Wine",
     description: "Generations of Cabernet craft in St. Helena.",
-    image: PLACEHOLDER,
+    image: img("Partner Images/Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
     objectPosition: "center 35%",
     href: "https://www.louismartini.com/",
   },
@@ -78,21 +77,21 @@ const partnerCards: Array<{
     objectPosition: "center 48%",
     href: "https://www.calistogadepot.com/",
   },
-  // TODO: Replace with authentic Grove at COPIA photography.
   {
     name: "The Grove at COPIA",
     category: "Dine",
     description: "CIA campus dining with garden-to-table cuisine.",
-    image: PLACEHOLDER,
+    image: img(
+      "Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"
+    ),
     objectPosition: "center 48%",
-    href: "https://www.ciaatcopia.com/grove-restaurant",
+    href: CIA_GROVE,
   },
-  // TODO: File references Cadet (nightlife), not JaM Cellars. Replace with authentic JaM Cellars Ballroom photography. Awaiting from photo team.
   {
     name: "JaM Cellars Ballroom",
     category: "Explore",
     description: "Napa's live-music downtown anchor.",
-    image: PLACEHOLDER,
+    image: img("Partner Images/JAM Cellars/GM1_1269_mod1.jpg"),
     objectPosition: "center 48%",
     href: "https://www.jamcellars.com/",
   },

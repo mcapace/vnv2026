@@ -26,25 +26,12 @@ export default function Hero() {
             y: imageY,
           }}
         >
-          <picture
-            className="block h-full w-full"
-            style={{
-              minHeight: "100%",
-            }}
-          >
-            <source
-              type="image/avif"
-              srcSet="/images/photography/hero-stanly-ranch-convertible.avif"
-            />
-            <source
-              type="image/webp"
-              srcSet="/images/photography/hero-stanly-ranch-convertible.webp"
-            />
+          <picture className="block h-full w-full" style={{ minHeight: "100%" }}>
             <img
-              src="/images/photography/hero-stanly-ranch-convertible.jpg"
-              alt="Napa Valley: convertible on a wine-country road with vineyards and hills behind"
-              width={2560}
-              height={1268}
+              src="/images/photography/hub-delivery/stanly-ranch-hero-web.jpg"
+              alt="Stanly Ranch: vineyards and Napa Valley hills in soft morning light"
+              width={2400}
+              height={1189}
               decoding="async"
               fetchPriority="high"
               loading="eager"
@@ -52,7 +39,7 @@ export default function Hero() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                objectPosition: "center 36%",
+                objectPosition: "center 42%",
                 display: "block",
               }}
             />

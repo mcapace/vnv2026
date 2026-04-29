@@ -6,13 +6,13 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 const articles = [
   {
     id: "stay",
-    label: "Stay",
+    label: "Unpack here",
     cardPrimary: "Where you land",
     title: "Where to Stay in Napa Valley",
     subtitle: "Where the valley becomes your room",
     description:
       "From vineyard-edge bungalows at Carneros Resort to the mineral-spa heritage of Mount View Hotel & Inn in Calistoga, a guide to sleeping well in wine country.",
-    image: "/images/photography/stanly-ranch-spa.jpg",
+    image: "/images/photography/hub-delivery/stanly-ranch-hero-web.jpg",
     objectPosition: "50% 45%",
     partners: ["Carneros Resort", "Mount View Hotel & Inn"],
     status: "live" as const,
@@ -21,13 +21,13 @@ const articles = [
   },
   {
     id: "dine",
-    label: "Dine",
+    label: "Pull up a chair",
     cardPrimary: "Tables worth the drive",
     title: "Where to Eat in Napa Valley",
     subtitle: "Every reservation earns the drive",
     description:
       "Bouchon Bistro, Calistoga Depot, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
-    image: "/images/photography/press-plating.jpg",
+    image: encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
     objectPosition: "50% 48%",
     partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
     status: "live" as const,
@@ -36,13 +36,13 @@ const articles = [
   },
   {
     id: "wine",
-    label: "Wine",
+    label: "Raise a glass",
     cardPrimary: "The cellar doors",
     title: "Wineries Across Napa Valley",
     subtitle: "Four hundred cellar doors, many styles",
     description:
       "From icons like Robert Mondavi to elegance at Etude and heritage at Louis Martini. A spectrum of Napa Valley cellars, with Wine Spectator context.",
-    image: "/images/photography/wine-cellar-toast.jpg",
+    image: encodeURI("/images/Assets for Hub/Partner Images/Etude/ETU_Winery1_HR.jpg"),
     objectPosition: "50% 45%",
     partners: ["Etude", "Robert Mondavi", "Louis Martini"],
     status: "coming-soon" as const,
@@ -52,13 +52,13 @@ const articles = [
   },
   {
     id: "explore",
-    label: "Explore",
+    label: "Linger longer",
     cardPrimary: "After the last pour",
     title: "Things to Do in Napa Valley",
     subtitle: "When the day doesn't end at the last pour",
     description:
       "JaM Cellars live music, Pure Luxury chauffeured days, Marquee Pinball in downtown Napa. Après-vine energy across Napa Valley.",
-    image: "/images/photography/cadet-nightlife.jpg",
+    image: encodeURI("/images/Assets for Hub/Partner Images/JAM Cellars/GM1_1269_mod1.jpg"),
     objectPosition: "50% 48%",
     partners: ["JaM Cellars", "Pure Luxury Tours", "Marquee Pinball"],
     status: "coming-soon" as const,
@@ -177,7 +177,7 @@ function ArticleRow({
       />
 
       <span
-        className="absolute left-4 top-4 z-10 rounded-full text-[0.55rem] font-semibold uppercase tracking-[0.18em]"
+        className="absolute left-4 top-4 z-10 rounded-full text-[0.5rem] font-semibold uppercase tracking-[0.12em] sm:tracking-[0.16em] sm:text-[0.52rem]"
         style={{
           padding: "0.3rem 0.7rem",
           backgroundColor: "rgba(0,0,0,0.4)",

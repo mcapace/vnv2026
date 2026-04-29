@@ -7,9 +7,9 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 const days = [
   {
     day: "Day one",
-    title: "Carneros to Yountville",
+    title: "Napa to Yountville",
     subtitle: "Arrive & unwind",
-    mapHint: "South · Carneros to Yountville",
+    mapHint: "South · Napa to Yountville",
     events: [
       {
         time: "3:00 PM",
@@ -73,7 +73,7 @@ const days = [
           "Estate dinner on the Culinary Institute campus in Napa: wine-country cooking with indoor-outdoor seating. It is a drive south on Hwy 29 from St. Helena for the table, or swap for a St. Helena restaurant if you want to stay put for the night.",
         type: "dine",
         thumb: "/images/photography/chandon-brunch.jpg",
-        url: "https://www.ciaatcopia.com/grove-restaurant",
+        url: "https://www.ciagroverestaurant.com/",
       },
     ],
   },

@@ -3,8 +3,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-/** Temporary poster only; final campaign file will be video. */
-const PLACEHOLDER_POSTER = "/images/photography/chandon-hilltop.jpg";
+/** Client delivery: campaign .mp4 under public. JW dashboard (playlist) is for reference; browser uses this file. */
+const CAMPAIGN_VIDEO = encodeURI("/images/Assets for Hub/Video/VNV_LiveALittle_Chandon_30_Unslated.mp4");
 
 export default function VideoSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,19 +18,20 @@ export default function VideoSection() {
       className="relative flex items-center justify-center overflow-hidden"
       style={{ minHeight: "min(68vh, 720px)" }}
     >
-      {/* TODO: Replace with approved VNV "Live a Little or a Lot" campaign video. Awaiting final file from Hilary Chalson / Madi Griggs. */}
-      <img
-        src={PLACEHOLDER_POSTER}
-        alt=""
-        className="absolute inset-0 z-0 h-full w-full object-cover"
+      <video
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
         style={{ objectPosition: "center 38%" }}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
         width={1920}
         height={1080}
-        sizes="100vw"
-        fetchPriority="low"
-        loading="lazy"
         aria-hidden
-      />
+      >
+        <source src={CAMPAIGN_VIDEO} type="video/mp4" />
+      </video>
 
       <div
         className="absolute inset-0 z-[1]"
