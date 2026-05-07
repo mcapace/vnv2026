@@ -1,79 +1,123 @@
 "use client";
 
-import { useRef, useState, useEffect, useMemo } from "react";
+import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 
-/**
- * JW Player embed — property/media from dashboard (`p/X65hTucY` / media `hPiR6aJO`).
- * Iframe mounts only after scroll (~25% visible). URL asks for muted autoplay so browsers allow it;
- * viewers unmute from JW controls. If params are ignored, enable autostart + mute in the JW dashboard.
- */
-function jwPlayerEmbedUrl(): string {
-  const u = new URL("https://content.jwplatform.com/players/hPiR6aJO-X65hTucY.html");
-  u.searchParams.set("autostart", "true");
-  u.searchParams.set("mute", "true");
-  return u.toString();
+/** JW Cloud library for player id `X65hTucY` (matches embed `hPiR6aJO-X65hTucY`). */
+const JW_LIBRARY_SRC = "https://cdn.jwplayer.com/libraries/X65hTucY.js";
+
+/** Stream + poster from JW media API (`hPiR6aJO`). */
+const HLS_MANIFEST = "https://cdn.jwplayer.com/manifests/hPiR6aJO.m3u8";
+const JW_POSTER = "https://cdn.jwplayer.com/v2/media/hPiR6aJO/poster.jpg?width=1280";
+const VIDEO_TITLE = "VNV LiveALittle Chandon 30 Unslated";
+
+/** Poster until section scrolls into view. */
+const LOCAL_POSTER_SRC = "/images/photography/chandon-brunch.jpg";
+
+type JWPlayerApi = {
+  setup: (config: Record<string, unknown>) => JWPlayerApi;
+  on: (event: string, callback: () => void) => JWPlayerApi;
+  remove: () => void;
+};
+
+type JWPlayerFactory = (target: string | HTMLElement) => JWPlayerApi;
+
+declare global {
+  interface Window {
+    jwplayer?: JWPlayerFactory;
+  }
 }
 
-const JW_MESSAGE_ORIGINS = new Set([
-  "https://content.jwplatform.com",
-  "https://cdn.jwplayer.com",
-]);
-
-/** Best-effort parse of JW / embed postMessage payloads (formats vary by embed version). */
-function playbackHint(data: unknown): "play" | "pause" | null {
-  if (data == null) return null;
-
-  if (typeof data === "object") {
-    const o = data as Record<string, unknown>;
-    const event = o.event ?? o.type ?? o.message ?? o.action;
-    if (typeof event === "string") {
-      const e = event.toLowerCase();
-      if (e === "play" || e === "playing" || e === "firstframe" || e === "adplay") return "play";
-      if (e === "pause" || e === "paused" || e === "complete" || e === "idle" || e === "adpause") return "pause";
-    }
-    const player = o.player as Record<string, unknown> | undefined;
-    const nested = player?.metadata ?? o.metadata;
-    if (nested && typeof nested === "object") return playbackHint(nested);
+function loadJwLibrary(): Promise<JWPlayerFactory> {
+  if (typeof window === "undefined") {
+    return Promise.reject(new Error("no window"));
   }
-
-  if (typeof data === "string") {
-    try {
-      return playbackHint(JSON.parse(data));
-    } catch {
-      return null;
-    }
+  if (window.jwplayer) {
+    return Promise.resolve(window.jwplayer);
   }
-
-  return null;
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector<HTMLScriptElement>(`script[src="${JW_LIBRARY_SRC}"]`);
+    if (existing) {
+      existing.addEventListener("load", () => {
+        if (window.jwplayer) resolve(window.jwplayer);
+        else reject(new Error("JW Player not available after load"));
+      });
+      existing.addEventListener("error", () => reject(new Error("JW script load error")));
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = JW_LIBRARY_SRC;
+    script.async = true;
+    script.onload = () => {
+      if (window.jwplayer) resolve(window.jwplayer);
+      else reject(new Error("JW Player global missing"));
+    };
+    script.onerror = () => reject(new Error("JW script failed"));
+    document.head.appendChild(script);
+  });
 }
-
-/** Poster behind player until iframe mounts (same campaign mood). */
-const POSTER_SRC = "/images/photography/chandon-brunch.jpg";
 
 export default function VideoSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  /** Load JW iframe only once ~25% of section is visible — no playback until user scrolls here. */
-  const embedInView = useInView(ref, { once: true, amount: 0.25 });
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const playerMountRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<JWPlayerApi | null>(null);
+
+  const embedInView = useInView(sectionRef, { once: true, amount: 0.25 });
   const [copyHiddenForPlayback, setCopyHiddenForPlayback] = useState(false);
+  const [playerReady, setPlayerReady] = useState(false);
 
-  const iframeSrc = useMemo(() => (embedInView ? jwPlayerEmbedUrl() : undefined), [embedInView]);
+  useLayoutEffect(() => {
+    if (!embedInView) return;
 
-  useEffect(() => {
-    function onMessage(e: MessageEvent) {
-      if (!JW_MESSAGE_ORIGINS.has(e.origin)) return;
-      const hint = playbackHint(e.data);
-      if (hint === "play") setCopyHiddenForPlayback(true);
-      if (hint === "pause") setCopyHiddenForPlayback(false);
-    }
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
-  }, []);
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const jw = await loadJwLibrary();
+        if (cancelled || !playerMountRef.current) return;
+
+        const p = jw(playerMountRef.current).setup({
+          playlist: [
+            {
+              file: HLS_MANIFEST,
+              image: JW_POSTER,
+              title: VIDEO_TITLE,
+            },
+          ],
+          width: "100%",
+          aspectratio: "16:9",
+          stretching: "uniform",
+          mute: true,
+          autostart: true,
+        });
+
+        playerRef.current = p;
+
+        p.on("play", () => setCopyHiddenForPlayback(true));
+        p.on("pause", () => setCopyHiddenForPlayback(false));
+        p.on("complete", () => setCopyHiddenForPlayback(false));
+
+        setPlayerReady(true);
+      } catch {
+        setPlayerReady(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+      try {
+        playerRef.current?.remove();
+      } catch {
+        /* ignore */
+      }
+      playerRef.current = null;
+    };
+  }, [embedInView]);
 
   return (
     <section
-      ref={ref}
+      ref={sectionRef}
       role="region"
       aria-label="In motion, see Napa Valley"
       className="relative flex items-center justify-center overflow-hidden bg-[#141210]"
@@ -83,7 +127,7 @@ export default function VideoSection() {
         {!embedInView ? (
           <div className="relative h-full min-h-[min(68vh,720px)] w-full">
             <Image
-              src={POSTER_SRC}
+              src={LOCAL_POSTER_SRC}
               alt=""
               fill
               className="object-cover opacity-55"
@@ -96,13 +140,28 @@ export default function VideoSection() {
             />
           </div>
         ) : (
-          <iframe
-            src={iframeSrc}
-            title="Visit Napa Valley campaign video"
-            className="absolute left-1/2 top-1/2 z-0 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 border-0"
-            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-            allowFullScreen
-          />
+          <div
+            className="absolute inset-0 flex min-h-[min(68vh,720px)] items-center justify-center bg-black"
+            style={{ pointerEvents: "auto" }}
+          >
+            {!playerReady ? (
+              <div className="absolute inset-0">
+                <Image
+                  src={LOCAL_POSTER_SRC}
+                  alt=""
+                  fill
+                  className="object-cover opacity-45"
+                  sizes="100vw"
+                />
+              </div>
+            ) : null}
+            <div
+              ref={playerMountRef}
+              id="vnv-hub-jw-player"
+              className="relative z-[1] h-full min-h-[min(68vh,720px)] w-full max-w-[100vw]"
+              style={{ minHeight: "min(68vh, 720px)" }}
+            />
+          </div>
         )}
       </div>
 

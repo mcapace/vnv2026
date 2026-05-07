@@ -476,3 +476,9 @@ body {
   color: #ffffff;
   border: none;
 }
+
+/* JW Player — fill hub video section mount */
+#vnv-hub-jw-player .jwplayer {
+  width: 100% !important;
+  height: 100% !important;
+}
