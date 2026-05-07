@@ -4,10 +4,15 @@ import { useRef, useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 
-/** JW Player embed — property/media from dashboard (`p/X65hTucY` / media `hPiR6aJO`). Mounted only after scroll brings section into view. */
+/**
+ * JW Player embed — property/media from dashboard (`p/X65hTucY` / media `hPiR6aJO`).
+ * Iframe mounts only after scroll (~25% visible). URL asks for muted autoplay so browsers allow it;
+ * viewers unmute from JW controls. If params are ignored, enable autostart + mute in the JW dashboard.
+ */
 function jwPlayerEmbedUrl(): string {
   const u = new URL("https://content.jwplatform.com/players/hPiR6aJO-X65hTucY.html");
-  u.searchParams.set("autostart", "false");
+  u.searchParams.set("autostart", "true");
+  u.searchParams.set("mute", "true");
   return u.toString();
 }
 
@@ -44,7 +49,7 @@ function playbackHint(data: unknown): "play" | "pause" | null {
   return null;
 }
 
-/** Poster behind player until iframe mounts (same campaign mood, no autoplay). */
+/** Poster behind player until iframe mounts (same campaign mood). */
 const POSTER_SRC = "/images/photography/chandon-brunch.jpg";
 
 export default function VideoSection() {
