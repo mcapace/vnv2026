@@ -64,8 +64,9 @@ function loadJwLibrary(): Promise<JWPlayerFactory> {
 }
 
 /**
- * True once the section sits in the middle band of the viewport with enough visible area.
- * Avoids firing while the block only grazes the top/bottom edge on initial paint.
+ * Unlock once the section overlaps the main viewport band (not edge-graze).
+ * We intentionally do NOT require a high `intersectionRatio`: for a tall block,
+ * ratio stays low vs. full element height even when the clip is centered on screen.
  */
 function usePlaybackSectionGate(ref: RefObject<HTMLElement | null>): boolean {
   const [active, setActive] = useState(false);
@@ -80,15 +81,12 @@ function usePlaybackSectionGate(ref: RefObject<HTMLElement | null>): boolean {
         const entry = entries[0];
         if (!entry?.isIntersecting || unlockedRef.current) return;
 
-        const ratio = entry.intersectionRatio;
         const rect = entry.boundingClientRect;
-        const vh = window.innerHeight;
+        const vh = window.innerHeight || 1;
 
-        const bandTop = vh * 0.22;
-        const bandBottom = vh * 0.78;
-        const verticallyInBand = rect.top < bandBottom && rect.bottom > bandTop;
+        const overlapsReadableBand = rect.bottom > vh * 0.12 && rect.top < vh * 0.88;
 
-        if (ratio >= 0.42 && verticallyInBand) {
+        if (overlapsReadableBand) {
           unlockedRef.current = true;
           setActive(true);
           io.disconnect();
@@ -96,8 +94,8 @@ function usePlaybackSectionGate(ref: RefObject<HTMLElement | null>): boolean {
       },
       {
         root: null,
-        rootMargin: "-14% 0px -14% 0px",
-        threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1],
+        rootMargin: "-10% 0px -10% 0px",
+        threshold: [0, 0.02, 0.05, 0.1, 0.15, 0.2, 0.25, 0.35, 0.5, 0.75, 1],
       }
     );
 
@@ -109,7 +107,7 @@ function usePlaybackSectionGate(ref: RefObject<HTMLElement | null>): boolean {
 }
 
 export default function VideoSection() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
   const playerMountRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<JWPlayerApi | null>(null);
 
@@ -141,7 +139,8 @@ export default function VideoSection() {
           aspectratio: "16:9",
           stretching: "uniform",
           mute: true,
-          autostart: false,
+          /* Gate already delayed mount until scroll — muted autoplay is allowed in browsers */
+          autostart: true,
         });
 
         playerRef.current = p;
@@ -149,19 +148,24 @@ export default function VideoSection() {
         const hideCopy = () => setCopyHiddenForPlayback(true);
         const showCopy = () => setCopyHiddenForPlayback(false);
 
-        p.on("ready", () => {
+        p.on("play", hideCopy);
+        p.on("firstFrame", hideCopy);
+        p.on("pause", showCopy);
+        p.on("complete", showCopy);
+
+        /* Ready / programmatic fallback — handles JW firing `ready` before our handlers attach */
+        const tryPlay = () => {
           if (cancelled) return;
           try {
             p.play?.();
           } catch {
             /* ignore */
           }
-        });
+        };
 
-        p.on("play", hideCopy);
-        p.on("firstFrame", hideCopy);
-        p.on("pause", showCopy);
-        p.on("complete", showCopy);
+        p.on("ready", tryPlay);
+        queueMicrotask(tryPlay);
+        window.setTimeout(tryPlay, 120);
 
         setPlayerReady(true);
       } catch {
