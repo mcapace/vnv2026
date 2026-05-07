@@ -68,7 +68,7 @@ export default function Footer() {
           margin: "0 auto 2rem",
         }}>
           Book the stays, tastings, and tables you&apos;ve been circling, plus trails, spas, and events you
-          didn&apos;t know to ask for, all on the official Visit Napa Valley trip planner.
+          didn&apos;t know to ask for—all in one place on visitnapavalley.com.
         </p>
 
         {/* Social proof */}

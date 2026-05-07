@@ -54,14 +54,6 @@ export default function VideoSection() {
           See it to{" "}
           <span style={{ color: "var(--hub-champagne-light)", fontStyle: "italic" }}>believe it</span>
         </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.12 }}
-          className="font-hub-display mx-auto mt-5 max-w-lg text-lg leading-snug text-white/75 text-on-photo"
-        >
-          A cinematic sweep of wine country. Vine rows, back roads, golden-hour light.
-        </motion.p>
       </div>
     </section>
   );

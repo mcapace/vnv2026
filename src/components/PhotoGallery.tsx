@@ -19,31 +19,35 @@ const VALLEY_TOWNS = [
   {
     id: "yountville",
     label: "Yountville",
-    subcopy: "Walkable blocks, the Michelin addresses you already know by name.",
+    subcopy:
+      "Walkable blocks and chef-led tables — the Michelin addresses you already know by name.",
   },
   {
     id: "st-helena",
     label: "St. Helena",
-    subcopy: "Estate tastings, a Main Street you can actually shop, rooms a short walk from dinner.",
+    subcopy: "Main Street mornings, estate tastings, and Silverado Trail afternoons.",
   },
   {
     id: "calistoga",
     label: "Calistoga",
-    subcopy: "Geothermal pools, a town that never polished itself smooth, the quieter finale.",
+    subcopy: "Geothermal pools, spa days, and the quieter finale at the valley’s north end.",
   },
 ] as const;
 
 /** Two photos per town — VNV photography + partner assets under `public/images`. */
 const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string, string]> = {
   "american-canyon": [
-    "/images/photography/chandon-brunch.jpg",
-    "/images/photography/chandon-hilltop.jpg",
+    encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Property-Aerial-with-Pools.jpg"),
+    "/images/photography/wine-cellar-toast.jpg",
   ],
   napa: ["/images/photography/cadet-dining.jpg", "/images/photography/cadet-nightlife.jpg"],
-  yountville: ["/images/photography/press-plating.jpg", "/images/photography/wine-cellar-toast.jpg"],
+  yountville: [
+    encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
+    "/images/photography/wine-cellar-toast.jpg",
+  ],
   "st-helena": [
-    "/images/photography/stanly-ranch-spa.jpg",
-    "/images/photography/stanly-ranch-convertible.jpg",
+    encodeURI("/images/Assets for Hub/Partner Images/Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
+    encodeURI("/images/Assets for Hub/Partner Images/Louis M. Martini/LMM-Tasting-Outdoor.jpg"),
   ],
   calistoga: [
     "/images/Assets for Hub/Partner Images/Mount View/POOL-ACCESS-MVH-SPA.jpg",

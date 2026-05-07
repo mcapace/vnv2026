@@ -550,12 +550,9 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            Before leaving Calistoga: the Calistoga Depot is a few blocks from the hotel and worth a
-            whole evening. Jean-Charles Boisset bought the 1868 train station and turned it into a
-            distillery, a set of train-car dining rooms, a live music venue, a beer garden. Book dinner
-            in the JCB Parlor Car: oysters, caviar, and Champagne in a dining room that somehow splits the
-            difference between the Orient Express and a jewel box. It captures the current Calistoga
-            moment more clearly than anything on paper.
+            Before leaving Calistoga: Lincoln Avenue still rewards wandering—farm-to-table rooms with real
+            regulars, tasting rooms from producers too small or stubborn to chase the valley floor, and
+            evenings that end with mineral water under the stars instead of another ambitious reservation.
           </p>
 
           <p

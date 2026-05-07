@@ -177,13 +177,13 @@ export default function RouteMapSection() {
             {[
               {
                 town: "Calistoga",
-                note: "Geothermal pools, Main Street strolls, the quieter finale.",
+                note: "Geothermal pools, spa days, the quieter finale.",
                 drive: "",
                 color: "var(--hub-wine)",
               },
               {
                 town: "St. Helena",
-                note: "Estate tastings and downtown rooms you can walk between.",
+                note: "Main Street, estate tastings, and Silverado Trail afternoons.",
                 drive: "~12 min south",
                 color: "var(--hub-champagne)",
               },

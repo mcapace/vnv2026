@@ -2,10 +2,6 @@
 
 import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { hubDeliveryHeroSrc } from "@/constants/publicAssets";
-
-const stayHeroImg = hubDeliveryHeroSrc();
-
 const articles = [
   {
     id: "stay",
@@ -15,8 +11,8 @@ const articles = [
     subtitle: "Where the valley becomes your room",
     description:
       "From vineyard-edge bungalows at Carneros Resort to the mineral-spa heritage of Mount View Hotel & Inn in Calistoga, a guide to sleeping well in wine country.",
-    image: stayHeroImg,
-    objectPosition: "50% 45%",
+    image: encodeURI("/images/Assets for Hub/Partner Images/Mount View/POOL-ACCESS-MVH-SPA.jpg"),
+    objectPosition: "50% 48%",
     partners: ["Carneros Resort", "Mount View Hotel & Inn"],
     status: "live" as const,
     publishDate: null as string | null,
@@ -24,22 +20,22 @@ const articles = [
   },
   {
     id: "dine",
-    label: "Pull up a chair",
+    label: "A table or an experience",
     cardPrimary: "Tables worth the drive",
     title: "Where to Eat in Napa Valley",
     subtitle: "Every reservation earns the drive",
     description:
-      "Bouchon Bistro, Calistoga Depot, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
+      "Bouchon Bistro, Meadowood Napa Valley, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
     image: encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
     objectPosition: "50% 48%",
-    partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
+    partners: ["Bouchon Bistro", "Meadowood Napa Valley", "The Grove @ COPIA"],
     status: "live" as const,
     publishDate: null as string | null,
     articleUrl: "/dine",
   },
   {
     id: "wine",
-    label: "Raise a glass",
+    label: "Sip to savor",
     cardPrimary: "The cellar doors",
     title: "Wineries Across Napa Valley",
     subtitle: "Four hundred cellar doors, many styles",
@@ -56,9 +52,9 @@ const articles = [
   {
     id: "explore",
     label: "Linger longer",
-    cardPrimary: "After the last pour",
+    cardPrimary: "Chauffeured days to downtown nights",
     title: "Things to Do in Napa Valley",
-    subtitle: "When the day doesn't end at the last pour",
+    subtitle: "Tours, music, and play across the valley",
     description:
       "JaM Cellars live music, Pure Luxury chauffeured days, Marquee Pinball in downtown Napa. Après-vine energy across Napa Valley.",
     image: encodeURI("/images/Assets for Hub/Partner Images/JAM Cellars/GM1_1269_mod1.jpg"),
@@ -111,8 +107,8 @@ export default function ArticleCards() {
           className="hub-prose mx-auto max-w-xl"
         >
           Four ways in. Check in somewhere that feels like the vacation itself. Sit down at a table that
-          earns the drive. Taste the wine that built the place. Find the rest of what the valley does after
-          the last pour.
+          earns the drive. Taste the wine that put Napa Valley on the map. A valley full of reasons to stay
+          longer.
         </motion.p>
       </div>
 

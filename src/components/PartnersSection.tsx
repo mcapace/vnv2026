@@ -2,8 +2,6 @@
 
 import { useRef, useMemo, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { hubDeliveryHeroSrc } from "@/constants/publicAssets";
-
 type Cat = "Stay" | "Wine" | "Dine" | "Explore";
 
 const PLACEHOLDER = "/images/photography/placeholder-venue.svg" as const;
@@ -24,14 +22,14 @@ const partnerCards: Array<{
     name: "Carneros Resort & Spa",
     category: "Stay",
     description: "Cottages at the edge of Carneros fog and vines.",
-    image: hubDeliveryHeroSrc(),
+    image: PLACEHOLDER,
     objectPosition: "center 42%",
     href: "https://www.carnerosresort.com/",
   },
   {
     name: "Mount View Hotel & Inn",
     category: "Stay",
-    description: "Calistoga mineral spa heritage rooms since 1919.",
+    description: "Spacious guest rooms and a geothermal mineral hot spring tub.",
     image: img("Partner Images/Mount View/POOL-ACCESS-MVH-SPA.jpg"),
     objectPosition: "center 48%",
     href: "https://www.mountviewhotel.com/",
@@ -39,7 +37,7 @@ const partnerCards: Array<{
   {
     name: "Etude Wines",
     category: "Wine",
-    description: "Carneros Pinot on the terrace.",
+    description: "Pinot Noir on the terrace.",
     image: img("Partner Images/Etude/ETU_Winery1_HR.jpg"),
     objectPosition: "center 45%",
     href: "https://www.etudewines.com/",
@@ -69,22 +67,19 @@ const partnerCards: Array<{
     objectPosition: "center 48%",
     href: "https://www.thomaskeller.com/bouchonyountville",
   },
-  // TODO: File references Cadet (dining), not the Depot. Replace with authentic Calistoga Depot photography. Awaiting from photo team.
   {
-    name: "Calistoga Depot",
+    name: "Meadowood Napa Valley",
     category: "Dine",
-    description: "Six train cars, one distillery, endless Calistoga charm.",
-    image: PLACEHOLDER,
+    description: "Forum and estate dining in the forest above St. Helena.",
+    image: img("Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
     objectPosition: "center 48%",
-    href: "https://www.calistogadepot.com/",
+    href: "https://meadowood.com/dining/forum/",
   },
   {
     name: "The Grove at COPIA",
     category: "Dine",
-    description: "CIA campus dining with garden-to-table cuisine.",
-    image: img(
-      "Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"
-    ),
+    description: "Garden-to-table restaurant at COPIA—seasonal cooking, not campus dining.",
+    image: "/images/photography/cadet-dining.jpg",
     objectPosition: "center 48%",
     href: CIA_GROVE,
   },

@@ -30,7 +30,7 @@ export default function Hero() {
           }}
           className="h-full w-full"
         >
-          <div className="relative min-h-[115%] w-full overflow-hidden">
+          <div className="relative min-h-[105%] w-full overflow-hidden bg-[#1a1512]">
             <Image
               key={PUBLIC_ASSET_REV}
               src={HERO_SRC}
@@ -40,7 +40,11 @@ export default function Hero() {
               unoptimized
               sizes="100vw"
               className="pointer-events-none object-cover"
-              style={{ objectPosition: "center 42%" }}
+              style={{
+                objectPosition: "center 48%",
+                transform: "scale(0.92)",
+                transformOrigin: "center center",
+              }}
             />
           </div>
         </motion.div>

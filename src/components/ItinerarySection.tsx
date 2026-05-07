@@ -31,11 +31,21 @@ const days = [
       },
       {
         time: "7:30 PM",
-        activity: "Dinner at Bouchon Bistro",
-        description: "Yountville’s benchmark bistro. Save room for the classics.",
+        activity: "Dinner at The Grove at COPIA",
+        description:
+          "Garden-to-table dining at COPIA in Napa’s Oxbow District—close to Carneros and Etude if you want to keep the day compact.",
         type: "dine",
-        thumb: "/images/photography/press-plating.jpg",
-        url: "https://www.thomaskeller.com/bouchonyountville",
+        thumb: encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
+        url: "https://www.ciagroverestaurant.com/",
+      },
+      {
+        time: "9:00 PM",
+        activity: "Nightcap at JaM Cellars Ballroom",
+        description:
+          "Downtown Napa live music when you still have energy after dinner—or swap for cocktails and pinball at Marquee Pinball Lounge a few blocks away.",
+        type: "explore",
+        thumb: encodeURI("/images/Assets for Hub/Partner Images/JAM Cellars/GM1_1269_mod1.jpg"),
+        url: "https://www.jamcellars.com/",
       },
     ],
   },
@@ -68,12 +78,12 @@ const days = [
       },
       {
         time: "7:00 PM",
-        activity: "Dinner at The Grove at COPIA",
+        activity: "Dinner at Bouchon Bistro",
         description:
-          "Estate dinner on the Culinary Institute campus in Napa: wine-country cooking with indoor-outdoor seating. It is a drive south on Hwy 29 from St. Helena for the table, or swap for a St. Helena restaurant if you want to stay put for the night.",
+          "Yountville’s benchmark French bistro—natural bookend after Mondavi and Martini on the mid-valley day.",
         type: "dine",
-        thumb: "/images/photography/chandon-brunch.jpg",
-        url: "https://www.ciagroverestaurant.com/",
+        thumb: "/images/photography/press-plating.jpg",
+        url: "https://www.thomaskeller.com/bouchonyountville",
       },
     ],
   },
@@ -162,9 +172,9 @@ export default function ItinerarySection() {
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose"
         >
-          A sample three-day rhythm. Steal it outright or remix. Swap days, add a fourth night, tighten to
-          two. Distances stay short, but Napa Valley covers more ground than the valley floor alone, so leave
-          room to actually enjoy the drive.
+          A sample three-day rhythm. Steal it outright or remix—swap days, add nights, or stretch into a
+          longer stay. Distances stay short, but Napa Valley covers more ground than the valley floor alone, so
+          leave room to actually enjoy the drive.
         </motion.p>
       </div>
 
