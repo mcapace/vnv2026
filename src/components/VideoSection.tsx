@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect, type RefObject } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 /** Direct JW CDN media (validated URLs from media API). */
 const VIDEO_HLS_SRC = "https://cdn.jwplayer.com/manifests/hPiR6aJO.m3u8";
@@ -74,6 +73,32 @@ export default function VideoSection() {
     }
   }, [playbackGate]);
 
+  useEffect(() => {
+    if (!playbackGate) return;
+
+    const fadeTimer = window.setTimeout(() => {
+      setCopyHiddenForPlayback(true);
+    }, 5000);
+
+    const unmuteTimer = window.setTimeout(() => {
+      const v = videoRef.current;
+      if (!v) return;
+      try {
+        v.muted = false;
+        v.volume = 1;
+        const p = v.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      } catch {
+        // Browsers may block unmuted autoplay without direct user interaction.
+      }
+    }, 5000);
+
+    return () => {
+      window.clearTimeout(fadeTimer);
+      window.clearTimeout(unmuteTimer);
+    };
+  }, [playbackGate]);
+
   return (
     <section
       ref={sectionRef}
@@ -118,9 +143,6 @@ export default function VideoSection() {
                 const p = videoRef.current.play();
                 if (p && typeof p.catch === "function") p.catch(() => {});
               }}
-              onPlay={() => setCopyHiddenForPlayback(true)}
-              onPause={() => setCopyHiddenForPlayback(false)}
-              onEnded={() => setCopyHiddenForPlayback(false)}
             >
               <source src={VIDEO_HLS_SRC} type="application/vnd.apple.mpegurl" />
               <source src={VIDEO_MP4_SRC} type="video/mp4" />
@@ -157,19 +179,6 @@ export default function VideoSection() {
           </h2>
         </div>
 
-        {copyHiddenForPlayback ? (
-          <motion.button
-            type="button"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="pointer-events-auto mx-auto mt-6 rounded-full border border-white/35 bg-black/35 px-4 py-2 text-[0.5625rem] font-semibold uppercase tracking-[0.16em] text-white/90 backdrop-blur-sm"
-            style={{ marginTop: "1rem" }}
-            onClick={() => setCopyHiddenForPlayback(false)}
-          >
-            Show headline
-          </motion.button>
-        ) : null}
       </div>
     </section>
   );
