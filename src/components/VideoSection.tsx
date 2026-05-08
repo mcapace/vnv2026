@@ -1,67 +1,13 @@
 "use client";
 
-import { useRef, useState, useEffect, useLayoutEffect, type RefObject } from "react";
+import { useRef, useState, useEffect, type RefObject } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-/** JW Cloud library for player id `X65hTucY` (matches embed `hPiR6aJO-X65hTucY`). */
-const JW_LIBRARY_SRC = "https://cdn.jwplayer.com/libraries/X65hTucY.js";
-
-/** Stream + poster from JW media API (`hPiR6aJO`). */
-const HLS_MANIFEST = "https://cdn.jwplayer.com/manifests/hPiR6aJO.m3u8";
-const JW_POSTER = "https://cdn.jwplayer.com/v2/media/hPiR6aJO/poster.jpg?width=1280";
-const VIDEO_TITLE = "VNV LiveALittle Chandon 30 Unslated";
-
-/** Poster until section passes scroll gate. */
+/** Direct JW CDN media (stable fallback vs embedded JS player). */
+const VIDEO_MP4_SRC = "https://cdn.jwplayer.com/videos/hPiR6aJO-VJrYf4mQ.mp4";
+const VIDEO_POSTER = "https://cdn.jwplayer.com/v2/media/hPiR6aJO/poster.jpg?width=1280";
 const LOCAL_POSTER_SRC = "/images/photography/chandon-brunch.jpg";
-
-type JWPlayerApi = {
-  setup: (config: Record<string, unknown>) => JWPlayerApi;
-  on: (event: string, callback: () => void) => JWPlayerApi;
-  remove: () => void;
-  play?: () => void;
-};
-
-type JWPlayerFactory = (target: string | HTMLElement) => JWPlayerApi;
-
-declare global {
-  interface Window {
-    jwplayer?: JWPlayerFactory;
-  }
-}
-
-function loadJwLibrary(): Promise<JWPlayerFactory> {
-  if (typeof window === "undefined") {
-    return Promise.reject(new Error("no window"));
-  }
-  if (window.jwplayer) {
-    return Promise.resolve(window.jwplayer);
-  }
-  return new Promise((resolve, reject) => {
-    const existing = document.querySelector<HTMLScriptElement>(`script[src="${JW_LIBRARY_SRC}"]`);
-    if (existing) {
-      if (window.jwplayer) {
-        resolve(window.jwplayer);
-        return;
-      }
-      existing.addEventListener("load", () => {
-        if (window.jwplayer) resolve(window.jwplayer);
-        else reject(new Error("JW Player not available after load"));
-      });
-      existing.addEventListener("error", () => reject(new Error("JW script load error")));
-      return;
-    }
-    const script = document.createElement("script");
-    script.src = JW_LIBRARY_SRC;
-    script.async = true;
-    script.onload = () => {
-      if (window.jwplayer) resolve(window.jwplayer);
-      else reject(new Error("JW Player global missing"));
-    };
-    script.onerror = () => reject(new Error("JW script failed"));
-    document.head.appendChild(script);
-  });
-}
 
 /**
  * Unlock once the section overlaps the main viewport band (not edge-graze).
@@ -108,80 +54,23 @@ function usePlaybackSectionGate(ref: RefObject<HTMLElement | null>): boolean {
 
 export default function VideoSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const playerMountRef = useRef<HTMLDivElement>(null);
-  const playerRef = useRef<JWPlayerApi | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const playbackGate = usePlaybackSectionGate(sectionRef);
   const [copyHiddenForPlayback, setCopyHiddenForPlayback] = useState(false);
-  const [playerReady, setPlayerReady] = useState(false);
-
   const showHeadline = playbackGate && !copyHiddenForPlayback;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!playbackGate) return;
-
-    let cancelled = false;
-
-    (async () => {
-      try {
-        const jw = await loadJwLibrary();
-        if (cancelled || !playerMountRef.current) return;
-
-        const p = jw(playerMountRef.current).setup({
-          playlist: [
-            {
-              file: HLS_MANIFEST,
-              image: JW_POSTER,
-              title: VIDEO_TITLE,
-            },
-          ],
-          width: "100%",
-          aspectratio: "16:9",
-          stretching: "uniform",
-          mute: true,
-          /* Gate already delayed mount until scroll — muted autoplay is allowed in browsers */
-          autostart: true,
-        });
-
-        playerRef.current = p;
-
-        const hideCopy = () => setCopyHiddenForPlayback(true);
-        const showCopy = () => setCopyHiddenForPlayback(false);
-
-        p.on("play", hideCopy);
-        p.on("firstFrame", hideCopy);
-        p.on("pause", showCopy);
-        p.on("complete", showCopy);
-
-        /* Ready / programmatic fallback — handles JW firing `ready` before our handlers attach */
-        const tryPlay = () => {
-          if (cancelled) return;
-          try {
-            p.play?.();
-          } catch {
-            /* ignore */
-          }
-        };
-
-        p.on("ready", tryPlay);
-        queueMicrotask(tryPlay);
-        window.setTimeout(tryPlay, 120);
-
-        setPlayerReady(true);
-      } catch {
-        setPlayerReady(false);
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-      try {
-        playerRef.current?.remove();
-      } catch {
-        /* ignore */
-      }
-      playerRef.current = null;
-    };
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    const playPromise = v.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {
+        // Browser blocked autoplay despite muted+in-view; keep poster and title visible.
+      });
+    }
   }, [playbackGate]);
 
   return (
@@ -213,23 +102,21 @@ export default function VideoSection() {
             className="absolute inset-0 flex min-h-[min(68vh,720px)] items-center justify-center bg-black"
             style={{ pointerEvents: "auto" }}
           >
-            {!playerReady ? (
-              <div className="absolute inset-0">
-                <Image
-                  src={LOCAL_POSTER_SRC}
-                  alt=""
-                  fill
-                  className="object-cover opacity-45"
-                  sizes="100vw"
-                />
-              </div>
-            ) : null}
-            <div
-              ref={playerMountRef}
-              id="vnv-hub-jw-player"
-              className="relative z-[1] h-full min-h-[min(68vh,720px)] w-full max-w-[100vw]"
-              style={{ minHeight: "min(68vh, 720px)" }}
-            />
+            <video
+              ref={videoRef}
+              className="absolute inset-0 z-[1] h-full w-full object-cover"
+              poster={VIDEO_POSTER}
+              preload="metadata"
+              autoPlay
+              muted
+              playsInline
+              controls
+              onPlay={() => setCopyHiddenForPlayback(true)}
+              onPause={() => setCopyHiddenForPlayback(false)}
+              onEnded={() => setCopyHiddenForPlayback(false)}
+            >
+              <source src={VIDEO_MP4_SRC} type="video/mp4" />
+            </video>
           </div>
         )}
       </div>
