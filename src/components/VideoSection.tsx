@@ -4,8 +4,9 @@ import { useRef, useState, useEffect, type RefObject } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-/** Direct JW CDN media (stable fallback vs embedded JS player). */
-const VIDEO_MP4_SRC = "https://cdn.jwplayer.com/videos/hPiR6aJO-VJrYf4mQ.mp4";
+/** Direct JW CDN media (validated URLs from media API). */
+const VIDEO_HLS_SRC = "https://cdn.jwplayer.com/manifests/hPiR6aJO.m3u8";
+const VIDEO_MP4_SRC = "https://cdn.jwplayer.com/videos/hPiR6aJO-Tsd3GKpP.mp4";
 const VIDEO_POSTER = "https://cdn.jwplayer.com/v2/media/hPiR6aJO/poster.jpg?width=1280";
 const LOCAL_POSTER_SRC = "/images/photography/chandon-brunch.jpg";
 
@@ -58,7 +59,7 @@ export default function VideoSection() {
 
   const playbackGate = usePlaybackSectionGate(sectionRef);
   const [copyHiddenForPlayback, setCopyHiddenForPlayback] = useState(false);
-  const showHeadline = playbackGate && !copyHiddenForPlayback;
+  const showHeadline = !copyHiddenForPlayback;
 
   useEffect(() => {
     if (!playbackGate) return;
@@ -111,10 +112,17 @@ export default function VideoSection() {
               muted
               playsInline
               controls
+              onLoadedData={() => {
+                // Retry autoplay once metadata + first frame are ready.
+                if (!playbackGate || !videoRef.current) return;
+                const p = videoRef.current.play();
+                if (p && typeof p.catch === "function") p.catch(() => {});
+              }}
               onPlay={() => setCopyHiddenForPlayback(true)}
               onPause={() => setCopyHiddenForPlayback(false)}
               onEnded={() => setCopyHiddenForPlayback(false)}
             >
+              <source src={VIDEO_HLS_SRC} type="application/vnd.apple.mpegurl" />
               <source src={VIDEO_MP4_SRC} type="video/mp4" />
             </video>
           </div>
