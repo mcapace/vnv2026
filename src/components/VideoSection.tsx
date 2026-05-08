@@ -5,7 +5,7 @@ import Image from "next/image";
 
 /** Direct JW CDN media (validated URLs from media API). */
 const VIDEO_HLS_SRC = "https://cdn.jwplayer.com/manifests/hPiR6aJO.m3u8";
-const VIDEO_MP4_SRC = "https://cdn.jwplayer.com/videos/hPiR6aJO-Tsd3GKpP.mp4";
+const VIDEO_MP4_SRC = "https://cdn.jwplayer.com/videos/hPiR6aJO-VLJR2Jsq.mp4";
 const VIDEO_POSTER = "https://cdn.jwplayer.com/v2/media/hPiR6aJO/poster.jpg?width=1280";
 const LOCAL_POSTER_SRC = "/images/photography/chandon-brunch.jpg";
 
@@ -80,22 +80,8 @@ export default function VideoSection() {
       setCopyHiddenForPlayback(true);
     }, 5000);
 
-    const unmuteTimer = window.setTimeout(() => {
-      const v = videoRef.current;
-      if (!v) return;
-      try {
-        v.muted = false;
-        v.volume = 1;
-        const p = v.play();
-        if (p && typeof p.catch === "function") p.catch(() => {});
-      } catch {
-        // Browsers may block unmuted autoplay without direct user interaction.
-      }
-    }, 5000);
-
     return () => {
       window.clearTimeout(fadeTimer);
-      window.clearTimeout(unmuteTimer);
     };
   }, [playbackGate]);
 
@@ -132,7 +118,7 @@ export default function VideoSection() {
               ref={videoRef}
               className="absolute inset-0 z-[1] h-full w-full object-cover"
               poster={VIDEO_POSTER}
-              preload="metadata"
+              preload="auto"
               autoPlay
               muted
               playsInline
