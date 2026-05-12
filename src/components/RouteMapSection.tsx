@@ -34,7 +34,7 @@ function RouteMapIllustration({ inView }: { inView: boolean }) {
       width="100%"
       className="mx-auto block h-auto max-w-xs"
       role="img"
-      aria-label="Illustrated map of Highway 29, the Silverado Trail, and five towns in Napa Valley"
+      aria-label="Illustrated map of two main roads through Napa Valley: Highway 29, the Silverado Trail, and five towns"
     >
       {/* Silverado Trail (dashed) */}
       <motion.path
@@ -156,7 +156,7 @@ export default function RouteMapSection() {
           >
             <p className="section-eyebrow mb-4">The route</p>
             <h2 className="section-title" style={{ textAlign: "left" }}>
-              Two roads,{" "}
+              Two main roads,{" "}
               <span style={{ color: "var(--hub-champagne)", fontStyle: "italic" }}>five towns</span>
               {", one valley."}
             </h2>
