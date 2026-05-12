@@ -8,12 +8,13 @@ import SponsoredDisclaimerBar, {
   SPONSORED_BAR_HEIGHT,
 } from "@/components/SponsoredDisclaimerBar";
 
+/** “Live a little or a lot”–aligned labels (not single-word categories). */
 const navLinks = [
-  { label: "Stay", href: "/stay", id: "stay" as const, live: true },
-  { label: "Dine", href: "/dine", id: "dine" as const, live: true },
-  { label: "Wine", href: "/wine", id: "wine" as const, live: false },
-  { label: "Explore", href: "/explore", id: "explore" as const, live: false },
-  { label: "Itinerary", href: "/#itinerary", id: "itinerary" as const, live: false },
+  { label: "Unpack here", href: "/stay", id: "stay" as const, live: true },
+  { label: "A table or an experience", href: "/dine", id: "dine" as const, live: true },
+  { label: "Sip to savor", href: "/wine", id: "wine" as const, live: false },
+  { label: "Linger longer", href: "/explore", id: "explore" as const, live: false },
+  { label: "Sample itineraries", href: "/#itinerary", id: "itinerary" as const, live: false },
 ];
 
 type SectionId = (typeof navLinks)[number]["id"] | "";
@@ -194,7 +195,7 @@ export default function Navigation() {
           {/* Center: nav links */}
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-0.5 md:flex"
+            className="hidden items-center gap-1 md:flex lg:gap-1.5 xl:gap-2"
             style={{
               position: "absolute",
               left: "50%",
@@ -206,19 +207,24 @@ export default function Navigation() {
               const active = activeId === link.id;
               return (
                 <a
-                  key={link.label}
+                  key={link.id}
                   href={link.href}
                   onClick={(e) => onNavClick(e, link.href)}
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
+                    justifyContent: "center",
                     fontSize: "0.625rem",
                     fontWeight: 600,
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    padding: "0.375rem 0.75rem",
+                    letterSpacing: "0.04em",
+                    textTransform: "none",
+                    padding: "0.4rem 0.65rem",
                     borderRadius: "9999px",
                     textDecoration: "none",
+                    textAlign: "center",
+                    lineHeight: 1.2,
+                    maxWidth: "9.25rem",
+                    whiteSpace: "normal",
                     transition: "background-color 0.2s, color 0.2s",
                     color: onHero
                       ? active
@@ -367,7 +373,7 @@ export default function Navigation() {
             <nav style={{ display: "flex", flexDirection: "column", gap: "0", flex: 1 }} aria-label="Mobile">
               {navLinks.map((link, i) => (
                 <motion.a
-                  key={link.label}
+                  key={link.id}
                   href={link.href}
                   onClick={(e) => onNavClick(e, link.href)}
                   initial={{ opacity: 0, x: -8 }}
@@ -375,7 +381,7 @@ export default function Navigation() {
                   transition={{ delay: i * 0.04 }}
                   style={{
                     fontFamily: "var(--font-playfair), Georgia, serif",
-                    fontSize: "1.5rem",
+                    fontSize: "1.35rem",
                     fontWeight: 400,
                     color: "#ffffff",
                     textDecoration: "none",
@@ -384,6 +390,7 @@ export default function Navigation() {
                     minHeight: "52px",
                     display: "flex",
                     alignItems: "center",
+                    lineHeight: 1.25,
                   }}
                 >
                   {link.label}
