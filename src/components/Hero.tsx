@@ -18,19 +18,20 @@ export default function Hero() {
       ref={heroRef}
       id="hero"
       aria-label="Hero"
-      className="relative h-[100dvh] min-h-[600px] overflow-hidden bg-[#1a1512]"
+      className="relative h-[100dvh] min-h-[600px] w-full max-w-none overflow-hidden bg-[#1a1512]"
     >
-      {/* Background image */}
-      <div className="pointer-events-none absolute inset-0 z-0">
+      {/* Background image — full-bleed edge to edge */}
+      <div className="pointer-events-none absolute inset-0 z-0 w-full">
         <motion.div
           style={{
             position: "absolute",
-            inset: "-4% 0",
+            inset: 0,
+            width: "100%",
             y: imageY,
           }}
           className="h-full w-full"
         >
-          <div className="relative min-h-[105%] w-full overflow-hidden bg-[#1a1512]">
+          <div className="relative h-full min-h-full w-full overflow-hidden bg-[#1a1512]">
             <Image
               key={PUBLIC_ASSET_REV}
               src={HERO_SRC}
@@ -39,11 +40,9 @@ export default function Hero() {
               priority
               unoptimized
               sizes="100vw"
-              className="pointer-events-none object-cover"
+              className="pointer-events-none h-full w-full object-cover"
               style={{
                 objectPosition: "center 48%",
-                transform: "scale(0.92)",
-                transformOrigin: "center center",
               }}
             />
           </div>
