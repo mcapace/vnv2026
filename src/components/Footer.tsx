@@ -247,25 +247,24 @@ export default function Footer() {
         <nav style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", justifyContent: "flex-end" }}>
           {(
             [
-              { label: "Unpack here", path: "stay" },
-              { label: "A table or an experience", path: "dine" },
-              { label: "Sip to savor", path: "wine" },
-              { label: "Linger longer", path: "explore" },
+              { label: "Stays", path: "stay" },
+              { label: "Dining", path: "dine" },
+              { label: "Wineries", path: "wine" },
+              { label: "See & do", path: "explore" },
             ] as const
           ).map((item) => (
             <a
               key={item.path}
               href={`/${item.path}`}
               style={{
-                fontSize: "0.625rem",
-                fontWeight: 700,
-                letterSpacing: "0.12em",
+                fontSize: "0.6875rem",
+                fontWeight: 500,
+                letterSpacing: "0.06em",
                 textTransform: "none",
                 color: "rgba(255,255,255,0.4)",
                 textDecoration: "none",
-                maxWidth: "10rem",
-                textAlign: "right",
-                lineHeight: 1.25,
+                whiteSpace: "nowrap",
+                lineHeight: 1.2,
               }}
             >
               {item.label}

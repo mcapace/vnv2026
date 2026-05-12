@@ -8,13 +8,13 @@ import SponsoredDisclaimerBar, {
   SPONSORED_BAR_HEIGHT,
 } from "@/components/SponsoredDisclaimerBar";
 
-/** “Live a little or a lot”–aligned labels (not single-word categories). */
+/** Short editorial labels — confident, not tagline-y. */
 const navLinks = [
-  { label: "Unpack here", href: "/stay", id: "stay" as const, live: true },
-  { label: "A table or an experience", href: "/dine", id: "dine" as const, live: true },
-  { label: "Sip to savor", href: "/wine", id: "wine" as const, live: false },
-  { label: "Linger longer", href: "/explore", id: "explore" as const, live: false },
-  { label: "Sample itineraries", href: "/#itinerary", id: "itinerary" as const, live: false },
+  { label: "Stays", href: "/stay", id: "stay" as const, live: true },
+  { label: "Dining", href: "/dine", id: "dine" as const, live: true },
+  { label: "Wineries", href: "/wine", id: "wine" as const, live: false },
+  { label: "See & do", href: "/explore", id: "explore" as const, live: false },
+  { label: "Trip ideas", href: "/#itinerary", id: "itinerary" as const, live: false },
 ];
 
 type SectionId = (typeof navLinks)[number]["id"] | "";
@@ -214,17 +214,16 @@ export default function Navigation() {
                     display: "inline-flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "0.625rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.04em",
+                    fontSize: "0.6875rem",
+                    fontWeight: 500,
+                    letterSpacing: "0.06em",
                     textTransform: "none",
-                    padding: "0.4rem 0.65rem",
+                    padding: "0.35rem 0.75rem",
                     borderRadius: "9999px",
                     textDecoration: "none",
                     textAlign: "center",
-                    lineHeight: 1.2,
-                    maxWidth: "9.25rem",
-                    whiteSpace: "normal",
+                    lineHeight: 1,
+                    whiteSpace: "nowrap",
                     transition: "background-color 0.2s, color 0.2s",
                     color: onHero
                       ? active
@@ -380,9 +379,10 @@ export default function Navigation() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.04 }}
                   style={{
-                    fontFamily: "var(--font-playfair), Georgia, serif",
-                    fontSize: "1.35rem",
-                    fontWeight: 400,
+                    fontFamily: "var(--font-inter), system-ui, sans-serif",
+                    fontSize: "1.125rem",
+                    fontWeight: 500,
+                    letterSpacing: "-0.01em",
                     color: "#ffffff",
                     textDecoration: "none",
                     padding: "1rem 0",
@@ -390,7 +390,7 @@ export default function Navigation() {
                     minHeight: "52px",
                     display: "flex",
                     alignItems: "center",
-                    lineHeight: 1.25,
+                    lineHeight: 1.2,
                   }}
                 >
                   {link.label}
