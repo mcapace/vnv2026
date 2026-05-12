@@ -8,13 +8,13 @@ import SponsoredDisclaimerBar, {
   SPONSORED_BAR_HEIGHT,
 } from "@/components/SponsoredDisclaimerBar";
 
-/** Nav labels: short, confident, easy to scan (no tagline fluff). */
+/** Nav labels: punchy, single-word scan line. */
 const navLinks = [
-  { label: "Stays", href: "/stay", id: "stay" as const, live: true },
-  { label: "Restaurants", href: "/dine", id: "dine" as const, live: true },
-  { label: "Wineries", href: "/wine", id: "wine" as const, live: false },
-  { label: "Discover", href: "/explore", id: "explore" as const, live: false },
-  { label: "Itineraries", href: "/#itinerary", id: "itinerary" as const, live: false },
+  { label: "STAY", href: "/stay", id: "stay" as const, live: true },
+  { label: "DINE", href: "/dine", id: "dine" as const, live: true },
+  { label: "SIP", href: "/wine", id: "wine" as const, live: false },
+  { label: "DO", href: "/explore", id: "explore" as const, live: false },
+  { label: "PLAN", href: "/#itinerary", id: "itinerary" as const, live: false },
 ];
 
 type SectionId = (typeof navLinks)[number]["id"] | "";

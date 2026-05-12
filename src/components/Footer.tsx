@@ -1,7 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import { SiFacebook, SiInstagram, SiYoutube } from "react-icons/si";
+
+function onFooterNavClick(e: MouseEvent<HTMLAnchorElement>, href: string) {
+  if (href.startsWith("/#")) {
+    e.preventDefault();
+    const id = href.slice(2);
+    if (window.location.pathname !== "/") {
+      window.location.href = href;
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+}
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -247,15 +259,17 @@ export default function Footer() {
         <nav style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", justifyContent: "flex-end" }}>
           {(
             [
-              { label: "Stays", path: "stay" },
-              { label: "Restaurants", path: "dine" },
-              { label: "Wineries", path: "wine" },
-              { label: "Discover", path: "explore" },
+              { label: "STAY", href: "/stay" },
+              { label: "DINE", href: "/dine" },
+              { label: "SIP", href: "/wine" },
+              { label: "DO", href: "/explore" },
+              { label: "PLAN", href: "/#itinerary" },
             ] as const
           ).map((item) => (
             <a
-              key={item.path}
-              href={`/${item.path}`}
+              key={item.href}
+              href={item.href}
+              onClick={(e) => onFooterNavClick(e, item.href)}
               style={{
                 fontSize: "0.625rem",
                 fontWeight: 500,
