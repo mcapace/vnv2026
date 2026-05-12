@@ -248,18 +248,18 @@ export default function Footer() {
           {(
             [
               { label: "Stays", path: "stay" },
-              { label: "Dining", path: "dine" },
+              { label: "Restaurants", path: "dine" },
               { label: "Wineries", path: "wine" },
-              { label: "See & do", path: "explore" },
+              { label: "Discover", path: "explore" },
             ] as const
           ).map((item) => (
             <a
               key={item.path}
               href={`/${item.path}`}
               style={{
-                fontSize: "0.6875rem",
+                fontSize: "0.625rem",
                 fontWeight: 500,
-                letterSpacing: "0.06em",
+                letterSpacing: "0.05em",
                 textTransform: "none",
                 color: "rgba(255,255,255,0.4)",
                 textDecoration: "none",

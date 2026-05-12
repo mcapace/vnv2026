@@ -8,13 +8,13 @@ import SponsoredDisclaimerBar, {
   SPONSORED_BAR_HEIGHT,
 } from "@/components/SponsoredDisclaimerBar";
 
-/** Short editorial labels — confident, not tagline-y. */
+/** Nav labels: short, confident, easy to scan (no tagline fluff). */
 const navLinks = [
   { label: "Stays", href: "/stay", id: "stay" as const, live: true },
-  { label: "Dining", href: "/dine", id: "dine" as const, live: true },
+  { label: "Restaurants", href: "/dine", id: "dine" as const, live: true },
   { label: "Wineries", href: "/wine", id: "wine" as const, live: false },
-  { label: "See & do", href: "/explore", id: "explore" as const, live: false },
-  { label: "Trip ideas", href: "/#itinerary", id: "itinerary" as const, live: false },
+  { label: "Discover", href: "/explore", id: "explore" as const, live: false },
+  { label: "Itineraries", href: "/#itinerary", id: "itinerary" as const, live: false },
 ];
 
 type SectionId = (typeof navLinks)[number]["id"] | "";
@@ -214,17 +214,16 @@ export default function Navigation() {
                     display: "inline-flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "0.6875rem",
+                    fontSize: "0.625rem",
                     fontWeight: 500,
-                    letterSpacing: "0.06em",
+                    letterSpacing: "0.05em",
                     textTransform: "none",
-                    padding: "0.35rem 0.75rem",
+                    padding: "0.35rem 0.55rem",
                     borderRadius: "9999px",
                     textDecoration: "none",
                     textAlign: "center",
                     lineHeight: 1,
                     whiteSpace: "nowrap",
-                    transition: "background-color 0.2s, color 0.2s",
                     color: onHero
                       ? active
                         ? "#ffffff"
@@ -239,6 +238,7 @@ export default function Navigation() {
                       : active
                         ? "rgba(42,38,35,0.06)"
                         : "transparent",
+                    transition: "background-color 0.2s, color 0.2s",
                   }}
                 >
                   {link.label}
