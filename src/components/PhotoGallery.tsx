@@ -34,24 +34,34 @@ const VALLEY_TOWNS = [
   },
 ] as const;
 
-/** Two photos per town — VNV photography + partner assets under `public/images`. */
+/**
+ * One campaign frame (`/images/photography/…`) + one partner frame from
+ * `public/Partner Images /VNV Partner Images/` per town.
+ * NOTE: Folder name includes a trailing space after `Partner Images ` — encode at render.
+ */
+const PARTNER = (relativePath: string) => `/Partner Images /VNV Partner Images/${relativePath}`;
+
+/** [0] = campaign, [1] = partner */
 const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string, string]> = {
   "american-canyon": [
-    encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Property-Aerial-with-Pools.jpg"),
-    "/images/photography/wine-cellar-toast.jpg",
+    "/images/photography/cadet-nightlife.jpg",
+    PARTNER("Carneros Resort and Spa/HRD55.jpg"),
   ],
-  napa: ["/images/photography/cadet-dining.jpg", "/images/photography/cadet-nightlife.jpg"],
+  napa: [
+    "/images/photography/cadet-dining.jpg",
+    PARTNER("JAM Cellars/GM1_1269_mod1.jpg"),
+  ],
   yountville: [
-    encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
-    "/images/photography/wine-cellar-toast.jpg",
+    "/images/photography/press-plating.jpg",
+    PARTNER("FARM at Carneros Resort and Spa/farmrestaurantnapa.jpg"),
   ],
   "st-helena": [
-    encodeURI("/images/Assets for Hub/Partner Images/Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
-    encodeURI("/images/Assets for Hub/Partner Images/Louis M. Martini/LMM-Tasting-Outdoor.jpg"),
+    "/images/photography/wine-cellar-toast.jpg",
+    PARTNER("Etude/ETU_Winery1_HR.jpg"),
   ],
   calistoga: [
-    "/images/Assets for Hub/Partner Images/Mount View/POOL-ACCESS-MVH-SPA.jpg",
     "/images/photography/solage-pool-night.jpg",
+    PARTNER("Carneros Resort and Spa/Carneros Resort and Spa Hilltop Pool Hero 1.jpg"),
   ],
 };
 
@@ -175,7 +185,6 @@ export default function PhotoGallery() {
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 gap-6 sm:grid-cols-2"
           >
-            {/* Two distinct placeholders per town; not shared across town tabs. */}
             {([0, 1] as const).map((slot) => (
                 <figure
                   key={`${region.id}-photo-${slot}`}
@@ -191,7 +200,11 @@ export default function PhotoGallery() {
                   <div style={{ position: "relative", aspectRatio: "3/4" }}>
                     <img
                       src={townImageSrc(region.id, slot)}
-                      alt={`${region.label}, Napa Valley — photo ${slot + 1} of 2`}
+                      alt={
+                        slot === 0
+                          ? `${region.label}, Napa Valley — campaign photography`
+                          : `${region.label}, Napa Valley — partner image`
+                      }
                       style={{
                         position: "absolute",
                         inset: 0,
