@@ -2,12 +2,14 @@
 
 import { useRef, useMemo, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-type Cat = "Stay" | "Wine" | "Dine" | "Explore";
 
-const PLACEHOLDER = "/images/photography/placeholder-venue.svg" as const;
+type Cat = "Stay" | "Wine" | "Dine" | "Explore";
 
 /** Client asset pack (URLs encode spaces). */
 const img = (path: string) => encodeURI(`/images/Assets for Hub/${path}`);
+/** New partner pack under `public/Partner Images /VNV Partner Images/` (note trailing space in folder name). */
+const partnerPack = (relativePath: string) =>
+  encodeURI(`/Partner Images /VNV Partner Images/${relativePath}`);
 const CIA_GROVE = "https://www.ciagroverestaurant.com/";
 
 const partnerCards: Array<{
@@ -22,8 +24,8 @@ const partnerCards: Array<{
     name: "Carneros Resort & Spa",
     category: "Stay",
     description: "Cottages at the edge of Carneros fog and vines.",
-    image: PLACEHOLDER,
-    objectPosition: "center 42%",
+    image: partnerPack("Carneros Resort and Spa/Carneros Resort and Spa Hilltop Pool Hero 1.jpg"),
+    objectPosition: "center 38%",
     href: "https://www.carnerosresort.com/",
   },
   {
@@ -46,8 +48,8 @@ const partnerCards: Array<{
     name: "Robert Mondavi Winery",
     category: "Wine",
     description: "The Oakville benchmark, reborn for tours and tastings.",
-    image: PLACEHOLDER,
-    objectPosition: "center 48%",
+    image: "/images/photography/wine-cellar-toast.jpg",
+    objectPosition: "center 45%",
     href: "https://www.robertmondavi.com/",
   },
   {
@@ -79,7 +81,7 @@ const partnerCards: Array<{
     name: "The Grove at COPIA",
     category: "Dine",
     description: "Garden-to-table restaurant at COPIA—seasonal cooking, not campus dining.",
-    image: "/images/photography/cadet-dining.jpg",
+    image: partnerPack("FARM at Carneros Resort and Spa/farmrestaurantnapa.jpg"),
     objectPosition: "center 48%",
     href: CIA_GROVE,
   },
@@ -96,17 +98,16 @@ const partnerCards: Array<{
     name: "Pure Luxury Tours",
     category: "Explore",
     description: "Tailored chauffeured days across the valley.",
-    image: PLACEHOLDER,
-    objectPosition: "center 30%",
+    image: partnerPack("Carneros Resort and Spa/HRD55.jpg"),
+    objectPosition: "center 42%",
     href: "https://www.pureluxury.com/napa-valley-wine-tours/",
   },
-  // TODO: Asset is Solage (pool at night), not Marquee. Replace with authentic Marquee Pinball Lounge photography. Awaiting from photo team.
   {
     name: "Marquee Pinball Lounge",
     category: "Explore",
     description: "Playful cocktails and vintage games in downtown Napa.",
-    image: PLACEHOLDER,
-    objectPosition: "center 48%",
+    image: partnerPack("JAM Cellars/GM1_1233_mod1-(1).jpg"),
+    objectPosition: "center 45%",
     href: "https://www.marqueepinball.com/",
   },
 ];
@@ -224,7 +225,7 @@ export default function PartnersSection() {
                 style={{ display: "flex", flexDirection: "column", flex: 1, textDecoration: "none" }}
               >
                 {/* Image */}
-                <div style={{ position: "relative", aspectRatio: "4/3", overflow: "hidden" }}>
+                <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden" }}>
                   <img
                     src={p.image}
                     alt={p.name}
