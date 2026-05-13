@@ -10,11 +10,11 @@ import SponsoredDisclaimerBar, {
 
 /** Nav labels: punchy, single-word scan line. */
 const navLinks = [
-  { label: "STAY", href: "/stay", id: "stay" as const, live: true },
-  { label: "DINE", href: "/dine", id: "dine" as const, live: true },
-  { label: "SIP", href: "/wine", id: "wine" as const, live: false },
-  { label: "DO", href: "/explore", id: "explore" as const, live: false },
-  { label: "PLAN", href: "/#itinerary", id: "itinerary" as const, live: false },
+  { label: "STAY", href: "/stay", id: "stay" as const },
+  { label: "DINE", href: "/dine", id: "dine" as const },
+  { label: "SIP", href: "/wine", id: "wine" as const },
+  { label: "DO", href: "/explore", id: "explore" as const },
+  { label: "PLAN", href: "/#itinerary", id: "itinerary" as const },
 ];
 
 type SectionId = (typeof navLinks)[number]["id"] | "";
@@ -242,22 +242,6 @@ export default function Navigation() {
                   }}
                 >
                   {link.label}
-                  {link.live && (
-                    <span
-                      style={{
-                        display: "inline-block",
-                        width: "4px",
-                        height: "4px",
-                        borderRadius: "9999px",
-                        backgroundColor: "var(--hub-champagne)",
-                        marginLeft: "3px",
-                        verticalAlign: "middle",
-                        marginBottom: "1px",
-                        flexShrink: 0,
-                      }}
-                      aria-label="Article live"
-                    />
-                  )}
                 </a>
               );
             })}
@@ -394,22 +378,6 @@ export default function Navigation() {
                   }}
                 >
                   {link.label}
-                  {link.live && (
-                    <span
-                      style={{
-                        display: "inline-block",
-                        width: "4px",
-                        height: "4px",
-                        borderRadius: "9999px",
-                        backgroundColor: "var(--hub-champagne)",
-                        marginLeft: "3px",
-                        verticalAlign: "middle",
-                        marginBottom: "1px",
-                        flexShrink: 0,
-                      }}
-                      aria-label="Article live"
-                    />
-                  )}
                 </motion.a>
               ))}
             </nav>

@@ -40,31 +40,33 @@ export default function WinePage() {
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
-              marginBottom: "1rem",
+              marginBottom: "1.25rem",
             }}
           >
-            <span
+            <Link
+              href="/"
               style={{
                 fontSize: "0.625rem",
                 fontWeight: 600,
-                letterSpacing: "0.18em",
+                letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: "rgba(255,255,255,0.6)",
+                color: "rgba(255,255,255,0.85)",
+                textDecoration: "none",
               }}
             >
-              The Guide
-            </span>
-            <span style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.625rem" }}>·</span>
+              The Hub
+            </Link>
+            <span style={{ color: "rgba(255,255,255,0.55)" }}>·</span>
             <span
               style={{
                 fontSize: "0.625rem",
                 fontWeight: 600,
-                letterSpacing: "0.18em",
+                letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 color: "var(--hub-champagne)",
               }}
             >
-              Wine
+              Sip
             </span>
           </div>
           <h1
