@@ -44,6 +44,7 @@ const partnerCards: Array<{
     objectPosition: "center 45%",
     href: "https://www.etudewines.com/",
   },
+  // TODO: Replace with Robert Mondavi photography from client (Dropbox).
   {
     name: "Robert Mondavi Winery",
     category: "Wine",
@@ -93,20 +94,21 @@ const partnerCards: Array<{
     objectPosition: "center 48%",
     href: "https://www.jamcellars.com/",
   },
-  // TODO: Stanly Ranch brand imagery is not Pure Luxury Tours. Replace with authentic tour or vehicle photography. Awaiting from photo team.
+  // TODO: Swap for client-shared Pure Luxury tour/vehicle shot when added to the repo.
   {
     name: "Pure Luxury Tours",
     category: "Explore",
     description: "Tailored chauffeured days across the valley.",
-    image: partnerPack("Carneros Resort and Spa/HRD55.jpg"),
+    image: "/images/photography/hero-stanly-ranch-convertible.jpg",
     objectPosition: "center 42%",
     href: "https://www.pureluxury.com/napa-valley-wine-tours/",
   },
+  // TODO: Swap for client-shared Marquee imagery when added to the repo.
   {
     name: "Marquee Pinball Lounge",
     category: "Explore",
     description: "Playful cocktails and vintage games in downtown Napa.",
-    image: partnerPack("JAM Cellars/GM1_1233_mod1-(1).jpg"),
+    image: "/images/photography/cadet-nightlife.jpg",
     objectPosition: "center 45%",
     href: "https://www.marqueepinball.com/",
   },

@@ -35,33 +35,36 @@ const VALLEY_TOWNS = [
 ] as const;
 
 /**
- * One campaign frame (`/images/photography/…`) + one partner frame from
- * `public/Partner Images /VNV Partner Images/` per town.
- * NOTE: Folder name includes a trailing space after `Partner Images ` — encode at render.
+ * One “campaign” frame + one venue frame per town. Paths stay unencoded; `townImageSrc` calls `encodeURI`.
+ * TSY / client: swap when town-specific Dropbox assets arrive (see internal notes).
  */
 const PARTNER = (relativePath: string) => `/Partner Images /VNV Partner Images/${relativePath}`;
+/** Hub asset pack: `public/images/Assets for Hub/…` */
+const assetHub = (path: string) => `/images/Assets for Hub/${path}`;
 
-/** [0] = campaign, [1] = partner */
+/** [0] = left, [1] = right */
 const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string, string]> = {
+  /* South gateway: spa/resort south valley + Carneros (adjacent to American Canyon). */
   "american-canyon": [
-    "/images/photography/cadet-nightlife.jpg",
+    "/images/photography/stanly-ranch-spa.jpg",
     PARTNER("Carneros Resort and Spa/HRD55.jpg"),
   ],
   napa: [
     "/images/photography/cadet-dining.jpg",
     PARTNER("JAM Cellars/GM1_1269_mod1.jpg"),
   ],
+  /* Yountville: swap [0] for Bouchon when client asset lands; forum shot reads “chef-led table” until then. */
   yountville: [
     "/images/photography/press-plating.jpg",
-    PARTNER("FARM at Carneros Resort and Spa/farmrestaurantnapa.jpg"),
+    assetHub("Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
   ],
   "st-helena": [
     "/images/photography/wine-cellar-toast.jpg",
-    PARTNER("Etude/ETU_Winery1_HR.jpg"),
+    assetHub("Partner Images/Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
   ],
   calistoga: [
     "/images/photography/solage-pool-night.jpg",
-    PARTNER("Carneros Resort and Spa/Carneros Resort and Spa Hilltop Pool Hero 1.jpg"),
+    assetHub("Partner Images/Mount View/POOL-ACCESS-MVH-SPA.jpg"),
   ],
 };
 
