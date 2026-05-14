@@ -36,35 +36,32 @@ const VALLEY_TOWNS = [
 
 /**
  * One “campaign” frame + one venue frame per town. Paths stay unencoded; `townImageSrc` calls `encodeURI`.
- * TSY / client: swap when town-specific Dropbox assets arrive (see internal notes).
+ * Venue frames resolve under `public/Partner Images /VNV Partner Images/` (synced from client partner pack).
  */
 const PARTNER = (relativePath: string) => `/Partner Images /VNV Partner Images/${relativePath}`;
-/** Hub asset pack: `public/images/Assets for Hub/…` */
-const assetHub = (path: string) => `/images/Assets for Hub/${path}`;
-
-/** [0] = left, [1] = right */
+/** [0] = left, [1] = right — files under `public/Partner Images /VNV Partner Images/` */
 const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string, string]> = {
-  /* South gateway: spa/resort south valley + Carneros (adjacent to American Canyon). */
+  /* South gateway: vineyard + Carneros (client pack); swap for American Canyon–specific art when available. */
   "american-canyon": [
-    "/images/photography/stanly-ranch-spa.jpg",
+    PARTNER("Rombauer Vineyard/Rombauer-Summer-20244442.jpg"),
     PARTNER("Carneros Resort and Spa/HRD55.jpg"),
   ],
   napa: [
     "/images/photography/cadet-dining.jpg",
     PARTNER("JAM Cellars/GM1_1269_mod1.jpg"),
   ],
-  /* Yountville: swap [0] for Bouchon when client asset lands; forum shot reads “chef-led table” until then. */
+  /* [0] placeholder until Bouchon asset; [1] Meadowood forum from partner pack. */
   yountville: [
     "/images/photography/press-plating.jpg",
-    assetHub("Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
+    PARTNER("Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
   ],
   "st-helena": [
     "/images/photography/wine-cellar-toast.jpg",
-    assetHub("Partner Images/Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
+    PARTNER("Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
   ],
   calistoga: [
     "/images/photography/solage-pool-night.jpg",
-    assetHub("Partner Images/Mount View/POOL-ACCESS-MVH-SPA.jpg"),
+    PARTNER("Mount View/POOL-ACCESS-MVH-SPA.jpg"),
   ],
 };
 

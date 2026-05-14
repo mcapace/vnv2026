@@ -82,7 +82,7 @@ const partnerCards: Array<{
     name: "The Grove at COPIA",
     category: "Dine",
     description: "Garden-to-table restaurant at COPIA—seasonal cooking, not campus dining.",
-    image: partnerPack("FARM at Carneros Resort and Spa/farmrestaurantnapa.jpg"),
+    image: partnerPack("The Grove at CIA Copia/em_20200616_copia_57mask_edited.jpg"),
     objectPosition: "center 48%",
     href: CIA_GROVE,
   },
@@ -94,21 +94,21 @@ const partnerCards: Array<{
     objectPosition: "center 48%",
     href: "https://www.jamcellars.com/",
   },
-  // TODO: Swap for client-shared Pure Luxury tour/vehicle shot when added to the repo.
   {
     name: "Pure Luxury Tours",
     category: "Explore",
     description: "Tailored chauffeured days across the valley.",
-    image: "/images/photography/hero-stanly-ranch-convertible.jpg",
+    image: partnerPack("Pure Luxury Transportation/Pure LuxuryTransportation.jpg"),
     objectPosition: "center 42%",
     href: "https://www.pureluxury.com/napa-valley-wine-tours/",
   },
-  // TODO: Swap for client-shared Marquee imagery when added to the repo.
   {
     name: "Marquee Pinball Lounge",
     category: "Explore",
     description: "Playful cocktails and vintage games in downtown Napa.",
-    image: "/images/photography/cadet-nightlife.jpg",
+    image: partnerPack(
+      "Marquee Pinball/IMG_9091_DF397D86-4457-47BC-B10036DC82DB61FE_4773c3c1-781a-40f7-bf67e56e5a7a3b26.jpg"
+    ),
     objectPosition: "center 45%",
     href: "https://www.marqueepinball.com/",
   },
