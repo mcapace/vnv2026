@@ -7,9 +7,9 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 const days = [
   {
     day: "Day one",
-    title: "Napa to Yountville",
+    title: "Napa",
     subtitle: "Arrive & unwind",
-    mapHint: "South · Napa to Yountville",
+    mapHint: "South · Napa",
     events: [
       {
         time: "3:00 PM",
