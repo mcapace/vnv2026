@@ -50,9 +50,8 @@ const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string,
     "/images/photography/cadet-dining.jpg",
     PARTNER("JAM Cellars/GM1_1269_mod1.jpg"),
   ],
-  /* [0] placeholder until Bouchon asset; [1] Meadowood forum from partner pack. */
   yountville: [
-    "/images/photography/press-plating.jpg",
+    PARTNER("Bouchon Bistro/bouchon-yountville.jpg"),
     PARTNER("Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
   ],
   "st-helena": [

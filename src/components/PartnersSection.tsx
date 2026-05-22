@@ -44,13 +44,12 @@ const partnerCards: Array<{
     objectPosition: "center 45%",
     href: "https://www.etudewines.com/",
   },
-  // TODO: Replace with Robert Mondavi photography from client (Dropbox).
   {
     name: "Robert Mondavi Winery",
     category: "Wine",
     description: "The Oakville benchmark, reborn for tours and tastings.",
-    image: "/images/photography/wine-cellar-toast.jpg",
-    objectPosition: "center 45%",
+    image: partnerPack("Robert Mondavi Winery/mondavi-outdoor-lounge.jpg"),
+    objectPosition: "center 42%",
     href: "https://www.robertmondavi.com/",
   },
   {
@@ -61,13 +60,12 @@ const partnerCards: Array<{
     objectPosition: "center 35%",
     href: "https://www.louismartini.com/",
   },
-  // TODO: Generic plate shot; replace with authentic Bouchon Bistro photography when a venue-specific asset is available.
   {
     name: "Bouchon Bistro",
     category: "Dine",
     description: "Yountville bistro classics with Thomas Keller polish.",
-    image: "/images/photography/press-plating.jpg",
-    objectPosition: "center 48%",
+    image: partnerPack("Bouchon Bistro/bouchon-yountville.jpg"),
+    objectPosition: "center 40%",
     href: "https://www.thomaskeller.com/bouchonyountville",
   },
   {

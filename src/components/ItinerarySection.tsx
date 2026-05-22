@@ -3,6 +3,9 @@
 import { useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
+const partnerPack = (relativePath: string) =>
+  encodeURI(`/Partner Images /VNV Partner Images/${relativePath}`);
+
 // Internal: partner links go to venue sites; VNV links are for town/category planning (not shown to users).
 const days = [
   {
@@ -62,7 +65,7 @@ const days = [
         description:
           "Late morning in Oakville at the reopened icon, where much of modern Napa Valley began. Book a tasting that lets you ease up from Yountville without rushing.",
         type: "wine",
-        thumb: "/images/photography/wine-cellar-toast.jpg",
+        thumb: partnerPack("Robert Mondavi Winery/mondavi-outdoor-lounge.jpg"),
         url: "https://www.robertmondavi.com/",
         wsTip:
           "Wine Spectator tip: ask what’s new in the reopened hospitality spaces. Tasting formats evolved with the architecture.",
@@ -82,7 +85,7 @@ const days = [
         description:
           "Yountville’s benchmark French bistro—natural bookend after Mondavi and Martini on the mid-valley day.",
         type: "dine",
-        thumb: "/images/photography/press-plating.jpg",
+        thumb: partnerPack("Bouchon Bistro/bouchon-yountville.jpg"),
         url: "https://www.thomaskeller.com/bouchonyountville",
       },
     ],
