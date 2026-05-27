@@ -420,18 +420,12 @@ body {
   isolation: isolate;
 }
 
-/* Subtle zoom on cover shots only — contain images stay full-frame */
-.partner-card:hover .partner-card__img--cover {
-  transform: scale(1.04);
-}
-
-.partner-card:hover .partner-card__img--contain {
-  transform: scale(1.02);
-}
-
-.partner-card__img--cover,
-.partner-card__img--contain {
+.partner-card__img {
   transition: transform 0.7s var(--hub-ease-elegant);
+}
+
+.partner-card:hover .partner-card__img {
+  transform: scale(1.04);
 }
 
 @media (prefers-reduced-motion: reduce) {
