@@ -95,8 +95,8 @@ export default function DinePage() {
               maxWidth: "38rem",
             }}
           >
-            People come for the wine. Fair enough. But three restaurants—in Yountville, Napa,
-            and Calistoga—have a habit of becoming the reason visitors rebook.
+            People come for the wine. Fair enough. But three restaurants—in Yountville, St. Helena,
+            and Napa—have a habit of becoming the reason visitors rebook.
           </p>
           <p
             style={{

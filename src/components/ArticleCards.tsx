@@ -25,10 +25,10 @@ const articles = [
     title: "Where to Eat in Napa Valley",
     subtitle: "Every reservation earns the drive",
     description:
-      "Bouchon Bistro, Meadowood Napa Valley, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
+      "Bouchon Bistro, Forum at Meadowood, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
     image: encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
     objectPosition: "50% 48%",
-    partners: ["Bouchon Bistro", "Meadowood Napa Valley", "The Grove @ COPIA"],
+    partners: ["Bouchon Bistro", "Forum at Meadowood", "The Grove @ COPIA"],
     status: "live" as const,
     publishDate: null as string | null,
     articleUrl: "/dine",
