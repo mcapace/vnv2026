@@ -37,7 +37,7 @@ const days = [
           "Garden-to-table dining at COPIA in Napa’s Oxbow District—close to Carneros and Etude if you want to keep the day compact.",
         type: "dine",
         thumb: encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
-        url: "https://www.ciagroverestaurant.com/",
+        url: "https://www.ciaatcopia.com/grove-restaurant",
       },
       {
         time: "9:00 PM",

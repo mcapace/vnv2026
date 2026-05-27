@@ -6,7 +6,7 @@ import { partnerImage } from "@/lib/partner-images";
 
 type Cat = "Stay" | "Wine" | "Dine" | "Explore";
 
-const CIA_GROVE = "https://www.ciagroverestaurant.com/";
+const CIA_GROVE = "https://www.ciaatcopia.com/grove-restaurant";
 
 const partnerCards: Array<{
   name: string;

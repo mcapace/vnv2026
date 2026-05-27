@@ -95,8 +95,8 @@ export default function DinePage() {
               maxWidth: "38rem",
             }}
           >
-            People come for the wine. Fair enough. But three restaurants in Yountville, St. Helena, and Napa
-            have a habit of becoming the reason visitors rebook.
+            People come for the wine. Fair enough. But three restaurants—in Yountville, Napa,
+            and Calistoga—have a habit of becoming the reason visitors rebook.
           </p>
           <p
             style={{
@@ -133,7 +133,7 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Bouchon Bistro, Yountville
+            Bouchon Bistro — Yountville
           </h2>
 
           <p
@@ -147,8 +147,9 @@ export default function DinePage() {
           >
             Start with the room, because the room earns that. Thomas Keller handed the design job to
             Adam D. Tihany with a single directive: make it feel Parisian. Not the California version of
-            Parisian. The actual thing, the kind of room that carries a faint memory of butter and old
-            wood and maybe, if the light hits right, a Gauloise somebody smoked out back in 1973.
+            Parisian. The actual thing—the kind of room that carries a faint memory of butter and old
+            wood and, if the light hits just so, the suggestion of a Gauloise from 1973 lingering in the
+            air.
           </p>
 
           <p
@@ -187,13 +188,14 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Keller opened Bouchon in October 1998. The French Laundry had already made him, by most
-            reasonable accounts, the most significant chef in America. He didn&apos;t need another
-            restaurant. But the question Bouchon was asking turned out to be more interesting than
-            anything his reputation required: what does it actually mean to do a French bistro
-            correctly? Not fine dining dressed down. Not some ironic riff on French cooking. The real
-            thing, the way a solid bouchon in Lyon is the real thing. Where the food is technically
-            serious and the room is not, and the roast chicken is what everybody came for.
+            Keller opened Bouchon in October 1998. The French Laundry had already made
+            him—by most reasonable accounts—the most significant chef in America. He didn&apos;t
+            need another restaurant. But the question Bouchon was asking turned out to be more
+            interesting than anything his reputation required: what does it actually mean to do a
+            French bistro correctly? Not fine dining dressed down. Not some ironic riff on French
+            cooking. The real thing, the way a solid bouchon in Lyon is the real thing. Where the
+            food is technically serious and the room is not, and the roast chicken is what everybody
+            came for.
           </p>
 
           <p
@@ -207,8 +209,8 @@ export default function DinePage() {
           >
             Twenty-five-plus years in, certain items on the menu have become non-negotiable. The roast
             chicken, obviously. Steak frites done with a level of care that most places reserve for the
-            prix fixe. Leg of lamb.             Trout amandine, which is (and this is not meant dismissively) essentially a butter delivery
-            system. Regulars don&apos;t bother with the menu
+            prix fixe. Leg of lamb. Trout amandine, which is—and this is not meant
+            dismissively—essentially a butter delivery system. Regulars don&apos;t bother with the menu
             anymore. First-timers figure it out fast.
           </p>
 
@@ -254,9 +256,9 @@ export default function DinePage() {
             }}
           >
             The wine list matters more here than at most restaurants. Vin en Carafe selections are
-            sourced exclusively for Bouchon from wineries in Napa and France, not the
-            standard-allocation bottles making the rounds through every tasting room in the county. These
-            were made with this room and this food in mind. The staff knows the list cold. Ask about a
+            sourced exclusively for Bouchon from wineries in Napa Valley and France—not the
+            standard-allocation bottles making the rounds through every tasting room in the county.
+            These were made with this room and this food in mind. The staff knows the list cold. Ask about a
             pairing and they&apos;ll give a real answer. That sounds like it should be standard. It very
             much is not.
           </p>
@@ -337,7 +339,7 @@ export default function DinePage() {
           {/* Divider */}
           <div style={{ borderTop: "1px solid var(--hub-line)", margin: "3rem 0" }} />
 
-          {/* Meadowood Napa Valley section */}
+          {/* Forum at Meadowood section */}
           <h2
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
@@ -348,7 +350,7 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Meadowood Napa Valley, St. Helena
+            Forum at Meadowood — St. Helena
           </h2>
 
           <p
@@ -360,39 +362,12 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Meadowood sits on a wooded ridge above St. Helena—three stars from Michelin for hospitality,
-            and a kitchen that treats the estate like part of the pantry. You arrive on a drive canopied by
-            oaks; porters meet you like this is normal. It still feels like wine country, not a generic
-            luxury template.
-          </p>
-
-          <p
-            style={{
-              fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontSize: "1.1875rem",
-              lineHeight: 1.75,
-              color: "var(--hub-muted)",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Forum is the headline restaurant: tasting menus that track the seasons, service that reads the
-            room, and wine pairings that assume you actually want to taste Napa Valley seriously. This is
-            the reservation you plan an afternoon around—not a quick stop between tastings.
-          </p>
-
-          <p
-            style={{
-              fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontSize: "1.1875rem",
-              lineHeight: 1.75,
-              color: "var(--hub-muted)",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Beyond Forum, the estate folds in croquet, hiking trails, spa time, and rooms that borrow their
-            palette from the forest outside the windows. Some guests never leave the property for dinner.
-            Others use Meadowood as the north-valley anchor and keep exploring—either way, the evening
-            tends to run long.
+            Meadowood has long been one of Napa Valley&apos;s quiet constants—a private retreat folded
+            into the oaks above St. Helena, more whispered about than shown off. For years, it set
+            the rhythm of the valley&apos;s most understated luxury, where wine, service, and setting
+            were treated as disciplines rather than spectacle. After the 2020 Glass Fire, the property
+            entered a new chapter, and with it came the return of one of its most distinctive
+            expressions: Forum at Meadowood.
           </p>
 
           {/* Pull quote */}
@@ -408,10 +383,59 @@ export default function DinePage() {
                 color: "var(--hub-ink)",
               }}
             >
-              Forum is the kind of meal where the valley stops feeling like a checklist and starts feeling
-              like a place you&apos;d happily miss a flight for.
+              Forum is not a single restaurant so much as a gathered idea—part dining
+              room, part culinary salon, part stage for Meadowood&apos;s ongoing
+              conversation with food and wine. Reimagined under proprietor and
+              vintner Jean-Charles Boisset&apos;s stewardship of Meadowood&apos;s hospitality
+              programs, it leans into the property&apos;s original ethos: refinement without
+              noise, precision without performance.
             </p>
           </blockquote>
+
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "1.1875rem",
+              lineHeight: 1.75,
+              color: "var(--hub-muted)",
+              marginBottom: "1.5rem",
+            }}
+          >
+            The setting reflects that restraint. Light moves softly through the trees outside, catching
+            on natural woods, stone, and glass. Inside, the room feels intentionally unhurried, as
+            though it has no interest in the outside world&apos;s urgency. It is the kind of space that
+            rewards attention—not with spectacle, but with detail.
+          </p>
+
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "1.1875rem",
+              lineHeight: 1.75,
+              color: "var(--hub-muted)",
+              marginBottom: "1.5rem",
+            }}
+          >
+            At its core is a kitchen driven by seasonal tasting menus that read like a tour through
+            Northern California at its most composed. Nothing is overworked. Flavors are clean,
+            architectural, quietly confident. Dishes arrive with the kind of clarity that suggests the
+            chef is more interested in balance than declaration.
+          </p>
+
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "1.1875rem",
+              lineHeight: 1.75,
+              color: "var(--hub-muted)",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Service follows the same cadence—present, exacting, never intrusive. Wine, as expected
+            at Meadowood, is central. The cellar reaches deep into Napa Valley and beyond, but the
+            pairing philosophy favors dialogue over dominance: bottles chosen not to impress, but
+            to complete the plate.
+          </p>
 
           <p
             style={{
@@ -422,8 +446,9 @@ export default function DinePage() {
               marginBottom: "2.5rem",
             }}
           >
-            Book well ahead, especially on weekends. Dress leans resort-elegant; comfortable shoes still
-            matter if you&apos;re walking the paths before sunset.
+            There is a sense at Forum that everything has been considered twice, then edited once
+            more. The result is not nostalgia for Meadowood&apos;s past, but a continuation of its original
+            idea—hospitality as craft, expressed with calm authority.
           </p>
 
           {/* Property card */}
@@ -457,7 +482,7 @@ export default function DinePage() {
                 marginBottom: "0.25rem",
               }}
             >
-              Meadowood Napa Valley — Forum
+              Forum at Meadowood
             </h3>
             <p style={{ fontSize: "0.875rem", color: "var(--hub-muted)", marginBottom: "0.875rem" }}>
               900 Meadowood Ln, St. Helena, CA 94574
@@ -478,7 +503,7 @@ export default function DinePage() {
                 textDecoration: "none",
               }}
             >
-              Reserve at Meadowood →
+              Visit meadowood.com →
             </a>
           </div>
 
@@ -496,7 +521,7 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            The Grove at COPIA, Napa
+            The Grove at COPIA — Napa
           </h2>
 
           <p
@@ -508,10 +533,10 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            The Culinary Institute of America has an 80,000-square-foot campus in Napa&apos;s Oxbow
-            District, across from the Public Market, facing the river. Inside there&apos;s a restaurant
-            called The Grove. It is the kind of place that locals mention with the specific enthusiasm of
-            someone who wants credit for the recommendation.
+            The Culinary Institute of America (CIA) has an 80,000-square-foot campus in Napa
+            Valley&apos;s Oxbow District, across from the Public Market, facing the river. Inside
+            there&apos;s a restaurant called The Grove. It is the kind of place that locals mention with
+            the specific enthusiasm of someone who wants credit for the recommendation.
           </p>
 
           <p
@@ -523,9 +548,9 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            They deserve the credit. For a restaurant tied to a culinary school in a busy tourist
-            district, competent is the default. What The Grove delivers is considerably better than
-            that.
+            They deserve the credit. A restaurant attached to a culinary school campus, in a tourist
+            district—the expectation is competent. What The Grove delivers is considerably better
+            than that.
           </p>
 
           <p
@@ -568,11 +593,11 @@ export default function DinePage() {
             }}
           >
             The menu is organized around those gardens, and not loosely. Produce gets harvested daily. The
-            kitchen writes the menu based on what&apos;s ripe. The whole approach is Italian and
-            Mediterranean: handmade pasta, vegetables treated as the main act, shareable plates, and a
-            refusal to over-complicate. The meatballs have reached a kind of local fame. The insalata with
-            garden herbs and house vinaigrette is the sort of dish that has no right to be that memorable:
-            plain-looking, absurdly good.
+            kitchen writes the menu based on what&apos;s ripe. The whole approach is Italian,
+            Mediterranean: handmade pasta, vegetables treated as the main act, shareable plates, a
+            refusal to over-complicate. The meatballs have reached a kind of local fame. The insalata
+            with garden herbs and house vinaigrette is the sort of dish that has no right being that
+            memorable—plain-looking, absurdly good.
           </p>
 
           {/* Pull quote */}
@@ -603,8 +628,8 @@ export default function DinePage() {
             }}
           >
             Weekend brunch, Saturday and Sunday from 10:30, is the Oxbow District&apos;s most poorly kept
-            secret. The Bloody Mary is made from scratch and is exactly the drink anyone needs after a night
-            of going too hard on the valley&apos;s more serious wine lists. The patio fills with a mix of
+            secret. The Bloody Mary is made from scratch and feels especially well suited to the
+            table—savory, composed, and an easy companion to any course. The patio fills with a mix of
             locals and visitors who&apos;ve done their research. Lemon ricotta pancakes. Smoked trout
             Benedict. A breakfast plate put together by cooks who clearly eat breakfast themselves.
           </p>
@@ -618,10 +643,11 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Happy hour (Wednesday through Friday, 4 to 6) is a smart pre-dinner stop. Small plates and
-            cocktails show off the kitchen&apos;s range without requiring a full commitment. The outdoor bar
-            at dusk, olive trees overhead, the Napa River a short walk away: it is the sort of wine-country
-            evening that makes people reconsider their flights home.
+            Happy hour—Wednesday through Friday, 4 to 6—is a smart pre-dinner stop. Small
+            plates and cocktails that show off the kitchen&apos;s range without requiring a full
+            commitment. The outdoor bar at dusk, olive trees overhead, the Napa River a short walk
+            away—it is the sort of wine country evening that makes people reconsider their flights
+            home.
           </p>
 
           <p
@@ -635,8 +661,8 @@ export default function DinePage() {
           >
             One more thing about the campus. The wine bar has self-dispensing tasting machines with up to 24
             pours, which is a low-key, surprisingly useful way to work through the valley&apos;s range.
-            Cooking classes run by reservation. The Chuck Williams Culinary Arts Museum (more than 4,000
-            objects from the Williams-Sonoma founder&apos;s personal collection) is easily worth an hour before
+            Cooking classes run by reservation. The Chuck Williams Culinary Arts Museum—over 4,000
+            objects from the Williams-Sonoma founder&apos;s personal collection—is easily worth an hour before
             dinner.
           </p>
 
@@ -690,7 +716,7 @@ export default function DinePage() {
               500 1st St, Napa, CA 94559
             </p>
             <a
-              href="https://www.ciagroverestaurant.com/"
+              href="https://www.ciaatcopia.com/grove-restaurant"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -705,7 +731,7 @@ export default function DinePage() {
                 textDecoration: "none",
               }}
             >
-              Reserve at The Grove →
+              Visit ciaatcopia.com →
             </a>
           </div>
 
