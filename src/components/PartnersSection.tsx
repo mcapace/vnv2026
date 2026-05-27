@@ -8,12 +8,16 @@ type Cat = "Stay" | "Wine" | "Dine" | "Explore";
 
 const CIA_GROVE = "https://www.ciagroverestaurant.com/";
 
+type ImageFit = "cover" | "contain";
+
 const partnerCards: Array<{
   name: string;
   category: Cat;
   description: string;
   image: string;
+  /** Focal point when using cover; center when using contain. */
   objectPosition?: string;
+  imageFit?: ImageFit;
   href: string;
 }> = [
   {
@@ -21,7 +25,8 @@ const partnerCards: Array<{
     category: "Stay",
     description: "Cottages at the edge of Carneros fog and vines.",
     image: partnerImage("Carneros Resort and Spa/Carneros Resort and Spa Hilltop Pool Hero 1.jpg"),
-    objectPosition: "center 38%",
+    objectPosition: "center 42%",
+    imageFit: "cover",
     href: "https://www.carnerosresort.com/",
   },
   {
@@ -29,7 +34,8 @@ const partnerCards: Array<{
     category: "Stay",
     description: "Spacious guest rooms and a geothermal mineral hot spring tub.",
     image: partnerImage("Mount View/POOL-ACCESS-MVH-SPA.jpg"),
-    objectPosition: "center 48%",
+    objectPosition: "center 40%",
+    imageFit: "cover",
     href: "https://www.mountviewhotel.com/",
   },
   {
@@ -37,7 +43,8 @@ const partnerCards: Array<{
     category: "Wine",
     description: "Pinot Noir on the terrace.",
     image: partnerImage("Etude/ETU_Winery1_HR.jpg"),
-    objectPosition: "center 45%",
+    objectPosition: "center 38%",
+    imageFit: "cover",
     href: "https://www.etudewines.com/",
   },
   {
@@ -45,7 +52,8 @@ const partnerCards: Array<{
     category: "Wine",
     description: "The Oakville benchmark, reborn for tours and tastings.",
     image: partnerImage("Robert Mondavi Winery/mondavi-outdoor-lounge.jpg"),
-    objectPosition: "center 42%",
+    objectPosition: "center center",
+    imageFit: "contain",
     href: "https://www.robertmondavi.com/",
   },
   {
@@ -53,7 +61,8 @@ const partnerCards: Array<{
     category: "Wine",
     description: "Generations of Cabernet craft in St. Helena.",
     image: partnerImage("Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
-    objectPosition: "center 35%",
+    objectPosition: "center 32%",
+    imageFit: "cover",
     href: "https://www.louismartini.com/",
   },
   {
@@ -61,7 +70,8 @@ const partnerCards: Array<{
     category: "Dine",
     description: "Yountville bistro classics with Thomas Keller polish.",
     image: partnerImage("Bouchon Bistro/bouchon-yountville.jpg"),
-    objectPosition: "center 40%",
+    objectPosition: "center center",
+    imageFit: "contain",
     href: "https://www.thomaskeller.com/bouchonyountville",
   },
   {
@@ -71,7 +81,8 @@ const partnerCards: Array<{
     image: partnerImage(
       "Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"
     ),
-    objectPosition: "center 48%",
+    objectPosition: "center 55%",
+    imageFit: "contain",
     href: "https://meadowood.com/dining/forum/",
   },
   {
@@ -79,7 +90,8 @@ const partnerCards: Array<{
     category: "Dine",
     description: "Garden-to-table restaurant at COPIA—seasonal cooking, not campus dining.",
     image: partnerImage("The Grove at CIA Copia/em_20200616_copia_57mask_edited.jpg"),
-    objectPosition: "center 48%",
+    objectPosition: "center 45%",
+    imageFit: "cover",
     href: CIA_GROVE,
   },
   {
@@ -87,7 +99,8 @@ const partnerCards: Array<{
     category: "Explore",
     description: "Napa's live-music downtown anchor.",
     image: partnerImage("JAM Cellars/GM1_1269_mod1.jpg"),
-    objectPosition: "center 48%",
+    objectPosition: "center 35%",
+    imageFit: "cover",
     href: "https://www.jamcellars.com/",
   },
   {
@@ -95,7 +108,8 @@ const partnerCards: Array<{
     category: "Explore",
     description: "Tailored chauffeured days across the valley.",
     image: partnerImage("Pure Luxury Transportation/Pure LuxuryTransportation.jpg"),
-    objectPosition: "center 42%",
+    objectPosition: "center center",
+    imageFit: "contain",
     href: "https://www.pureluxury.com/napa-valley-wine-tours/",
   },
   {
@@ -105,7 +119,8 @@ const partnerCards: Array<{
     image: partnerImage(
       "Marquee Pinball/IMG_9091_DF397D86-4457-47BC-B10036DC82DB61FE_4773c3c1-781a-40f7-bf67e56e5a7a3b26.jpg"
     ),
-    objectPosition: "center 45%",
+    objectPosition: "center center",
+    imageFit: "contain",
     href: "https://www.marqueepinball.com/",
   },
 ];
@@ -222,8 +237,16 @@ export default function PartnersSection() {
                 rel="noopener noreferrer"
                 style={{ display: "flex", flexDirection: "column", flex: 1, textDecoration: "none" }}
               >
-                {/* Image */}
-                <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden" }}>
+                {/* Image — 4:3 frame; contain for wide assets so facades/subjects stay in frame */}
+                <div
+                  className="partner-card__media"
+                  style={{
+                    position: "relative",
+                    aspectRatio: "4 / 3",
+                    overflow: "hidden",
+                    backgroundColor: "rgba(42, 38, 35, 0.06)",
+                  }}
+                >
                   <img
                     src={p.image}
                     alt={p.name}
@@ -232,11 +255,11 @@ export default function PartnersSection() {
                       inset: 0,
                       width: "100%",
                       height: "100%",
-                      objectFit: "cover",
-                      objectPosition: p.objectPosition ?? "center 48%",
+                      objectFit: p.imageFit ?? "cover",
+                      objectPosition: p.objectPosition ?? "center center",
                       transition: "transform 0.7s ease",
                     }}
-                    className="group-hover:scale-105"
+                    className={p.imageFit === "contain" ? "partner-card__img--contain" : "partner-card__img--cover"}
                     loading="lazy"
                   />
                   {/* Category badge */}
