@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { partnerImage } from "@/lib/partner-images";
 
 // TODO: Confirm final 5-town list with Madi Griggs (VNV). Oakville and Rutherford are AVAs per client and should NOT appear as towns here.
 const VALLEY_TOWNS = [
@@ -35,37 +36,37 @@ const VALLEY_TOWNS = [
 ] as const;
 
 /**
- * One “campaign” frame + one venue frame per town. Paths stay unencoded; `townImageSrc` calls `encodeURI`.
- * Venue frames resolve under `public/Partner Images /VNV Partner Images/` (synced from client partner pack).
+ * One “campaign” frame + one venue frame per town.
+ * Venue frames resolve under `public/images/partners/`.
  */
-const PARTNER = (relativePath: string) => `/Partner Images /VNV Partner Images/${relativePath}`;
-/** [0] = left, [1] = right — files under `public/Partner Images /VNV Partner Images/` */
+/** [0] = left, [1] = right */
 const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string, string]> = {
   /* South gateway: vineyard + Carneros (client pack); swap for American Canyon–specific art when available. */
   "american-canyon": [
-    PARTNER("Rombauer Vineyard/Rombauer-Summer-20244442.jpg"),
-    PARTNER("Carneros Resort and Spa/HRD55.jpg"),
+    partnerImage("Rombauer Vineyard/Rombauer-Summer-20244442.jpg"),
+    partnerImage("Carneros Resort and Spa/HRD55.jpg"),
   ],
   napa: [
     "/images/photography/cadet-dining.jpg",
-    PARTNER("JAM Cellars/GM1_1269_mod1.jpg"),
+    partnerImage("JAM Cellars/GM1_1269_mod1.jpg"),
   ],
   yountville: [
-    PARTNER("Bouchon Bistro/bouchon-yountville.jpg"),
-    PARTNER("Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
+    partnerImage("Bouchon Bistro/bouchon-yountville.jpg"),
+    partnerImage("Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
   ],
   "st-helena": [
     "/images/photography/wine-cellar-toast.jpg",
-    PARTNER("Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
+    partnerImage("Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
   ],
   calistoga: [
     "/images/photography/solage-pool-night.jpg",
-    PARTNER("Mount View/POOL-ACCESS-MVH-SPA.jpg"),
+    partnerImage("Mount View/POOL-ACCESS-MVH-SPA.jpg"),
   ],
 };
 
 function townImageSrc(townId: (typeof VALLEY_TOWNS)[number]["id"], slot: 0 | 1): string {
-  return encodeURI(TOWN_IMAGES[townId][slot]);
+  const path = TOWN_IMAGES[townId][slot];
+  return path.startsWith("/images/partners/") ? path : encodeURI(path);
 }
 
 export default function PhotoGallery() {

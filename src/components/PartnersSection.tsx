@@ -2,14 +2,10 @@
 
 import { useRef, useMemo, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import { partnerImage } from "@/lib/partner-images";
 
 type Cat = "Stay" | "Wine" | "Dine" | "Explore";
 
-/** Client asset pack (URLs encode spaces). */
-const img = (path: string) => encodeURI(`/images/Assets for Hub/${path}`);
-/** New partner pack under `public/Partner Images /VNV Partner Images/` (note trailing space in folder name). */
-const partnerPack = (relativePath: string) =>
-  encodeURI(`/Partner Images /VNV Partner Images/${relativePath}`);
 const CIA_GROVE = "https://www.ciagroverestaurant.com/";
 
 const partnerCards: Array<{
@@ -24,7 +20,7 @@ const partnerCards: Array<{
     name: "Carneros Resort & Spa",
     category: "Stay",
     description: "Cottages at the edge of Carneros fog and vines.",
-    image: partnerPack("Carneros Resort and Spa/Carneros Resort and Spa Hilltop Pool Hero 1.jpg"),
+    image: partnerImage("Carneros Resort and Spa/Carneros Resort and Spa Hilltop Pool Hero 1.jpg"),
     objectPosition: "center 38%",
     href: "https://www.carnerosresort.com/",
   },
@@ -32,7 +28,7 @@ const partnerCards: Array<{
     name: "Mount View Hotel & Inn",
     category: "Stay",
     description: "Spacious guest rooms and a geothermal mineral hot spring tub.",
-    image: img("Partner Images/Mount View/POOL-ACCESS-MVH-SPA.jpg"),
+    image: partnerImage("Mount View/POOL-ACCESS-MVH-SPA.jpg"),
     objectPosition: "center 48%",
     href: "https://www.mountviewhotel.com/",
   },
@@ -40,7 +36,7 @@ const partnerCards: Array<{
     name: "Etude Wines",
     category: "Wine",
     description: "Pinot Noir on the terrace.",
-    image: img("Partner Images/Etude/ETU_Winery1_HR.jpg"),
+    image: partnerImage("Etude/ETU_Winery1_HR.jpg"),
     objectPosition: "center 45%",
     href: "https://www.etudewines.com/",
   },
@@ -48,7 +44,7 @@ const partnerCards: Array<{
     name: "Robert Mondavi Winery",
     category: "Wine",
     description: "The Oakville benchmark, reborn for tours and tastings.",
-    image: partnerPack("Robert Mondavi Winery/mondavi-outdoor-lounge.jpg"),
+    image: partnerImage("Robert Mondavi Winery/mondavi-outdoor-lounge.jpg"),
     objectPosition: "center 42%",
     href: "https://www.robertmondavi.com/",
   },
@@ -56,7 +52,7 @@ const partnerCards: Array<{
     name: "Louis Martini Winery",
     category: "Wine",
     description: "Generations of Cabernet craft in St. Helena.",
-    image: img("Partner Images/Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
+    image: partnerImage("Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
     objectPosition: "center 35%",
     href: "https://www.louismartini.com/",
   },
@@ -64,7 +60,7 @@ const partnerCards: Array<{
     name: "Bouchon Bistro",
     category: "Dine",
     description: "Yountville bistro classics with Thomas Keller polish.",
-    image: partnerPack("Bouchon Bistro/bouchon-yountville.jpg"),
+    image: partnerImage("Bouchon Bistro/bouchon-yountville.jpg"),
     objectPosition: "center 40%",
     href: "https://www.thomaskeller.com/bouchonyountville",
   },
@@ -72,7 +68,9 @@ const partnerCards: Array<{
     name: "Meadowood Napa Valley",
     category: "Dine",
     description: "Forum and estate dining in the forest above St. Helena.",
-    image: img("Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
+    image: partnerImage(
+      "Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"
+    ),
     objectPosition: "center 48%",
     href: "https://meadowood.com/dining/forum/",
   },
@@ -80,7 +78,7 @@ const partnerCards: Array<{
     name: "The Grove at COPIA",
     category: "Dine",
     description: "Garden-to-table restaurant at COPIA—seasonal cooking, not campus dining.",
-    image: partnerPack("The Grove at CIA Copia/em_20200616_copia_57mask_edited.jpg"),
+    image: partnerImage("The Grove at CIA Copia/em_20200616_copia_57mask_edited.jpg"),
     objectPosition: "center 48%",
     href: CIA_GROVE,
   },
@@ -88,7 +86,7 @@ const partnerCards: Array<{
     name: "JaM Cellars Ballroom",
     category: "Explore",
     description: "Napa's live-music downtown anchor.",
-    image: img("Partner Images/JAM Cellars/GM1_1269_mod1.jpg"),
+    image: partnerImage("JAM Cellars/GM1_1269_mod1.jpg"),
     objectPosition: "center 48%",
     href: "https://www.jamcellars.com/",
   },
@@ -96,7 +94,7 @@ const partnerCards: Array<{
     name: "Pure Luxury Tours",
     category: "Explore",
     description: "Tailored chauffeured days across the valley.",
-    image: partnerPack("Pure Luxury Transportation/Pure LuxuryTransportation.jpg"),
+    image: partnerImage("Pure Luxury Transportation/Pure LuxuryTransportation.jpg"),
     objectPosition: "center 42%",
     href: "https://www.pureluxury.com/napa-valley-wine-tours/",
   },
@@ -104,7 +102,7 @@ const partnerCards: Array<{
     name: "Marquee Pinball Lounge",
     category: "Explore",
     description: "Playful cocktails and vintage games in downtown Napa.",
-    image: partnerPack(
+    image: partnerImage(
       "Marquee Pinball/IMG_9091_DF397D86-4457-47BC-B10036DC82DB61FE_4773c3c1-781a-40f7-bf67e56e5a7a3b26.jpg"
     ),
     objectPosition: "center 45%",
