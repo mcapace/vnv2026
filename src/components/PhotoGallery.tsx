@@ -41,9 +41,9 @@ const VALLEY_TOWNS = [
  */
 /** [0] = left, [1] = right */
 const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string, string]> = {
-  /* American Canyon: vineyard + Chardonnay Golf Course (client asset). */
+  /* American Canyon: Waterways Bay Trail + Chardonnay Golf Course (client assets). */
   "american-canyon": [
-    partnerImage("Rombauer Vineyard/Rombauer-Summer-20244442.jpg"),
+    partnerImage("American Canyon/waterways-bay-trail.jpg"),
     partnerImage("American Canyon/chardonnay-golf-course.jpg"),
   ],
   napa: [
