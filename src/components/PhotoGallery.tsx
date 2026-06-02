@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { partnerImage, VALLEY_GALLERY_IMAGES_REV } from "@/lib/partner-images";
+import { partnerImage } from "@/lib/partner-images";
 
 // TODO: Confirm final 5-town list with Madi Griggs (VNV). Oakville and Rutherford are AVAs per client and should NOT appear as towns here.
 const VALLEY_TOWNS = [
@@ -41,10 +41,10 @@ const VALLEY_TOWNS = [
  */
 /** [0] = left, [1] = right */
 const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string, string]> = {
-  /* American Canyon: Waterways Bay Trail + Chardonnay Golf Course (Visit Napa Valley). */
+  /* American Canyon: Waterways Bay Trail + Chardonnay Golf Course (client assets). */
   "american-canyon": [
-    partnerImage("American Canyon/ac-waterways-bay-trail-v2.jpg"),
-    partnerImage("American Canyon/ac-chardonnay-golf-v2.jpg"),
+    partnerImage("American Canyon/waterways-bay-trail.jpg"),
+    partnerImage("American Canyon/chardonnay-golf-course.jpg"),
   ],
   napa: [
     "/images/photography/cadet-dining.jpg",
@@ -199,7 +199,6 @@ export default function PhotoGallery() {
                 >
                   <div style={{ position: "relative", aspectRatio: "3/4" }}>
                     <img
-                      key={`${region.id}-${slot}-${VALLEY_GALLERY_IMAGES_REV}`}
                       src={townImageSrc(region.id, slot)}
                       alt={
                         slot === 0
@@ -214,7 +213,7 @@ export default function PhotoGallery() {
                         objectFit: "cover",
                         objectPosition: "center",
                       }}
-                      loading={region.id === "american-canyon" ? "eager" : "lazy"}
+                      loading="lazy"
                     />
                   </div>
                 </figure>
