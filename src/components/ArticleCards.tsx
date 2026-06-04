@@ -21,9 +21,9 @@ const articles = [
   {
     id: "dine",
     label: "A table or an experience",
-    cardPrimary: "Tables worth the drive",
+    cardPrimary: "Tables worth the reservation",
     title: "Where to Eat in Napa Valley",
-    subtitle: "Every reservation earns the drive",
+    subtitle: "Reservations that reward the wait",
     description:
       "Bouchon Bistro, Forum at Meadowood, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
     image: encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
@@ -106,8 +106,8 @@ export default function ArticleCards() {
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose mx-auto max-w-xl"
         >
-          Four ways in. Check in somewhere that feels like the vacation itself. Sit down at a table that
-          earns the drive. Taste the wine that put Napa Valley on the map. A valley full of reasons to stay
+          Four ways in. Check in somewhere that feels like the vacation itself. Sit down at a table worth
+          the reservation. Taste the wine that put Napa Valley on the map. A valley full of reasons to stay
           longer.
         </motion.p>
       </div>

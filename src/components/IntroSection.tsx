@@ -122,10 +122,10 @@ export default function IntroSection() {
           className="hub-prose-serif max-w-2xl text-center"
           style={{ maxWidth: "38rem", opacity: 0.8 }}
         >
-          Napa Valley rewards every kind of trip. Quick escapes, week-long
-          immersions, and everything between. Hundreds of cellar doors, chef-led
-          kitchens, and trailheads sit close enough that you can go wide
-          without spending your vacation behind the wheel.
+          Napa Valley rewards every kind of trip—quick escapes, week-long
+          immersions, and everything in between. Hundreds of cellar doors,
+          chef-led kitchens, and outdoor experiences stack into days that feel
+          full without feeling rushed.
         </motion.p>
       </div>
 

@@ -9,31 +9,42 @@ const VALLEY_TOWNS = [
   {
     id: "american-canyon",
     label: "American Canyon",
-    subcopy: "The southern gateway. The valley widens open from here.",
+    pillLabel: "American Canyon",
+    subcopy: "The southern gateway—where the valley first opens up.",
   },
   {
     id: "napa",
-    label: "Napa",
-    subcopy:
-      "Downtown rooms, the Oxbow Market, and Carneros fog on the vines before breakfast.",
+    label: "City of Napa",
+    pillLabel: "Napa",
+    subcopy: "Urban energy, walkable downtown, and wine-country mornings in Carneros.",
   },
   {
     id: "yountville",
     label: "Yountville",
+    pillLabel: "Yountville",
     subcopy:
-      "Walkable blocks and chef-led tables — the Michelin addresses you already know by name.",
+      "Walkable blocks and chef-led tables—the Michelin addresses by name.",
   },
   {
     id: "st-helena",
     label: "St. Helena",
-    subcopy: "Main Street mornings, estate tastings, and Silverado Trail afternoons.",
+    pillLabel: "St. Helena",
+    subcopy: "Main Street mornings, estate tastings, and boutique afternoons.",
   },
   {
     id: "calistoga",
     label: "Calistoga",
-    subcopy: "Geothermal pools, spa days, and the quieter finale at the valley’s north end.",
+    pillLabel: "Calistoga",
+    subcopy: "Geothermal pools, spa days, and a quieter north-valley close.",
   },
 ] as const;
+
+/** Per-town image focal point [slot 0 | 1] — defaults to center. */
+const TOWN_IMAGE_FOCUS: Partial<
+  Record<(typeof VALLEY_TOWNS)[number]["id"], Partial<Record<0 | 1, string>>>
+> = {
+  yountville: { 0: "center 28%" },
+};
 
 /**
  * One “campaign” frame + one venue frame per town.
@@ -169,7 +180,7 @@ export default function PhotoGallery() {
                 transition: "all 0.2s ease",
               }}
             >
-              {town.label}
+              {town.pillLabel}
             </button>
           ))}
         </div>
@@ -211,7 +222,7 @@ export default function PhotoGallery() {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
-                        objectPosition: "center",
+                        objectPosition: TOWN_IMAGE_FOCUS[region.id]?.[slot] ?? "center",
                       }}
                       loading="lazy"
                     />

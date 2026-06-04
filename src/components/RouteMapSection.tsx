@@ -161,9 +161,9 @@ export default function RouteMapSection() {
               {", one valley."}
             </h2>
             <p className="hub-prose mt-4" style={{ textAlign: "left" }}>
-              Highway 29 runs the valley floor. The Silverado Trail traces the east side. Between them sit
-              five towns and more wineries than any sensible itinerary can hold. Most hops between tastings
-              and tables still clock in under twenty minutes.
+              Highway 29 runs the valley floor. The Silverado Trail traces the east side. Along them sit
+              five towns and more wineries than any sensible itinerary can hold—close enough to pair
+              tastings, tables, and town time in a single day.
             </p>
             <RouteMapIllustration inView={!!inView} />
           </motion.div>
@@ -177,31 +177,31 @@ export default function RouteMapSection() {
             {[
               {
                 town: "Calistoga",
-                note: "Geothermal pools, spa days, the quieter finale.",
+                note: "Geothermal pools, spa days, and a quieter north-valley close.",
                 drive: "",
                 color: "var(--hub-wine)",
               },
               {
                 town: "St. Helena",
-                note: "Main Street, estate tastings, and Silverado Trail afternoons.",
+                note: "Main Street mornings, estate tastings, and boutique afternoons.",
                 drive: "~12 min south",
                 color: "var(--hub-champagne)",
               },
               {
                 town: "Yountville",
-                note: "Walkable blocks and the Michelin addresses you already know by name.",
+                note: "Walkable blocks and the Michelin addresses by name.",
                 drive: "~12 min south",
                 color: "var(--hub-champagne)",
               },
               {
-                town: "Napa",
-                note: "Downtown energy, Oxbow Market, Carneros fog on the vines.",
+                town: "City of Napa",
+                note: "Urban energy, walkable downtown, and wine-country mornings in Carneros.",
                 drive: "~10 min south",
                 color: "var(--hub-sage)",
               },
               {
                 town: "American Canyon",
-                note: "The southern gateway. The valley widens open from here.",
+                note: "The southern gateway—where the valley first opens up.",
                 drive: "~12 min south",
                 color: "var(--hub-sage)",
               },

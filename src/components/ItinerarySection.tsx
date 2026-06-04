@@ -8,9 +8,9 @@ import { partnerImage } from "@/lib/partner-images";
 const days = [
   {
     day: "Day one",
-    title: "Napa",
+    title: "City of Napa",
     subtitle: "Arrive & unwind",
-    mapHint: "South · Napa",
+    mapHint: "South · City of Napa",
     events: [
       {
         time: "3:00 PM",
@@ -22,10 +22,10 @@ const days = [
         url: "https://www.carnerosresort.com/",
       },
       {
-        time: "4:30 PM",
+        time: "2:00 PM",
         activity: "Tasting at Etude",
         description:
-          "Cool-climate Pinot Noir and Chardonnay from the Carneros benchlands. Book an afternoon slot that fits check-in.",
+          "Cool-climate Pinot Noir and Chardonnay from the Carneros benchlands. Etude wraps service by 4:30 PM—book an early-afternoon slot that fits check-in.",
         type: "wine",
         thumb: "/images/photography/wine-cellar-toast.jpg",
         url: "https://www.etudewines.com/",
@@ -53,15 +53,24 @@ const days = [
   // TODO: Confirm Day 2 stops with Madi Griggs. Current version reflects client note that Mondavi sits between Yountville and St. Helena and belongs on the mid-valley day.
   {
     day: "Day two",
-    title: "Yountville to St. Helena",
-    subtitle: "Mid-valley tasting and an estate dinner",
-    mapHint: "Mid-valley · Yountville through Oakville to St. Helena",
+    title: "St. Helena to Yountville",
+    subtitle: "North-valley tastings, then a Yountville bistro night",
+    mapHint: "Mid-valley · St. Helena through Oakville to Yountville",
     events: [
       {
-        time: "11:00 AM",
+        time: "10:30 AM",
+        activity: "Tasting at Louis Martini Winery",
+        description:
+          "Morning in St. Helena at the historic estate on Oakville Road—structured Cabernet and a cellar steeped in Napa Valley history.",
+        type: "wine",
+        thumb: "/images/photography/wine-cellar-toast.jpg",
+        url: "https://www.louismartini.com/",
+      },
+      {
+        time: "1:30 PM",
         activity: "Tasting at Robert Mondavi Winery",
         description:
-          "Late morning in Oakville at the reopened icon, where much of modern Napa Valley began. Book a tasting that lets you ease up from Yountville without rushing.",
+          "Afternoon in Oakville at the reopened icon, where much of modern Napa Valley began. Book a tasting that leaves room before dinner in Yountville.",
         type: "wine",
         thumb: partnerImage("Robert Mondavi Winery/mondavi-outdoor-lounge.jpg"),
         url: "https://www.robertmondavi.com/",
@@ -69,19 +78,10 @@ const days = [
           "Wine Spectator tip: ask what’s new in the reopened hospitality spaces. Tasting formats evolved with the architecture.",
       },
       {
-        time: "2:30 PM",
-        activity: "Tasting at Louis Martini Winery",
-        description:
-          "Afternoon on the Silverado Trail in St. Helena: heritage house, structured Cabernet, and a cellar steeped in Napa Valley history.",
-        type: "wine",
-        thumb: "/images/photography/wine-cellar-toast.jpg",
-        url: "https://www.louismartini.com/",
-      },
-      {
         time: "7:00 PM",
         activity: "Dinner at Bouchon Bistro",
         description:
-          "Yountville’s benchmark French bistro—natural bookend after Mondavi and Martini on the mid-valley day.",
+          "Yountville’s benchmark French bistro—natural bookend after a north-to-south tasting day.",
         type: "dine",
         thumb: partnerImage("Bouchon Bistro/bouchon-yountville.jpg"),
         url: "https://www.thomaskeller.com/bouchonyountville",
@@ -92,14 +92,14 @@ const days = [
   {
     day: "Day three",
     title: "St. Helena to Calistoga",
-    subtitle: "North-end spa and a slower finale",
+    subtitle: "North-end spa and unhurried Calistoga",
     mapHint: "North · St. Helena to Calistoga",
     events: [
       {
         time: "10:00 AM",
         activity: "St. Helena stroll or tasting",
         description:
-          "Walk Main Street tasting rooms or add a Silverado Trail stop while the day is still cool. Flex the morning to match energy.",
+          "Walk Main Street tasting rooms or browse the boutiques while the day is still cool. Flex the morning to match energy.",
         type: "explore",
         thumb: "/images/photography/chandon-hilltop.jpg",
         url: "https://www.visitnapavalley.com/things-to-do/towns-regions/st-helena/",
@@ -174,8 +174,7 @@ export default function ItinerarySection() {
           className="hub-prose"
         >
           A sample three-day rhythm. Steal it outright or remix—swap days, add nights, or stretch into a
-          longer stay. Distances stay short, but Napa Valley covers more ground than the valley floor alone, so
-          leave room to actually enjoy the drive.
+          longer stay. Towns sit close together, but the valley rewards a pace that leaves room to linger.
         </motion.p>
       </div>
 
