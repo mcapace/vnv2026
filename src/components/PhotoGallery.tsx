@@ -10,7 +10,7 @@ const VALLEY_TOWNS = [
     id: "american-canyon",
     label: "American Canyon",
     pillLabel: "American Canyon",
-    subcopy: "The southern gateway—where the valley first opens up.",
+    subcopy: "The southern gateway, where the valley first opens up.",
   },
   {
     id: "napa",
@@ -23,7 +23,7 @@ const VALLEY_TOWNS = [
     label: "Yountville",
     pillLabel: "Yountville",
     subcopy:
-      "Walkable blocks and chef-led tables—the Michelin addresses by name.",
+      "Walkable blocks and chef-led tables, the Michelin addresses you know by name.",
   },
   {
     id: "st-helena",
@@ -38,13 +38,6 @@ const VALLEY_TOWNS = [
     subcopy: "Geothermal pools, spa days, and a quieter north-valley close.",
   },
 ] as const;
-
-/** Per-town image focal point [slot 0 | 1] — defaults to center. */
-const TOWN_IMAGE_FOCUS: Partial<
-  Record<(typeof VALLEY_TOWNS)[number]["id"], Partial<Record<0 | 1, string>>>
-> = {
-  yountville: { 0: "center 28%" },
-};
 
 /**
  * One “campaign” frame + one venue frame per town.
@@ -62,7 +55,7 @@ const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string,
     partnerImage("JAM Cellars/GM1_1269_mod1.jpg"),
   ],
   yountville: [
-    partnerImage("Bouchon Bistro/bouchon-yountville.jpg"),
+    "/images/photography/press-plating.jpg",
     partnerImage("Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
   ],
   "st-helena": [
@@ -213,8 +206,8 @@ export default function PhotoGallery() {
                       src={townImageSrc(region.id, slot)}
                       alt={
                         slot === 0
-                          ? `${region.label}, Napa Valley — campaign photography`
-                          : `${region.label}, Napa Valley — partner image`
+                          ? `${region.label}, Napa Valley, campaign photography`
+                          : `${region.label}, Napa Valley, partner image`
                       }
                       style={{
                         position: "absolute",
@@ -222,7 +215,7 @@ export default function PhotoGallery() {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
-                        objectPosition: TOWN_IMAGE_FOCUS[region.id]?.[slot] ?? "center",
+                        objectPosition: "center",
                       }}
                       loading="lazy"
                     />

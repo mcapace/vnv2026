@@ -78,7 +78,7 @@ const partnerCards: Array<{
   {
     name: "The Grove at COPIA",
     category: "Dine",
-    description: "Garden-to-table restaurant at COPIA—seasonal cooking, not campus dining.",
+    description: "Garden-to-table restaurant at COPIA, seasonal cooking, not campus dining.",
     image: partnerImage("The Grove at CIA Copia/em_20200616_copia_57mask_edited.jpg"),
     objectPosition: "center 45%",
     href: CIA_GROVE,

@@ -162,7 +162,7 @@ export default function RouteMapSection() {
             </h2>
             <p className="hub-prose mt-4" style={{ textAlign: "left" }}>
               Highway 29 runs the valley floor. The Silverado Trail traces the east side. Along them sit
-              five towns and more wineries than any sensible itinerary can hold—close enough to pair
+              five towns and more wineries than any sensible itinerary can hold, close enough to pair
               tastings, tables, and town time in a single day.
             </p>
             <RouteMapIllustration inView={!!inView} />
@@ -184,25 +184,25 @@ export default function RouteMapSection() {
               {
                 town: "St. Helena",
                 note: "Main Street mornings, estate tastings, and boutique afternoons.",
-                drive: "~12 min south",
+                drive: "",
                 color: "var(--hub-champagne)",
               },
               {
                 town: "Yountville",
-                note: "Walkable blocks and the Michelin addresses by name.",
-                drive: "~12 min south",
+                note: "Walkable blocks and the Michelin addresses you know by name.",
+                drive: "",
                 color: "var(--hub-champagne)",
               },
               {
                 town: "City of Napa",
                 note: "Urban energy, walkable downtown, and wine-country mornings in Carneros.",
-                drive: "~10 min south",
+                drive: "",
                 color: "var(--hub-sage)",
               },
               {
                 town: "American Canyon",
-                note: "The southern gateway—where the valley first opens up.",
-                drive: "~12 min south",
+                note: "The southern gateway, where the valley first opens up.",
+                drive: "",
                 color: "var(--hub-sage)",
               },
             ].map((item, i, arr) => (

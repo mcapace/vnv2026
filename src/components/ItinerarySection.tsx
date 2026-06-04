@@ -13,6 +13,15 @@ const days = [
     mapHint: "South · City of Napa",
     events: [
       {
+        time: "2:00 PM",
+        activity: "Tasting at Etude",
+        description:
+          "Cool-climate Pinot Noir and Chardonnay from the Carneros benchlands. Etude wraps service by 4:30 PM, so book an early-afternoon slot before check-in.",
+        type: "wine",
+        thumb: partnerImage("Etude/ETU_Winery1_HR.jpg"),
+        url: "https://www.etudewines.com/",
+      },
+      {
         time: "3:00 PM",
         activity: "Check in at Carneros Resort & Spa",
         description:
@@ -22,19 +31,10 @@ const days = [
         url: "https://www.carnerosresort.com/",
       },
       {
-        time: "2:00 PM",
-        activity: "Tasting at Etude",
-        description:
-          "Cool-climate Pinot Noir and Chardonnay from the Carneros benchlands. Etude wraps service by 4:30 PM—book an early-afternoon slot that fits check-in.",
-        type: "wine",
-        thumb: "/images/photography/wine-cellar-toast.jpg",
-        url: "https://www.etudewines.com/",
-      },
-      {
         time: "7:30 PM",
         activity: "Dinner at The Grove at COPIA",
         description:
-          "Garden-to-table dining at COPIA in Napa’s Oxbow District—close to Carneros and Etude if you want to keep the day compact.",
+          "Garden-to-table dining at COPIA in Napa's Oxbow District, close to Carneros and Etude if you want to keep the day compact.",
         type: "dine",
         thumb: encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
         url: "https://www.ciaatcopia.com/grove-restaurant",
@@ -43,7 +43,7 @@ const days = [
         time: "9:00 PM",
         activity: "Nightcap at JaM Cellars Ballroom",
         description:
-          "Downtown Napa live music when you still have energy after dinner—or swap for cocktails and pinball at Marquee Pinball Lounge a few blocks away.",
+          "Downtown Napa live music when you still have energy after dinner, or swap for cocktails and pinball at Marquee Pinball Lounge a few blocks away.",
         type: "explore",
         thumb: encodeURI("/images/Assets for Hub/Partner Images/JAM Cellars/GM1_1269_mod1.jpg"),
         url: "https://www.jamcellars.com/",
@@ -61,9 +61,9 @@ const days = [
         time: "10:30 AM",
         activity: "Tasting at Louis Martini Winery",
         description:
-          "Morning in St. Helena at the historic estate on Oakville Road—structured Cabernet and a cellar steeped in Napa Valley history.",
+          "Morning in St. Helena at the historic estate on Oakville Road, with structured Cabernet and a cellar steeped in Napa Valley history.",
         type: "wine",
-        thumb: "/images/photography/wine-cellar-toast.jpg",
+        thumb: partnerImage("Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
         url: "https://www.louismartini.com/",
       },
       {
@@ -81,7 +81,7 @@ const days = [
         time: "7:00 PM",
         activity: "Dinner at Bouchon Bistro",
         description:
-          "Yountville’s benchmark French bistro—natural bookend after a north-to-south tasting day.",
+          "Yountville's benchmark French bistro, a natural bookend after a north-to-south tasting day.",
         type: "dine",
         thumb: partnerImage("Bouchon Bistro/bouchon-yountville.jpg"),
         url: "https://www.thomaskeller.com/bouchonyountville",
@@ -96,13 +96,13 @@ const days = [
     mapHint: "North · St. Helena to Calistoga",
     events: [
       {
-        time: "10:00 AM",
-        activity: "St. Helena stroll or tasting",
+        time: "10:30 AM",
+        activity: "Tasting at Robert Mondavi Winery",
         description:
-          "Walk Main Street tasting rooms or browse the boutiques while the day is still cool. Flex the morning to match energy.",
-        type: "explore",
-        thumb: "/images/photography/chandon-hilltop.jpg",
-        url: "https://www.visitnapavalley.com/things-to-do/towns-regions/st-helena/",
+          "Late-morning Oakville tasting at the valley icon before you head north. Book a slot that leaves room for lunch in St. Helena.",
+        type: "wine",
+        thumb: partnerImage("Robert Mondavi Winery/mondavi-outdoor-lounge.jpg"),
+        url: "https://www.robertmondavi.com/",
       },
       {
         time: "12:30 PM",
@@ -173,8 +173,8 @@ export default function ItinerarySection() {
           transition={{ delay: reducedMotion ? 0 : 0.12 }}
           className="hub-prose"
         >
-          A sample three-day rhythm. Steal it outright or remix—swap days, add nights, or stretch into a
-          longer stay. Towns sit close together, but the valley rewards a pace that leaves room to linger.
+          A sample three-day rhythm. Steal it outright or remix: swap days, add nights, or stretch into a
+          longer stay. Towns sit close together, and the valley rewards a pace that leaves room to linger.
         </motion.p>
       </div>
 
