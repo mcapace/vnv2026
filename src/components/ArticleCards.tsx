@@ -44,10 +44,9 @@ const articles = [
     image: encodeURI("/images/Assets for Hub/Partner Images/Etude/ETU_Winery1_HR.jpg"),
     objectPosition: "50% 45%",
     partners: ["Etude", "Robert Mondavi", "Louis Martini"],
-    status: "coming-soon" as const,
-    publishDate: "Coming soon",
+    status: "live" as const,
+    publishDate: null as string | null,
     articleUrl: "/wine",
-    wineSpectatorPick: true,
   },
   {
     id: "explore",
