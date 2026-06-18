@@ -6,7 +6,7 @@ import { useCountUp } from "@/hooks/useCountUp";
 
 const stats = [
   { key: "wineries", target: 400, suffixPlus: true, label: "Wineries" },
-  { key: "miles", target: 50, suffixPlus: false, label: "Miles" },
+  { key: "miles", target: 50, suffixPlus: false, label: "Miles (Napa County)" },
   { key: "michelin", target: 15, suffixPlus: false, label: "Michelin stars" },
   { key: "towns", target: 5, suffixPlus: false, label: "Towns & cities" },
 ] as const;
@@ -102,7 +102,7 @@ export default function IntroSection() {
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           className="section-eyebrow"
         >
-          Why this valley
+          Why This Valley
         </motion.p>
         <motion.h2
           id="discover-heading"
@@ -122,8 +122,8 @@ export default function IntroSection() {
           className="hub-prose-serif max-w-2xl text-center"
           style={{ maxWidth: "38rem", opacity: 0.8 }}
         >
-          Napa Valley rewards every kind of trip, from quick escapes and week-long
-          immersions to everything in between. Hundreds of cellar doors, chef-led
+          Napa Valley rewards every kind of trip, from quick escapes, week-long
+          immersions to everything between. Hundreds of cellar doors, chef-led
           kitchens, and tasting rooms stack into days that feel full without feeling
           rushed.
         </motion.p>

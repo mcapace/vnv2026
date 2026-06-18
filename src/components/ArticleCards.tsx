@@ -5,9 +5,9 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 const articles = [
   {
     id: "stay",
-    label: "Unpack here",
-    cardPrimary: "Where you land",
-    title: "Where to Stay in Napa Valley",
+    label: "Stay",
+    cardPrimary: "Where to Stay in Napa Valley",
+    title: "",
     subtitle: "Where the valley becomes your room",
     description:
       "From vineyard-edge bungalows at Carneros Resort to the mineral-spa heritage of Mount View Hotel & Inn in Calistoga, a guide to sleeping well in wine country.",
@@ -20,24 +20,24 @@ const articles = [
   },
   {
     id: "dine",
-    label: "A table or an experience",
-    cardPrimary: "Tables worth the reservation",
-    title: "Where to Eat in Napa Valley",
-    subtitle: "Reservations that reward the wait",
+    label: "Dine",
+    cardPrimary: "Where to Eat in Napa Valley",
+    title: "",
+    subtitle: "Every reservation earns the drive",
     description:
-      "Bouchon Bistro, Forum at Meadowood, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
+      "Bouchon Bistro, Calistoga Depot, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
     image: encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
     objectPosition: "50% 48%",
-    partners: ["Bouchon Bistro", "Forum at Meadowood", "The Grove @ COPIA"],
+    partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
     status: "live" as const,
     publishDate: null as string | null,
     articleUrl: "/dine",
   },
   {
     id: "wine",
-    label: "Sip to savor",
-    cardPrimary: "The cellar doors",
-    title: "Wineries Across Napa Valley",
+    label: "Wine",
+    cardPrimary: "Wineries Across Napa Valley",
+    title: "",
     subtitle: "Four hundred cellar doors, many styles",
     description:
       "From icons like Robert Mondavi to elegance at Etude and heritage at Louis Martini. A spectrum of Napa Valley cellars, with Wine Spectator context.",
@@ -50,10 +50,10 @@ const articles = [
   },
   {
     id: "explore",
-    label: "Linger longer",
-    cardPrimary: "Chauffeured days to downtown nights",
-    title: "Things to Do in Napa Valley",
-    subtitle: "Tours, music, and play across the valley",
+    label: "Explore",
+    cardPrimary: "Things to Do in Napa Valley",
+    title: "",
+    subtitle: "When the day doesn't end at the last pour",
     description:
       "JaM Cellars live music, Pure Luxury chauffeured days, Marquee Pinball in downtown Napa. Après-vine energy across Napa Valley.",
     image: encodeURI("/images/Assets for Hub/Partner Images/JAM Cellars/GM1_1269_mod1.jpg"),
@@ -87,7 +87,7 @@ export default function ArticleCards() {
           animate={headerInView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           className="section-eyebrow"
         >
-          The guide
+          The Guide
         </motion.p>
         <motion.h2
           id="features-heading"
@@ -234,18 +234,20 @@ function ArticleRow({
         >
           {article.cardPrimary}
         </h3>
-        <p
-          style={{
-            fontFamily: "var(--font-cormorant), Georgia, serif",
-            fontSize: "1.05rem",
-            fontWeight: 400,
-            color: "rgba(255,255,255,0.88)",
-            lineHeight: 1.3,
-            marginBottom: "0.35rem",
-          }}
-        >
-          {article.title}
-        </p>
+        {article.title ? (
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "1.05rem",
+              fontWeight: 400,
+              color: "rgba(255,255,255,0.88)",
+              lineHeight: 1.3,
+              marginBottom: "0.35rem",
+            }}
+          >
+            {article.title}
+          </p>
+        ) : null}
         <p
           style={{
             fontFamily: "var(--font-cormorant), Georgia, serif",

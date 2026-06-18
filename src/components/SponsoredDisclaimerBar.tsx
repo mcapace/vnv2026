@@ -41,7 +41,7 @@ export default function SponsoredDisclaimerBar() {
           maxWidth: "72rem",
         }}
       >
-        Sponsored content. Produced in partnership with Visit Napa Valley and Wine Spectator.
+        Sponsored content, produced in partnership with Visit Napa Valley and Wine Spectator.
       </p>
     </div>
   );

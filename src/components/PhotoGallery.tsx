@@ -8,7 +8,7 @@ import { partnerImage } from "@/lib/partner-images";
 const VALLEY_TOWNS = [
   {
     id: "american-canyon",
-    label: "American Canyon",
+    label: "American Canyon & Carneros",
     pillLabel: "American Canyon",
     subcopy: "The southern gateway, where the valley first opens up.",
   },

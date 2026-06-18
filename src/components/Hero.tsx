@@ -123,7 +123,7 @@ export default function Hero() {
             marginBottom: "2rem",
           }}
         >
-          There&apos;s the quick escape, and then there&apos;s the week that rearranges your calendar.
+          There&apos;s a quick escape, and then there&apos;s the week that rearranges your calendar.
           World-class wine, chef-led tables, trails, spas, small-town nights. Show up how you want.
         </motion.p>
 
