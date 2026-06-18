@@ -99,19 +99,19 @@ const days = [
         time: "10:30 AM",
         activity: "Tasting at Robert Mondavi Winery",
         description:
-          "Late-morning Oakville tasting at the valley icon before you head north. Book a slot that leaves room for lunch in St. Helena.",
+          "Late-morning Oakville tasting at the valley icon before you head north. Book a slot that leaves room for lunch in Calistoga.",
         type: "wine",
         thumb: partnerImage("Robert Mondavi Winery/mondavi-outdoor-lounge.jpg"),
         url: "https://www.robertmondavi.com/",
       },
       {
         time: "12:30 PM",
-        activity: "Lunch at Forum, Meadowood Napa Valley",
+        activity: "Lunch at Calistoga Depot",
         description:
-          "Wine-country fine dining on the Meadowood estate in St. Helena. Book ahead and build the rest of the afternoon around the reservation.",
+          "Train-car dining, distillery, and beer garden at Calistoga's restored 1868 depot. Book the JCB Parlor Car or wander the cars without a fixed plan.",
         type: "dine",
-        thumb: "/images/photography/press-plating.jpg",
-        url: "https://meadowood.com/dining/forum/",
+        thumb: "/images/photography/solage-pool-night.jpg",
+        url: "https://www.calistogadepot.com",
       },
       {
         time: "3:30 PM",

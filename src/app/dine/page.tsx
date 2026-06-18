@@ -15,8 +15,8 @@ export default function DinePage() {
         style={{ height: "70vh", minHeight: "520px", backgroundColor: "var(--hub-navy)" }}
       >
         <img
-          src={encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg")}
-          alt="Fine dining at Meadowood Napa Valley"
+          src="/images/photography/solage-pool-night.jpg"
+          alt="Evening in Calistoga, Napa Valley"
           style={{
             position: "absolute",
             inset: 0,
@@ -95,8 +95,8 @@ export default function DinePage() {
               maxWidth: "38rem",
             }}
           >
-            People come for the wine. Fair enough. But three restaurants in Yountville, St. Helena,
-            and Napa have a habit of becoming the reason visitors rebook.
+            People come for the wine. Fair enough. But three restaurants in Yountville, Napa, and
+            Calistoga have a habit of becoming the reason visitors rebook.
           </p>
           <p
             style={{
@@ -339,7 +339,7 @@ export default function DinePage() {
           {/* Divider */}
           <div style={{ borderTop: "1px solid var(--hub-line)", margin: "3rem 0" }} />
 
-          {/* Forum at Meadowood section */}
+          {/* Calistoga Depot section */}
           <h2
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
@@ -350,7 +350,7 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Forum at Meadowood, St. Helena
+            Calistoga Depot, Calistoga
           </h2>
 
           <p
@@ -362,12 +362,73 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Meadowood has long been one of Napa Valley&apos;s quiet constants, a private retreat folded
-            into the oaks above St. Helena, more whispered about than shown off. For years, it set
-            the rhythm of the valley&apos;s most understated luxury, where wine, service, and setting
-            were treated as disciplines rather than spectacle. After the 2020 Glass Fire, the property
-            entered a new chapter, and with it came the return of one of its most distinctive
-            expressions: Forum at Meadowood.
+            A quick history lesson, because the building demands it. Samuel Brannan became
+            California&apos;s first millionaire during the Gold Rush of 1849, not by mining, but by
+            selling supplies to miners. Smart man. He founded Calistoga, built the first hot springs
+            resort, opened a distillery, and in 1868 constructed the train depot that served as the
+            northern end of the Napa Valley line.
+          </p>
+
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "1.1875rem",
+              lineHeight: 1.75,
+              color: "var(--hub-muted)",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Brannan wanted tourists. He got them for a while. Then the freight line shut down, the depot
+            went dark, and Calistoga became the quiet tail of the valley, a town people drove through on
+            the way to somewhere that seemed more important.
+          </p>
+
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "1.1875rem",
+              lineHeight: 1.75,
+              color: "var(--hub-muted)",
+              marginBottom: "1.5rem",
+            }}
+          >
+            Enter Jean-Charles Boisset, the French vigneron who has been collecting California wine
+            properties with the energy of a man who has never once been told to slow down. He bought the
+            depot in 2021. Over three years, working with proprietor Michael Madden, he turned it into
+            something that resists a clean label: part distillery, part dining complex, part wine bar,
+            part beer garden, part live music venue, organized around six restored 19th-century train cars
+            parked on the original tracks.
+          </p>
+
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "1.1875rem",
+              lineHeight: 1.75,
+              color: "var(--hub-muted)",
+              marginBottom: "1.5rem",
+            }}
+          >
+            It opened April 2024. Within weeks it was the most interesting evening in Calistoga, which is
+            saying something for a town that&apos;s been here since 1868.
+          </p>
+
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant), Georgia, serif",
+              fontSize: "1.1875rem",
+              lineHeight: 1.75,
+              color: "var(--hub-muted)",
+              marginBottom: "1.5rem",
+            }}
+          >
+            The best advice for visitors: don&apos;t plan. Just walk around. The main building is a Great
+            Hall with high ceilings, a bar decorated with miners&apos; shovels, a nod to how Brannan made
+            his fortune, and two massive copper stills that actually produce spirits. This is the
+            Calistoga Depot Distillery 1868. The lineup includes Fame &amp; Misfortune rye, Prosperous
+            &amp; Penniless gin, and brandies aged in Boisset wine barrels. The whole program connects
+            directly back to Brannan&apos;s own distillery on this exact property a hundred and sixty years
+            ago.
           </p>
 
           {/* Pull quote */}
@@ -383,12 +444,9 @@ export default function DinePage() {
                 color: "var(--hub-ink)",
               }}
             >
-              Forum is not a single restaurant so much as a gathered idea: part dining
-              room, part culinary salon, part stage for Meadowood&apos;s ongoing
-              conversation with food and wine. Reimagined under proprietor and
-              vintner Jean-Charles Boisset&apos;s stewardship of Meadowood&apos;s hospitality
-              programs, it leans into the property&apos;s original ethos: refinement without
-              noise, precision without performance.
+              They call the JCB Parlor Car the Orient Express of Calistoga. Iridescent fabric, a
+              shell-covered fountain, oysters, caviar, Champagne. It sounds like too much. It is exactly
+              right.
             </p>
           </blockquote>
 
@@ -401,10 +459,11 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            The setting reflects that restraint. Light moves softly through the trees outside, catching
-            on natural woods, stone, and glass. Inside, the room feels intentionally unhurried, as
-            though it has no interest in the outside world&apos;s urgency. It is the kind of space that
-            rewards attention, not with spectacle, but with detail.
+            Step onto the platform and each train car becomes a different restaurant. The JCB Parlor Car
+            calls itself the &quot;Orient Express of Calistoga&quot; and does not appear to be joking.
+            Upholstered in iridescent fabric the color of a raw oyster, lit low and moody, with a fountain
+            crusted in shells at the center. The menu is oysters, caviar, small plates, JCB Champagne.
+            Glamorous and weird and somehow exactly calibrated.
           </p>
 
           <p
@@ -416,10 +475,11 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            At its core is a kitchen driven by seasonal tasting menus that read like a tour through
-            Northern California at its most composed. Nothing is overworked. Flavors are clean,
-            architectural, quietly confident. Dishes arrive with the kind of clarity that suggests the
-            chef is more interested in balance than declaration.
+            Next car over is Casa Obsidiana, and suddenly the scene shifts to Mexico. Kaleidoscopic tile,
+            Oaxacan masks on the walls, big saturated colors everywhere. Executive chef Jorge Perez does
+            classically prepared Oaxacan food that holds its own against restaurants twice the price in
+            New York. The tequila is Boisset&apos;s own label, produced with the Beckmann Gonzalez family
+            in Jalisco and aged in Boisset Chardonnay barrels from Napa. Best ordered neat.
           </p>
 
           <p
@@ -431,10 +491,11 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Service follows the same cadence: present, exacting, never intrusive. Wine, as expected
-            at Meadowood, is central. The cellar reaches deep into Napa Valley and beyond, but the
-            pairing philosophy favors dialogue over dominance: bottles chosen not to impress, but
-            to complete the plate.
+            The First Millionaire&apos;s Saloon, named for Brannan, has barstools that are literal saddles
+            and a spirits list heavy on the house whiskeys and brandies. The backyard beer garden runs two
+            outdoor bars with live music Friday through Sunday night. The Napa Valley Vine Trail, all 47
+            miles of it, terminates right here at the original depot. Cyclists show up on weekend
+            afternoons looking like they&apos;ve earned every drink on the menu. They have.
           </p>
 
           <p
@@ -446,9 +507,10 @@ export default function DinePage() {
               marginBottom: "2.5rem",
             }}
           >
-            There is a sense at Forum that everything has been considered twice, then edited once
-            more. The result is not nostalgia for Meadowood&apos;s past, but a continuation of its original
-            idea: hospitality as craft, expressed with calm authority.
+            Boisset&apos;s suggested route through the property: wood-fired pizza and a beer on the
+            Provisions patio, then a spirits flight in the distillery, then a Casa Obsidiana mole with a
+            tequila cocktail. Or for later arrivals: Parlor Car first, Saloon after, Mexico to close. Both
+            routes deliver.
           </p>
 
           {/* Property card */}
@@ -482,13 +544,13 @@ export default function DinePage() {
                 marginBottom: "0.25rem",
               }}
             >
-              Forum at Meadowood
+              Calistoga Depot
             </h3>
             <p style={{ fontSize: "0.875rem", color: "var(--hub-muted)", marginBottom: "0.875rem" }}>
-              900 Meadowood Ln, St. Helena, CA 94574
+              1458 Lincoln Ave, Calistoga, CA 94515
             </p>
             <a
-              href="https://meadowood.com/dining/forum/"
+              href="https://www.calistogadepot.com"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -503,7 +565,7 @@ export default function DinePage() {
                 textDecoration: "none",
               }}
             >
-              Visit meadowood.com →
+              Visit calistogadepot.com →
             </a>
           </div>
 
