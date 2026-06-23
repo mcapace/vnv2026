@@ -25,10 +25,12 @@ const articles = [
     title: "",
     subtitle: "Every reservation earns the drive",
     description:
-      "Bouchon Bistro, Calistoga Depot, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
-    image: "/images/photography/solage-pool-night.jpg",
+      "Bouchon Bistro, Forum at Meadowood, and The Grove at CIA at COPIA. Three very different tables, one California valley.",
+    image: encodeURI(
+      "/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"
+    ),
     objectPosition: "50% 48%",
-    partners: ["Bouchon Bistro", "Calistoga Depot", "The Grove @ COPIA"],
+    partners: ["Bouchon Bistro", "Forum at Meadowood", "The Grove @ COPIA"],
     status: "live" as const,
     publishDate: null as string | null,
     articleUrl: "/dine",

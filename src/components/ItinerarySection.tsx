@@ -106,12 +106,14 @@ const days = [
       },
       {
         time: "12:30 PM",
-        activity: "Lunch at Calistoga Depot",
+        activity: "Lunch at Forum at Meadowood",
         description:
-          "Train-car dining, distillery, and beer garden at Calistoga's restored 1868 depot. Book the JCB Parlor Car or wander the cars without a fixed plan.",
+          "Seasonal tasting menus in a private St. Helena retreat. Understated luxury, deep cellar, and a kitchen driven by Northern California produce.",
         type: "dine",
-        thumb: "/images/photography/solage-pool-night.jpg",
-        url: "https://www.calistogadepot.com",
+        thumb: encodeURI(
+          "/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"
+        ),
+        url: "https://www.meadowood.com",
       },
       {
         time: "3:30 PM",

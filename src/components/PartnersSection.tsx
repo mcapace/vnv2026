@@ -66,12 +66,14 @@ const partnerCards: Array<{
     href: "https://www.thomaskeller.com/bouchonyountville",
   },
   {
-    name: "Calistoga Depot",
+    name: "Forum at Meadowood",
     category: "Dine",
-    description: "Distillery, train-car dining, and live music at Calistoga's restored 1868 depot.",
-    image: "/images/photography/solage-pool-night.jpg",
-    objectPosition: "center 58%",
-    href: "https://www.calistogadepot.com",
+    description: "Seasonal tasting menus and quiet luxury above St. Helena.",
+    image: partnerImage(
+      "Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"
+    ),
+    objectPosition: "center 52%",
+    href: "https://www.meadowood.com",
   },
   {
     name: "The Grove at COPIA",

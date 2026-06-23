@@ -91,7 +91,7 @@ export default function StayPage() {
               marginBottom: "0.875rem",
             }}
           >
-            Where to Stay in Napa Valley: A Tale of Two Ends
+            Where to Stay in Napa Valley: From Napa to Calistoga
           </h1>
           <p
             style={{
@@ -103,9 +103,8 @@ export default function StayPage() {
               maxWidth: "38rem",
             }}
           >
-            Many travelers set out to experience Napa Valley in just 48 hours, and wonder why it
-            felt rushed. Book two hotels instead of one, south end and north end, and the whole valley
-            opens up.
+            Many travelers try to pack Napa Valley into a weekend. Instead, divide your stay between
+            two locations and let the valley come to you.
           </p>
           <p
             style={{
@@ -154,9 +153,11 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            Everyone says go north. Go to Oakville, go to Rutherford, go where the Cabernet is.
-            That&apos;s the marquee stuff, and fair enough. But nobody mentions the fog at the southern
-            end of the valley, which turns out to be the thing worth remembering.
+            The fog that sometimes drifts through the southern end of the valley may be Napa&apos;s most
+            overlooked spectacle. It comes up off the San Pablo Bay before sunrise. Thick, damp, weirdly
+            quiet. Sits on the vineyards like it has nowhere else to be. By mid-morning it lifts and the
+            light goes gold and sharp, the kind of light that makes people put their phones in a drawer and
+            forget about them for hours.
           </p>
 
           <p
@@ -168,10 +169,9 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            It comes up off the San Pablo Bay before sunrise. Thick, damp, weirdly quiet. Sits on the
-            vineyards like it has nowhere else to be. By mid-morning it lifts and the light goes gold
-            and sharp, the kind of light that makes people put their phones in a drawer and forget
-            about them for hours.
+            The Carneros region is the cooler, windier, more pastoral end of Napa Valley. The wines are
+            different down there, Pinot Noir and Chardonnay instead of the big Cabernets, and the whole
+            pace of things runs slower.
           </p>
 
           <p
@@ -183,24 +183,10 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            Carneros is the cooler, windier, less famous end of Napa Valley. The wines are different down
-            there, Pinot Noir and Chardonnay instead of the big Cabernets, and the whole pace of things runs
-            slower.
-          </p>
-
-          <p
-            style={{
-              fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontSize: "1.1875rem",
-              lineHeight: 1.75,
-              color: "var(--hub-muted)",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Carneros Resort and Spa doesn&apos;t have a main building, which might be the key to the
-            whole experience. Freestanding cottages, dozens of them, spread across working culinary
-            gardens, olive groves and grapevines that are part of the Carneros American Viticultural
-            Area (AVA). Early morning, walking through, the property feels like a very expensive farm that
+            Carneros Resort and Spa feels less like a traditional resort and more like a small countryside
+            community woven into the vineyards. Freestanding cottages, dozens of them, spread across working
+            culinary gardens, olive groves and grapevines that are part of the Carneros American Viticultural
+            Area (AVA). Early morning, walking through the property feels like a very exclusive farm that
             someone decided to put soaking tubs in. That is meant as a compliment.
           </p>
 
@@ -215,8 +201,8 @@ export default function StayPage() {
           >
             The Signature Cottages are where most guests stay. Wood-burning fireplaces. An outdoor
             shower that will ruin every other shower going forward. The beds are the kind nobody can
-            describe without sounding like an advertisement. Suffice it to say eight uninterrupted hours is
-            not unusual here. The backyards are private enough that an entire afternoon can pass with a
+            describe without sounding like an advertisement, suffice it to say eight uninterrupted hours is
+            not unusual here. The patios are private enough that an entire afternoon can pass with a
             book and not another guest in sight.
           </p>
 
@@ -230,9 +216,9 @@ export default function StayPage() {
             }}
           >
             For those who need more space: the Wellness Suite has a private sauna and a
-            recovery-oriented design that sounds gimmicky on paper and is not. The Carneros
-            Residence is a full multi-bedroom house with its own hot tub and kitchen, turning the
-            whole thing into something closer to a group house rental than a traditional hotel.
+            recovery-oriented design. The Carneros Residence is a full multi-bedroom house with its own hot
+            tub and kitchen, blurring the line between luxury hotel accommodations and a private vacation
+            home.
           </p>
 
           {/* Pull quote */}
@@ -265,7 +251,7 @@ export default function StayPage() {
           >
             A routine forms without anyone planning it. Coffee on the porch. A wander through the FARM
             culinary gardens, which are real gardens, not a set piece: staff can be spotted actually
-            harvesting chard most mornings. Maybe a ten-minute drive to Domaine Carneros for a
+            harvesting chard most mornings. A ten-minute drive to Domaine Carneros for a
             mid-day sparkling wine. That estate, founded by Taittinger, looks like a château that
             got lost on its way to Champagne and ended up on a California hillside. The terrace alone
             justifies the detour.
@@ -295,9 +281,9 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            Late afternoon the Town Square gets going. Wine tastings. Honey tastings. Sometimes live
+            Late afternoon the resort&apos;s Town Square gets going. Wine tastings. Honey tastings. Sometimes live
             music. The particular satisfaction of watching someone at the next table realize they
-            haven&apos;t looked at their phone since breakfast. The rooftop pool has a view over the
+            haven&apos;t looked at their phone since breakfast. The hillside pool has a view over the
             vines that, after a glass of the local Pinot Noir, has been known to rearrange priorities.
           </p>
 
@@ -310,11 +296,13 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            For wine enthusiasts: the Carneros AVA is very underrated for how good it is. Less crowded
-            than Oakville or Rutherford. The producers (Etude, Bouchaine, Saintsbury,
-            Domaine Carneros) make cool-climate Pinot Noir and Chardonnay that tastes nothing like the big
-            ripe Cabs everyone associates with Napa Valley. Leaner, more nervous, more interesting. This
-            resort sits in the geographic center of all of it.
+            For wine enthusiasts: the Carneros AVA is often overlooked in a region synonymous with Cabernet
+            Sauvignon. Yet producers including Etude, Bouchaine, Saintsbury, and Domaine Carneros
+            consistently turn out some of Napa Valley&apos;s most compelling Pinot Noir and Chardonnay,
+            highlighting the diversity of styles the valley can achieve. The wines here tend toward
+            freshness, structure, and nuance, offering a different expression of Napa than many visitors
+            expect. Carneros Resort and Spa sits at the heart of it all, making it an ideal base for
+            exploring the appellation.
           </p>
 
           <p
@@ -411,9 +399,10 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            The drive north changes everything. Mountains get taller and closer. The road shrinks. And
-            then there&apos;s Calistoga, a stubborn little town built on top of geothermal hot springs,
-            surrounded by wineries, full of people who chose to live here instead of somewhere shinier.
+            As you head north, Napa Valley becomes a little wilder and a little quieter. Mountains get
+            taller and closer. The road shrinks. At the valley&apos;s northern end sits Calistoga, a town
+            built on top of geothermal hot springs, surrounded by wineries, with the kind of lived-in charm
+            that keeps people around longer than they planned.
           </p>
 
           <p
@@ -425,10 +414,9 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            Calistoga has retained a more relaxed, unvarnished character compared with much of
-            southern Napa Valley. Not aggressively, just cheerfully, persistently. The result is a
-            place that feels like itself instead of a version of itself designed for out-of-towners.
-            That&apos;s the whole draw.
+            Calistoga has retained a relaxed, unvarnished character. Not aggressively, just cheerfully,
+            persistently. The result is a place that feels like itself instead of a version of itself
+            designed for out-of-towners. That&apos;s the whole draw.
           </p>
 
           <p
@@ -440,10 +428,11 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            The Mount View Hotel & Spa has been on Lincoln Avenue since 1919. John B. Ghisolfo, an
-            Italian immigrant, built it, then ran the bar and restaurant for fifty years. He served four
-            terms as mayor. Locals called him Mr. Calistoga. The building made the National Register of
-            Historic Places in &apos;81.
+            The Mount View has been part of Lincoln Avenue since 1919, when Italian immigrant John B.
+            Ghisolfo opened its doors. Hotel owner, restaurateur, four-term mayor, his influence shaped
+            Calistoga in ways that extended well beyond the property itself. Locals called him Mr.
+            Calistoga, and more than a century later, the hotel remains woven into the fabric of the town
+            he helped build.
           </p>
 
           <p
@@ -455,11 +444,14 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            Michael and Stephanie Woods took over in 1990 and did something worth respecting enormously:
-            instead of gutting the place and going contemporary, they spent thirty-plus years making the
-            existing character deeper. Reconnected the jacuzzi to the underground geothermal springs.
-            Restored the Art Deco details that were already there. Named the restaurant Johnny&apos;s,
-            after Ghisolfo.
+            That sense of continuity is part of the appeal. When Michael and Stephanie Woods took
+            stewardship of the property, they chose preservation over reinvention, retaining its Art Deco
+            character, restoring access to its geothermal mineral waters and allowing the building&apos;s
+            historic bones to shine. Added to the National Register of Historic Places in 1981, the Mount
+            View feels neither frozen in time nor overly polished. Like Calistoga itself, it remains
+            comfortably rooted in its past while embracing the present, a philosophy evident throughout
+            the property, from its thoughtfully updated guest rooms to the relaxed hospitality of
+            Robert&apos;s Tropical Table.
           </p>
 
           <p
@@ -529,7 +521,7 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            The geothermal hot spring tub is the real center of the property. Calistoga sits on
+            The geothermal springs hot tub is the real center of the property. Calistoga sits on
             underground springs that have drawn visitors since the 1800s, and the Mount View taps
             straight into the source. Guests are sitting in water heated by the volcanic activity
             underneath them. It hits different from a regular hot tub. The body knows the difference even
@@ -545,11 +537,10 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            True Spa is run by two independent therapists who partner with the hotel. The
-            independence matters: they control and customize the program. The Calistoga mud
-            wraps use volcanic ash mixed the traditional way. There&apos;s a Himalayan salt sauna. A
-            heated pool with enough lounge space to claim a cabana and not move until dinner.
-            Overnight guests are offered ten percent off all spa services.
+            True Spa is run by two independent therapists who partner with the hotel and customize the
+            program. The Calistoga mud wraps use volcanic ash mixed the traditional way. There&apos;s a
+            Himalayan salt sauna. A heated pool with enough lounge space to claim a cabana and not move
+            until dinner. Overnight guests are offered ten percent off all spa services.
           </p>
 
           <p
@@ -561,13 +552,12 @@ export default function StayPage() {
               marginBottom: "1.5rem",
             }}
           >
-            Calistoga is best approached without an agenda. Lincoln Avenue gathers the
-            essentials: thoughtful, ingredient-driven restaurants, a scattering of independent shops,
-            and tasting rooms for producers who&apos;ve chosen to remain at the valley&apos;s quieter
-            northern edge. The wines reflect their setting: Cabernet Sauvignon and Zinfandel
-            shaped by Calistoga&apos;s warmer, drier climate, offering a riper, more muscular
-            counterpoint to the bottlings poured in Carneros to the south. It&apos;s reason enough to see
-            both ends of Napa in a single trip.
+            Calistoga is best approached without an agenda. Lincoln Avenue gathers the essentials:
+            thoughtful, ingredient-driven restaurants, a scattering of independent shops, and tasting
+            rooms for producers from the valley&apos;s northern edge. The wines reflect their setting:
+            Cabernet Sauvignon and Zinfandel shaped by Calistoga&apos;s warmer, drier climate, offering a
+            riper, more muscular counterpoint to the bottlings poured in Carneros to the south. It&apos;s
+            reason enough to see both ends of Napa Valley in a single trip.
           </p>
 
           <p
@@ -579,11 +569,11 @@ export default function StayPage() {
               marginBottom: "2.5rem",
             }}
           >
-            Evening settles in easily here. Return to the Mount View, where time seems to move at
-            its own pace. Dinner at Johnny&apos;s is unfussy and grounded, the kind of place that
-            rewards regulars and first-timers alike. Then, the springs, Calistoga&apos;s oldest
-            indulgence, still deliver what they always have. Some places evolve; others understand
-            the value of holding steady. This is one of them.
+            Evening settles in easily here. Return to the Mount View, where time seems to move at its own
+            pace, then head to Eight North, one of Calistoga&apos;s most compelling tables. Back at the
+            hotel, the mineral pools await. Calistoga&apos;s oldest indulgence still delivers exactly
+            what visitors have sought for generations. Some places evolve; others understand the value of
+            holding steady. This is one of them.
           </p>
 
           {/* Property card */}

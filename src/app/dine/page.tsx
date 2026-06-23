@@ -15,8 +15,10 @@ export default function DinePage() {
         style={{ height: "70vh", minHeight: "520px", backgroundColor: "var(--hub-navy)" }}
       >
         <img
-          src="/images/photography/solage-pool-night.jpg"
-          alt="Evening in Calistoga, Napa Valley"
+          src={encodeURI(
+            "/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"
+          )}
+          alt="Forum at Meadowood, St. Helena"
           style={{
             position: "absolute",
             inset: 0,
@@ -83,7 +85,7 @@ export default function DinePage() {
               marginBottom: "0.875rem",
             }}
           >
-            Where to Eat in Napa Valley: Three Tables That Justify the Trip
+            Where to Eat in Napa Valley: Three Tables Worth Seeking Out
           </h1>
           <p
             style={{
@@ -95,8 +97,9 @@ export default function DinePage() {
               maxWidth: "38rem",
             }}
           >
-            People come for the wine. Fair enough. But three restaurants in Yountville, Napa, and
-            Calistoga have a habit of becoming the reason visitors rebook.
+            People come for the wine. Fair enough. But great meals are part of what keeps Napa Valley on
+            travelers&apos; return lists. Consider these three standout restaurants in Yountville, St.
+            Helena, and the City of Napa.
           </p>
           <p
             style={{
@@ -241,8 +244,8 @@ export default function DinePage() {
               }}
             >
               The Vin en Carafe program is, by many accounts, the smartest wine play in the valley right
-              now. Exclusive pours from top Napa and French producers, by the carafe, chosen by people
-              who clearly know what they&apos;re doing.
+              now. Exclusive pours from top Napa Valley and French producers, by the carafe, chosen by
+              people who clearly know what they&apos;re doing.
             </p>
           </blockquote>
 
@@ -339,7 +342,7 @@ export default function DinePage() {
           {/* Divider */}
           <div style={{ borderTop: "1px solid var(--hub-line)", margin: "3rem 0" }} />
 
-          {/* Calistoga Depot section */}
+          {/* Forum at Meadowood section */}
           <h2
             style={{
               fontFamily: "var(--font-cormorant), Georgia, serif",
@@ -350,7 +353,7 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Calistoga Depot, Calistoga
+            Forum at Meadowood, St. Helena
           </h2>
 
           <p
@@ -362,11 +365,12 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            A quick history lesson, because the building demands it. Samuel Brannan became
-            California&apos;s first millionaire during the Gold Rush of 1849, not by mining, but by
-            selling supplies to miners. Smart man. He founded Calistoga, built the first hot springs
-            resort, opened a distillery, and in 1868 constructed the train depot that served as the
-            northern end of the Napa Valley line.
+            Meadowood has long been one of Napa Valley&apos;s quiet constants, a private retreat folded
+            into the oaks above St. Helena, more whispered about than shown off. For years, it set the
+            rhythm of the valley&apos;s most understated luxury, where wine, service, and setting were
+            treated as disciplines rather than spectacle. After the 2020 Glass Fire, the property entered
+            a new chapter, and with it came the return of one of its most distinctive expressions: Forum
+            at Meadowood.
           </p>
 
           <p
@@ -378,9 +382,11 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Brannan wanted tourists. He got them for a while. Then the freight line shut down, the depot
-            went dark, and Calistoga became the quiet tail of the valley, a town people drove through on
-            the way to somewhere that seemed more important.
+            Forum is not a single restaurant so much as a gathered idea, part dining room, part culinary
+            salon, part stage for Meadowood&apos;s ongoing conversation with food and wine. Under the
+            stewardship of the Harlan family, the property continues to honor the ethos that has long
+            distinguished Meadowood: refinement without noise, precision without performance, and a deep
+            commitment to Napa Valley hospitality.
           </p>
 
           <p
@@ -392,12 +398,10 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Enter Jean-Charles Boisset, the French vigneron who has been collecting California wine
-            properties with the energy of a man who has never once been told to slow down. He bought the
-            depot in 2021. Over three years, working with proprietor Michael Madden, he turned it into
-            something that resists a clean label: part distillery, part dining complex, part wine bar,
-            part beer garden, part live music venue, organized around six restored 19th-century train cars
-            parked on the original tracks.
+            The setting reflects that restraint. Light moves softly through the trees outside, catching on
+            natural woods, stone, and glass. Inside, the room feels intentionally unhurried, as though it
+            has no interest in the outside world&apos;s urgency. It is the kind of space that rewards
+            attention, not with spectacle, but with detail.
           </p>
 
           <p
@@ -409,8 +413,10 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            It opened April 2024. Within weeks it was the most interesting evening in Calistoga, which is
-            saying something for a town that&apos;s been here since 1868.
+            At its core is a kitchen driven by seasonal tasting menus that read like a tour through
+            Northern California at its most composed. Nothing is overworked. Flavors are clean,
+            architectural, quietly confident. Dishes arrive with the kind of clarity that suggests the
+            chef is more interested in balance than declaration.
           </p>
 
           <p
@@ -422,80 +428,10 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            The best advice for visitors: don&apos;t plan. Just walk around. The main building is a Great
-            Hall with high ceilings, a bar decorated with miners&apos; shovels, a nod to how Brannan made
-            his fortune, and two massive copper stills that actually produce spirits. This is the
-            Calistoga Depot Distillery 1868. The lineup includes Fame &amp; Misfortune rye, Prosperous
-            &amp; Penniless gin, and brandies aged in Boisset wine barrels. The whole program connects
-            directly back to Brannan&apos;s own distillery on this exact property a hundred and sixty years
-            ago.
-          </p>
-
-          {/* Pull quote */}
-          <blockquote
-            style={{ margin: "2.5rem 0", padding: "0 0 0 1.5rem", borderLeft: "2px solid var(--hub-champagne)" }}
-          >
-            <p
-              style={{
-                fontFamily: "var(--font-cormorant), Georgia, serif",
-                fontSize: "1.375rem",
-                fontStyle: "italic",
-                lineHeight: 1.6,
-                color: "var(--hub-ink)",
-              }}
-            >
-              They call the JCB Parlor Car the Orient Express of Calistoga. Iridescent fabric, a
-              shell-covered fountain, oysters, caviar, Champagne. It sounds like too much. It is exactly
-              right.
-            </p>
-          </blockquote>
-
-          <p
-            style={{
-              fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontSize: "1.1875rem",
-              lineHeight: 1.75,
-              color: "var(--hub-muted)",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Step onto the platform and each train car becomes a different restaurant. The JCB Parlor Car
-            calls itself the &quot;Orient Express of Calistoga&quot; and does not appear to be joking.
-            Upholstered in iridescent fabric the color of a raw oyster, lit low and moody, with a fountain
-            crusted in shells at the center. The menu is oysters, caviar, small plates, JCB Champagne.
-            Glamorous and weird and somehow exactly calibrated.
-          </p>
-
-          <p
-            style={{
-              fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontSize: "1.1875rem",
-              lineHeight: 1.75,
-              color: "var(--hub-muted)",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Next car over is Casa Obsidiana, and suddenly the scene shifts to Mexico. Kaleidoscopic tile,
-            Oaxacan masks on the walls, big saturated colors everywhere. Executive chef Jorge Perez does
-            classically prepared Oaxacan food that holds its own against restaurants twice the price in
-            New York. The tequila is Boisset&apos;s own label, produced with the Beckmann Gonzalez family
-            in Jalisco and aged in Boisset Chardonnay barrels from Napa. Best ordered neat.
-          </p>
-
-          <p
-            style={{
-              fontFamily: "var(--font-cormorant), Georgia, serif",
-              fontSize: "1.1875rem",
-              lineHeight: 1.75,
-              color: "var(--hub-muted)",
-              marginBottom: "1.5rem",
-            }}
-          >
-            The First Millionaire&apos;s Saloon, named for Brannan, has barstools that are literal saddles
-            and a spirits list heavy on the house whiskeys and brandies. The backyard beer garden runs two
-            outdoor bars with live music Friday through Sunday night. The Napa Valley Vine Trail, all 47
-            miles of it, terminates right here at the original depot. Cyclists show up on weekend
-            afternoons looking like they&apos;ve earned every drink on the menu. They have.
+            Service follows the same cadence, present, exacting, never intrusive. Wine, as expected at
+            Meadowood, is central. The cellar reaches deep into Napa Valley and beyond, but the pairing
+            philosophy favors dialogue over dominance: bottles chosen not to impress, but to complete the
+            plate.
           </p>
 
           <p
@@ -507,10 +443,9 @@ export default function DinePage() {
               marginBottom: "2.5rem",
             }}
           >
-            Boisset&apos;s suggested route through the property: wood-fired pizza and a beer on the
-            Provisions patio, then a spirits flight in the distillery, then a Casa Obsidiana mole with a
-            tequila cocktail. Or for later arrivals: Parlor Car first, Saloon after, Mexico to close. Both
-            routes deliver.
+            There is a sense at Forum that everything has been considered twice, then edited once more.
+            The result is not nostalgia for Meadowood&apos;s past, but a continuation of its original
+            idea, hospitality as craft, expressed with calm authority.
           </p>
 
           {/* Property card */}
@@ -544,13 +479,13 @@ export default function DinePage() {
                 marginBottom: "0.25rem",
               }}
             >
-              Calistoga Depot
+              Forum at Meadowood
             </h3>
             <p style={{ fontSize: "0.875rem", color: "var(--hub-muted)", marginBottom: "0.875rem" }}>
-              1458 Lincoln Ave, Calistoga, CA 94515
+              900 Meadowood Ln, St. Helena, CA 94574
             </p>
             <a
-              href="https://www.calistogadepot.com"
+              href="https://www.meadowood.com"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -565,7 +500,7 @@ export default function DinePage() {
                 textDecoration: "none",
               }}
             >
-              Visit calistogadepot.com →
+              Visit meadowood.com →
             </a>
           </div>
 
@@ -583,7 +518,7 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            The Grove at COPIA, Napa
+            The Grove at COPIA, City of Napa
           </h2>
 
           <p
@@ -595,8 +530,8 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            The Culinary Institute of America (CIA) has an 80,000-square-foot campus in Napa
-            Valley&apos;s Oxbow District, across from the Public Market, facing the river. Inside
+            The Culinary Institute of America (CIA) has an 80,000-square-foot consumer campus Copia in
+            Napa Valley&apos;s Oxbow District, across from the Public Market, facing the river. Inside
             there&apos;s a restaurant called The Grove. It is the kind of place that locals mention with
             the specific enthusiasm of someone who wants credit for the recommendation.
           </p>
@@ -610,9 +545,10 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            They deserve the credit. A restaurant attached to a culinary school campus, in a tourist
-            district, the expectation is competent. What The Grove delivers is considerably better
-            than that.
+            They deserve the credit. As the culinary centerpiece of CIA at Copia, The Grove benefits from
+            a team that includes CIA alumni and students working alongside experienced professionals.
+            It&apos;s the sort of setup that could lean educational. Instead, it feels confident,
+            welcoming and deeply connected to the food culture of Napa Valley.
           </p>
 
           <p
@@ -624,10 +560,10 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            The setting: a renovated indoor dining room with views of the open kitchen, and beyond that, an
-            outdoor terrace shaded by mature olive trees. This is the Colavita Olive Grove Terrace, and the
-            air drifting in from the Copia culinary gardens actually smells like herbs. Not the scented-candle
-            version. The real thing.
+            The setting: a thoughtfully reimagined dining room with views of the open kitchen, and beyond
+            that, an outdoor terrace shaded by mature olive trees. This is the Colavita Olive Grove
+            Terrace, and the air drifting in from the Copia culinary gardens actually smells like herbs.
+            Not the scented-candle version. The real thing.
           </p>
 
           <p
@@ -689,11 +625,11 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Weekend brunch, Saturday and Sunday from 10:30, is the Oxbow District&apos;s most poorly kept
-            secret. The Bloody Mary is made from scratch and feels especially well suited to the
-            table, savory, composed, and an easy companion to any course. The patio fills with a mix of
-            locals and visitors who&apos;ve done their research. Lemon ricotta pancakes. Smoked trout
-            Benedict. A breakfast plate put together by cooks who clearly eat breakfast themselves.
+            Weekend brunch, Saturday and Sunday from 10:30a, is the Oxbow District&apos;s most poorly kept
+            secret. The Bloody Mary is made from scratch and feels especially well suited to the table,
+            savory, composed, and an easy companion to any course. The patio fills with a mix of locals
+            and visitors who&apos;ve done their research. Lemon ricotta pancakes. Smoked trout Benedict. A
+            breakfast plate put together by cooks who clearly eat breakfast themselves.
           </p>
 
           <p
@@ -705,11 +641,10 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            Happy hour (Wednesday through Friday, 4 to 6) is a smart pre-dinner stop. Small
-            plates and cocktails that show off the kitchen&apos;s range without requiring a full
-            commitment. The outdoor bar at dusk, olive trees overhead, the Napa River a short walk
-            away. It is the sort of wine country evening that makes people reconsider their flights
-            home.
+            Happy hour, Wednesday through Friday, 4 to 6p, is a smart pre-dinner stop. Small plates and
+            cocktails that show off the kitchen&apos;s range without requiring a full commitment. The
+            outdoor bar at dusk, olive trees overhead, the Napa River a short walk away, it is the sort of
+            wine country evening that makes people reconsider their flights home.
           </p>
 
           <p
@@ -721,11 +656,10 @@ export default function DinePage() {
               marginBottom: "1.5rem",
             }}
           >
-            One more thing about the campus. The wine bar has self-dispensing tasting machines with up to 24
-            pours, which is a low-key, surprisingly useful way to work through the valley&apos;s range.
-            Cooking classes run by reservation. The Chuck Williams Culinary Arts Museum, with over 4,000
-            objects from the Williams-Sonoma founder&apos;s personal collection, is easily worth an hour before
-            dinner.
+            One more thing. The wine bar has self-dispensing tasting machines with up to 24 pours, which
+            is a low-key, surprisingly useful way to work through the valley&apos;s range. Cooking classes
+            run by reservation. The Chuck Williams Culinary Arts Museum, more than 4,000 objects from the
+            Williams-Sonoma founder&apos;s personal collection, is easily worth an hour before dinner.
           </p>
 
           <p
