@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, type RefObject } from "react";
 import Image from "next/image";
 
 /** Direct JW CDN media (validated URLs from media API). */
+// TODO: Swap VIDEO_* URLs when VNV finalizes the new brand video (agency 3.26 review).
 const VIDEO_HLS_SRC = "https://cdn.jwplayer.com/manifests/hPiR6aJO.m3u8";
 const VIDEO_MP4_SRC = "https://cdn.jwplayer.com/videos/hPiR6aJO-VLJR2Jsq.mp4";
 const VIDEO_POSTER = "https://cdn.jwplayer.com/v2/media/hPiR6aJO/poster.jpg?width=1280";

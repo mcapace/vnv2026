@@ -177,7 +177,7 @@ export default function RouteMapSection() {
             {[
               {
                 town: "Calistoga",
-                note: "Geothermal pools, spa days, and a quieter north-valley close.",
+                note: "Geothermal pools, spa days, and a quieter north-valley escape.",
                 drive: "",
                 color: "var(--hub-wine)",
               },
@@ -189,19 +189,19 @@ export default function RouteMapSection() {
               },
               {
                 town: "Yountville",
-                note: "Walkable blocks and the Michelin addresses you know by name.",
+                note: "Walkable blocks and chef-led tables, the Michelin addresses you know by name.",
                 drive: "",
                 color: "var(--hub-champagne)",
               },
               {
                 town: "City of Napa",
-                note: "Urban energy, walkable downtown, and wine-country mornings in Carneros.",
+                note: "",
                 drive: "",
                 color: "var(--hub-sage)",
               },
               {
-                town: "American Canyon",
-                note: "The southern gateway, where the valley first opens up.",
+                town: "American Canyon & Carneros",
+                note: "The southern gateway, with serene hiking trails through nature preserves and wetlands.",
                 drive: "",
                 color: "var(--hub-sage)",
               },
@@ -241,16 +241,18 @@ export default function RouteMapSection() {
                       {item.town}
                     </span>
                   </div>
-                  <p
-                    style={{
-                      fontSize: "0.8125rem",
-                      color: "var(--hub-muted)",
-                      lineHeight: 1.5,
-                      marginBottom: "0.25rem",
-                    }}
-                  >
-                    {item.note}
-                  </p>
+                  {item.note ? (
+                    <p
+                      style={{
+                        fontSize: "0.8125rem",
+                        color: "var(--hub-muted)",
+                        lineHeight: 1.5,
+                        marginBottom: "0.25rem",
+                      }}
+                    >
+                      {item.note}
+                    </p>
+                  ) : null}
                   {i > 0 && item.drive && (
                     <span
                       style={{

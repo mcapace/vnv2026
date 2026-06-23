@@ -10,13 +10,14 @@ const VALLEY_TOWNS = [
     id: "american-canyon",
     label: "American Canyon & Carneros",
     pillLabel: "American Canyon",
-    subcopy: "The southern gateway, where the valley first opens up.",
+    subcopy:
+      "The southern gateway, with serene hiking trails through nature preserves and wetlands.",
   },
   {
     id: "napa",
     label: "City of Napa",
     pillLabel: "Napa",
-    subcopy: "Urban energy, walkable downtown, and wine-country mornings in Carneros.",
+    subcopy: "",
   },
   {
     id: "yountville",
@@ -35,7 +36,7 @@ const VALLEY_TOWNS = [
     id: "calistoga",
     label: "Calistoga",
     pillLabel: "Calistoga",
-    subcopy: "Geothermal pools, spa days, and a quieter north-valley close.",
+    subcopy: "Geothermal pools, spa days, and a quieter north-valley escape.",
   },
 ] as const;
 
@@ -51,11 +52,11 @@ const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string,
     partnerImage("American Canyon/chardonnay-golf-course.jpg"),
   ],
   napa: [
-    "/images/photography/cadet-dining.jpg",
+    "/images/photography/cadet-nightlife.jpg",
     partnerImage("JAM Cellars/GM1_1269_mod1.jpg"),
   ],
   yountville: [
-    "/images/photography/press-plating.jpg",
+    partnerImage("Bouchon Bistro/bouchon-yountville.jpg"),
     partnerImage("Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
   ],
   "st-helena": [
@@ -107,7 +108,7 @@ export default function PhotoGallery() {
         style={{ maxWidth: "48rem", textAlign: "center" }}
       >
         <p className="section-eyebrow" style={{ color: "var(--hub-champagne-light)" }}>
-          In the valley
+          In Napa Valley
         </p>
 
         <AnimatePresence mode="wait">
@@ -124,19 +125,21 @@ export default function PhotoGallery() {
           </motion.h2>
         </AnimatePresence>
 
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={region.id + "-subcopy"}
-            initial={reducedMotion ? undefined : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={reducedMotion ? undefined : { opacity: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="hub-prose mt-4 text-center"
-            style={{ color: "rgba(255,255,255,0.55)" }}
-          >
-            {region.subcopy}
-          </motion.p>
-        </AnimatePresence>
+        {region.subcopy ? (
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={region.id + "-subcopy"}
+              initial={reducedMotion ? undefined : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={reducedMotion ? undefined : { opacity: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="hub-prose mt-4 text-center"
+              style={{ color: "rgba(255,255,255,0.55)" }}
+            >
+              {region.subcopy}
+            </motion.p>
+          </AnimatePresence>
+        ) : null}
 
         <div
           style={{

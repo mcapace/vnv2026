@@ -32,9 +32,9 @@ const days = [
       },
       {
         time: "7:30 PM",
-        activity: "Dinner at The Grove at COPIA",
+        activity: "Dinner at The Grove at Culinary Institute of America",
         description:
-          "Garden-to-table dining at COPIA in Napa's Oxbow District, close to Carneros and Etude if you want to keep the day compact.",
+          "Garden-to-table dining at the Culinary Institute of America in Napa's Oxbow District.",
         type: "dine",
         thumb: encodeURI("/images/Assets for Hub/Partner Images/Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
         url: "https://www.ciaatcopia.com/grove-restaurant",
@@ -59,9 +59,9 @@ const days = [
     events: [
       {
         time: "10:30 AM",
-        activity: "Tasting at Louis Martini Winery",
+        activity: "Tasting at Louis M. Martini Winery",
         description:
-          "Morning in St. Helena at the historic estate on Oakville Road, with structured Cabernet and a cellar steeped in Napa Valley history.",
+          "Morning in St. Helena at the historic estate off Highway 29, with structured Cabernet and a cellar steeped in Napa Valley history.",
         type: "wine",
         thumb: partnerImage("Louis M. Martini/LMM-Tasting-Room-Entrance.jpg"),
         url: "https://www.louismartini.com/",
@@ -70,7 +70,7 @@ const days = [
         time: "1:30 PM",
         activity: "Tasting at Robert Mondavi Winery",
         description:
-          "Afternoon in Oakville at the reopened icon, where much of modern Napa Valley began. Book a tasting that leaves room before dinner in Yountville.",
+          "Afternoon in Oakville at the reopened icon, where much of modern Napa Valley began. Book a tasting that could stand among the world's finest.",
         type: "wine",
         thumb: partnerImage("Robert Mondavi Winery/mondavi-outdoor-lounge.jpg"),
         url: "https://www.robertmondavi.com/",
@@ -81,7 +81,7 @@ const days = [
         time: "7:00 PM",
         activity: "Dinner at Bouchon Bistro",
         description:
-          "Yountville's benchmark French bistro, a natural bookend after a north-to-south tasting day.",
+          "Yountville's benchmark French bistro where you'll enjoy a seasonal menu paired with exclusively selected wines.",
         type: "dine",
         thumb: partnerImage("Bouchon Bistro/bouchon-yountville.jpg"),
         url: "https://www.thomaskeller.com/bouchonyountville",
@@ -97,12 +97,12 @@ const days = [
     events: [
       {
         time: "10:30 AM",
-        activity: "Tasting at Robert Mondavi Winery",
+        activity: "St. Helena stroll or tasting",
         description:
-          "Late-morning Oakville tasting at the valley icon before you head north. Book a slot that leaves room for lunch in Calistoga.",
+          "Walk Main Street tasting rooms or add a stop at Rombauer Vineyards while the day is still cool.",
         type: "wine",
-        thumb: partnerImage("Robert Mondavi Winery/mondavi-outdoor-lounge.jpg"),
-        url: "https://www.robertmondavi.com/",
+        thumb: partnerImage("Rombauer Vineyard/Rombauer-Summer-20244442.jpg"),
+        url: "https://www.rombauer.com/",
       },
       {
         time: "12:30 PM",
@@ -174,7 +174,7 @@ export default function ItinerarySection() {
           className="hub-prose"
         >
           A sample three-day rhythm. Steal it outright or remix: swap days, add nights, or stretch into a
-          longer stay. Towns sit close together, and the valley rewards a pace that leaves room to linger.
+          longer stay. The five towns sit close together, and the valley rewards a pace that leaves room to linger.
         </motion.p>
       </div>
 

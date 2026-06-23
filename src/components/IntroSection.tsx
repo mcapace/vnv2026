@@ -102,7 +102,7 @@ export default function IntroSection() {
           animate={inView ? { opacity: 1, y: 0 } : reducedMotion ? { opacity: 1, y: 0 } : {}}
           className="section-eyebrow"
         >
-          Why This Valley
+          Why Napa Valley
         </motion.p>
         <motion.h2
           id="discover-heading"
@@ -123,7 +123,7 @@ export default function IntroSection() {
           style={{ maxWidth: "38rem", opacity: 0.8 }}
         >
           Napa Valley rewards every kind of trip, from quick escapes, week-long
-          immersions to everything between. Hundreds of cellar doors, chef-led
+          immersions to everything between. Hundreds of tasting rooms, chef-led
           kitchens, and tasting rooms stack into days that feel full without feeling
           rushed.
         </motion.p>

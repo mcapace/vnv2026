@@ -8,7 +8,7 @@ const articles = [
     label: "Stay",
     cardPrimary: "Where to Stay in Napa Valley",
     title: "",
-    subtitle: "Where the valley becomes your room",
+    subtitle: "Resorts, inns, and rooms made for unhurried nights",
     description:
       "From vineyard-edge bungalows at Carneros Resort to the mineral-spa heritage of Mount View Hotel & Inn in Calistoga, a guide to sleeping well in wine country.",
     image: encodeURI("/images/Assets for Hub/Partner Images/Mount View/POOL-ACCESS-MVH-SPA.jpg"),
@@ -38,9 +38,9 @@ const articles = [
     label: "Wine",
     cardPrimary: "Wineries Across Napa Valley",
     title: "",
-    subtitle: "Four hundred cellar doors, many styles",
+    subtitle: "Four hundred wineries, many styles",
     description:
-      "From icons like Robert Mondavi to elegance at Etude and heritage at Louis Martini. A spectrum of Napa Valley cellars, with Wine Spectator context.",
+      "From icons like Robert Mondavi to elegance at Etude and heritage at Louis Martini. A spectrum of Napa Valley estates, with Wine Spectator context.",
     image: encodeURI("/images/Assets for Hub/Partner Images/Etude/ETU_Winery1_HR.jpg"),
     objectPosition: "50% 45%",
     partners: ["Etude", "Robert Mondavi", "Louis Martini"],
