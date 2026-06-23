@@ -52,11 +52,11 @@ const TOWN_IMAGES: Record<(typeof VALLEY_TOWNS)[number]["id"], readonly [string,
     partnerImage("American Canyon/chardonnay-golf-course.jpg"),
   ],
   napa: [
-    "/images/photography/cadet-nightlife.jpg",
+    "/images/photography/towns/city-of-napa.png",
     partnerImage("JAM Cellars/GM1_1269_mod1.jpg"),
   ],
   yountville: [
-    partnerImage("Bouchon Bistro/bouchon-yountville.jpg"),
+    "/images/photography/towns/yountville.png",
     partnerImage("Meadowood/Meadowood-Napa-Valley-Forum-Restaurant-Short-RIb-Risotto-Paired-with-Wine.jpg"),
   ],
   "st-helena": [
