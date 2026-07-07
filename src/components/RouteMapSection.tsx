@@ -177,7 +177,7 @@ export default function RouteMapSection() {
             {[
               {
                 town: "Calistoga",
-                note: "Geothermal pools, spa days, and a quieter north-valley escape.",
+                note: "Geothermal pools, spa days, and a quiet north-valley escape.",
                 drive: "",
                 color: "var(--hub-wine)",
               },
@@ -195,7 +195,7 @@ export default function RouteMapSection() {
               },
               {
                 town: "City of Napa",
-                note: "",
+                note: "Urban energy, walkable downtown, and wine-country mornings.",
                 drive: "",
                 color: "var(--hub-sage)",
               },

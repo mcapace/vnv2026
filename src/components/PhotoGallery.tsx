@@ -17,7 +17,8 @@ const VALLEY_TOWNS = [
     id: "napa",
     label: "City of Napa",
     pillLabel: "Napa",
-    subcopy: "",
+    subcopy:
+      "Urban energy, walkable downtown, and wine-country mornings.",
   },
   {
     id: "yountville",
@@ -36,7 +37,7 @@ const VALLEY_TOWNS = [
     id: "calistoga",
     label: "Calistoga",
     pillLabel: "Calistoga",
-    subcopy: "Geothermal pools, spa days, and a quieter north-valley escape.",
+    subcopy: "Geothermal pools, spa days, and a quiet north-valley escape.",
   },
 ] as const;
 

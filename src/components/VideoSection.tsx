@@ -3,11 +3,8 @@
 import { useRef, useState, useEffect, type RefObject } from "react";
 import Image from "next/image";
 
-/** Direct JW CDN media (validated URLs from media API). */
-// TODO: Swap VIDEO_* URLs when VNV finalizes the new brand video (agency 3.26 review).
-const VIDEO_HLS_SRC = "https://cdn.jwplayer.com/manifests/hPiR6aJO.m3u8";
-const VIDEO_MP4_SRC = "https://cdn.jwplayer.com/videos/hPiR6aJO-VLJR2Jsq.mp4";
-const VIDEO_POSTER = "https://cdn.jwplayer.com/v2/media/hPiR6aJO/poster.jpg?width=1280";
+/** VNV brand video (client Dropbox transfer, June 2026). */
+const VIDEO_MP4_SRC = "/videos/VNV_LiveALittle_Chandon_30_Unslated.mp4";
 const LOCAL_POSTER_SRC = "/images/photography/chandon-brunch.jpg";
 
 /**
@@ -118,7 +115,7 @@ export default function VideoSection() {
             <video
               ref={videoRef}
               className="absolute inset-0 z-[1] h-full w-full object-cover"
-              poster={VIDEO_POSTER}
+              poster={LOCAL_POSTER_SRC}
               preload="auto"
               autoPlay
               muted
@@ -131,7 +128,6 @@ export default function VideoSection() {
                 if (p && typeof p.catch === "function") p.catch(() => {});
               }}
             >
-              <source src={VIDEO_HLS_SRC} type="application/vnd.apple.mpegurl" />
               <source src={VIDEO_MP4_SRC} type="video/mp4" />
             </video>
           </div>
