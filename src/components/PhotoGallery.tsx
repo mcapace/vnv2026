@@ -8,7 +8,7 @@ import { partnerImage } from "@/lib/partner-images";
 const VALLEY_TOWNS = [
   {
     id: "american-canyon",
-    label: "American Canyon & Carneros",
+    label: "American Canyon",
     pillLabel: "American Canyon",
     subcopy:
       "The southern gateway, with serene hiking trails through nature preserves and wetlands.",

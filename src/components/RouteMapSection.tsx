@@ -200,7 +200,7 @@ export default function RouteMapSection() {
                 color: "var(--hub-sage)",
               },
               {
-                town: "American Canyon & Carneros",
+                town: "American Canyon",
                 note: "The southern gateway, with serene hiking trails through nature preserves and wetlands.",
                 drive: "",
                 color: "var(--hub-sage)",
